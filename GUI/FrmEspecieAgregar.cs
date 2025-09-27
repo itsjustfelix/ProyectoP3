@@ -25,12 +25,11 @@ namespace ProyectoP3
             try
             {
                 string message = string.Empty;
-                if (validar()) message = agregar();
+                if (validar()) message = agregar(Mappeo());
                 MessageBox.Show(message, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
@@ -54,11 +53,11 @@ namespace ProyectoP3
             return true;
         }
 
-        private string agregar()
+        private string agregar(Especie especie)
         {
             try
             {
-                return logEspecie.Guardar(new Especie(txtNombre.Text));
+                return logEspecie.Guardar(especie);
             }
             catch (Exception e)
             {
@@ -74,6 +73,13 @@ namespace ProyectoP3
              MessageBoxButtons.YesNo,
              MessageBoxIcon.Question
              );
+        }
+
+        private Especie Mappeo()
+        {
+            Especie especie = new Especie();
+            especie.nombre = txtNombre.Text;
+            return especie;
         }
 
     }
