@@ -1,0 +1,119 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Entidad;
+using Logica;
+
+namespace ProyectoP3
+{
+    public partial class FrmCitaAgregar : Form
+    {
+        public FrmCitaAgregar()
+        {
+            InitializeComponent();
+        }
+        LogMascota logMascota = new LogMascota();
+        LogCita logCita = new LogCita();
+        private void btnBuscarMascota_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+                if (mascota == null)
+                {
+                    MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblNombreMascota.Text = string.Empty;
+                    SetControlesEstado(false);
+                    return;
+                }
+                lblNombreMascota.Text = mascota.nombre;
+                SetControlesEstado(true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private Mascota buscarMascota(int id)
+        {
+            return logMascota.BuscarPorId(id);
+        }
+        private void SetControlesEstado(bool estado)
+        {
+            DTPHora.Enabled = estado;
+            DTPFecha.Enabled = estado;
+        }
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                if (Validar())
+                {
+                    var message = Agregar(Mapeo());
+                    MessageBox.Show(message, "Agregar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Salir();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private bool Validar()
+        {
+            if (string.IsNullOrWhiteSpace(txtIdMascota.Text)) throw new ArgumentNullException("Debe ingresar el codigo de la mascota.");
+            if (DTPFecha.Value < DateTime.Now) throw new ArgumentException("La fecha de la cita no puede ser en el pasado.");
+            if (DTPHora.Value.TimeOfDay < DateTime.Now.TimeOfDay && DTPFecha.Value.Date == DateTime.Now.Date) throw new ArgumentException("La hora de la cita no puede ser en el pasado.");
+            return true;
+        }
+        private void Salir()
+        {
+            this.Close();
+        }
+        private string Agregar(Cita cita)
+        {
+            try
+            {
+                return logCita.Guardar(cita);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            var respuesta = DialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) Salir();
+        }
+        private DialogResult DialogoPregunta(string accion)
+        {
+            return MessageBox.Show(
+             $"¿Está seguro de que desea {accion}?",
+             $"Confirmar {accion}",
+             MessageBoxButtons.YesNo,
+             MessageBoxIcon.Question
+             );
+        }
+        private void FrmCitaAgregar_Load(object sender, EventArgs e)
+        {
+            lblNombreMascota.Text = string.Empty;
+        }
+
+        private Cita Mapeo()
+        {
+            Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+            Cita cita = new Cita();
+            cita.mascota = mascota;
+            cita.fecha = DTPFecha.Value;
+            cita.hora = DTPHora.Value;
+            return cita;
+        }
+    }
+}

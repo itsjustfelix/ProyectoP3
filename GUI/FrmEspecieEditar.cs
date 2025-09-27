@@ -1,0 +1,77 @@
+﻿using System;
+using System.Windows.Forms;
+using Entidad;
+using Logica;
+
+namespace ProyectoP3
+{
+    public partial class FrmEspecieEditar : Form
+    {
+        public FrmEspecieEditar(Especie especie)
+        {
+            InitializeComponent();
+            mostrarEspecie(especie);
+        }
+
+        LogEspecie logEspecie = new LogEspecie();
+        int id;
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (validar())
+                {
+                    var mensaje = editar();
+                    MessageBox.Show(mensaje, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    salir();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
+
+        }
+        private string editar()
+        {
+            try
+            {
+                return logEspecie.Actualizar(new Especie(id, txtNombre.Text));
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        private bool validar()
+        {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new Exception("El nombre de la especie no puede estar vacia.");
+            return true;
+        }
+        private void mostrarEspecie(Especie especie)
+        {
+            txtNombre.Text = especie.nombre;
+            id = especie.id;
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) salir();  
+        }
+        private DialogResult dialogoPregunta(string accion)
+        {
+            return MessageBox.Show(
+             $"¿Está seguro de que desea {accion}?",
+             $"Confirmar {accion}",
+             MessageBoxButtons.YesNo,
+             MessageBoxIcon.Question
+             );
+        }
+        private void salir()
+        {
+            this.Close();
+        }
+
+    }
+}
