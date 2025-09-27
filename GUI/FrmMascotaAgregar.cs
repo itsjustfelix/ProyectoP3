@@ -44,7 +44,7 @@ namespace ProyectoP3
             {
                 if (validar())
                 {
-                    var message = agregar();
+                    var message = agregar(Mapeo());
                     MessageBox.Show(message, "Agregar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     salir();
                 }
@@ -61,7 +61,7 @@ namespace ProyectoP3
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentNullException("El nombre de la mascota es obligatorio.");
             return true;
         }
-        private string agregar()
+        private string agregar(Mascota mascota)
         {
             try
             {
@@ -124,6 +124,19 @@ namespace ProyectoP3
         private void cmbEspecie_SelectedIndexChanged(object sender, EventArgs e)
         {
             cargarCmbRaza(int.Parse(cmbEspecie.SelectedValue.ToString()));
+        }
+
+        private Mascota Mapeo()
+        {
+            Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
+            Especie especie = buscarEspecie(int.Parse(cmbEspecie.SelectedValue.ToString()));
+            Raza raza = buscarRaza(int.Parse(cmbRaza.SelectedValue.ToString()));
+            Mascota mascota = new Mascota();
+            mascota.nombre = txtNombre.Text;
+            mascota.propietario = propietario;
+            mascota.especie = especie;
+            mascota.raza = raza;
+            return mascota;
         }
     }
 }
