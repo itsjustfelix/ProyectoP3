@@ -21,18 +21,15 @@ namespace ProyectoP3
         LogVeterinario logVeterinario = new LogVeterinario();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            var message = agregar();
+            var message = agregar(Mapeo());
             MessageBox.Show(message, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             salir();
         }
-        private string agregar()
+        private string agregar(Veterinario veterinario)
         {
             try
             {
-                string sexo;
-                if (RBFemenino.Checked) sexo = "Femenino";
-                else sexo = "Masculino";
-                return logVeterinario.Guardar(new Veterinario(int.Parse(txtId.Text), txtNombre.Text, sexo, txtNumTlf.Text));
+                return logVeterinario.Guardar(veterinario);
             }
             catch (Exception e)
             {
@@ -60,6 +57,15 @@ namespace ProyectoP3
             {
                 salir();
             }
+        }
+        private Veterinario Mapeo()
+        {
+            Veterinario veterinario = new Veterinario();
+            veterinario.Cedula = int.Parse(txtId.Text);
+            veterinario.Nombre = txtNombre.Text;
+            veterinario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
+            veterinario.Telefono = txtNumTlf.Text;
+            return veterinario;
         }
     }
 }
