@@ -31,7 +31,7 @@ namespace ProyectoP3
             {
                 if (validar())
                 {
-                    var message = editar();
+                    var message = editar(Mapeo());
                     MessageBox.Show(message, "Editar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     salir();
                 }
@@ -55,7 +55,7 @@ namespace ProyectoP3
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentNullException("El nombre de la mascota es obligatorio.");
             return true;
         }
-        private string editar()
+        private string editar(Mascota mascota)
         {
             try
             {
@@ -124,6 +124,20 @@ namespace ProyectoP3
         private void FrmMascotaEditar_Load(object sender, EventArgs e)
         {
             cargarCmbEspecie();
+        }
+
+        private Mascota Mapeo()
+        {
+            Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
+            Especie especie = buscarEspecie(int.Parse(cmbEspecie.SelectedValue.ToString()));
+            Raza raza = buscarRaza(int.Parse(cmbRaza.SelectedValue.ToString()));
+            Mascota mascota = new Mascota();
+            mascota.id = id;
+            mascota.nombre = txtNombre.Text;
+            mascota.especie = especie;
+            mascota.raza = raza;
+            mascota.propietario = propietario;
+            return mascota;
         }
     }
 }
