@@ -36,7 +36,7 @@ namespace ProyectoP3
             {
                 if (validar())
                 {
-                    var message = agregar();
+                    var message = agregar(Mapeo());
                     MessageBox.Show(message, "Agregar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     salir();
                 }
@@ -58,11 +58,9 @@ namespace ProyectoP3
             if (string.IsNullOrEmpty(txtTratamiento.Text)) throw new Exception("El campo Tratamiento es obligatorio.");
             return true;
         }
-        private string agregar()
+        private string agregar(Consulta consulta)
         {
-            Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
-            Veterinario veterinario = buscarVeterinario(int.Parse(cbxVeterinario.SelectedValue.ToString()));
-            return logConsulta.Guardar(new Consulta(txtDiagnostico.Text, txtTratamiento.Text, mascota, veterinario));
+            return logConsulta.Guardar(consulta);
         }
 
         private Mascota buscarMascota(int id)
@@ -140,6 +138,18 @@ namespace ProyectoP3
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private Consulta Mapeo()
+        {
+            Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+            Veterinario veterinario = buscarVeterinario(int.Parse(cbxVeterinario.SelectedValue.ToString()));
+            Consulta consulta = new Consulta();
+            consulta.diagnostico = txtDiagnostico.Text;
+            consulta.tratamiento = txtTratamiento.Text;
+            consulta.mascota = mascota;
+            consulta.veterinario = veterinario;
+            return consulta;
         }
     }
 }
