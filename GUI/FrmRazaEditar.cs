@@ -44,7 +44,7 @@ namespace ProyectoP3
             {
                 if (validar())
                 {
-                    var message = editar();
+                    var message = editar(Mapeo());
                     MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     salir();
                 }
@@ -61,12 +61,11 @@ namespace ProyectoP3
             if (string.IsNullOrEmpty(txtNombre.Text)) throw new ArgumentNullException("El campo Nombre es obligatorio.");
             return true;
         }
-        private string editar()
+        private string editar(Raza raza)
         {
             try
             {
-                Especie especie = buscarEspecie(int.Parse(cbxEspecie.SelectedValue.ToString()));
-                return logRaza.Actualizar(new Raza(idRaza, txtNombre.Text, especie));
+                return logRaza.Actualizar(raza);
             }
             catch (Exception e)
             {
@@ -95,6 +94,15 @@ namespace ProyectoP3
         {
             return logEspecie.Consultar().FirstOrDefault(e => e.id == id);
             //TODO: esto no debe de ir aqui, debo tener una funcion en la logica que me de el objeto.
+        }
+        private Raza Mapeo()
+        {
+            Especie especie = buscarEspecie(int.Parse(cbxEspecie.SelectedValue.ToString()));
+            Raza raza = new Raza();
+            raza.id = idRaza;
+            raza.nombre = txtNombre.Text;
+            raza.especie = especie;
+            return raza;
         }
     }
 }
