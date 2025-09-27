@@ -28,24 +28,29 @@ namespace ProyectoP3
             txtNumTlf.Text = veterinario.Telefono;
             if (veterinario.Sexo == "Femenino") RBFemenino.Checked = true;
             else RBMasculino.Checked = true;
-            
+
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            string message;
-            message = editar();
-            MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            salir();
+            try
+            {
+                string message;
+                message = editar(Mapeo());
+                MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                salir();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
-        private string editar()
+        private string editar(Veterinario veterinario)
         {
             try
             {
-                string sexo;
-                if (RBFemenino.Checked) sexo = "Femenino";
-                else sexo = "Masculino";
-                return logVeterinario.Actualizar(new Veterinario(int.Parse(txtId.Text), txtNombre.Text, sexo, txtNumTlf.Text));
+                return logVeterinario.Actualizar(veterinario);
             }
             catch (Exception e)
             {
@@ -75,6 +80,23 @@ namespace ProyectoP3
              MessageBoxButtons.YesNo,
              MessageBoxIcon.Question
              );
+        }
+        private Veterinario Mapeo()
+        {
+            Veterinario veterinario = new Veterinario();
+            veterinario.Cedula = int.Parse(txtId.Text);
+            veterinario.Nombre = txtNombre.Text;
+            veterinario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
+            veterinario.Telefono = txtNumTlf.Text;
+            return veterinario;
+        }
+
+        private bool validar()
+        {
+            if (string.IsNullOrEmpty(txtNombre.Text)) throw new ArgumentNullException("El campo Nombre es obligatorio.");
+            if (string.IsNullOrEmpty(txtNumTlf.Text)) throw new ArgumentNullException("El campo Teléfono es obligatorio.");
+            if (RBFemenino.Checked == false && RBMasculino.Checked == false) throw new ArgumentNullException("El campo Sexo es obligatorio.");
+            return true;
         }
     }
 
