@@ -21,7 +21,7 @@ namespace ProyectoP3
             {
                 if (validar())
                 {
-                    var mensaje = editar();
+                    var mensaje = editar(Mapeo());
                     MessageBox.Show(mensaje, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     salir();
                 }
@@ -33,7 +33,7 @@ namespace ProyectoP3
             
 
         }
-        private string editar()
+        private string editar(Especie especie)
         {
             try
             {
@@ -71,6 +71,13 @@ namespace ProyectoP3
         private void salir()
         {
             this.Close();
+        }
+        private Especie Mapeo()
+        {
+            Especie especie = new Especie();
+            especie.id = id;
+            especie.nombre = txtNombre.Text;
+            return especie;
         }
 
     }
