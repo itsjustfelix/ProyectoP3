@@ -28,25 +28,24 @@ namespace ProyectoP3
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            var message = editar();
-            MessageBox.Show(message, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            salir();
+            if(validar())
+            {
+                var message = editar(Mapeo());
+                MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                salir();
+            }
         }
 
-        private string editar()
+        private string editar(Propietario propietario)
         {
             try
             {
-                string sexo;
-                if (RBFemenino.Checked) sexo = "Femenino";
-                else sexo = "Masculino";
-                return logPropietario.Guardar(new Propietario(int.Parse(txtId.Text), txtNombre.Text, sexo, txtNumTlf.Text));
+                return logPropietario.Guardar(propietario);
             }
             catch (Exception e)
             {
                 return e.Message;
             }
-
         }
         private void salir()
         {
@@ -71,6 +70,24 @@ namespace ProyectoP3
             {
                 salir();
             }
+        }
+        private Propietario Mapeo()
+        {
+            Propietario propietario = new Propietario();
+            propietario.Cedula = int.Parse(txtId.Text);
+            propietario.Nombre = txtNombre.Text;
+            propietario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
+            propietario.Telefono = txtNumTlf.Text;
+            return propietario;
+        }
+        private bool validar()
+        {
+            if (string.IsNullOrWhiteSpace(txtId.Text)) throw new ArgumentException("La cédula no puede estar vacía.");
+            if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentException("El nombre no puede estar vacío.");
+            if (string.IsNullOrWhiteSpace(txtNumTlf.Text)) throw new ArgumentException("El número de teléfono no puede estar vacío.");
+            if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un sexo.");
+            if (!int.TryParse(txtId.Text, out _)) throw new ArgumentException("La cédula debe ser un número válido.");
+            return true;
         }
     }
 }
