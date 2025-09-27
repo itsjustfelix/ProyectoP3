@@ -36,7 +36,7 @@ namespace ProyectoP3
             {
                 if (validar())
                 {
-                    var message = agregar();
+                    var message = agregar(Mapeo());
                     MessageBox.Show(message, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     salir();
                 }
@@ -51,12 +51,11 @@ namespace ProyectoP3
             if (string.IsNullOrEmpty(txtNombre.Text)) throw new ArgumentNullException("El campo Nombre es obligatorio.");
             return true;
         }
-        private string agregar()
+        private string agregar(Raza raza)
         {
             try
             {
-                Especie especie = buscarEspecie(int.Parse(cbxEspecie.SelectedValue.ToString()));
-                return logRaza.Guardar(new Raza(txtNombre.Text, especie));
+                return logRaza.Guardar(raza);
             }
             catch (Exception e)
             {
@@ -85,6 +84,14 @@ namespace ProyectoP3
         private void salir()
         {
             this.Close();
+        }
+        private Raza Mapeo()
+        {
+            Especie especie = buscarEspecie(int.Parse(cbxEspecie.SelectedValue.ToString()));
+            Raza raza = new Raza();
+            raza.nombre = txtNombre.Text;
+            raza.especie = especie;
+            return raza;
         }
     }
 }

@@ -28,12 +28,20 @@ namespace ProyectoP3
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if(validar())
+            try
             {
-                var message = editar(Mapeo());
-                MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                salir();
+                if (validar())
+                {
+                    var message = editar(Mapeo());
+                    MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    salir();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
 
         private string editar(Propietario propietario)
