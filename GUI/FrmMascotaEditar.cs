@@ -125,7 +125,6 @@ namespace ProyectoP3
         {
             cargarCmbEspecie();
         }
-
         private Mascota Mapeo()
         {
             Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));

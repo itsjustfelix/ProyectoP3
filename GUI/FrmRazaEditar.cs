@@ -45,8 +45,16 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = editar(Mapeo());
-                    MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    salir();
+                    if (message.Contains("correctamente"))
+                    {
+                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                 }
             }
             catch (Exception ex)
