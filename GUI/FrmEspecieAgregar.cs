@@ -24,15 +24,27 @@ namespace ProyectoP3
         {
             try
             {
-                string message = string.Empty;
-                if (validar()) message = agregar(Mappeo());
-                MessageBox.Show(message, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (validar())
+                {
+                    string message = agregar(Mappeo());
+                    if (message.Contains("correctamente"))
+                    {
+                        MessageBox.Show(message, "Agregar Especie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -48,8 +60,8 @@ namespace ProyectoP3
 
         private bool validar()
         {
-            
-            if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentException("El nombre de la especie no puede estar vacío.");    
+
+            if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentException("El nombre de la especie no puede estar vacío.");
             return true;
         }
 

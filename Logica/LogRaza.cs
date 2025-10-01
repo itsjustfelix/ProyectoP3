@@ -93,7 +93,7 @@ namespace Logica
                 mensaje = "Especie nula";
                 return false;
             }
-            if (entidad.nombre.All(char.IsDigit))
+            if (entidad.nombre.Any(char.IsDigit))
             {
                 mensaje = "El nombre no puede contener numeros";
                 return false;

@@ -71,6 +71,11 @@ namespace Logica
                 mensaje = "El nombre es obligatorio";
                 return false;
             }
+            if (entidad.Nombre.Any(char.IsDigit))
+            {
+                mensaje = "El nombre no puede contener numeros";
+                return false;
+            }
             if (string.IsNullOrEmpty(entidad.Sexo))
             {
                 mensaje = "El sexo es obligatorio";
@@ -86,16 +91,22 @@ namespace Logica
                 mensaje = "El ID debe tener entre 8 y 10 digitos";
                 return false;
             }
+            if (entidad.Cedula.ToString().Any(char.IsLetter))
+            {
+                mensaje = "La cedula no puede contener letras";
+                return false;
+            }
+            if (entidad.Telefono.Any(char.IsLetter))
+            {
+                mensaje = "El telefono no puede contener letras";
+                return false;
+            }
             if (entidad.Telefono.Length != 10)
             {
                 mensaje = "El telefono debe tener 10 digitos";
                 return false;
             }
-            if (entidad.Telefono.All(char.IsLetter))
-            {
-                mensaje = "El telefono no puede contener letras";
-                return false;
-            }
+
             return true;
         }
         public bool IdUnico(int id)

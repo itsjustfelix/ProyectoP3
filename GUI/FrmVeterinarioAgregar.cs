@@ -21,9 +21,29 @@ namespace ProyectoP3
         LogVeterinario logVeterinario = new LogVeterinario();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            var message = agregar(Mapeo());
-            MessageBox.Show(message, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            salir();
+            try
+            {
+                if (validar())
+                {
+                    var mensaje = agregar(Mapeo());
+                    if (mensaje.Contains("Guardado"))
+                    {
+                        MessageBox.Show(mensaje, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show(mensaje, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                        
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
         private string agregar(Veterinario veterinario)
         {
@@ -66,6 +86,14 @@ namespace ProyectoP3
             veterinario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
             veterinario.Telefono = txtNumTlf.Text;
             return veterinario;
+        }
+        private bool validar()
+        {
+            if (string.IsNullOrEmpty(txtId.Text)) throw new ArgumentNullException("El campo Cédula es obligatorio.");
+            if (string.IsNullOrEmpty(txtNombre.Text)) throw new ArgumentNullException("El campo Nombre es obligatorio.");
+            if (string.IsNullOrEmpty(txtNumTlf.Text)) throw new ArgumentNullException("El campo Teléfono es obligatorio.");
+            if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentNullException("El campo Sexo es obligatorio.");
+            return true;
         }
     }
 }

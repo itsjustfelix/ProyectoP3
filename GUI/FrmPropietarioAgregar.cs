@@ -21,9 +21,29 @@ namespace ProyectoP3
         LogPropietario logPropietario = new LogPropietario();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            var mesaje = agregar(Mappeo());
-            MessageBox.Show(mesaje, "Agregar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            salir();
+            try
+            {
+                if (validar())
+                {
+                    string mensaje = agregar(Mappeo());
+                    if (mensaje.Contains("Guardado"))
+                    {
+                        MessageBox.Show(mensaje, "Agregar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+
         }
 
         private string agregar(Propietario propietario)
@@ -47,11 +67,11 @@ namespace ProyectoP3
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
-            if(respuesta == DialogResult.Yes)
+            if (respuesta == DialogResult.Yes)
             {
                 salir();
             }
-            
+
         }
 
         private DialogResult dialogoPregunta(string accion)
@@ -62,7 +82,7 @@ namespace ProyectoP3
              MessageBoxButtons.YesNo,
              MessageBoxIcon.Question
              );
-        } 
+        }
 
         private Propietario Mappeo()
         {
@@ -72,6 +92,14 @@ namespace ProyectoP3
             propietario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
             propietario.Telefono = txtNumTlf.Text;
             return propietario;
+        }
+
+        private bool validar()
+        {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentNullException("El nombre del propietario es obligatorio.");
+            if (string.IsNullOrWhiteSpace(txtNumTlf.Text)) throw new ArgumentNullException("El número de teléfono es obligatorio.");
+            if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un género.");
+            return true;
         }
     }
 }

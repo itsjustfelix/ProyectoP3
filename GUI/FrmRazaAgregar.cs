@@ -37,8 +37,16 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = agregar(Mapeo());
-                    MessageBox.Show(message, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    salir();
+                    if (message.Contains("Guardado"))
+                    {
+                        MessageBox.Show(message, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show(message, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -70,7 +78,7 @@ namespace ProyectoP3
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) salir(); 
+            if (respuesta == DialogResult.Yes) salir();
         }
         private DialogResult dialogoPregunta(string accion)
         {

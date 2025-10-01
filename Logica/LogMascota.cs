@@ -102,7 +102,7 @@ namespace Logica
                 mensaje = "Raza nula";
                 return false;
             }   
-            if (entidad.nombre.All(char.IsDigit))
+            if (entidad.nombre.Any(char.IsDigit))
             {
                 mensaje = "El nombre de la mascota no puede contener numeros";
                 return false;

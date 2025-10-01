@@ -55,9 +55,17 @@ namespace ProyectoP3
             { 
                 if (Validar())
                 {
-                    var message = Agregar(Mapeo());
-                    MessageBox.Show(message, "Agregar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Salir();
+                    var mensaje = Agregar(Mapeo());
+                    if (mensaje.Contains("Guardado"))
+                    {
+                        MessageBox.Show(mensaje, "Agregar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                 }
             }
             catch (Exception ex)

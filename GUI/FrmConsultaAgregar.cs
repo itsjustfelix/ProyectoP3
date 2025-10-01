@@ -37,8 +37,16 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = agregar(Mapeo());
-                    MessageBox.Show(message, "Agregar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    salir();
+                    if (message.Contains("Guardado"))
+                    {
+                        MessageBox.Show(message, "Agregar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else 
+                    { 
+                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                    }
+                        
                 }
             }
             catch (Exception ex)
@@ -60,7 +68,15 @@ namespace ProyectoP3
         }
         private string agregar(Consulta consulta)
         {
-            return logConsulta.Guardar(consulta);
+            try
+            {
+                return logConsulta.Guardar(consulta);
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            
         }
 
         private Mascota buscarMascota(int id)
