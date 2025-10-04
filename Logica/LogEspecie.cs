@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Entidad;
 using Dato;
+using Entidad;
 namespace Logica
 {
     public class LogEspecie : IServiceEntidad<Especie>
     {
         Random random = new Random();
-        private readonly DatoEspecie datoEspecie = new DatoEspecie(NombreArchivo.ARCHIVO_ESPECIE);
+        private readonly FileRepository<Especie> datoEspecie = new DatoEspecie(NombreArchivo.ARCHIVO_ESPECIE);
         public string Guardar(Especie entidad)
         {
             try
@@ -19,8 +20,7 @@ namespace Logica
                 if (Validar(entidad, out mensaje))
                 {
                     entidad.id = GenerarIdUnico();
-                    datoEspecie.Guardar(entidad);
-                    mensaje = "Especie guardada correctamente";
+                    mensaje = datoEspecie.Guardar(entidad);
                 }
                 return mensaje;
             }
@@ -70,7 +70,7 @@ namespace Logica
         public int GenerarIdUnico()
         {
             int id;
-            List<Especie> especiesExistentes = Consultar();
+            var especiesExistentes = Consultar();
             HashSet<int> idsExistentes = new HashSet<int>(especiesExistentes.Select(m => m.id));
             do
             {
@@ -91,7 +91,12 @@ namespace Logica
                 mensaje = "El nombre no puede contener numeros";
                 return false;
             }
-            //if (Consultar().Any(e => e.nombre.Equals(entidad.nombre, StringComparison.OrdinalIgnoreCase))) throw new ArgumentException("El nombre de la especie ya existe");
+            if (Consultar().Any(e => e.nombre.Equals(entidad.nombre, StringComparison.OrdinalIgnoreCase)
+                    && e.id != entidad.id))
+            {
+                mensaje = "El nombre de la especie ya existe";
+                return false;
+            }
             return true;
         }
     }

@@ -46,6 +46,7 @@
     <Compile Include="IServicePersonas.cs" />
     <Compile Include="IServiceRaza.cs" />
     <Compile Include="LogCita.cs" />
+    <Compile Include="logEspecializacion.cs" />
     <Compile Include="LogPropietario.cs" />
     <Compile Include="LogVeterinario.cs" />
     <Compile Include="LogMascota.cs" />
