@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Cita.cs" />
     <Compile Include="Consulta.cs" />
+    <Compile Include="Especializacion.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Propietario.cs" />
     <Compile Include="RegistroVenta.cs" />
