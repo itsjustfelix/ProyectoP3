@@ -19,7 +19,7 @@ namespace ProyectoP3
             InitializeComponent();
         }
 
-        LogEspecie logEspecie = new LogEspecie();
+        IServiceEntidad<Especie> logEspecie = new LogEspecie();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try

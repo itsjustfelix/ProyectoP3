@@ -20,7 +20,7 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        LogConsulta logConsulta = new LogConsulta();
+        IServiceEntidad<Consulta> logConsulta = new LogConsulta();
         private void FrmConsulta_Load(object sender, EventArgs e)
         {
             cargarDGV();

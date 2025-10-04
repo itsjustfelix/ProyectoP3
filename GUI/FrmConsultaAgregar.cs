@@ -27,9 +27,9 @@ namespace ProyectoP3
             setEstado(false);
         }
 
-        LogConsulta logConsulta = new LogConsulta();
-        LogMascota logMascota = new LogMascota();
-        LogVeterinario logVeterinario = new LogVeterinario();
+        IServiceEntidad<Consulta> logConsulta = new LogConsulta();
+        IServiceEntidad<Mascota> logMascota = new LogMascota();
+        IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try

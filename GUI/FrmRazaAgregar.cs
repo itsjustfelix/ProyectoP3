@@ -18,8 +18,8 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        LogEspecie logEspecie = new LogEspecie();
-        LogRaza logRaza = new LogRaza();
+        IServiceEntidad<Especie> logEspecie = new LogEspecie();
+        IServiceRaza logRaza = new LogRaza();
         private void FrmRazaAgregar_Load(object sender, EventArgs e)
         {
             CargarCbx();

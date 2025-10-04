@@ -18,8 +18,8 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        LogMascota logMascota = new LogMascota();
-        LogCita logCita = new LogCita();
+        IServiceEntidad<Mascota> logMascota = new LogMascota();
+        IServiceEntidad<Cita> logCita = new LogCita();
         private void btnBuscarMascota_Click(object sender, EventArgs e)
         {
             try

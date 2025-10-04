@@ -11,10 +11,10 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        LogPropietario logPropietario = new LogPropietario();
-        LogMascota logMascota = new LogMascota();
-        LogEspecie logEspecie = new LogEspecie();
-        LogRaza logRaza = new LogRaza();
+        IServicePersonas<Propietario> logPropietario = new LogPropietario();
+        IServiceEntidad<Mascota> logMascota = new LogMascota();
+        IServiceEntidad<Especie> logEspecie = new LogEspecie();
+        IServiceRaza logRaza = new LogRaza();
         private void bttnBuscarProp_Click(object sender, EventArgs e)
         {
             Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));

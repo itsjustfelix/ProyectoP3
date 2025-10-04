@@ -12,7 +12,7 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        LogRaza logRaza = new LogRaza();
+        IServiceRaza logRaza = new LogRaza();
         private void FrmRaza_Load(object sender, EventArgs e)
         {
             cargarDGV();
@@ -99,7 +99,7 @@ namespace ProyectoP3
         }
         private Raza buscarRaza(int id)
         {
-            return logRaza.Consultar().FirstOrDefault(r => r.id == id);
+            return logRaza.BuscarPorId(id);
         }
         private void mostrarFrm(Form frm)
         {

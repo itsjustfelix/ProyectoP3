@@ -20,7 +20,7 @@ namespace ProyectoP3
             mostrarVeterinario(veterinario);
         }
 
-        LogVeterinario logVeterinario = new LogVeterinario();
+        IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
         private void mostrarVeterinario(Veterinario veterinario)
         {
             txtId.Text = veterinario.Cedula.ToString();

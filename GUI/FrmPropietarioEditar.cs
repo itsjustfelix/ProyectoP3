@@ -13,7 +13,7 @@ namespace ProyectoP3
             mostrarPropietario(propietario);
             txtId.Enabled = false; // Deshabilitar el campo ID para evitar modificaciones
         }
-        LogPropietario logPropietario = new LogPropietario();
+        IServicePersonas<Propietario> logPropietario = new LogPropietario();
         private void FrmEditarPropietatio_Load(object sender, EventArgs e)
         {
         }

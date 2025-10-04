@@ -20,10 +20,10 @@ namespace ProyectoP3
             mostrarMascota(mascota);
             setEstadoControles(false);
         }
-        LogPropietario logPropietario = new LogPropietario();
-        LogMascota logMascota = new LogMascota();
-        LogEspecie logEspecie = new LogEspecie();
-        LogRaza logRaza = new LogRaza();
+        IServicePersonas<Propietario> logPropietario = new LogPropietario();
+        IServiceEntidad<Mascota> logMascota = new LogMascota();
+        IServiceEntidad<Especie> logEspecie = new LogEspecie();
+        IServiceRaza logRaza = new LogRaza();
         int id;
         private void btnEditar_Click(object sender, EventArgs e)
         {

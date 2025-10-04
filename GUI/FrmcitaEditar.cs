@@ -19,8 +19,8 @@ namespace ProyectoP3
             InitializeComponent();
             mostrarCita(cita);
         }
-        LogCita logCita = new LogCita();
-        LogMascota logMascota = new LogMascota();
+        IServiceEntidad<Cita> logCita = new LogCita();
+        IServiceEntidad<Mascota> logMascota = new LogMascota();
         int idCita;
         private void mostrarCita(Cita cita)
         {

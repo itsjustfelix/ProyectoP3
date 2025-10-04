@@ -15,8 +15,7 @@ namespace ProyectoP3
 {
     public partial class FrmCita : Form
     {
-        LogCita logCita = new LogCita();
-        LogMascota logMascota = new LogMascota();
+        IServiceEntidad<Cita> logCita = new LogCita();
         public FrmCita()
         {
             InitializeComponent();

@@ -18,7 +18,7 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        LogVeterinario logVeterinario = new LogVeterinario();
+        IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try

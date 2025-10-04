@@ -13,7 +13,7 @@ namespace ProyectoP3
             InitializeComponent();
         }
 
-        LogPropietario logPropietario = new LogPropietario();
+        IServicePersonas<Propietario> logPropietario = new LogPropietario();
 
         private void mostrarFrm(Form frm)
         {

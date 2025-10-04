@@ -18,7 +18,7 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        LogPropietario logPropietario = new LogPropietario();
+        IServicePersonas<Propietario> logPropietario = new LogPropietario();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try

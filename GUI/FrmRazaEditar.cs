@@ -19,8 +19,8 @@ namespace ProyectoP3
             InitializeComponent();
             mostrarRaza(raza);
         }
-        LogEspecie logEspecie = new LogEspecie();
-        LogRaza logRaza = new LogRaza();
+        IServiceEntidad<Especie> logEspecie = new LogEspecie();
+        IServiceRaza logRaza = new LogRaza();
         int idRaza;
         private void mostrarRaza(Raza raza)
         {

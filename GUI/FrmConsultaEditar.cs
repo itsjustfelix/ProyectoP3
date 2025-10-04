@@ -20,9 +20,9 @@ namespace ProyectoP3
             mostrarConsulta(consulta);
             SetControlesEstado(false);
         }
-        LogVeterinario logVeterinario = new LogVeterinario();
-        LogConsulta logConsulta = new LogConsulta();
-        LogMascota logMascota = new LogMascota();
+        IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
+        IServiceEntidad<Consulta> logConsulta = new LogConsulta();
+        IServiceEntidad<Mascota> logMascota = new LogMascota();
         int idConsulta;
         DateTime fechaConsulta;
         private void btnEditar_Click(object sender, EventArgs e)

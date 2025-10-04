@@ -13,7 +13,7 @@ namespace ProyectoP3
             mostrarEspecie(especie);
         }
 
-        LogEspecie logEspecie = new LogEspecie();
+        IServiceEntidad<Especie> logEspecie = new LogEspecie();
         int id;
         private void btnEditar_Click(object sender, EventArgs e)
         {
