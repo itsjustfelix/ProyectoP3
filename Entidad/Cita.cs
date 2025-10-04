@@ -14,20 +14,6 @@ namespace Entidad
         public DateTime hora { get; set; }
         public Mascota mascota { get; set; }
 
-        public Cita(DateTime fecha, DateTime hora, Mascota mascota)
-        {
-            this.fecha = fecha;
-            this.hora = hora;
-            this.mascota = mascota;
-        }
-        public Cita(int id, DateTime fecha, DateTime hora, Mascota mascota)
-        {
-            this.id = id;
-            this.fecha = fecha;  
-            this.hora = hora;
-            this.mascota = mascota;
-        }
-          
         public Cita() { }
 
         public override string ToString()

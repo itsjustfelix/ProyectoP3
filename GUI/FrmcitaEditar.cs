@@ -64,9 +64,8 @@ namespace ProyectoP3
         private string Editar(Cita cita)
         {
             try
-            {
-                Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
-                return logCita.Actualizar(new Cita(idCita, DTPFecha.Value, DTPHora.Value, mascota));
+            {   
+                return logCita.Actualizar(cita);
             }
             catch (Exception ex)
             {
