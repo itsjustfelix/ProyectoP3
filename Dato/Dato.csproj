@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DatoCita.cs" />
     <Compile Include="DatoConsulta.cs" />
+    <Compile Include="DatoEspecializacion.cs" />
     <Compile Include="IDatos.cs" />
     <Compile Include="FileRepository.cs" />
     <Compile Include="NombreArchivo.cs" />

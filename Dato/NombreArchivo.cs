@@ -15,5 +15,6 @@ namespace Dato
         public const string ARCHIVO_CONSULTA = "Consulta.txt";
         public const string ARCHIVO_MASCOTA = "Mascota.txt";
         public const string ARCHIVO_CITA = "Cita.txt";
+        public const string ARCHIVO_ESPECIALIZACION = "Especializacion.txt";
     }
 }
