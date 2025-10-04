@@ -5,7 +5,7 @@ using Dato;
 using Entidad;
 namespace Logica
 {
-    public class LogVeterinario : IService<Veterinario>, IIdUnico
+    public class LogVeterinario : IServicePersonas<Veterinario>
     {
         private readonly DatoVeterinario datoVeterinario = new DatoVeterinario(NombreArchivo.ARCHIVO_VETERINARIO);
         public string Guardar(Veterinario entidad)

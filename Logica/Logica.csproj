@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IGenerarIdUnico.cs" />
-    <Compile Include="IIdUnico.cs" />
-    <Compile Include="IService.cs" />
+    <Compile Include="ICrud.cs" />
+    <Compile Include="IServiceEntidad.cs" />
+    <Compile Include="IServicePersonas.cs" />
     <Compile Include="LogCita.cs" />
     <Compile Include="LogPropietario.cs" />
     <Compile Include="LogVeterinario.cs" />

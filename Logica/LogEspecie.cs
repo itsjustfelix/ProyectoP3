@@ -7,7 +7,7 @@ using Entidad;
 using Dato;
 namespace Logica
 {
-    public class LogEspecie : IService<Especie> , IGenerarIdUnico
+    public class LogEspecie : IServiceEntidad<Especie>
     {
         Random random = new Random();
         private readonly DatoEspecie datoEspecie = new DatoEspecie(NombreArchivo.ARCHIVO_ESPECIE);

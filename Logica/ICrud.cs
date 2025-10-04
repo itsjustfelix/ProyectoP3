@@ -7,7 +7,7 @@ using Entidad;
 
 namespace Logica
 {
-    public interface IService<T>
+    public interface ICrud<T>
     {
         string Guardar(T entidad);
         List<T> Consultar();

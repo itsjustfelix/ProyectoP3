@@ -6,7 +6,7 @@ using Entidad;
 
 namespace Logica
 {
-    public class LogConsulta : IService<Consulta> , IGenerarIdUnico
+    public class LogConsulta : IServiceEntidad<Consulta>
     {
         private readonly DatoConsulta datoConsulta = new DatoConsulta(NombreArchivo.ARCHIVO_CONSULTA);
         private Random random = new Random();

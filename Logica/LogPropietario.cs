@@ -6,7 +6,7 @@ using Entidad;
 
 namespace Logica
 {
-    public class LogPropietario : IService<Propietario>, IIdUnico
+    public class LogPropietario : IServicePersonas<Propietario>
     {
         private readonly DatoPropietario datoPropietario = new DatoPropietario(NombreArchivo.ARCHIVO_PROPIETARIO);
         public string Guardar(Propietario entidad)

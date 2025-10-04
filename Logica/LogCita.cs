@@ -6,7 +6,7 @@ using Entidad;
 
 namespace Logica
 {
-    public class LogCita : IService<Cita>, IGenerarIdUnico
+    public class LogCita :IServiceEntidad<Cita>
     {
         private Random random = new Random();
         private readonly DatoCita datoCita = new DatoCita(NombreArchivo.ARCHIVO_CITA);

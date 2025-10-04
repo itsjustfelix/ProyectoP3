@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public interface IGenerarIdUnico
+    public interface IServicePersonas<T> : ICrud<T>
     {
-        int GenerarIdUnico();
+        bool IdUnico(int id);
     }
+
 }

@@ -7,7 +7,7 @@ using Entidad;
 using Dato;
 namespace Logica
 {
-    public class LogRaza : IService<Raza>, IGenerarIdUnico
+    public class LogRaza : IServiceEntidad<Raza>
     {
         private readonly DatoRaza datoRaza = new DatoRaza(NombreArchivo.ARCHIVO_RAZA);
         Random random = new Random();
