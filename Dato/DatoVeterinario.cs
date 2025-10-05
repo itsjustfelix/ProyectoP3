@@ -10,6 +10,7 @@ namespace Dato
 {
     public class DatoVeterinario: FileRepository<Veterinario>
     {
+        DatoEspecializacion datoEspecializacion = new DatoEspecializacion(NombreArchivo.ARCHIVO_ESPECIALIZACION);
         public DatoVeterinario(string filePath) : base(filePath)
         {
             this.filePath = filePath;
@@ -33,6 +34,7 @@ namespace Dato
             veterinario.Nombre = line.Split(';')[1];
             veterinario.Sexo = line.Split(';')[2];
             veterinario.Telefono = line.Split(';')[3];
+            veterinario.Especializacion = datoEspecializacion.BuscarPorId(int.Parse(line.Split(';')[4]));
             return veterinario;
         }
         public Veterinario BuscarPorId(int id)

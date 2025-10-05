@@ -1,20 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
-
 namespace ProyectoP3
 {
-    public partial class FrmEspecieEditar : Form
+    public partial class FrmEspecializacionEditar : Form
     {
-        public FrmEspecieEditar(Especie especie)
+        IServiceEntidad<Especializacion> logEspecializacion = new logEspecializacion();
+        public FrmEspecializacionEditar(Especializacion especializacion)
         {
             InitializeComponent();
-            mostrarEspecie(especie);
+            mostrarEspecializacion(especializacion);
         }
-
-        IServiceEntidad<Especie> logEspecie = new LogEspecie();
-        int id;
+        int codigo;
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
@@ -31,41 +36,55 @@ namespace ProyectoP3
                     {
                         MessageBox.Show(mensaje, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
-
         }
-        private string editar(Especie especie)
+
+        private void salir()
+        {
+            this.Close();
+        }
+
+        private Especializacion Mapeo()
+        {
+            Especializacion especializacion = new Especializacion();
+            especializacion.Codigo = codigo;
+            especializacion.Nombre = txtNombre.Text;
+            return especializacion;
+        }
+
+        private string editar(Especializacion especializacion)
         {
             try
             {
-                return logEspecie.Actualizar(especie);
+                return logEspecializacion.Actualizar(especializacion);
             }
             catch (Exception e)
             {
                 throw new Exception(e.Message);
             }
         }
+
         private bool validar()
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new Exception("El nombre de la especie no puede estar vacia.");
             return true;
         }
-        private void mostrarEspecie(Especie especie)
+        private void mostrarEspecializacion(Especializacion especializacion)
         {
-            txtNombre.Text = especie.Nombre;
-            id = especie.Codigo;
+            txtNombre.Text = especializacion.Nombre;
+            codigo = especializacion.Codigo;
         }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) salir();  
+            if (respuesta == DialogResult.Yes) salir();
         }
         private DialogResult dialogoPregunta(string accion)
         {
@@ -76,17 +95,5 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private void salir()
-        {
-            this.Close();
-        }
-        private Especie Mapeo()
-        {
-            Especie especie = new Especie();
-            especie.Codigo = id;
-            especie.Nombre = txtNombre.Text;
-            return especie;
-        }
-
     }
 }

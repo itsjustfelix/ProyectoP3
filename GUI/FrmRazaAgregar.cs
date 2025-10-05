@@ -27,8 +27,8 @@ namespace ProyectoP3
         private void CargarCbx()
         {
             cbxEspecie.DataSource = logEspecie.Consultar();
-            cbxEspecie.DisplayMember = "nombre";
-            cbxEspecie.ValueMember = "id";
+            cbxEspecie.DisplayMember = "Nombre";
+            cbxEspecie.ValueMember = "Codigo";
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -72,8 +72,7 @@ namespace ProyectoP3
         }
         private Especie buscarEspecie(int id)
         {
-            return logEspecie.Consultar().FirstOrDefault(e => e.id == id);
-            //TODO: esto no debe ir aqui, debo tener una funcion en la logica que me de el objeto.
+            return logEspecie.BuscarPorId(id);
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -97,8 +96,8 @@ namespace ProyectoP3
         {
             Especie especie = buscarEspecie(int.Parse(cbxEspecie.SelectedValue.ToString()));
             Raza raza = new Raza();
-            raza.nombre = txtNombre.Text;
-            raza.especie = especie;
+            raza.Nombre = txtNombre.Text;
+            raza.Especie = especie;
             return raza;
         }
     }

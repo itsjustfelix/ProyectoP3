@@ -30,7 +30,7 @@ namespace ProyectoP3
             DGVMascota.Rows.Clear();
             foreach (var item in logMascota.Consultar())
             {
-                DGVMascota.Rows.Add(item.id, item.nombre, item.especie.nombre, item.raza.nombre, item.propietario.Nombre);
+                DGVMascota.Rows.Add(item.Codigo, item.Nombre, item.Especie.Nombre, item.Raza.Nombre, item.Propietario.Nombre);
             }
         }
         private void btnEditar_Click(object sender, EventArgs e)

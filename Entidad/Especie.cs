@@ -8,22 +8,12 @@ namespace Entidad
 {
     public class Especie
     {
-        public int id { get; set; }
-        public string nombre { get; set; }
-
-        public Especie(int id, string nombre)
-        {
-            this.id = id;
-            this.nombre = nombre;
-        }
-        public Especie(string nombre)
-        {
-            this.nombre = nombre;
-        }
+        public int Codigo { get; set; }
+        public string Nombre { get; set; } 
         public Especie() { }
         public override string ToString()
         {
-            return $"{id};{nombre}";
+            return $"{Codigo};{Nombre}";
         }
     }
 }

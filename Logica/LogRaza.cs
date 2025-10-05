@@ -18,7 +18,7 @@ namespace Logica
                 string mensaje = string.Empty;
                 if (Validar(entidad, out mensaje))
                 {
-                    entidad.id = GenerarIdUnico();
+                    entidad.Codigo = GenerarIdUnico();
                     mensaje = datoRaza.Guardar(entidad);
                 }
                 return mensaje;
@@ -40,7 +40,7 @@ namespace Logica
                 if (Validar(NuevaEntidad, out mensaje))
                 {
                     var listaRazas = Consultar();
-                    int index = listaRazas.FindIndex(r => r.id == NuevaEntidad.id);
+                    int index = listaRazas.FindIndex(r => r.Codigo == NuevaEntidad.Codigo);
                     if (index == -1) throw new KeyNotFoundException("Raza no encontrada");
                     listaRazas[index] = NuevaEntidad;
                     mensaje = datoRaza.SobrescribirArchivo(listaRazas);
@@ -56,7 +56,7 @@ namespace Logica
         public string Borrar(int id)
         {
             var listaRazas = Consultar();
-            int index = listaRazas.FindIndex(r => r.id == id);
+            int index = listaRazas.FindIndex(r => r.Codigo == id);
             if (index == -1) throw new KeyNotFoundException("Raza no encontrada");
             listaRazas.RemoveAt(index);
             return datoRaza.SobrescribirArchivo(listaRazas);
@@ -65,7 +65,7 @@ namespace Logica
         {
             int id;
             List<Raza> listRaza = Consultar();
-            HashSet<int> idsExistentes = new HashSet<int>(listRaza.Select(m => m.id));
+            HashSet<int> idsExistentes = new HashSet<int>(listRaza.Select(m => m.Codigo));
             do
             {
                 id = random.Next(1, 10000);
@@ -74,11 +74,11 @@ namespace Logica
         }
         public Raza BuscarPorId(int id)
         {
-            return Consultar().FirstOrDefault(r => r.id == id);
+            return Consultar().FirstOrDefault(r => r.Codigo == id);
         }
         public List<Raza> ConsultarPorEspecie(int idEspecie)
         {
-            return Consultar().Where(r => r.especie.id.Equals(idEspecie)).ToList();
+            return Consultar().Where(r => r.Especie.Codigo.Equals(idEspecie)).ToList();
         }
         public bool Validar(Raza entidad, out string mensaje)
         {
@@ -88,12 +88,12 @@ namespace Logica
                 mensaje = "Raza nula";
                 return false;
             }
-            if (entidad.especie == null)
+            if (entidad.Especie == null)
             {
                 mensaje = "Especie nula";
                 return false;
             }
-            if (entidad.nombre.Any(char.IsDigit))
+            if (entidad.Nombre.Any(char.IsDigit))
             {
                 mensaje = "El nombre no puede contener numeros";
                 return false;

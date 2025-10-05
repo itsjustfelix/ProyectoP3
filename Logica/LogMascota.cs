@@ -19,7 +19,7 @@ namespace Logica
                 string mensaje = string.Empty;
                 if (Validar(entidad, out mensaje))
                 {
-                    entidad.id = GenerarIdUnico();
+                    entidad.Codigo = GenerarIdUnico();
                     mensaje = datoMascota.Guardar(entidad);
                 }
                 return mensaje;
@@ -44,7 +44,7 @@ namespace Logica
                 if (Validar(NuevaEntidad, out mensaje))
                 {
                     var listMascotas = Consultar();
-                    int index = listMascotas.FindIndex(m => m.id == NuevaEntidad.id);
+                    int index = listMascotas.FindIndex(m => m.Codigo == NuevaEntidad.Codigo);
                     if (index == -1) throw new ArgumentException("Mascota no encontrada para actualizar.");
                     listMascotas[index] = NuevaEntidad;
                     mensaje = datoMascota.SobrescribirArchivo(listMascotas);
@@ -59,20 +59,20 @@ namespace Logica
         public string Borrar(int id)
         {
             var listMascotas = Consultar();
-            int index = listMascotas.FindIndex(m => m.id == id);
+            int index = listMascotas.FindIndex(m => m.Codigo == id);
             if (index == -1) throw new ArgumentException("Mascota no encontrada.");
             listMascotas.RemoveAt(index);
             return datoMascota.SobrescribirArchivo(listMascotas);
         }
         public Mascota BuscarPorId(int id)
         {
-            return Consultar().FirstOrDefault(m => m.id == id);
+            return Consultar().FirstOrDefault(m => m.Codigo == id);
         }
         public int GenerarIdUnico()
         {
             int id;
             List<Mascota> mascotasExistentes = Consultar();
-            HashSet<int> idsExistentes = new HashSet<int>(mascotasExistentes.Select(m => m.id));
+            HashSet<int> idsExistentes = new HashSet<int>(mascotasExistentes.Select(m => m.Codigo));
             do
             {
                 id = random.Next(1, 10000);
@@ -87,22 +87,22 @@ namespace Logica
                 mensaje = "Mascota nula";
                 return false;
             } 
-            if (entidad.propietario == null)
+            if (entidad.Propietario == null)
             {
                 mensaje = "Propietario nulo";
                 return false;
             }   
-            if (entidad.especie == null)
+            if (entidad.Especie == null)
             {
                 mensaje = "Especie nula";
                 return false;
             }   
-            if (entidad.raza == null) 
+            if (entidad.Raza == null) 
             {
                 mensaje = "Raza nula";
                 return false;
             }   
-            if (entidad.nombre.Any(char.IsDigit))
+            if (entidad.Nombre.Any(char.IsDigit))
             {
                 mensaje = "El nombre de la mascota no puede contener numeros";
                 return false;

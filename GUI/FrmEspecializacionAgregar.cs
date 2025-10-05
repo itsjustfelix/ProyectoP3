@@ -9,28 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
-
 namespace ProyectoP3
 {
-    public partial class FrmEspecieAgregar : Form
+    public partial class FrmEspecializacionAgregar : Form
     {
-        public FrmEspecieAgregar()
+        IServiceEntidad<Especializacion> logEspecializacion = new logEspecializacion();
+        public FrmEspecializacionAgregar()
         {
             InitializeComponent();
         }
 
-        IServiceEntidad<Especie> logEspecie = new LogEspecie();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
-
                 if (validar())
                 {
                     string message = agregar(Mappeo());
                     if (message.Contains("correctamente"))
                     {
-                        MessageBox.Show(message, "Agregar Especie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(message, "Agregar Especializacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
@@ -38,44 +36,44 @@ namespace ProyectoP3
                         MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
-
         }
+        private void salir()
+        {
+           this.Close();
+        }
+        private string agregar(Especializacion especialiacion)
+        {
+            try
+            {
+                return logEspecializacion.Guardar(especialiacion);
+            }
+            catch (Exception ex)
+            {
 
+                return ex.Message;
+            }
+        }
+        private Especializacion Mappeo()
+        {
+            Especializacion especializacion = new Especializacion();
+            especializacion.Nombre = txtNombre.Text;
+            return especializacion;
+        }
+        private bool validar()
+        {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentException("El nombre de la especie no puede estar vacío.");
+            return true;
+        }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) salir();
-        }
-
-        private void salir()
-        {
-            this.Close();
-        }
-
-        private bool validar()
-        {
-
-            if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentException("El nombre de la especie no puede estar vacío.");
-            return true;
-        }
-
-        private string agregar(Especie especie)
-        {
-            try
-            {
-                return logEspecie.Guardar(especie);
-            }
-            catch (Exception e)
-            {
-                return e.Message;
-            }
-
         }
         private DialogResult dialogoPregunta(string accion)
         {
@@ -86,13 +84,5 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-
-        private Especie Mappeo()
-        {
-            Especie especie = new Especie();
-            especie.Nombre = txtNombre.Text;
-            return especie;
-        }
-
     }
 }

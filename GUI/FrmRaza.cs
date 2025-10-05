@@ -27,7 +27,7 @@ namespace ProyectoP3
             DGVRaza.Rows.Clear();
             foreach (var raza in logRaza.Consultar())
             {
-                DGVRaza.Rows.Add(raza.id, raza.nombre, raza.especie.nombre);
+                DGVRaza.Rows.Add(raza.Codigo, raza.Nombre, raza.Especie.Nombre);
             }
         }
         private DialogResult dialogoPregunta(string accion)

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -43,12 +36,12 @@ namespace ProyectoP3
         }
         private void mostrarMascota(Mascota mascota)
         {
-            txtIdProprietario.Text = mascota.propietario.Cedula.ToString();
-            lblNombreProp.Text = mascota.propietario.Nombre;
-            txtNombre.Text = mascota.nombre;
-            cmbEspecie.SelectedValue = mascota.especie.id;
-            cmbRaza.SelectedValue = mascota.raza.id;
-            id = mascota.id;
+            txtIdProprietario.Text = mascota.Propietario.Cedula.ToString();
+            lblNombreProp.Text = mascota.Propietario.Nombre;
+            txtNombre.Text = mascota.Nombre;
+            cmbEspecie.SelectedValue = mascota.Especie.Codigo;
+            cmbRaza.SelectedValue = mascota.Raza.Codigo;
+            id = mascota.Codigo;
         }
         private bool validar()
         {
@@ -59,10 +52,7 @@ namespace ProyectoP3
         {
             try
             {
-                Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
-                Especie especie = buscarEspecie(int.Parse(cmbEspecie.SelectedValue.ToString()));
-                Raza raza = buscarRaza(int.Parse(cmbRaza.SelectedValue.ToString()));
-                return logMascota.Actualizar(new Mascota(id, txtNombre.Text, especie, raza, propietario));
+                return logMascota.Actualizar(mascota);
             }
             catch (Exception ex)
             {
@@ -93,7 +83,7 @@ namespace ProyectoP3
         {
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) salir();
-            
+
         }
         private DialogResult dialogoPregunta(string accion)
         {
@@ -131,11 +121,11 @@ namespace ProyectoP3
             Especie especie = buscarEspecie(int.Parse(cmbEspecie.SelectedValue.ToString()));
             Raza raza = buscarRaza(int.Parse(cmbRaza.SelectedValue.ToString()));
             Mascota mascota = new Mascota();
-            mascota.id = id;
-            mascota.nombre = txtNombre.Text;
-            mascota.especie = especie;
-            mascota.raza = raza;
-            mascota.propietario = propietario;
+            mascota.Codigo = id;
+            mascota.Nombre = txtNombre.Text;
+            mascota.Especie = especie;
+            mascota.Raza = raza;
+            mascota.Propietario = propietario;
             return mascota;
         }
     }

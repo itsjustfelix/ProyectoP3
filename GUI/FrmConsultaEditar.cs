@@ -55,13 +55,13 @@ namespace ProyectoP3
         }
         private void mostrarConsulta(Consulta consulta)
         {
-            idConsulta = consulta.id;
-            fechaConsulta = consulta.fecha;
-            txtIdMascota.Text = consulta.mascota.id.ToString();
-            lblNombreMascota.Text = consulta.mascota.nombre;
-            cbxVeterinario.SelectedValue = consulta.veterinario.Cedula;
-            txtDiagnostico.Text = consulta.diagnostico;
-            txtTratamiento.Text = consulta.tratamiento;
+            idConsulta = consulta.Codigo;
+            fechaConsulta = consulta.Fecha;
+            txtIdMascota.Text = consulta.Mascota.Codigo.ToString();
+            lblNombreMascota.Text = consulta.Mascota.Nombre;
+            cbxVeterinario.SelectedValue = consulta.Veterinario.Cedula;
+            txtDiagnostico.Text = consulta.Diagnostico;
+            txtTratamiento.Text = consulta.Tratamiento;
         }
         private void SetControlesEstado(bool estado)
         {
@@ -122,12 +122,12 @@ namespace ProyectoP3
             Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
             Veterinario veterinario = buscarVeterinario(int.Parse(cbxVeterinario.SelectedValue.ToString()));
             Consulta consulta = new Consulta();
-            consulta.id = idConsulta;
-            consulta.diagnostico = txtDiagnostico.Text;
-            consulta.tratamiento = txtTratamiento.Text;
-            consulta.fecha = fechaConsulta;
-            consulta.mascota = mascota;
-            consulta.veterinario = veterinario;
+            consulta.Codigo = idConsulta;
+            consulta.Diagnostico = txtDiagnostico.Text;
+            consulta.Tratamiento = txtTratamiento.Text;
+            consulta.Fecha = fechaConsulta;
+            consulta.Mascota = mascota;
+            consulta.Veterinario = veterinario;
             return consulta;
         }
     }

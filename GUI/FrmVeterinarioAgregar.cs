@@ -19,6 +19,7 @@ namespace ProyectoP3
             InitializeComponent();
         }
         IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
+        IServiceEntidad<Especializacion> logEspecializacion = new logEspecializacion();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -85,7 +86,12 @@ namespace ProyectoP3
             veterinario.Nombre = txtNombre.Text;
             veterinario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
             veterinario.Telefono = txtNumTlf.Text;
+            veterinario.Especializacion = buscarEspecializacion(int.Parse(cmbEspecilizacion.SelectedValue.ToString()));
             return veterinario;
+        }
+        private Especializacion buscarEspecializacion(int codigo)
+        {
+           return logEspecializacion.BuscarPorId(codigo);
         }
         private bool validar()
         {
@@ -94,6 +100,16 @@ namespace ProyectoP3
             if (string.IsNullOrEmpty(txtNumTlf.Text)) throw new ArgumentNullException("El campo Teléfono es obligatorio.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentNullException("El campo Sexo es obligatorio.");
             return true;
+        }
+        private void cargarCmbEspecializacion()
+        {
+            cmbEspecilizacion.DataSource = logEspecializacion.Consultar();
+            cmbEspecilizacion.DisplayMember = "Nombre";
+            cmbEspecilizacion.ValueMember = "Codigo";
+        }
+        private void FrmVeterinarioAgregar_Load(object sender, EventArgs e)
+        {
+            cargarCmbEspecializacion();
         }
     }
 }

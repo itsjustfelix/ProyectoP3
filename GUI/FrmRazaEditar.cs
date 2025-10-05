@@ -24,9 +24,9 @@ namespace ProyectoP3
         int idRaza;
         private void mostrarRaza(Raza raza)
         {
-            txtNombre.Text = raza.nombre;
-            cbxEspecie.SelectedValue = raza.especie.id;
-            idRaza = raza.id;
+            txtNombre.Text = raza.Nombre;
+            cbxEspecie.SelectedValue = raza.Especie.Codigo;
+            idRaza = raza.Codigo;
         }
         private void FrmRazaEditar_Load(object sender, EventArgs e)
         {
@@ -100,16 +100,15 @@ namespace ProyectoP3
         }
         private Especie buscarEspecie(int id)
         {
-            return logEspecie.Consultar().FirstOrDefault(e => e.id == id);
-            //TODO: esto no debe de ir aqui, debo tener una funcion en la logica que me de el objeto.
+            return logEspecie.BuscarPorId(id);
         }
         private Raza Mapeo()
         {
             Especie especie = buscarEspecie(int.Parse(cbxEspecie.SelectedValue.ToString()));
             Raza raza = new Raza();
-            raza.id = idRaza;
-            raza.nombre = txtNombre.Text;
-            raza.especie = especie;
+            raza.Codigo = idRaza;
+            raza.Nombre = txtNombre.Text;
+            raza.Especie = especie;
             return raza;
         }
     }

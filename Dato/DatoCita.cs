@@ -31,10 +31,10 @@ namespace Dato
         public override Cita MappyingType(string line)
         {
             Cita cita = new Cita();
-            cita.id = int.Parse(line.Split(';')[0]);
-            cita.fecha = DateTime.ParseExact(line.Split(';')[1], "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-            cita.hora = DateTime.ParseExact(line.Split(';')[2], "hh:mm tt", System.Globalization.CultureInfo.InvariantCulture);
-            cita.mascota = new DatoMascota(NombreArchivo.ARCHIVO_MASCOTA).BuscarPorId(int.Parse(line.Split(';')[3]));
+            cita.Codigo = int.Parse(line.Split(';')[0]);
+            cita.Fecha = DateTime.ParseExact(line.Split(';')[1], "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            cita.Hora = DateTime.ParseExact(line.Split(';')[2], "hh:mm tt", System.Globalization.CultureInfo.InvariantCulture);
+            cita.Mascota = new DatoMascota(NombreArchivo.ARCHIVO_MASCOTA).BuscarPorId(int.Parse(line.Split(';')[3]));
             return cita;
         }
     }

@@ -30,14 +30,14 @@ namespace Dato
         public override Raza MappyingType(string line)
         {
             Raza raza = new Raza();
-            raza.id = int.Parse(line.Split(';')[0]);
-            raza.nombre = line.Split(';')[1];
-            raza.especie = datoEspecie.BuscarPorId(int.Parse(line.Split(';')[2]));
+            raza.Codigo = int.Parse(line.Split(';')[0]);
+            raza.Nombre = line.Split(';')[1];
+            raza.Especie = datoEspecie.BuscarPorId(int.Parse(line.Split(';')[2]));
             return raza;
         }
         public Raza BuscarPorId(int id)
         {
-            return Consultar().FirstOrDefault(r => r.id == id);
+            return Consultar().FirstOrDefault(r => r.Codigo == id);
         }
     }
 }

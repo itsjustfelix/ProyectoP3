@@ -46,14 +46,10 @@
     <Compile Include="Especializacion.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Propietario.cs" />
-    <Compile Include="RegistroVenta.cs" />
-    <Compile Include="TipoProducto.cs" />
-    <Compile Include="Venta.cs" />
     <Compile Include="Veterinario.cs" />
     <Compile Include="Especie.cs" />
     <Compile Include="Raza.cs" />
     <Compile Include="Mascota.cs" />
-    <Compile Include="Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

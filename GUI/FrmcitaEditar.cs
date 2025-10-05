@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -18,17 +11,18 @@ namespace ProyectoP3
         {
             InitializeComponent();
             mostrarCita(cita);
+            SetEstadoControles(false);
         }
         IServiceEntidad<Cita> logCita = new LogCita();
         IServiceEntidad<Mascota> logMascota = new LogMascota();
         int idCita;
         private void mostrarCita(Cita cita)
         {
-            txtIdMascota.Text = cita.mascota.id.ToString();
-            lblNombreMascota.Text = cita.mascota.nombre;
-            DTPFecha.Value = cita.fecha;
-            DTPHora.Value = cita.hora;
-            idCita = cita.id;
+            txtIdMascota.Text = cita.Mascota.Codigo.ToString();
+            lblNombreMascota.Text = cita.Mascota.Nombre;
+            DTPFecha.Value = cita.Fecha;
+            DTPHora.Value = cita.Hora;
+            idCita = cita.Codigo;
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -42,11 +36,11 @@ namespace ProyectoP3
                         MessageBox.Show(message, "Editar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Salir();
                     }
-                    else 
-                    { 
+                    else
+                    {
                         MessageBox.Show(message, "Editar Cita", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                        
+
                 }
             }
             catch (Exception ex)
@@ -64,7 +58,7 @@ namespace ProyectoP3
         private string Editar(Cita cita)
         {
             try
-            {   
+            {
                 return logCita.Actualizar(cita);
             }
             catch (Exception ex)
@@ -94,16 +88,20 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-
         private Cita Mapeo()
         {
             Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
             Cita cita = new Cita();
-            cita.id = idCita;
-            cita.mascota = mascota;
-            cita.fecha = DTPFecha.Value;
-            cita.hora = DTPHora.Value;
+            cita.Codigo = idCita;
+            cita.Mascota = mascota;
+            cita.Fecha = DTPFecha.Value;
+            cita.Hora = DTPHora.Value;
             return cita;
+        }
+
+        private void SetEstadoControles(bool estado)
+        {
+            txtIdMascota.Enabled = estado;
         }
     }
 }

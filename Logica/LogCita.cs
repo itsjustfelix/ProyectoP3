@@ -17,7 +17,7 @@ namespace Logica
                 string mensaje = string.Empty;
                 if (Validar(entidad, out mensaje))
                 {
-                    entidad.id = GenerarIdUnico();
+                    entidad.Codigo = GenerarIdUnico();
                     mensaje = datoCita.Guardar(entidad);
                 }
                 return mensaje;
@@ -33,7 +33,7 @@ namespace Logica
         }
         public string Borrar(int id)
         {
-            int index = Consultar().FindIndex(c => c.id == id);
+            int index = Consultar().FindIndex(c => c.Codigo == id);
             if (index == -1) throw new KeyNotFoundException("Cita no encontrada");
             List<Cita> citas = Consultar();
             citas.RemoveAt(index);
@@ -47,7 +47,7 @@ namespace Logica
                 string mensaje = string.Empty;
                 if (Validar(NuevaEntidad, out mensaje))
                 {
-                    int index = Consultar().FindIndex(c => c.id == NuevaEntidad.id);
+                    int index = Consultar().FindIndex(c => c.Codigo == NuevaEntidad.Codigo);
                     if (index == -1) throw new KeyNotFoundException("Cita no encontrada");
                     List<Cita> citas = Consultar();
                     citas[index] = NuevaEntidad;
@@ -64,7 +64,7 @@ namespace Logica
         {
             int id;
             List<Cita> consultasExistentes = Consultar();
-            HashSet<int> idsExistentes = new HashSet<int>(consultasExistentes.Select(m => m.id));
+            HashSet<int> idsExistentes = new HashSet<int>(consultasExistentes.Select(m => m.Codigo));
             do
             {
                 id = random.Next(1000, 10000);
@@ -81,17 +81,17 @@ namespace Logica
                 mensaje = "La entidad no puede ser nula.";
                 return false;
             }   
-            if (entidad.mascota == null)
+            if (entidad.Mascota == null)
             {
                 mensaje = "La mascota no puede ser nula.";
                 return false;
             }
-            if (entidad.fecha == default)
+            if (entidad.Fecha == default)
             {
                 mensaje = "La fecha no puede ser vacía.";
                 return false;
             }  
-            if (entidad.hora == default)
+            if (entidad.Hora == default)
             {
                 mensaje = "La hora no puede ser vacía.";
                 return false;
@@ -101,7 +101,7 @@ namespace Logica
 
         public Cita BuscarPorId(int id)
         {
-            return Consultar().FirstOrDefault(c => c.id == id);
+            return Consultar().FirstOrDefault(c => c.Codigo == id);
         }
     }
 }

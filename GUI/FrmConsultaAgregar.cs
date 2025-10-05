@@ -30,6 +30,7 @@ namespace ProyectoP3
         IServiceEntidad<Consulta> logConsulta = new LogConsulta();
         IServiceEntidad<Mascota> logMascota = new LogMascota();
         IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
+        public DialogResult resultado;
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -40,6 +41,7 @@ namespace ProyectoP3
                     if (message.Contains("Guardado"))
                     {
                         MessageBox.Show(message, "Agregar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        resultado = DialogResult.OK;
                         salir();
                     }
                     else 
@@ -120,8 +122,8 @@ namespace ProyectoP3
         private void cargarCmb()
         {
             cbxVeterinario.DataSource = logVeterinario.Consultar();
-            cbxVeterinario.DisplayMember = "nombre";
-            cbxVeterinario.ValueMember = "id";
+            cbxVeterinario.DisplayMember = "Nombre";
+            cbxVeterinario.ValueMember = "Cedula";
         }
 
         private void setEstado(bool estado)
@@ -131,8 +133,8 @@ namespace ProyectoP3
         }
         private void mostrarMascota(Mascota mascota)
         {
-            txtIdMascota.Text = mascota.id.ToString();
-            lblNombreMascota.Text = mascota.nombre;
+            txtIdMascota.Text = mascota.Codigo.ToString();
+            lblNombreMascota.Text = mascota.Nombre;
         }
 
         private void btnBuscarMascota_Click(object sender, EventArgs e)
@@ -147,7 +149,7 @@ namespace ProyectoP3
                     SetControlesEstado(false);
                     return;
                 }
-                lblNombreMascota.Text = mascota.nombre;
+                lblNombreMascota.Text = mascota.Nombre;
                 SetControlesEstado(true);
             }
             catch (Exception ex)
@@ -161,10 +163,11 @@ namespace ProyectoP3
             Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
             Veterinario veterinario = buscarVeterinario(int.Parse(cbxVeterinario.SelectedValue.ToString()));
             Consulta consulta = new Consulta();
-            consulta.diagnostico = txtDiagnostico.Text;
-            consulta.tratamiento = txtTratamiento.Text;
-            consulta.mascota = mascota;
-            consulta.veterinario = veterinario;
+            consulta.Fecha = DateTime.Now.Date;
+            consulta.Diagnostico = txtDiagnostico.Text;
+            consulta.Tratamiento = txtTratamiento.Text;
+            consulta.Mascota = mascota;
+            consulta.Veterinario = veterinario;
             return consulta;
         }
     }

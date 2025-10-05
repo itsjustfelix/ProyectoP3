@@ -77,6 +77,24 @@
     <Compile Include="FrmConsultaEditar.Designer.cs">
       <DependentUpon>FrmConsultaEditar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEspecializacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEspecializacion.Designer.cs">
+      <DependentUpon>FrmEspecializacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEspecializacionAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEspecializacionAgregar.Designer.cs">
+      <DependentUpon>FrmEspecializacionAgregar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEspecializacionEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEspecializacionEditar.Designer.cs">
+      <DependentUpon>FrmEspecializacionEditar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEspecieAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +214,15 @@
     <EmbeddedResource Include="FrmConsultaEditar.resx">
       <DependentUpon>FrmConsultaEditar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmEspecializacion.resx">
+      <DependentUpon>FrmEspecializacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEspecializacionAgregar.resx">
+      <DependentUpon>FrmEspecializacionAgregar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEspecializacionEditar.resx">
+      <DependentUpon>FrmEspecializacionEditar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEspecieAgregar.resx">
       <DependentUpon>FrmEspecieAgregar.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,6 +283,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\Logica.IServiceRaza.datasource" />
+    <None Include="Properties\DataSources\Logica.LogCita.datasource" />
+    <None Include="Properties\DataSources\Logica.LogConsulta.datasource" />
+    <None Include="Properties\DataSources\Logica.logEspecializacion.datasource" />
+    <None Include="Properties\DataSources\Logica.LogEspecie.datasource" />
+    <None Include="Properties\DataSources\Logica.LogMascota.datasource" />
+    <None Include="Properties\DataSources\Logica.LogPropietario.datasource" />
+    <None Include="Properties\DataSources\Logica.LogRaza.datasource" />
+    <None Include="Properties\DataSources\Logica.LogVeterinario.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

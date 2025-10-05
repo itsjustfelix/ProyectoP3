@@ -66,6 +66,11 @@ namespace Logica
                 mensaje = "Propietario nulo";
                 return false;
             }
+            if(entidad.Especializacion == null)
+            {
+                mensaje = "La especializacion no puede ser nula";
+                return false;
+            }
             if (string.IsNullOrEmpty(entidad.Nombre))
             {
                 mensaje = "El nombre es obligatorio";
@@ -106,7 +111,7 @@ namespace Logica
                 mensaje = "El telefono debe tener 10 digitos";
                 return false;
             }
-
+            
             return true;
         }
         public bool IdUnico(int id)

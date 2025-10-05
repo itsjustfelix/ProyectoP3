@@ -25,7 +25,7 @@ namespace ProyectoP3
             DGVEspecie.Rows.Clear();
             foreach (var especie in logEspecie.Consultar())
             {
-                DGVEspecie.Rows.Add(especie.id, especie.nombre);
+                DGVEspecie.Rows.Add(especie.Codigo, especie.Nombre);
             }
         }
         private void btnEditar_Click(object sender, EventArgs e)

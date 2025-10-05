@@ -45,7 +45,7 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = agregar(Mapeo());
-                    if (message.Contains("Guarado"))
+                    if (message.Contains("Guardado"))
                     {
                         MessageBox.Show(message, "Agregar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
@@ -73,10 +73,7 @@ namespace ProyectoP3
         {
             try
             {
-                Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
-                Especie especie = buscarEspecie(int.Parse(cmbEspecie.SelectedValue.ToString()));
-                Raza raza = buscarRaza(int.Parse(cmbRaza.SelectedValue.ToString()));
-                return logMascota.Guardar(new Mascota(txtNombre.Text, especie, raza, propietario));
+                return logMascota.Guardar(mascota);
             }
             catch (Exception ex)
             {
@@ -118,16 +115,16 @@ namespace ProyectoP3
         }
         private void cargarCmbEspecie()
         {
-            cmbEspecie.DisplayMember = "nombre";
-            cmbEspecie.ValueMember = "id";
+            cmbEspecie.DisplayMember = "Nombre";
+            cmbEspecie.ValueMember = "Codigo";
             cmbEspecie.DataSource = logEspecie.Consultar();
         }
         private void cargarCmbRaza(int idEspecie)
         {
             cmbRaza.DataSource = null;
             cmbRaza.DataSource = logRaza.ConsultarPorEspecie(idEspecie);
-            cmbRaza.DisplayMember = "nombre";
-            cmbRaza.ValueMember = "id";
+            cmbRaza.DisplayMember = "Nombre";
+            cmbRaza.ValueMember = "Codigo";
         }
         private void cmbEspecie_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -140,10 +137,10 @@ namespace ProyectoP3
             Especie especie = buscarEspecie(int.Parse(cmbEspecie.SelectedValue.ToString()));
             Raza raza = buscarRaza(int.Parse(cmbRaza.SelectedValue.ToString()));
             Mascota mascota = new Mascota();
-            mascota.nombre = txtNombre.Text;
-            mascota.propietario = propietario;
-            mascota.especie = especie;
-            mascota.raza = raza;
+            mascota.Nombre = txtNombre.Text;
+            mascota.Propietario = propietario;
+            mascota.Especie = especie;
+            mascota.Raza = raza;
             return mascota;
         }
     }

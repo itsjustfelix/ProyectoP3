@@ -8,17 +8,11 @@ namespace Entidad
 {
     public class Veterinario:Persona
     {
-        public Veterinario(int Cedula, string Nombre, string Sexo, string Telefono): base(Cedula,Nombre,Sexo, Telefono)
-        {
-            this.Cedula = Cedula;
-            this.Nombre = Nombre;
-            this.Sexo = Sexo;
-            this.Telefono = Telefono;
-        }
+        public Especializacion Especializacion { get; set; }
         public Veterinario() { }
         public override string ToString()
         {
-            return $"{Cedula};{Nombre};{Sexo};{Telefono}";
+            return $"{Cedula};{Nombre};{Sexo};{Telefono};{Especializacion.Codigo}";
         }
     }
 }

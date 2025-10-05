@@ -32,7 +32,7 @@ namespace ProyectoP3
                     SetControlesEstado(false);
                     return;
                 }
-                lblNombreMascota.Text = mascota.nombre;
+                lblNombreMascota.Text = mascota.Nombre;
                 SetControlesEstado(true);
             }
             catch (Exception ex)
@@ -118,9 +118,9 @@ namespace ProyectoP3
         {
             Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
             Cita cita = new Cita();
-            cita.mascota = mascota;
-            cita.fecha = DTPFecha.Value;
-            cita.hora = DTPHora.Value;
+            cita.Mascota = mascota;
+            cita.Fecha = DTPFecha.Value;
+            cita.Hora = DTPHora.Value;
             return cita;
         }
     }

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -29,7 +22,7 @@ namespace ProyectoP3
             DGVCita.Rows.Clear();
             foreach (Cita cita in logCita.Consultar())
             {
-                DGVCita.Rows.Add(cita.id, cita.fecha.ToString("dd/MM/yyyy"), cita.hora.ToString("HH:mm tt"), cita.mascota.nombre);
+                DGVCita.Rows.Add(cita.Codigo, cita.Fecha.ToString("dd/MM/yyyy"), cita.Hora.ToString("HH:mm tt"), cita.Mascota.Nombre);
             }
         }
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -39,8 +32,7 @@ namespace ProyectoP3
         }
         private Cita buscarCita(int id)
         {
-            return logCita.Consultar().FirstOrDefault(c => c.id == id);
-            //TODO:esto no debe de ir aqui, debe ir en logica
+            return logCita.BuscarPorId(id);
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -68,7 +60,7 @@ namespace ProyectoP3
                 int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la cita a eliminar:", "Eliminar cita", ""));
                 if (buscarCita(id) == null)
                 {
-                    MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information  );
+                    MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 DialogResult result = dialogoPregunta("eliminar la cita");
@@ -78,7 +70,7 @@ namespace ProyectoP3
                     return;
                 }
                 string message = borrarCita(id);
-                MessageBox.Show(message, "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information                                      );
+                MessageBox.Show(message, "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cargarDGV();
             }
             catch (Exception ex)
@@ -117,11 +109,16 @@ namespace ProyectoP3
                     MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+                var frm = new FrmConsultaAgregar(cita.Mascota);
                 ocultar();
-                mostrarFrm(new FrmConsultaAgregar(cita.mascota));
+                mostrarFrm(frm);
                 mostrar();
-                borrarCita(id);
-                cargarDGV();
+                if (frm.resultado == DialogResult.OK)
+                {
+                    borrarCita(id);
+                    cargarDGV();
+                }
+
 
             }
             catch (Exception ex)

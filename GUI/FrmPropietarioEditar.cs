@@ -56,7 +56,7 @@ namespace ProyectoP3
         {
             try
             {
-                return logPropietario.Guardar(propietario);
+                return logPropietario.Actualizar(propietario);
             }
             catch (Exception e)
             {
@@ -101,8 +101,7 @@ namespace ProyectoP3
             if (string.IsNullOrWhiteSpace(txtId.Text)) throw new ArgumentException("La cédula no puede estar vacía.");
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentException("El nombre no puede estar vacío.");
             if (string.IsNullOrWhiteSpace(txtNumTlf.Text)) throw new ArgumentException("El número de teléfono no puede estar vacío.");
-            if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un sexo.");
-            if (!int.TryParse(txtId.Text, out _)) throw new ArgumentException("La cédula debe ser un número válido.");
+            if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un sexo."); 
             return true;
         }
     }

@@ -19,7 +19,7 @@ namespace Logica
                 string mensaje = string.Empty;
                 if (Validar(entidad, out mensaje))
                 {
-                    entidad.id = GenerarIdUnico();
+                    entidad.Codigo = GenerarIdUnico();
                     mensaje = datoEspecie.Guardar(entidad);
                 }
                 return mensaje;
@@ -42,7 +42,7 @@ namespace Logica
                 if (Validar(NuevaEntidad, out mensaje))
                 {
                     var listaEspecies = Consultar();
-                    int index = listaEspecies.FindIndex(e => e.id == NuevaEntidad.id);
+                    int index = listaEspecies.FindIndex(e => e.Codigo == NuevaEntidad.Codigo);
                     if (index == -1) throw new KeyNotFoundException("Especie no encontrada");
                     listaEspecies[index] = NuevaEntidad;
                     mensaje = datoEspecie.SobrescribirArchivo(listaEspecies);
@@ -58,20 +58,20 @@ namespace Logica
         public string Borrar(int id)
         {
             var listaEspecies = Consultar();
-            int index = listaEspecies.FindIndex(e => e.id == id);
+            int index = listaEspecies.FindIndex(e => e.Codigo == id);
             if (index == -1) throw new KeyNotFoundException("Especie no encontrada");
             listaEspecies.RemoveAt(index);
             return datoEspecie.SobrescribirArchivo(listaEspecies);
         }
         public Especie BuscarPorId(int id)
         {
-            return Consultar().FirstOrDefault(e => e.id == id);
+            return Consultar().FirstOrDefault(e => e.Codigo == id);
         }
         public int GenerarIdUnico()
         {
             int id;
             var especiesExistentes = Consultar();
-            HashSet<int> idsExistentes = new HashSet<int>(especiesExistentes.Select(m => m.id));
+            HashSet<int> idsExistentes = new HashSet<int>(especiesExistentes.Select(m => m.Codigo));
             do
             {
                 id = random.Next(1, 10000);
@@ -86,13 +86,13 @@ namespace Logica
                 mensaje = "Especie nula";
                 return false;
             }
-            if (entidad.nombre.Any(char.IsDigit))
+            if (entidad.Nombre.Any(char.IsDigit))
             {
                 mensaje = "El nombre no puede contener numeros";
                 return false;
             }
-            if (Consultar().Any(e => e.nombre.Equals(entidad.nombre, StringComparison.OrdinalIgnoreCase)
-                    && e.id != entidad.id))
+            if (Consultar().Any(e => e.Nombre.Equals(entidad.Nombre, StringComparison.OrdinalIgnoreCase)
+                    && e.Codigo != entidad.Codigo))
             {
                 mensaje = "El nombre de la especie ya existe";
                 return false;

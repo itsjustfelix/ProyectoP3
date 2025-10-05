@@ -36,5 +36,10 @@ namespace Dato
             especializacion.Nombre = line.Split(';')[1];
             return especializacion;
         }
+
+        public Especializacion BuscarPorId(int codigo)
+        {
+            return Consultar().FirstOrDefault(e => e.Codigo == codigo);
+        }
     }
 }

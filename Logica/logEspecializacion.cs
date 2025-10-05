@@ -7,7 +7,7 @@ using Entidad;
 using Dato;
 namespace Logica
 {
-    internal class logEspecializacion : IServiceEntidad<Especializacion>
+    public class logEspecializacion : IServiceEntidad<Especializacion>
     {
         Random random = new Random();
         private readonly FileRepository<Especializacion> datoEspecializacion = new DatoEspecializacion(NombreArchivo.ARCHIVO_ESPECIALIZACION);

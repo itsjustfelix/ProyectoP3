@@ -9,16 +9,16 @@ namespace Entidad
 {
     public class Cita
     {
-        public int id { get; set; }
-        public DateTime fecha { get; set; }
-        public DateTime hora { get; set; }
-        public Mascota mascota { get; set; }
+        public int Codigo { get; set; }
+        public DateTime Fecha { get; set; }
+        public DateTime Hora { get; set; }
+        public Mascota Mascota { get; set; }
 
         public Cita() { }
 
         public override string ToString()
         {
-            return $"{id};{fecha.ToString("dd/MM/yyyy")};{hora.ToString("hh:mm tt", CultureInfo.InvariantCulture)};{mascota.id}";
+            return $"{Codigo};{Fecha.ToString("dd/MM/yyyy")};{Hora.ToString("hh:mm tt", CultureInfo.InvariantCulture)};{Mascota.Codigo}";
         }
     }
 }

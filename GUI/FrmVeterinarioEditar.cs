@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -21,6 +14,7 @@ namespace ProyectoP3
         }
 
         IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
+        IServiceEntidad<Especializacion> logEspecializacion = new logEspecializacion();
         private void mostrarVeterinario(Veterinario veterinario)
         {
             txtId.Text = veterinario.Cedula.ToString();
@@ -28,6 +22,7 @@ namespace ProyectoP3
             txtNumTlf.Text = veterinario.Telefono;
             if (veterinario.Sexo == "Femenino") RBFemenino.Checked = true;
             else RBMasculino.Checked = true;
+            cmbEspecilizacion.SelectedValue = veterinario.Especializacion.Codigo;
 
         }
 
@@ -35,7 +30,7 @@ namespace ProyectoP3
         {
             try
             {
-                if (!validar())
+                if (validar())
                 {
                     string message;
                     message = editar(Mapeo());
@@ -49,8 +44,6 @@ namespace ProyectoP3
                         MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                
-                    
             }
             catch (Exception ex)
             {
@@ -74,7 +67,6 @@ namespace ProyectoP3
         {
             this.Close();
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
@@ -83,7 +75,6 @@ namespace ProyectoP3
                 salir();
             }
         }
-
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -100,15 +91,29 @@ namespace ProyectoP3
             veterinario.Nombre = txtNombre.Text;
             veterinario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
             veterinario.Telefono = txtNumTlf.Text;
+            veterinario.Especializacion = buscarEspecializacion(int.Parse(cmbEspecilizacion.SelectedValue.ToString()));
             return veterinario;
         }
-
         private bool validar()
         {
             if (string.IsNullOrEmpty(txtNombre.Text)) throw new ArgumentNullException("El campo Nombre es obligatorio.");
             if (string.IsNullOrEmpty(txtNumTlf.Text)) throw new ArgumentNullException("El campo Teléfono es obligatorio.");
-            if (RBFemenino.Checked == false && RBMasculino.Checked == false) throw new ArgumentNullException("El campo Sexo es obligatorio.");
+            if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentNullException("El campo Sexo es obligatorio.");
             return true;
+        }
+        private Especializacion buscarEspecializacion(int codigo)
+        {
+            return logEspecializacion.BuscarPorId(codigo);
+        }
+        private void FrmVeterinarioEditar_Load(object sender, EventArgs e)
+        {
+            cargarCmbEspecializacion();
+        }
+        private void cargarCmbEspecializacion()
+        {
+            cmbEspecilizacion.DataSource = logEspecializacion.Consultar();
+            cmbEspecilizacion.DisplayMember = "Nombre";
+            cmbEspecilizacion.ValueMember = "Codigo";
         }
     }
 

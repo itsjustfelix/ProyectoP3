@@ -8,30 +8,15 @@ namespace Entidad
 {
     public class Mascota
     {
-        public int id { get; set; }
-        public string nombre { get; set; }
-        public Especie especie { get; set; }
-        public Raza raza { get; set; }
-        public Propietario propietario { get; set; }
-        public Mascota(int id, string nombre, Especie especie, Raza raza, Propietario propietario)
-        {
-            this.id = id;
-            this.nombre = nombre;
-            this.especie = especie;
-            this.raza = raza;
-            this.propietario = propietario;
-        }
-        public Mascota(string nombre, Especie especie, Raza raza, Propietario propietario)
-        {
-            this.nombre = nombre;
-            this.especie = especie;
-            this.raza = raza;
-            this.propietario = propietario;
-        }
+        public int Codigo { get; set; }
+        public string Nombre { get; set; }
+        public Especie Especie { get; set; }
+        public Raza Raza { get; set; }
+        public Propietario Propietario { get; set; }
         public Mascota() { }
         public override string ToString()
         {
-            return $"{id};{nombre};{especie.id};{raza.id};{propietario.Cedula}";
+            return $"{Codigo};{Nombre};{Especie.Codigo};{Raza.Codigo};{Propietario.Cedula}";
         }
 
     }
