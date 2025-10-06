@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Entidad;
 
 namespace Dato
 {
-    public class DatoVeterinario: FileRepository<Veterinario>
+    public class DatoVeterinario : FileRepository<Veterinario>
     {
         DatoEspecializacion datoEspecializacion = new DatoEspecializacion(NombreArchivo.ARCHIVO_ESPECIALIZACION);
         public DatoVeterinario(string filePath) : base(filePath)
@@ -32,9 +29,12 @@ namespace Dato
             Veterinario veterinario = new Veterinario();
             veterinario.Cedula = int.Parse(line.Split(';')[0]);
             veterinario.Nombres = line.Split(';')[1];
-            veterinario.Sexo = line.Split(';')[2];
-            veterinario.TelefonoPrimario = line.Split(';')[3];
-            veterinario.Especializacion = datoEspecializacion.BuscarPorId(int.Parse(line.Split(';')[4]));
+            veterinario.ApellidoPaterno = line.Split(';')[2];
+            veterinario.ApellidoMaterno = line.Split(';')[3];
+            veterinario.Sexo = line.Split(';')[4];
+            veterinario.TelefonoPrimario = line.Split(';')[5];
+            veterinario.TelefonoSecundario = line.Split(';')[6];
+            veterinario.Especializacion = datoEspecializacion.BuscarPorId(int.Parse(line.Split(';')[7]));
             return veterinario;
         }
         public Veterinario BuscarPorId(int id)
@@ -42,5 +42,5 @@ namespace Dato
             return Consultar().FirstOrDefault(p => p.Cedula == id);
         }
     }
-    
+
 }
