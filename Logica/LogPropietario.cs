@@ -78,12 +78,12 @@ namespace Logica
                 mensaje = "Propietario nulo";
                 return false;
             }
-            if (string.IsNullOrEmpty(entidad.Nombre))
+            if (string.IsNullOrEmpty(entidad.Nombres))
             {
                 mensaje = "El nombre es obligatorio";
                 return false;
             }
-            if (entidad.Nombre.Any(char.IsDigit))
+            if (entidad.Nombres.Any(char.IsDigit))
             {
                 mensaje = "El nombre no puede contener numeros";
                 return false;
@@ -93,7 +93,7 @@ namespace Logica
                 mensaje = "El sexo es obligatorio";
                 return false;
             }
-            if (string.IsNullOrEmpty(entidad.Telefono))
+            if (string.IsNullOrEmpty(entidad.TelefonoPrimario))
             {
                 mensaje = "El telefono es obligatorio";
                 return false;
@@ -108,12 +108,12 @@ namespace Logica
                 mensaje = "La cedula no puede contener letras";
                 return false;
             }
-            if (entidad.Telefono.Any(char.IsLetter))
+            if (entidad.TelefonoPrimario.Any(char.IsLetter))
             {
                 mensaje = "El telefono no puede contener letras";
                 return false;
             }
-            if (entidad.Telefono.Length != 10)
+            if (entidad.TelefonoPrimario.Length != 10)
             {
                 mensaje = "El telefono debe tener 10 digitos";
                 return false;

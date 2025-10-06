@@ -18,8 +18,8 @@ namespace ProyectoP3
         private void mostrarVeterinario(Veterinario veterinario)
         {
             txtId.Text = veterinario.Cedula.ToString();
-            txtNombre.Text = veterinario.Nombre;
-            txtNumTlf.Text = veterinario.Telefono;
+            txtNombre.Text = veterinario.Nombres;
+            txtNumTlf.Text = veterinario.TelefonoPrimario;
             if (veterinario.Sexo == "Femenino") RBFemenino.Checked = true;
             else RBMasculino.Checked = true;
             cmbEspecilizacion.SelectedValue = veterinario.Especializacion.Codigo;
@@ -88,9 +88,9 @@ namespace ProyectoP3
         {
             Veterinario veterinario = new Veterinario();
             veterinario.Cedula = int.Parse(txtId.Text);
-            veterinario.Nombre = txtNombre.Text;
+            veterinario.Nombres = txtNombre.Text;
             veterinario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
-            veterinario.Telefono = txtNumTlf.Text;
+            veterinario.TelefonoPrimario = txtNumTlf.Text;
             veterinario.Especializacion = buscarEspecializacion(int.Parse(cmbEspecilizacion.SelectedValue.ToString()));
             return veterinario;
         }

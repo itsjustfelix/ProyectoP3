@@ -88,9 +88,9 @@ namespace ProyectoP3
         {
             Propietario propietario = new Propietario();
             propietario.Cedula = int.Parse(txtId.Text);
-            propietario.Nombre = txtNombre.Text;
+            propietario.Nombres = txtNombre.Text;
             propietario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
-            propietario.Telefono = txtNumTlf.Text;
+            propietario.TelefonoPrimario = txtNumTlf.Text;
             return propietario;
         }
 

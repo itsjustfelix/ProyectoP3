@@ -30,9 +30,9 @@ namespace Dato
         {
             Propietario propietario = new Propietario();
             propietario.Cedula = int.Parse(line.Split(';')[0]);
-            propietario.Nombre = line.Split(';')[1];
+            propietario.Nombres = line.Split(';')[1];
             propietario.Sexo = line.Split(';')[2];
-            propietario.Telefono = line.Split(';')[3];
+            propietario.TelefonoPrimario = line.Split(';')[3];
             return propietario;
         }
         public Propietario BuscarPorId(int id)

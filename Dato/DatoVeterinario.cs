@@ -31,9 +31,9 @@ namespace Dato
         {
             Veterinario veterinario = new Veterinario();
             veterinario.Cedula = int.Parse(line.Split(';')[0]);
-            veterinario.Nombre = line.Split(';')[1];
+            veterinario.Nombres = line.Split(';')[1];
             veterinario.Sexo = line.Split(';')[2];
-            veterinario.Telefono = line.Split(';')[3];
+            veterinario.TelefonoPrimario = line.Split(';')[3];
             veterinario.Especializacion = datoEspecializacion.BuscarPorId(int.Parse(line.Split(';')[4]));
             return veterinario;
         }

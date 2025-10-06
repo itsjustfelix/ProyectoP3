@@ -37,7 +37,7 @@ namespace ProyectoP3
             DGVConsulta.Rows.Clear();
             foreach (var consulta in logConsulta.Consultar())
             {
-                DGVConsulta.Rows.Add(consulta.Codigo, consulta.Mascota.Nombre,consulta.Fecha.ToString("dd/MM/yyyy"), consulta.Veterinario.Nombre,  consulta.Diagnostico, consulta.Tratamiento);
+                DGVConsulta.Rows.Add(consulta.Codigo, consulta.Mascota.Nombre,consulta.Fecha.ToString("dd/MM/yyyy"), consulta.Veterinario.Nombres,  consulta.Diagnostico, consulta.Tratamiento);
             }
         }
         private void btnEditar_Click(object sender, EventArgs e)

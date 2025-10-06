@@ -25,7 +25,7 @@ namespace ProyectoP3
                 SetControlesEstado(false);
                 return;
             }
-            lblNombreProp.Text = propietario.Nombre;
+            lblNombreProp.Text = propietario.Nombres;
             SetControlesEstado(true);
         }
         private Propietario buscarPropietario(int id)

@@ -37,7 +37,7 @@ namespace ProyectoP3
         private void mostrarMascota(Mascota mascota)
         {
             txtIdProprietario.Text = mascota.Propietario.Cedula.ToString();
-            lblNombreProp.Text = mascota.Propietario.Nombre;
+            lblNombreProp.Text = mascota.Propietario.Nombres;
             txtNombre.Text = mascota.Nombre;
             cmbEspecie.SelectedValue = mascota.Especie.Codigo;
             cmbRaza.SelectedValue = mascota.Raza.Codigo;

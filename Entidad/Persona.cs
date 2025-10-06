@@ -9,23 +9,17 @@ namespace Entidad
     public class Persona
     {
         public int Cedula { get; set; }
-        public string Nombre { get; set; }
+        public string Nombres { get; set; }
+        public string ApellidoPaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
         public string Sexo { get; set; }
-        public string Telefono { get; set; }
+        public string TelefonoPrimario { get; set; }
+        public string TelefonoSecundario { get; set; }
 
         public Persona() { }
-
-        public Persona(int Cedula, string Nombre, string Sexo, string Telefono)
-        {
-            this.Cedula = Cedula;
-            this.Nombre = Nombre;
-            this.Sexo = Sexo;
-            this.Telefono = Telefono;
-        }
-
         public override string ToString()
         {
-            return $"{Cedula};{Nombre};{Sexo};{Telefono}";
+            return $"{Cedula};{Nombres};{ApellidoPaterno};{ApellidoMaterno};{Sexo};{TelefonoPrimario};{TelefonoSecundario}";
         }
     }
 }
