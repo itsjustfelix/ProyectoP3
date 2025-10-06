@@ -82,10 +82,13 @@ namespace ProyectoP3
         private Veterinario Mapeo()
         {
             Veterinario veterinario = new Veterinario();
-            veterinario.Cedula = int.Parse(txtId.Text);
+            veterinario.Cedula = int.Parse(txtCedula.Text);
             veterinario.Nombres = txtNombre.Text;
+            veterinario.ApellidoPaterno = txtApellidoPaterno.Text;
+            veterinario.ApellidoMaterno = txtApellidoMaterno.Text;
             veterinario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
-            veterinario.TelefonoPrimario = txtNumTlf.Text;
+            veterinario.TelefonoPrimario = txtNumeroTelefonicoPrimario.Text;
+            veterinario.TelefonoSecundario = txtNumeroSecundario.Text;
             veterinario.Especializacion = buscarEspecializacion(int.Parse(cmbEspecilizacion.SelectedValue.ToString()));
             return veterinario;
         }
@@ -95,9 +98,12 @@ namespace ProyectoP3
         }
         private bool validar()
         {
-            if (string.IsNullOrEmpty(txtId.Text)) throw new ArgumentNullException("El campo Cédula es obligatorio.");
+            if (string.IsNullOrEmpty(txtCedula.Text)) throw new ArgumentNullException("El campo Cédula es obligatorio.");
             if (string.IsNullOrEmpty(txtNombre.Text)) throw new ArgumentNullException("El campo Nombre es obligatorio.");
-            if (string.IsNullOrEmpty(txtNumTlf.Text)) throw new ArgumentNullException("El campo Teléfono es obligatorio.");
+            if (string.IsNullOrEmpty(txtApellidoPaterno.Text)) throw new ArgumentNullException("El campo Apellido Paterno es obligatorio.");
+            if (string.IsNullOrEmpty(txtApellidoMaterno.Text)) throw new ArgumentNullException("El campo Apellido Materno es obligatorio.");
+            if (string.IsNullOrEmpty(txtNumeroTelefonicoPrimario.Text)) throw new ArgumentNullException("El campo Teléfono primario es obligatorio.");
+            if (string.IsNullOrEmpty(txtNumeroSecundario.Text)) throw new ArgumentNullException("El campo Teléfono secundario es obligatorio.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentNullException("El campo Sexo es obligatorio.");
             return true;
         }

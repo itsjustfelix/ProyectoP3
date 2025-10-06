@@ -76,7 +76,7 @@ namespace ProyectoP3
             DGVPropietario.Rows.Clear();
             foreach (var item in logPropietario.Consultar())
             {
-                DGVPropietario.Rows.Add(item.Cedula, item.Nombres, item.Sexo, item.TelefonoPrimario);
+                DGVPropietario.Rows.Add(item.Cedula, item.Nombres,item.ApellidoPaterno,item.ApellidoMaterno ,item.Sexo, item.TelefonoPrimario,item.TelefonoSecundario);
             }
         }
 

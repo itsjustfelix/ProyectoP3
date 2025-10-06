@@ -89,8 +89,11 @@ namespace ProyectoP3
             Propietario propietario = new Propietario();
             propietario.Cedula = int.Parse(txtId.Text);
             propietario.Nombres = txtNombre.Text;
+            propietario.ApellidoPaterno = txtApellidoPaterno.Text;
+            propietario.ApellidoMaterno = txtApellidoMaterno.Text;
             propietario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
-            propietario.TelefonoPrimario = txtNumTlf.Text;
+            propietario.TelefonoPrimario = txtNumeroTelefonoPrimario.Text;
+            propietario.TelefonoSecundario = txtNumeroTelefonoSecundario.Text;
             return propietario;
         }
 
@@ -98,7 +101,10 @@ namespace ProyectoP3
         {
             if (string.IsNullOrWhiteSpace(txtId.Text)) throw new ArgumentNullException("La cédula es obligatoria.");
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentNullException("El nombre del propietario es obligatorio.");
-            if (string.IsNullOrWhiteSpace(txtNumTlf.Text)) throw new ArgumentNullException("El número de teléfono es obligatorio.");
+            if (string.IsNullOrWhiteSpace(txtApellidoPaterno.Text)) throw new ArgumentNullException("El apellido paterno es obligatorio.");
+            if (string.IsNullOrWhiteSpace(txtApellidoMaterno.Text)) throw new ArgumentNullException("El apellido materno es obligatorio.");
+            if (string.IsNullOrWhiteSpace(txtNumeroTelefonoPrimario.Text)) throw new ArgumentNullException("El número de teléfono primario es obligatorio.");
+            if (string.IsNullOrEmpty(txtNumeroTelefonoSecundario.Text)) throw new ArgumentNullException("El número de teléfono secundario es obligatorio.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un género.");
             return true;
         }

@@ -256,6 +256,9 @@
     <EmbeddedResource Include="FrmPropietario.resx">
       <DependentUpon>FrmPropietario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPropietarioEditar.resx">
+      <DependentUpon>FrmPropietarioEditar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmRaza.resx">
       <DependentUpon>FrmRaza.cs</DependentUpon>
     </EmbeddedResource>

@@ -36,8 +36,11 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Especializacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVeterinario)).BeginInit();
@@ -67,8 +70,11 @@
             this.DGVeterinario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
+            this.Column5,
+            this.Column6,
             this.Column3,
             this.Column4,
+            this.Column7,
             this.Especializacion});
             this.DGVeterinario.Location = new System.Drawing.Point(6, 19);
             this.DGVeterinario.Name = "DGVeterinario";
@@ -126,7 +132,7 @@
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Identificacion";
+            this.Column1.HeaderText = "Cedula";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Width = 87;
@@ -134,9 +140,21 @@
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Nombre";
+            this.Column2.HeaderText = "Nombres";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Apellido Materno";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Apellido Paterno";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // Column3
             // 
@@ -148,9 +166,15 @@
             // Column4
             // 
             this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.HeaderText = "Numero Telefonico";
+            this.Column4.HeaderText = "Numero Telefonico Primario";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Numero Telefonico Secundario";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             // 
             // Especializacion
             // 
@@ -186,8 +210,11 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Especializacion;
     }
 }

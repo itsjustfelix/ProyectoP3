@@ -11,7 +11,7 @@ namespace ProyectoP3
         {
             InitializeComponent();
             mostrarPropietario(propietario);
-            txtId.Enabled = false; // Deshabilitar el campo ID para evitar modificaciones
+            txtCedula.Enabled = false; // Deshabilitar el campo ID para evitar modificaciones
         }
         IServicePersonas<Propietario> logPropietario = new LogPropietario();
         private void FrmEditarPropietatio_Load(object sender, EventArgs e)
@@ -19,9 +19,12 @@ namespace ProyectoP3
         }
         private void mostrarPropietario(Propietario propietario)
         {
-            txtId.Text = propietario.Cedula.ToString();
+            txtCedula.Text = propietario.Cedula.ToString();
             txtNombre.Text = propietario.Nombres;
-            txtNumTlf.Text = propietario.TelefonoPrimario;
+            txtApellidoPaterno.Text = propietario.ApellidoPaterno;
+            txtApellidoMaterno.Text = propietario.ApellidoMaterno;
+            txtNumeroTelefonicoPrimario.Text = propietario.TelefonoPrimario;
+            txtNumeroTelefonicoSecundario.Text = propietario.TelefonoSecundario;
             if (propietario.Sexo == "Femenino") RBFemenino.Checked = true;
             else RBMasculino.Checked = true;
         }
@@ -90,17 +93,22 @@ namespace ProyectoP3
         private Propietario Mapeo()
         {
             Propietario propietario = new Propietario();
-            propietario.Cedula = int.Parse(txtId.Text);
+            propietario.Cedula = int.Parse(txtCedula.Text);
             propietario.Nombres = txtNombre.Text;
+            propietario.ApellidoPaterno = txtApellidoPaterno.Text;
+            propietario.ApellidoMaterno = txtApellidoMaterno.Text;
             propietario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
-            propietario.TelefonoPrimario = txtNumTlf.Text;
+            propietario.TelefonoPrimario = txtNumeroTelefonicoPrimario.Text;
+            propietario.TelefonoSecundario = txtNumeroTelefonicoSecundario.Text;
             return propietario;
         }
         private bool validar()
         {
-            if (string.IsNullOrWhiteSpace(txtId.Text)) throw new ArgumentException("La cédula no puede estar vacía.");
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentException("El nombre no puede estar vacío.");
-            if (string.IsNullOrWhiteSpace(txtNumTlf.Text)) throw new ArgumentException("El número de teléfono no puede estar vacío.");
+            if (string.IsNullOrWhiteSpace(txtApellidoPaterno.Text)) throw new ArgumentException("El apellido paterno no puede estar vacío.");
+            if (string.IsNullOrWhiteSpace(txtApellidoMaterno.Text)) throw new ArgumentException("El apellido materno no puede estar vacío.");
+            if (string.IsNullOrWhiteSpace(txtNumeroTelefonicoPrimario.Text)) throw new ArgumentException("El número de teléfono no puede estar vacío.");
+            if (string.IsNullOrWhiteSpace(txtNumeroTelefonicoSecundario.Text)) throw new ArgumentException("El número de teléfono secundario no puede estar vacío.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un sexo."); 
             return true;
         }

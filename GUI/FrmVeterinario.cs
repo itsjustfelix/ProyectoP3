@@ -28,7 +28,7 @@ namespace ProyectoP3
             DGVeterinario.Rows.Clear();
             foreach (var item in logVeterinario.Consultar())
             {
-                DGVeterinario.Rows.Add(item.Cedula, item.Nombres, item.Sexo, item.TelefonoPrimario,item.Especializacion.Nombre);
+                DGVeterinario.Rows.Add(item.Cedula, item.Nombres, item.ApellidoMaterno, item.ApellidoMaterno, item.Sexo, item.TelefonoPrimario, item.TelefonoSecundario, item.Especializacion.Nombre);
             }
         }
         private void btnEditar_Click(object sender, EventArgs e)
