@@ -71,24 +71,19 @@ namespace Logica
                 mensaje = "La especializacion no puede ser nula";
                 return false;
             }
-            if (string.IsNullOrEmpty(entidad.Nombres))
-            {
-                mensaje = "El nombre es obligatorio";
-                return false;
-            }
             if (entidad.Nombres.Any(char.IsDigit))
             {
                 mensaje = "El nombre no puede contener numeros";
                 return false;
             }
-            if (string.IsNullOrEmpty(entidad.Sexo))
+            if (entidad.ApellidoPaterno.Any(char.IsDigit))
             {
-                mensaje = "El sexo es obligatorio";
+                mensaje = "El apellido paterno no puede contener numeros";
                 return false;
             }
-            if (string.IsNullOrEmpty(entidad.TelefonoPrimario))
+            if (entidad.ApellidoMaterno.Any(char.IsDigit))
             {
-                mensaje = "El telefono es obligatorio";
+                mensaje = "El apellido materno no puede contener numeros";
                 return false;
             }
             if (entidad.Cedula.ToString().Length < 8 || entidad.Cedula.ToString().Length > 10)
@@ -103,15 +98,24 @@ namespace Logica
             }
             if (entidad.TelefonoPrimario.Any(char.IsLetter))
             {
-                mensaje = "El telefono no puede contener letras";
+                mensaje = "El telefono primario no puede contener letras";
+                return false;
+            }
+            if (entidad.TelefonoSecundario.Any(char.IsLetter))
+            {
+                mensaje = "El telefono secundario no puede contener letras";
                 return false;
             }
             if (entidad.TelefonoPrimario.Length != 10)
             {
-                mensaje = "El telefono debe tener 10 digitos";
+                mensaje = "El telefono primario debe tener 10 digitos";
                 return false;
             }
-            
+            if (entidad.TelefonoSecundario.Length != 10)
+            {
+                mensaje = "El telefono secundario debe tener 10 digitos";
+                return false;
+            }
             return true;
         }
         public bool IdUnico(int id)

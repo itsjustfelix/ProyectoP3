@@ -96,6 +96,7 @@ namespace ProyectoP3
 
         private bool validar()
         {
+            if (string.IsNullOrWhiteSpace(txtId.Text)) throw new ArgumentNullException("La cédula es obligatoria.");
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentNullException("El nombre del propietario es obligatorio.");
             if (string.IsNullOrWhiteSpace(txtNumTlf.Text)) throw new ArgumentNullException("El número de teléfono es obligatorio.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un género.");
