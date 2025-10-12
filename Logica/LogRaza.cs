@@ -9,7 +9,7 @@ namespace Logica
 {
     public class LogRaza : IServiceRaza
     {
-        private readonly DatoRaza datoRaza = new DatoRaza(NombreArchivo.ARCHIVO_RAZA);
+        private readonly DatoRaza datoRaza = new DatoRaza(NombreArchivo.ARC_RAZA);
         Random random = new Random();
         public string Guardar(Raza entidad)
         {
@@ -74,7 +74,7 @@ namespace Logica
         }
         public Raza BuscarPorId(int id)
         {
-            return Consultar().FirstOrDefault(r => r.Codigo == id);
+            return datoRaza.BuscarPorId(id);
         }
         public List<Raza> ConsultarPorEspecie(int idEspecie)
         {

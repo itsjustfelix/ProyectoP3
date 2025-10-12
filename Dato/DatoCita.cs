@@ -15,6 +15,11 @@ namespace Dato
             this.filePath = filePath;
         }
 
+        public override Cita BuscarPorId(int id)
+        {
+            return Consultar().FirstOrDefault(c => c.Codigo == id);
+        }
+
         public override List<Cita> Consultar()
         {
             using (StreamReader sr = new StreamReader(filePath))
@@ -34,7 +39,7 @@ namespace Dato
             cita.Codigo = int.Parse(line.Split(';')[0]);
             cita.Fecha = DateTime.ParseExact(line.Split(';')[1], "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             cita.Hora = DateTime.ParseExact(line.Split(';')[2], "hh:mm tt", System.Globalization.CultureInfo.InvariantCulture);
-            cita.Mascota = new DatoMascota(NombreArchivo.ARCHIVO_MASCOTA).BuscarPorId(int.Parse(line.Split(';')[3]));
+            cita.Mascota = new DatoMascota(NombreArchivo.ARC_MASCOTA).BuscarPorId(int.Parse(line.Split(';')[3]));
             return cita;
         }
     }

@@ -10,7 +10,7 @@ namespace Dato
 {
     public class DatoRaza: FileRepository<Raza>
     {
-        private DatoEspecie datoEspecie = new DatoEspecie(NombreArchivo.ARCHIVO_ESPECIE);
+        private DatoEspecie datoEspecie = new DatoEspecie(NombreArchivo.ARC_ESPECIE);
         public DatoRaza(string filePath) : base(filePath)
         {
             this.filePath = filePath;
@@ -35,7 +35,7 @@ namespace Dato
             raza.Especie = datoEspecie.BuscarPorId(int.Parse(line.Split(';')[2]));
             return raza;
         }
-        public Raza BuscarPorId(int id)
+        public override Raza BuscarPorId(int id)
         {
             return Consultar().FirstOrDefault(r => r.Codigo == id);
         }

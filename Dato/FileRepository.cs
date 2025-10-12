@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entidad;
 
 namespace Dato
 {
@@ -53,5 +54,7 @@ namespace Dato
                 return e.Message;
             }
         }
+        public abstract T BuscarPorId(int id);
+        
     }
 }

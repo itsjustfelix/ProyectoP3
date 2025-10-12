@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtNumeroTelefonoSecundario = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtApellidoMaterno = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.RBMasculino = new System.Windows.Forms.RadioButton();
@@ -40,17 +46,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.nombre = new System.Windows.Forms.Label();
-            this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtApellidoMaterno = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtNumeroTelefonoSecundario = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtEmail);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.txtNumeroTelefonoSecundario);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtApellidoMaterno);
@@ -70,13 +74,67 @@
             this.panel1.Controls.Add(this.nombre);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(423, 303);
+            this.panel1.Size = new System.Drawing.Size(423, 330);
             this.panel1.TabIndex = 0;
+            // 
+            // txtNumeroTelefonoSecundario
+            // 
+            this.txtNumeroTelefonoSecundario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumeroTelefonoSecundario.Location = new System.Drawing.Point(233, 206);
+            this.txtNumeroTelefonoSecundario.Name = "txtNumeroTelefonoSecundario";
+            this.txtNumeroTelefonoSecundario.Size = new System.Drawing.Size(180, 22);
+            this.txtNumeroTelefonoSecundario.TabIndex = 19;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(5, 206);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(227, 20);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Numero Telefonico Secundario";
+            // 
+            // txtApellidoMaterno
+            // 
+            this.txtApellidoMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellidoMaterno.Location = new System.Drawing.Point(233, 90);
+            this.txtApellidoMaterno.Name = "txtApellidoMaterno";
+            this.txtApellidoMaterno.Size = new System.Drawing.Size(180, 22);
+            this.txtApellidoMaterno.TabIndex = 17;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(54, 88);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(128, 20);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Apellido Materno";
+            // 
+            // txtApellidoPaterno
+            // 
+            this.txtApellidoPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(233, 59);
+            this.txtApellidoPaterno.Name = "txtApellidoPaterno";
+            this.txtApellidoPaterno.Size = new System.Drawing.Size(180, 22);
+            this.txtApellidoPaterno.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(56, 57);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(125, 20);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Apellido Paterno";
             // 
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(233, 247);
+            this.btnCancelar.Location = new System.Drawing.Point(233, 273);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(107, 41);
             this.btnCancelar.TabIndex = 13;
@@ -87,7 +145,7 @@
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(108, 247);
+            this.btnAgregar.Location = new System.Drawing.Point(108, 273);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(107, 41);
             this.btnAgregar.TabIndex = 12;
@@ -183,65 +241,29 @@
             this.nombre.TabIndex = 6;
             this.nombre.Text = "Nombres";
             // 
-            // txtApellidoPaterno
+            // txtEmail
             // 
-            this.txtApellidoPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApellidoPaterno.Location = new System.Drawing.Point(233, 59);
-            this.txtApellidoPaterno.Name = "txtApellidoPaterno";
-            this.txtApellidoPaterno.Size = new System.Drawing.Size(180, 22);
-            this.txtApellidoPaterno.TabIndex = 15;
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(233, 234);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(180, 22);
+            this.txtEmail.TabIndex = 21;
             // 
-            // label4
+            // label7
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(56, 57);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 20);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Apellido Paterno";
-            // 
-            // txtApellidoMaterno
-            // 
-            this.txtApellidoMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApellidoMaterno.Location = new System.Drawing.Point(233, 90);
-            this.txtApellidoMaterno.Name = "txtApellidoMaterno";
-            this.txtApellidoMaterno.Size = new System.Drawing.Size(180, 22);
-            this.txtApellidoMaterno.TabIndex = 17;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(54, 88);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 20);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Apellido Materno";
-            // 
-            // txtNumeroTelefonoSecundario
-            // 
-            this.txtNumeroTelefonoSecundario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumeroTelefonoSecundario.Location = new System.Drawing.Point(233, 206);
-            this.txtNumeroTelefonoSecundario.Name = "txtNumeroTelefonoSecundario";
-            this.txtNumeroTelefonoSecundario.Size = new System.Drawing.Size(180, 22);
-            this.txtNumeroTelefonoSecundario.TabIndex = 19;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(5, 206);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(227, 20);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Numero Telefonico Secundario";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(94, 234);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 20);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Email";
             // 
             // FrmPropietarioAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 327);
+            this.ClientSize = new System.Drawing.Size(448, 354);
             this.Controls.Add(this.panel1);
             this.Name = "FrmPropietarioAgregar";
             this.Text = "FrmAgregarPropietario";
@@ -271,5 +293,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtApellidoPaterno;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label7;
     }
 }

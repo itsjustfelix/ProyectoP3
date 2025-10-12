@@ -8,10 +8,11 @@ namespace Entidad
 {
     public class Propietario:Persona
     {
+        public string Email { get; set; }
         public Propietario() { }
         public override string ToString()
         {
-            return $"{Cedula};{Nombres};{ApellidoPaterno};{ApellidoMaterno};{Sexo};{TelefonoPrimario};{TelefonoSecundario}";
+            return $"{Cedula};{Nombres};{ApellidoPaterno};{ApellidoMaterno};{Sexo};{TelefonoPrimario};{TelefonoSecundario};{Email}";
         }
     }
 }

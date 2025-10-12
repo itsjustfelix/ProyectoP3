@@ -36,9 +36,10 @@ namespace Dato
             propietario.Sexo = line.Split(';')[4];
             propietario.TelefonoPrimario = line.Split(';')[5];
             propietario.TelefonoSecundario = line.Split(';')[6];
+            propietario.Email = line.Split(';')[7];
             return propietario;
         }
-        public Propietario BuscarPorId(int id)
+        public override Propietario BuscarPorId(int id)
         {
            return Consultar().FirstOrDefault(p => p.Cedula == id);
         }

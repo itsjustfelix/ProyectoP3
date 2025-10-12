@@ -37,7 +37,7 @@ namespace Dato
             return especializacion;
         }
 
-        public Especializacion BuscarPorId(int codigo)
+        public override Especializacion BuscarPorId(int codigo)
         {
             return Consultar().FirstOrDefault(e => e.Codigo == codigo);
         }

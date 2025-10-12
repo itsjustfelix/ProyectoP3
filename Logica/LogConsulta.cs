@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Dato;
 using Entidad;
+using GeneradorDeDocumento;
 
 namespace Logica
 {
     public class LogConsulta : IServiceEntidad<Consulta>
     {
-        private readonly DatoConsulta datoConsulta = new DatoConsulta(NombreArchivo.ARCHIVO_CONSULTA);
+        private readonly FileRepository<Consulta> datoConsulta = new DatoConsulta(NombreArchivo.ARC_CONSULTA);
+        private GeneradorDePDF<Consulta> generadorPDF;
+        private ServicioEmail servicioEmail = new ServicioEmail("vet.vida03@gmail.com", "wyjv vikl acif boti");
         private Random random = new Random();
         public string Guardar(Consulta entidad)
         {
@@ -74,7 +77,7 @@ namespace Logica
         }
         public Consulta BuscarPorId(int id)
         {
-            return Consultar().FirstOrDefault(c => c.Codigo == id);
+            return datoConsulta.BuscarPorId(id);
         }
         public bool Validar(Consulta entidad, out string mensaje)
         {
@@ -110,6 +113,36 @@ namespace Logica
                 return false;
             }
             return true;
+        }
+
+        public string GenerarDocumento(Consulta entidad)
+        {
+            try
+            {
+                if (entidad == null) throw new ArgumentNullException("La entidad no puede ser nula.");
+                generadorPDF = new GeneradorDePDFConsultas("PDFGeneradorConsulta", @"C:\Users\felix\Downloads\dall-e.webp", entidad);
+                var ruta = generadorPDF.GenerarPDF();
+                return ruta;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public string enviarEmail(string email, string rutaDocumento)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(email)) throw new ArgumentNullException("El email no puede ser nulo o vacio.");
+                if (string.IsNullOrEmpty(rutaDocumento)) throw new ArgumentNullException("La ruta del documento no puede ser nula o vacia.");
+                return servicioEmail.EnviarEmail("Veterinaria MY VETAPP", "Se le adjuta el archivo de la consulta de su mascota", email, rutaDocumento);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            
         }
     }
 }
