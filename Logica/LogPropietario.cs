@@ -8,7 +8,7 @@ namespace Logica
 {
     public class LogPropietario : IServicePersonas<Propietario>
     {
-        private readonly DatoPropietario datoPropietario = new DatoPropietario(NombreArchivo.ARCHIVO_PROPIETARIO);
+        private readonly DatoPropietario datoPropietario = new DatoPropietario(NombreArchivo.ARC_PROPIETARIO);
         public string Guardar(Propietario entidad)
         {
             try
@@ -68,7 +68,7 @@ namespace Logica
         }
         public Propietario BuscarPorId(int id)
         {
-            return Consultar().FirstOrDefault(p => p.Cedula == id);
+            return datoPropietario.BuscarPorId(id);
         }
         public bool Validar(Propietario entidad, out string mensaje)
         {
@@ -120,6 +120,11 @@ namespace Logica
             if (entidad.TelefonoSecundario.Length != 10)
             {
                 mensaje = "El telefono secundario debe tener 10 digitos";
+                return false;
+            }
+            if(entidad.Email.AsParallel().Count(c => c == '@') != 1 || entidad.Email.StartsWith("@") || entidad.Email.EndsWith("@"))
+            {
+                mensaje = "El correo electronico debe contener un solo @ y no puede estar al inicio o al final";
                 return false;
             }
             return true;

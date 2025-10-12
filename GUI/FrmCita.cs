@@ -110,34 +110,22 @@ namespace ProyectoP3
                     return;
                 }
                 var frm = new FrmConsultaAgregar(cita.Mascota);
-                ocultar();
                 mostrarFrm(frm);
-                mostrar();
                 if (frm.resultado == DialogResult.OK)
                 {
                     borrarCita(id);
                     cargarDGV();
                 }
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void mostrar()
-        {
-            this.Show();
-        }
         private void mostrarFrm(Form frm)
         {
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
-        }
-        private void ocultar()
-        {
-            this.Hide();
         }
     }
 }

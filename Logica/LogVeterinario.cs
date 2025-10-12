@@ -7,7 +7,7 @@ namespace Logica
 {
     public class LogVeterinario : IServicePersonas<Veterinario>
     {
-        private readonly DatoVeterinario datoVeterinario = new DatoVeterinario(NombreArchivo.ARCHIVO_VETERINARIO);
+        private readonly DatoVeterinario datoVeterinario = new DatoVeterinario(NombreArchivo.ARC_VETERINARIO);
         public string Guardar(Veterinario entidad)
         {
             try
@@ -56,7 +56,7 @@ namespace Logica
         }
         public Veterinario BuscarPorId(int id)
         {
-            return Consultar().FirstOrDefault(p => p.Cedula == id);
+            return datoVeterinario.BuscarPorId(id);
         }
         public bool Validar(Veterinario entidad,out string mensaje)
         {

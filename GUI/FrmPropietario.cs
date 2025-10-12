@@ -70,21 +70,27 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-
         private void cargarDGV()
         {
             DGVPropietario.Rows.Clear();
             foreach (var item in logPropietario.Consultar())
             {
-                DGVPropietario.Rows.Add(item.Cedula, item.Nombres,item.ApellidoPaterno,item.ApellidoMaterno ,item.Sexo, item.TelefonoPrimario,item.TelefonoSecundario);
+                DGVPropietario.Rows.Add(
+                    item.Cedula,
+                    item.Nombres,
+                    item.ApellidoPaterno,
+                    item.ApellidoMaterno,
+                    item.Sexo, 
+                    item.TelefonoPrimario,
+                    item.TelefonoSecundario,
+                    item.Email
+                );
             }
         }
-
         private void FrmPropietario_Load(object sender, EventArgs e)
         {
             cargarDGV();
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try

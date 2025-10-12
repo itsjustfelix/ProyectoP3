@@ -10,7 +10,7 @@ namespace Logica
     public class logEspecializacion : IServiceEntidad<Especializacion>
     {
         Random random = new Random();
-        private readonly FileRepository<Especializacion> datoEspecializacion = new DatoEspecializacion(NombreArchivo.ARCHIVO_ESPECIALIZACION);
+        private readonly FileRepository<Especializacion> datoEspecializacion = new DatoEspecializacion(NombreArchivo.ARC_ESPECIALIZACION);
         public string Guardar(Especializacion entidad)
         {
             try
@@ -66,7 +66,7 @@ namespace Logica
 
         public Especializacion BuscarPorId(int codigo)
         {
-            return Consultar().FirstOrDefault(e => e.Codigo == codigo);
+            return datoEspecializacion.BuscarPorId(codigo);
         }
 
 

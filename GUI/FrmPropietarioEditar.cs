@@ -11,7 +11,7 @@ namespace ProyectoP3
         {
             InitializeComponent();
             mostrarPropietario(propietario);
-            txtCedula.Enabled = false; // Deshabilitar el campo ID para evitar modificaciones
+            txtCedula.Enabled = false;
         }
         IServicePersonas<Propietario> logPropietario = new LogPropietario();
         private void FrmEditarPropietatio_Load(object sender, EventArgs e)
@@ -28,7 +28,6 @@ namespace ProyectoP3
             if (propietario.Sexo == "Femenino") RBFemenino.Checked = true;
             else RBMasculino.Checked = true;
         }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
@@ -54,7 +53,6 @@ namespace ProyectoP3
             }
             
         }
-
         private string editar(Propietario propietario)
         {
             try
@@ -70,7 +68,6 @@ namespace ProyectoP3
         {
             this.Close();
         }
-
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show
@@ -81,7 +78,6 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
@@ -100,6 +96,7 @@ namespace ProyectoP3
             propietario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
             propietario.TelefonoPrimario = txtNumeroTelefonicoPrimario.Text;
             propietario.TelefonoSecundario = txtNumeroTelefonicoSecundario.Text;
+            propietario.Email = txtEmail.Text;
             return propietario;
         }
         private bool validar()
@@ -110,6 +107,7 @@ namespace ProyectoP3
             if (string.IsNullOrWhiteSpace(txtNumeroTelefonicoPrimario.Text)) throw new ArgumentException("El número de teléfono no puede estar vacío.");
             if (string.IsNullOrWhiteSpace(txtNumeroTelefonicoSecundario.Text)) throw new ArgumentException("El número de teléfono secundario no puede estar vacío.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un sexo."); 
+            if (string.IsNullOrEmpty(txtEmail.Text)) throw new ArgumentException("El email no puede estar vacío.");
             return true;
         }
     }

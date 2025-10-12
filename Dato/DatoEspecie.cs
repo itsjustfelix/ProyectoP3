@@ -32,7 +32,7 @@ namespace Dato
             especie.Nombre = line.Split(';')[1];
             return especie;
         }
-        public Especie BuscarPorId(int id)
+        public override Especie BuscarPorId(int id)
         {
             return Consultar().FirstOrDefault(e => e.Codigo == id);
         }

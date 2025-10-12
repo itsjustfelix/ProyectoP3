@@ -37,6 +37,8 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtCrearPDFEnviar = new System.Windows.Forms.Button();
+            this.btnCrearPDF = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -126,6 +128,8 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.txtCrearPDFEnviar);
+            this.groupBox2.Controls.Add(this.btnCrearPDF);
             this.groupBox2.Controls.Add(this.btnEliminar);
             this.groupBox2.Controls.Add(this.btnEditar);
             this.groupBox2.Controls.Add(this.btnAgregar);
@@ -136,10 +140,32 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // txtCrearPDFEnviar
+            // 
+            this.txtCrearPDFEnviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCrearPDFEnviar.Location = new System.Drawing.Point(604, 19);
+            this.txtCrearPDFEnviar.Name = "txtCrearPDFEnviar";
+            this.txtCrearPDFEnviar.Size = new System.Drawing.Size(131, 41);
+            this.txtCrearPDFEnviar.TabIndex = 2;
+            this.txtCrearPDFEnviar.Text = "CrearPDF y enviar por email";
+            this.txtCrearPDFEnviar.UseVisualStyleBackColor = true;
+            this.txtCrearPDFEnviar.Click += new System.EventHandler(this.txtCrearPDFEnviar_Click);
+            // 
+            // btnCrearPDF
+            // 
+            this.btnCrearPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearPDF.Location = new System.Drawing.Point(467, 19);
+            this.btnCrearPDF.Name = "btnCrearPDF";
+            this.btnCrearPDF.Size = new System.Drawing.Size(131, 41);
+            this.btnCrearPDF.TabIndex = 1;
+            this.btnCrearPDF.Text = "CrearPDF";
+            this.btnCrearPDF.UseVisualStyleBackColor = true;
+            this.btnCrearPDF.Click += new System.EventHandler(this.btnCrearPDF_Click);
+            // 
             // btnEliminar
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(460, 19);
+            this.btnEliminar.Location = new System.Drawing.Point(330, 19);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(131, 41);
             this.btnEliminar.TabIndex = 0;
@@ -150,7 +176,7 @@
             // btnEditar
             // 
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(323, 19);
+            this.btnEditar.Location = new System.Drawing.Point(193, 19);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(131, 41);
             this.btnEditar.TabIndex = 0;
@@ -161,7 +187,7 @@
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(186, 19);
+            this.btnAgregar.Location = new System.Drawing.Point(56, 19);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(131, 41);
             this.btnAgregar.TabIndex = 0;
@@ -200,5 +226,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Button btnCrearPDF;
+        private System.Windows.Forms.Button txtCrearPDFEnviar;
     }
 }

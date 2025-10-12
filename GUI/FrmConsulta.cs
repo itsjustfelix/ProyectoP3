@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Logica;
 using Entidad;
+using Logica;
 using Microsoft.VisualBasic;
-using System.Net;
+
 
 namespace ProyectoP3
 {
@@ -20,7 +13,7 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        IServiceEntidad<Consulta> logConsulta = new LogConsulta();
+        LogConsulta logConsulta = new LogConsulta();
         private void FrmConsulta_Load(object sender, EventArgs e)
         {
             cargarDGV();
@@ -37,7 +30,7 @@ namespace ProyectoP3
             DGVConsulta.Rows.Clear();
             foreach (var consulta in logConsulta.Consultar())
             {
-                DGVConsulta.Rows.Add(consulta.Codigo, consulta.Mascota.Nombre,consulta.Fecha.ToString("dd/MM/yyyy"), consulta.Veterinario.Nombres,  consulta.Diagnostico, consulta.Tratamiento);
+                DGVConsulta.Rows.Add(consulta.Codigo, consulta.Mascota.Nombre, consulta.Fecha.ToString("dd/MM/yyyy"), consulta.Veterinario.Nombres, consulta.Diagnostico, consulta.Tratamiento);
             }
         }
         private void btnEditar_Click(object sender, EventArgs e)
@@ -99,7 +92,7 @@ namespace ProyectoP3
                 return logConsulta.Borrar(codigo);
             }
             catch (Exception ex)
-            { 
+            {
                 return ex.Message;
             }
         }
@@ -131,6 +124,49 @@ namespace ProyectoP3
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCrearPDF_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la consulta que quiere hacerle PDF:", "Generar PDF", ""));
+                var consulta = buscarConsulta(id);
+                if (consulta == null)
+                {
+                    MessageBox.Show("Consulta no encontrada.", "Eliminar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                var ruta = logConsulta.GenerarDocumento(consulta);
+                MessageBox.Show($"Documento generado en: {ruta}", "Generar PDF", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void txtCrearPDFEnviar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la consulta que quiere hacerle PDF:", "Generar PDF", ""));
+                var consulta = buscarConsulta(id);
+                var email = consulta.Mascota.Propietario.Email;
+                if (consulta == null)
+                {
+                    MessageBox.Show("Consulta no encontrada.", "Eliminar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                var ruta = logConsulta.GenerarDocumento(consulta);
+                var mensaje = logConsulta.enviarEmail(email, ruta);
+                MessageBox.Show(mensaje, "Enviar Email", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

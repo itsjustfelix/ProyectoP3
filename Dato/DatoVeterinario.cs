@@ -7,7 +7,7 @@ namespace Dato
 {
     public class DatoVeterinario : FileRepository<Veterinario>
     {
-        DatoEspecializacion datoEspecializacion = new DatoEspecializacion(NombreArchivo.ARCHIVO_ESPECIALIZACION);
+        DatoEspecializacion datoEspecializacion = new DatoEspecializacion(NombreArchivo.ARC_ESPECIALIZACION);
         public DatoVeterinario(string filePath) : base(filePath)
         {
             this.filePath = filePath;
@@ -37,7 +37,7 @@ namespace Dato
             veterinario.Especializacion = datoEspecializacion.BuscarPorId(int.Parse(line.Split(';')[7]));
             return veterinario;
         }
-        public Veterinario BuscarPorId(int id)
+        public override Veterinario BuscarPorId(int id)
         {
             return Consultar().FirstOrDefault(p => p.Cedula == id);
         }

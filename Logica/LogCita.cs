@@ -9,7 +9,7 @@ namespace Logica
     public class LogCita :IServiceEntidad<Cita>
     {
         private Random random = new Random();
-        private readonly DatoCita datoCita = new DatoCita(NombreArchivo.ARCHIVO_CITA);
+        private readonly DatoCita datoCita = new DatoCita(NombreArchivo.ARC_CITA);
         public string Guardar(Cita entidad)
         {
             try
@@ -101,7 +101,7 @@ namespace Logica
 
         public Cita BuscarPorId(int id)
         {
-            return Consultar().FirstOrDefault(c => c.Codigo == id);
+            return datoCita.BuscarPorId(id);
         }
     }
 }

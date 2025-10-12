@@ -10,8 +10,8 @@ namespace Dato
 {
     public class DatoConsulta : FileRepository<Consulta>
     {
-        private DatoMascota datoMascota = new DatoMascota(NombreArchivo.ARCHIVO_MASCOTA);
-        private DatoVeterinario datoVeterinario = new DatoVeterinario(NombreArchivo.ARCHIVO_VETERINARIO);
+        private FileRepository<Mascota> datoMascota = new DatoMascota(NombreArchivo.ARC_MASCOTA);
+        private FileRepository<Veterinario> datoVeterinario = new DatoVeterinario(NombreArchivo.ARC_VETERINARIO);
         public DatoConsulta(string filePath) : base(filePath)
         {
             this.filePath = filePath;
@@ -40,9 +40,11 @@ namespace Dato
             consulta.Veterinario = datoVeterinario.BuscarPorId(int.Parse(line.Split(';')[5]));
             return consulta;
         }
-        public Consulta BuscarPorId(int id)
+        public override Consulta BuscarPorId(int id)
         {
             return Consultar().FirstOrDefault(c => c.Codigo == id);
         }
+
+        
     }
 }

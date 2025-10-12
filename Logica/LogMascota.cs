@@ -11,7 +11,7 @@ namespace Logica
     public class LogMascota : IServiceEntidad<Mascota>
     {
         Random random = new Random();
-        private readonly DatoMascota datoMascota = new DatoMascota(NombreArchivo.ARCHIVO_MASCOTA);
+        private readonly DatoMascota datoMascota = new DatoMascota(NombreArchivo.ARC_MASCOTA);
         public string Guardar(Mascota entidad)
         {
             try
@@ -66,7 +66,7 @@ namespace Logica
         }
         public Mascota BuscarPorId(int id)
         {
-            return Consultar().FirstOrDefault(m => m.Codigo == id);
+            return datoMascota.BuscarPorId(id);
         }
         public int GenerarIdUnico()
         {

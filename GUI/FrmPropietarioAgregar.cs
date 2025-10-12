@@ -45,7 +45,6 @@ namespace ProyectoP3
             
 
         }
-
         private string agregar(Propietario propietario)
         {
             try
@@ -58,12 +57,10 @@ namespace ProyectoP3
             }
 
         }
-
         private void salir()
         {
             this.Close();
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
@@ -73,7 +70,6 @@ namespace ProyectoP3
             }
 
         }
-
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -83,7 +79,6 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-
         private Propietario Mappeo()
         {
             Propietario propietario = new Propietario();
@@ -94,9 +89,9 @@ namespace ProyectoP3
             propietario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
             propietario.TelefonoPrimario = txtNumeroTelefonoPrimario.Text;
             propietario.TelefonoSecundario = txtNumeroTelefonoSecundario.Text;
+            propietario.Email = txtEmail.Text;
             return propietario;
         }
-
         private bool validar()
         {
             if (string.IsNullOrWhiteSpace(txtId.Text)) throw new ArgumentNullException("La cédula es obligatoria.");
@@ -106,6 +101,7 @@ namespace ProyectoP3
             if (string.IsNullOrWhiteSpace(txtNumeroTelefonoPrimario.Text)) throw new ArgumentNullException("El número de teléfono primario es obligatorio.");
             if (string.IsNullOrEmpty(txtNumeroTelefonoSecundario.Text)) throw new ArgumentNullException("El número de teléfono secundario es obligatorio.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un género.");
+            if(string.IsNullOrEmpty(txtEmail.Text)) throw new ArgumentNullException("El email es obligatorio.");
             return true;
         }
     }
