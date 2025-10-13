@@ -110,6 +110,12 @@
     <Compile Include="FrmEspecieAgregar.Designer.cs">
       <DependentUpon>FrmEspecieAgregar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmIA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIA.Designer.cs">
+      <DependentUpon>FrmIA.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMascotaAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
