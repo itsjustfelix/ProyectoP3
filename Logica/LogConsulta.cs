@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Dato;
 using Entidad;
 using GeneradorDeDocumento;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Logica
 {
@@ -120,7 +122,8 @@ namespace Logica
             try
             {
                 if (entidad == null) throw new ArgumentNullException("La entidad no puede ser nula.");
-                generadorPDF = new GeneradorDePDFConsultas("PDFGeneradorConsulta", @"C:\Users\felix\Downloads\dall-e.webp", entidad);
+                string rutaLogo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", "logoProyecto.png");
+                generadorPDF = new GeneradorDePDFConsultas("PDFGeneradorConsulta", rutaLogo, entidad);
                 var ruta = generadorPDF.GenerarPDF();
                 return ruta;
             }
