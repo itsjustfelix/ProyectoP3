@@ -19,13 +19,11 @@ namespace ProyectoP3
         {
             txtCedula.Text = veterinario.Cedula.ToString();
             txtNombre.Text = veterinario.Nombres;
-            txtApellidoPaterno.Text = veterinario.ApellidoPaterno;
-            txtApellidoMaterno.Text = veterinario.ApellidoMaterno;
             txtNumeroTelefonicoPrimario.Text = veterinario.TelefonoPrimario;
-            txtNumeroTelefonoSecundario.Text = veterinario.TelefonoSecundario;
             if (veterinario.Sexo == "Femenino") RBFemenino.Checked = true;
             else RBMasculino.Checked = true;
             cmbEspecilizacion.SelectedValue = veterinario.Especializacion.Codigo;
+
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
