@@ -16,7 +16,5 @@ namespace Dato
         public const string ARC_MASCOTA = "Mascota.txt";
         public const string ARC_CITA = "Cita.txt";
         public const string ARC_ESPECIALIZACION = "Especializacion.txt";
-        public const string PATH_LOGO = "logo.png";
-
     }
 }

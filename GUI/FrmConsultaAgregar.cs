@@ -122,7 +122,7 @@ namespace ProyectoP3
         private void cargarCmb()
         {
             cbxVeterinario.DataSource = logVeterinario.Consultar();
-            cbxVeterinario.DisplayMember = "Nombre";
+            cbxVeterinario.DisplayMember = "Nombres";
             cbxVeterinario.ValueMember = "Cedula";
         }
 
