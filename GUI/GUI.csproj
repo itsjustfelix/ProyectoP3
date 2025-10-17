@@ -39,7 +39,9 @@
     <Reference Include="QuestPDF, Version=2025.7.2.0, Culture=neutral, PublicKeyToken=0f3c2b2315ff52c8, processorArchitecture=MSIL">
       <HintPath>..\packages\QuestPDF.2025.7.2\lib\netstandard2.0\QuestPDF.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -146,11 +148,11 @@
     <Compile Include="FrmEspecieEditar.Designer.cs">
       <DependentUpon>FrmEspecieEditar.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPropietarioEditar.cs">
+    <Compile Include="FrmEditarPropietatio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmEditarPropietatio.Designer.cs">
-      <DependentUpon>FrmPropietarioEditar.cs</DependentUpon>
+      <DependentUpon>FrmEditarPropietatio.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPropietario.cs">
       <SubType>Form</SubType>
@@ -260,7 +262,7 @@
       <DependentUpon>FrmConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEditarPropietatio.resx">
-      <DependentUpon>FrmPropietarioEditar.cs</DependentUpon>
+      <DependentUpon>FrmEditarPropietatio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEspecie.resx">
       <DependentUpon>FrmEspecie.cs</DependentUpon>
@@ -270,9 +272,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPropietario.resx">
       <DependentUpon>FrmPropietario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmPropietarioEditar.resx">
-      <DependentUpon>FrmPropietarioEditar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRaza.resx">
       <DependentUpon>FrmRaza.cs</DependentUpon>
