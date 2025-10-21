@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace ProyectoP3
 {
     private readonly AdministradorDeConversacion cm = new AdministradorDeConversacion();
-    private readonly LLMClient llm = new LLMClient();
+    private readonly GeminiService _gemini = new GeminiService();
     public partial class FrmIA : Form
     {
         public FrmIA()
@@ -44,7 +44,7 @@ namespace ProyectoP3
             try
             {
                 var prompt = GenerarMensajes.BuildPrompt(cm.GetHistory(), userInput);
-                var respuesta = await llm.GetResponseAsync(prompt);
+                var respuesta = await _gemini.GetResponseAsync(prompt);
 
                 cm.AddMessage(Role.Assistant, respuesta);
                 txtHistorial.AppendText($"IA: {respuesta}\n\n");
