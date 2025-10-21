@@ -63,11 +63,11 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(379, 416);
+            this.lblEstado.Location = new System.Drawing.Point(12, 407);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(44, 16);
+            this.lblEstado.Size = new System.Drawing.Size(35, 16);
             this.lblEstado.TabIndex = 3;
-            this.lblEstado.Text = "label1";
+            this.lblEstado.Text = "Listo";
             // 
             // FrmIA
             // 

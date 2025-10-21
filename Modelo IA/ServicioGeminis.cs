@@ -1,4 +1,5 @@
 ﻿using GenerativeAI;
+using GenerativeAI.Types;
 using Google.AI.GenerativeLanguage.V1Beta2;
 using Google.Apis.Auth.OAuth2;
 using System;
@@ -10,22 +11,22 @@ using System.Web.UI.WebControls;
 
 namespace Modelo_IA
 {
-    public class GeminiService
+    public class ServicioGeminis
     {
-        private string aPI_KEY;
+        private string API_KEY;
 
-        public GeminiService(string aPI_KEY)
+        public ServicioGeminis(string API_KEY)
         {
-            this.aPI_KEY = aPI_KEY;
+            this.API_KEY = API_KEY;
         }
     }
 
-    var gemini = new GeminiService(Constantes.API_KEY);
+    var gemini = new ServicioGeminis(Constantes.API_KEY);
     {
         private readonly GenerativeModel _modelo;
         private readonly List<Content> _historial = new List<Content>();
 
-        public GeminiService()
+        public ServicioGeminis()
         {
             // Usa la clave y modelo desde tu clase Constantes
             _modelo = new GenerativeModel(Constante.MODEL_NAME, Constante.API_KEY);
@@ -52,9 +53,7 @@ namespace Modelo_IA
             var respuesta = await _modelo.GenerateContentAsync(_historial);
 
             // Obtener texto de respuesta
-            string textoRespuesta = respuesta?.Candidates?.FirstOrDefault()?
-                                        .Content?.Parts?.FirstOrDefault()?.Text
-                                    ?? "No se recibió respuesta del modelo.";
+            string textoRespuesta = respuesta?.Candidates?.FirstOrDefault()? .Content?.Parts?.FirstOrDefault()?.Text ?? "No se recibió respuesta del modelo.";
 
             // Guardar respuesta del modelo en el historial
             _historial.Add(new Content
