@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace ProyectoP3
 {
     private readonly AdministradorDeConversacion cm = new AdministradorDeConversacion();
-    private readonly GeminiService _gemini = new GeminiService();
+    private readonly ServicioGeminis  _gemini = new ServicioGeminis();
     public partial class FrmIA : Form
     {
         public FrmIA()

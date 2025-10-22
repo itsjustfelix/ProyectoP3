@@ -10,22 +10,22 @@ namespace Modelo_IA
     public class AdministradorDeConversacion
     {
 
-        private readonly List<Mensaje> _messages = new List<Mensaje>();
+        private readonly List<Mensaje> _mensaje = new List<Mensaje>();
 
-        public void AddMessage(Role role, string content)
+        public void AddMensaje(Role role, string content)
         {
-            _messages.Add(new Mensaje { Role = role, Content = content });
+            _mensaje.Add(new Mensaje { Role = role, Content = content });
         }
 
         public List<Mensaje> GetHistory(int limit = 20)
         {
             // Devuelve los últimos 20 mensajes (ajustable)
-            return _messages.Skip(Math.Max(0, _messages.Count - limit)).ToList();
+            return _mensaje.Skip(Math.Max(0, _mensaje.Count - limit)).ToList();
         }
 
         public void ClearHistory()
         {
-            _messages.Clear();
+            _mensaje.Clear();
         }
 
 

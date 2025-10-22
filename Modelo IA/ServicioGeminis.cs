@@ -1,13 +1,14 @@
 ﻿using GenerativeAI;
 using GenerativeAI.Types;
-using Google.AI.GenerativeLanguage.V1Beta2;
-using Google.Apis.Auth.OAuth2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
+using Content = GenerativeAI.Types.Content;
+using Part = GenerativeAI.Types.Part;
+
 
 namespace Modelo_IA
 {
