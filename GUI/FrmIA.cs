@@ -1,20 +1,14 @@
 ﻿using Modelo_IA;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoP3
 {
-    private readonly AdministradorDeConversacion cm = new AdministradorDeConversacion();
-    private readonly ServicioGeminis  _gemini = new ServicioGeminis();
     public partial class FrmIA : Form
     {
+        private readonly AdministradorDeConversacion cm = new AdministradorDeConversacion();
+        private readonly ServicioGeminis _gemini = new ServicioGeminis();
+
         public FrmIA()
         {
             InitializeComponent();
@@ -39,14 +33,14 @@ namespace ProyectoP3
             lblEstado.Text = "Consultando a la IA...";
 
             // Guardar mensaje del usuario
-            cm.AddMessage(Role.User, userInput);
+            cm.AddMensaje(Role.User, userInput);
 
             try
             {
                 var prompt = GenerarMensajes.BuildPrompt(cm.GetHistory(), userInput);
                 var respuesta = await _gemini.GetResponseAsync(prompt);
 
-                cm.AddMessage(Role.Assistant, respuesta);
+                cm.AddMensaje(Role.Assistant, respuesta);
                 txtHistorial.AppendText($"IA: {respuesta}\n\n");
             }
             catch (Exception ex)

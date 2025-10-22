@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-using System;
-
 namespace Modelo_IA
 {
     internal static class Constantes

@@ -65,5 +65,10 @@ namespace Modelo_IA
 
             return textoRespuesta;
         }
+
+        public async Task<string> GetResponseAsync(List<Mensaje> prompt)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
