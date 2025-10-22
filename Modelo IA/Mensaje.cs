@@ -11,17 +11,18 @@ namespace Modelo_IA
 
     public class Mensaje
     {
-        private string content;
+        public string content;
 
         public Role Role { get; set; }
         public string Content { get; set; }
         public object Constante { get; }
 
+        public Mensaje() { }    
         public Mensaje(Role role, string contenido)
         {
             Role = role;
             
-            Content = content ?? string.Empty;
+            Content = contenido ?? string.Empty;
 
         }
         public override string ToString()

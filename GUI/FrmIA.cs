@@ -13,17 +13,8 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-
-        private void txtPregunta_TextChanged(object sender, EventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true; // Evita salto de línea
-                btnEnviar.PerformClick();
-            }
-        }
-
-        private async void btnEnviar_Click(object sender, EventArgs e)
+           
+        private  void btnEnviar_Click(object sender, EventArgs e)
         {
             string userInput = txtPregunta.Text.Trim();
             if (string.IsNullOrEmpty(userInput)) return;
@@ -38,7 +29,7 @@ namespace ProyectoP3
             try
             {
                 var prompt = GenerarMensajes.BuildPrompt(cm.GetHistory(), userInput);
-                var respuesta = await _gemini.GetResponseAsync(prompt);
+                var respuesta = _gemini.GetResponse(prompt);
 
                 cm.AddMensaje(Role.Assistant, respuesta);
                 txtHistorial.AppendText($"IA: {respuesta}\n\n");
@@ -51,6 +42,15 @@ namespace ProyectoP3
             lblEstado.Text = "Listo";
         }
 
+        private void txtPregunta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Evita salto de línea
+                btnEnviar.PerformClick();
+            }
+
+        }
     }
 }
 

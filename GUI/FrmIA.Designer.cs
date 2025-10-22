@@ -48,7 +48,7 @@
             this.txtPregunta.Name = "txtPregunta";
             this.txtPregunta.Size = new System.Drawing.Size(424, 22);
             this.txtPregunta.TabIndex = 1;
-            this.txtPregunta.TextChanged += new System.EventHandler(this.txtPregunta_TextChanged);
+            this.txtPregunta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPregunta_KeyDown);
             // 
             // btnEnviar
             // 

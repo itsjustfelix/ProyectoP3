@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Modelo_IA;
 
+
 namespace Modelo_IA
 {
     public class GenerarMensajes
@@ -15,10 +16,14 @@ namespace Modelo_IA
 
         public static List<Mensaje> BuildPrompt(List<Mensaje> history, string userInput)
         {
+            Mensaje Mensajes = new Mensaje
+            {
+                Role = Role.System,
+                Content = SystemPrompt
+            };
             var prompt = new List<Mensaje>
         {
-            new Mensaje { Role = Role.System, Content = SystemPrompt
-           }
+            Mensajes
         };
 
             prompt.AddRange(history);
@@ -32,6 +37,7 @@ namespace Modelo_IA
             return new Mensaje { Role = Role.User, Content = userInput };
         }
     }
+    
 
 }
 

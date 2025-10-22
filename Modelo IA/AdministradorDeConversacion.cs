@@ -14,14 +14,12 @@ namespace Modelo_IA
 
         public void AddMensaje(Role role, string content)
         {
-            _mensaje.Add(new Mensaje { Role = role, Content = content });
+            _mensaje.Add(item: new Mensaje { Role = role, Content = content });
         }
 
-        public List<Mensaje> GetHistory(int limit = 20)
-        {
+        public List<Mensaje> GetHistory(int limit = 20) =>
             // Devuelve los últimos 20 mensajes (ajustable)
-            return _mensaje.Skip(Math.Max(0, _mensaje.Count - limit)).ToList();
-        }
+            _mensaje.Skip(Math.Max(0, _mensaje.Count - limit)).ToList();
 
         public void ClearHistory()
         {
