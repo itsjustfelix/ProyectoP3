@@ -24,9 +24,9 @@ namespace Modelo_IA
             _modelo = new GenerativeModel(Constantes.MODEL_NAME, Constantes.API_KEY);
         }
 
-        /// <summary>
+        
         /// Envía un mensaje al modelo, guarda el historial y devuelve la respuesta.
-        /// </summary>
+        
         public async Task<string> EnviarMensajeAsync(string textoUsuario)
         {
             if (string.IsNullOrWhiteSpace(textoUsuario))
@@ -41,7 +41,9 @@ namespace Modelo_IA
             _historial.Add(userMessage);
 
             // Enviar la conversación completa al modelo
-            var respuesta = await _modelo.GenerateContentAsync((IEnumerable<Part>)_historial);
+            var respuesta = await _modelo.GenerateContentAsync(
+    new List<Part> { new Part { Text = textoUsuario } }
+);
 
             // Extraer texto de la respuesta
             string textoRespuesta = respuesta?.Candidates?.FirstOrDefault()?.Content?.Parts?.FirstOrDefault()?.Text
@@ -65,7 +67,27 @@ namespace Modelo_IA
 
         public string GetResponse(List<Mensaje> prompt)
         {
-            throw new NotImplementedException();
+             try
+    {
+        // Toma el último mensaje del usuario de la lista 'prompt'
+        var ultimoMensaje = prompt.LastOrDefault(m => m.Role == Role.User)?.Content;
+
+        // Si no hay mensaje del usuario, devuelve aviso
+        if (string.IsNullOrWhiteSpace(ultimoMensaje))
+            return "No se encontró un mensaje de usuario válido.";
+
+        // Espera la respuesta del modelo (bloqueante, sincronizada)
+        var respuesta = EnviarMensajeAsync(ultimoMensaje).Result;
+
+        return respuesta;
+    }
+    catch (Exception ex)
+    {
+                string detalle = ex.Message;
+                if (ex.InnerException != null)
+                    detalle += "\nDetalle interno: " + ex.InnerException.Message;
+                return "Error al comunicarse con el modelo: " + detalle;
+            }
         }
     }
 }

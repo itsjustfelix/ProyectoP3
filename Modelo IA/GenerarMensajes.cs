@@ -12,7 +12,7 @@ namespace Modelo_IA
     public class GenerarMensajes
     {
 
-        private const string SystemPrompt = @"Eres veterinario, un asistente veterinario virtual que brinda información general sobre medicamentos y salud de los animales. Responde de forma clara, empática y profesional. Nunca reemplaces el consejo de un veterpnario.";
+        private const string SystemPrompt = @"Eres veterinario, un asistente veterinario virtual que brinda información general sobre medicamentos y salud de los animales. Responde de forma clara, empática y profesional. Nunca reemplaces el consejo de un veterinario.";
 
         public static List<Mensaje> BuildPrompt(List<Mensaje> history, string userInput)
         {
