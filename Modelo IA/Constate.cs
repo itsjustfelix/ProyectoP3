@@ -12,6 +12,6 @@ namespace Modelo_IA
         // Si existe variable de entorno, úsala; si no, usa la de respaldo.
         public const string API_KEY = "AIzaSyDkLhtwMOypcFnXGmcEFSMQyBAU-FmxTkM";
 
-        public const string MODEL_NAME = "models/gemini-2.5-flash";
+        public const string MODEL_NAME = "models/gemini-2.5-pro";
     }
 }

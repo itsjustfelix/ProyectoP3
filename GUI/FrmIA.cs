@@ -9,12 +9,12 @@ namespace ProyectoP3
         private readonly AdministradorDeConversacion cm = new AdministradorDeConversacion();
         private readonly ServicioGeminis _gemini = new ServicioGeminis();
 
-        public FrmIA()
+        public FrmIA() 
         {
             InitializeComponent();
         }
            
-        private  void btnEnviar_Click(object sender, EventArgs e)
+        private void btnEnviar_Click(object sender, EventArgs e)
         {
             string userInput = txtPregunta.Text.Trim();
             if (string.IsNullOrEmpty(userInput)) return;
