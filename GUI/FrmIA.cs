@@ -1,5 +1,6 @@
 ﻿using Modelo_IA;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ProyectoP3
@@ -8,7 +9,7 @@ namespace ProyectoP3
     {
         private readonly AdministradorDeConversacion cm = new AdministradorDeConversacion();
         private readonly ServicioGeminis _gemini = new ServicioGeminis();
-        private object prompt;
+        private List<Mensaje> prompt;
 
         public FrmIA() 
         {
