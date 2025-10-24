@@ -1,4 +1,5 @@
-﻿using Modelo_IA;
+﻿using Microsoft.VisualBasic;
+using Modelo_IA;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -9,44 +10,43 @@ namespace ProyectoP3
     {
         private readonly AdministradorDeConversacion cm = new AdministradorDeConversacion();
         private readonly ServicioGeminis _gemini = new ServicioGeminis();
-        private List<Mensaje> prompt;
+        private readonly List<Mensaje> prompt = new List<Mensaje>();
 
         public FrmIA() 
         {
             InitializeComponent();
         }
-           
-        private void btnEnviar_Click(object sender, EventArgs e)
+       
+
+        private async void btnEnviar_Click(object sender, EventArgs e)
         {
             try
             {
-                // Mostrar que está procesando
                 lblEstado.Text = "Consultando a la IA...";
                 lblEstado.Visible = true;
 
-                // Captura el texto del usuario
                 string textoUsuario = txtPregunta.Text.Trim();
-
                 if (string.IsNullOrWhiteSpace(textoUsuario))
                 {
                     lblEstado.Text = "Por favor escribe una pregunta.";
                     return;
                 }
 
-                // Agrega el mensaje del usuario a la lista de mensajes
-                object mensajeUsuario = GetMensajeUsuario(textoUsuario);
+                // Agregar mensaje del usuario
+                var mensajeUsuario = GetMensajeUsuario(textoUsuario);
+                prompt.Add(mensajeUsuario);
 
-                // 🔹 Espera la respuesta del servicio (bloqueante, SIN async)
-                string respuesta = _gemini.GetResponse(prompt);
-
-                // Muestra la respuesta en el historial
                 txtHistorial.AppendText($"Tú: {textoUsuario}\r\n");
+
+                // ✅ Llamada asíncrona
+                string respuesta = await _gemini.GetResponseAsync(prompt);
+
                 txtHistorial.AppendText($"IA: {respuesta}\r\n\r\n");
 
-                // Agrega el mensaje del modelo al historial
-                object mensajeIA = GetMensajeIA(respuesta);
+                // Agregar mensaje de la IA
+                var mensajeIA = GetMensajeIA(respuesta);
+                prompt.Add(mensajeIA);
 
-                // Actualiza el estado
                 lblEstado.Text = "Respuesta recibida ✔";
                 txtPregunta.Clear();
             }
@@ -60,7 +60,7 @@ namespace ProyectoP3
         {
             var mensaje = new Mensaje
             {
-                Role = role.Assistant,
+                Role = role.Model,
                 Content = respuesta
             };
             

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Modelo_IA
 {
-    public enum role { System, User, Assistant}
+    public enum role { System, User, Assistant, Model}
 
     public class Mensaje
     {

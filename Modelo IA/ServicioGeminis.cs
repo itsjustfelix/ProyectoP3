@@ -91,9 +91,9 @@ namespace Modelo_IA
             }
         }
 
-        /// <summary>
+       
         /// Devuelve el historial de conversación.
-        /// </summary>
+        
         public List<Content> GetHistorial() => _historial;
 
         
@@ -103,10 +103,10 @@ namespace Modelo_IA
         {
             try
             {
-                var ultimoMensaje = prompt.LastOrDefault(m =>
-                {
-                    return m.Role == role.User;
-                })?.Content;
+                if (prompt == null || prompt.Count == 0)
+                    return "No se recibió ningún mensaje para procesar.";
+
+                var ultimoMensaje = prompt.LastOrDefault(m => m.Role == role.User)?.Content;
 
                 if (string.IsNullOrWhiteSpace(ultimoMensaje))
                     return "No se encontró un mensaje de usuario válido.";
@@ -128,6 +128,30 @@ namespace Modelo_IA
         public string GetResponse(object prompt)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<string> GetResponseAsync(List<Mensaje> prompt)
+        {
+            try
+            {
+                if (prompt == null || prompt.Count == 0)
+                    return "No se recibió ningún mensaje para procesar.";
+
+                var ultimoMensaje = prompt.LastOrDefault(m => m.Role == role.User)?.Content;
+
+                if (string.IsNullOrWhiteSpace(ultimoMensaje))
+                    return "No se encontró un mensaje de usuario válido.";
+
+                var respuesta = await EnviarMensajeAsync(ultimoMensaje);
+                return respuesta;
+            }
+            catch (Exception ex)
+            {
+                string detalle = ex.Message;
+                if (ex.InnerException != null)
+                    detalle += "\nDetalle interno: " + ex.InnerException.Message;
+                return "Error al comunicarse con el modelo: " + detalle;
+            }
         }
     }
 }
