@@ -12,7 +12,7 @@ namespace Modelo_IA
 
         private readonly List<Mensaje> _mensaje = new List<Mensaje>();
 
-        public void AddMensaje(Role role, string content)
+        public void AddMensaje(role role, string content)
         {
             _mensaje.Add(item: new Mensaje { Role = role, Content = content });
         }

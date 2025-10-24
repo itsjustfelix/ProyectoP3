@@ -18,7 +18,7 @@ namespace Modelo_IA
         {
             Mensaje Mensajes = new Mensaje
             {
-                Role = Role.System,
+                Role = role.System,
                 Content = SystemPrompt
             };
             var prompt = new List<Mensaje>
@@ -34,7 +34,7 @@ namespace Modelo_IA
 
         private static Mensaje NewMethod(string userInput)
         {
-            return new Mensaje { Role = Role.User, Content = userInput };
+            return new Mensaje { Role = role.User, Content = userInput };
         }
     }
     

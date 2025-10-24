@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 
 namespace Modelo_IA
 {
-    public enum Role { System, User, Assistant }
+    public enum role { System, User, Assistant}
 
     public class Mensaje
     {
         public string content;
 
-        public Role Role { get; set; }
+        public role Role { get; set; }
+        
         public string Content { get; set; }
         public object Constante { get; }
 
         public Mensaje() { }    
-        public Mensaje(Role role, string contenido)
+        public Mensaje(role role, string contenido)
         {
             Role = role;
             
