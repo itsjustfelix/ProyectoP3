@@ -7,12 +7,12 @@ using GenerativeAI;
 
 namespace Modelo_IA
 {
-    internal static class Constantes
+    public static class Constante
     {
         // Si existe variable de entorno, úsala; si no, usa la de respaldo.
-        public const string API_KEY = "AIzaSyA_ZoEyNKMGKzwoNlr25YhepJlRMBeCQnM";
+        public static string API_KEY = "AIzaSyDJavZdEQWX82YhMyYhoLj6ABKYFRVK7yU";
 
-        public const string MODEL_NAME = "gemini-1.5-flash";
+        public const string MODEL_NAME = "models/gemini-2.5-flash";
 
     }
 }

@@ -20,7 +20,7 @@ namespace Modelo_IA
         public ServicioGeminis()
         {
             // Usa la clave y modelo definidos en tu clase Constantes
-            _modelo = new GenerativeModel(Constantes.MODEL_NAME, Constantes.API_KEY);
+            _modelo = new GenerativeModel(Constante.MODEL_NAME, Constante.API_KEY);
         }
 
         /// <summary>
