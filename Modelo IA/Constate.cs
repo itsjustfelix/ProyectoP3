@@ -10,7 +10,7 @@ namespace Modelo_IA
     public static class Constante
     {
         // Si existe variable de entorno, úsala; si no, usa la de respaldo.
-        public static string API_KEY = "AIzaSyDJavZdEQWX82YhMyYhoLj6ABKYFRVK7yU";
+        public static string API_KEY = "AIzaSyAvPgVViEIVWwYLYk34OalWq2qUD5WQLNc";
 
         public const string MODEL_NAME = "models/gemini-2.5-flash";
 
