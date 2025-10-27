@@ -139,11 +139,10 @@
   <ItemGroup>
     <Compile Include="AdministradorDeConversacion.cs" />
     <Compile Include="Constate.cs" />
-    <Compile Include="ServicioGeminis.cs" />
+    <Compile Include="ServicioIA.cs" />
     <Compile Include="GenerarMensajes.cs" />
     <Compile Include="Mensaje.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestGemini.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -151,6 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeneradorDeDocumento\Herramientas.csproj">
+      <Project>{b0db9532-cf3b-4890-bb33-8632204e005c}</Project>
+      <Name>Herramientas</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

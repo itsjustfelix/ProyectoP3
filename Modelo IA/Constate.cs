@@ -9,10 +9,8 @@ namespace Modelo_IA
 {
     public static class Constante
     {
-        // Si existe variable de entorno, úsala; si no, usa la de respaldo.
-        public static string API_KEY = "AIzaSyAvPgVViEIVWwYLYk34OalWq2qUD5WQLNc";
-
-        public const string MODEL_NAME = "models/gemini-2.5-flash";
-
+        public const string API_KEY = "FzFvqe2ki99ByHYG9GdjZcBAbREoBkbU2AcaBX9v88kST2lWJyLVJQQJ99BJACHYHv6XJ3w3AAABACOGqeZa";
+        public const string ENDPOINT = "https://modeloia-azure.openai.azure.com/";
+        public const string DEPLOYMENT = "gpt-4o"; 
     }
 }

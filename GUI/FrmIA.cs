@@ -9,7 +9,7 @@ namespace ProyectoP3
     public partial class FrmIA : Form
     {
         private readonly AdministradorDeConversacion cm = new AdministradorDeConversacion();
-        private readonly ServicioGeminis _gemini = new ServicioGeminis();
+        private readonly ServicioIA _gemini = new ServicioIA();
         private readonly List<Mensaje> prompt = new List<Mensaje>();
 
         public FrmIA() 
