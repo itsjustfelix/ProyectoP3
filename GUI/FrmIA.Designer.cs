@@ -36,26 +36,29 @@
             // 
             // txtHistorial
             // 
-            this.txtHistorial.Location = new System.Drawing.Point(12, 12);
+            this.txtHistorial.Location = new System.Drawing.Point(9, 10);
+            this.txtHistorial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtHistorial.Name = "txtHistorial";
             this.txtHistorial.ReadOnly = true;
-            this.txtHistorial.Size = new System.Drawing.Size(746, 316);
+            this.txtHistorial.Size = new System.Drawing.Size(560, 258);
             this.txtHistorial.TabIndex = 0;
             this.txtHistorial.Text = "";
             // 
             // txtPregunta
             // 
-            this.txtPregunta.Location = new System.Drawing.Point(12, 354);
+            this.txtPregunta.Location = new System.Drawing.Point(9, 288);
+            this.txtPregunta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPregunta.Name = "txtPregunta";
-            this.txtPregunta.Size = new System.Drawing.Size(424, 22);
+            this.txtPregunta.Size = new System.Drawing.Size(319, 20);
             this.txtPregunta.TabIndex = 1;
             this.txtPregunta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPregunta_KeyDown);
             // 
             // btnEnviar
             // 
-            this.btnEnviar.Location = new System.Drawing.Point(489, 354);
+            this.btnEnviar.Location = new System.Drawing.Point(367, 288);
+            this.btnEnviar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(75, 23);
+            this.btnEnviar.Size = new System.Drawing.Size(56, 19);
             this.btnEnviar.TabIndex = 2;
             this.btnEnviar.Text = "Enviar";
             this.btnEnviar.UseVisualStyleBackColor = true;
@@ -64,23 +67,26 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(12, 407);
+            this.lblEstado.Location = new System.Drawing.Point(9, 331);
+            this.lblEstado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(35, 16);
+            this.lblEstado.Size = new System.Drawing.Size(29, 13);
             this.lblEstado.TabIndex = 3;
             this.lblEstado.Text = "Listo";
             // 
             // FrmIA
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.txtPregunta);
             this.Controls.Add(this.txtHistorial);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmIA";
             this.Text = "FrmIA";
+            this.Load += new System.EventHandler(this.FrmIA_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

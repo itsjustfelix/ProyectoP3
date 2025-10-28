@@ -8,15 +8,12 @@ namespace Modelo_IA
 {
     public class ChatMensaje
     {
-
-             public string Role { get; set; }
-            public string Content { get; set; }
-
-            public ChatMensaje(string role, string content)
-            {
-                Role = role;
-                Content = content;
-            }
-       
+        public string Role { get; set; }
+        public string Content { get; set; }
+        public ChatMensaje(string role, string content)
+        {
+            Role = role;
+            Content = content;
+        }
     }
 }
