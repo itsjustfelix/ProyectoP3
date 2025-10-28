@@ -137,10 +137,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministradorDeConversacion.cs" />
+    <Compile Include="ChatMensaje.cs" />
     <Compile Include="Constate.cs" />
     <Compile Include="ServicioIA.cs" />
-    <Compile Include="GenerarMensajes.cs" />
     <Compile Include="Mensaje.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

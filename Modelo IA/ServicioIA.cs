@@ -20,7 +20,7 @@ namespace Modelo_IA
         private readonly string _endpoint;
         private readonly string _deploymentName;
         private readonly HttpClient _httpClient;
-        private readonly List<ChatMessage> _historial = new List<ChatMessage>();
+        private readonly List<ChatMensaje> _historial = new List<ChatMensaje>();
 
         public ServicioIA()
         {
@@ -39,7 +39,7 @@ namespace Modelo_IA
             if (string.IsNullOrWhiteSpace(textoUsuario))
                 return "Por favor, escribe una pregunta válida.";
 
-            _historial.Add(new ChatMessage("user", textoUsuario));
+            _historial.Add(new ChatMensaje("user", textoUsuario));
 
             try
             {
@@ -68,7 +68,7 @@ namespace Modelo_IA
                         .GetProperty("content")
                         .GetString();
 
-                    _historial.Add(new ChatMessage("assistant", textoRespuesta));
+                    _historial.Add(new ChatMensaje("assistant", textoRespuesta));
 
                     return textoRespuesta ?? "No se recibió respuesta del modelo.";
                 }
@@ -82,7 +82,7 @@ namespace Modelo_IA
             }
         }
 
-        public List<ChatMessage> GetHistorial() => _historial;
+        public List<ChatMensaje> GetHistorial() => _historial;
 
         public async Task<string> GetResponseAsync(List<Mensaje> prompt)
         {
@@ -97,15 +97,4 @@ namespace Modelo_IA
         }
     }
 
-    public class ChatMessage
-    {
-        public string Role { get; set; }
-        public string Content { get; set; }
-
-        public ChatMessage(string role, string content)
-        {
-            Role = role;
-            Content = content;
-        }
-    }
 }
