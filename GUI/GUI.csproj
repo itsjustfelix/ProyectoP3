@@ -246,6 +246,9 @@
     <EmbeddedResource Include="FrmEspecieEditar.resx">
       <DependentUpon>FrmEspecieEditar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmIA.resx">
+      <DependentUpon>FrmIA.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMascotaAgregar.resx">
       <DependentUpon>FrmMascotaAgregar.cs</DependentUpon>
     </EmbeddedResource>
@@ -331,6 +334,10 @@
     <ProjectReference Include="..\Logica\Logica.csproj">
       <Project>{5b3eb5ad-d243-4d8e-9993-c95d7ed3e17f}</Project>
       <Name>Logica</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modelo IA\Modelo IA.csproj">
+      <Project>{0a4205db-cf66-467e-ba33-6008dcceaaf7}</Project>
+      <Name>Modelo IA</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

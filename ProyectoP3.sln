@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Herramientas", "GeneradorDeDocumento\Herramientas.csproj", "{B0DB9532-CF3B-4890-BB33-8632204E005C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelo IA", "Modelo IA\Modelo IA.csproj", "{0A4205DB-CF66-467E-BA33-6008DCCEAAF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B0DB9532-CF3B-4890-BB33-8632204E005C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0DB9532-CF3B-4890-BB33-8632204E005C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0DB9532-CF3B-4890-BB33-8632204E005C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A4205DB-CF66-467E-BA33-6008DCCEAAF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A4205DB-CF66-467E-BA33-6008DCCEAAF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A4205DB-CF66-467E-BA33-6008DCCEAAF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A4205DB-CF66-467E-BA33-6008DCCEAAF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
