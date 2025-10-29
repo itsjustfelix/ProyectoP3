@@ -40,7 +40,6 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Especializacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVeterinario)).BeginInit();
@@ -74,7 +73,6 @@
             this.Column6,
             this.Column3,
             this.Column4,
-            this.Column7,
             this.Especializacion});
             this.DGVeterinario.Location = new System.Drawing.Point(6, 19);
             this.DGVeterinario.Name = "DGVeterinario";
@@ -170,12 +168,6 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Numero Telefonico Secundario";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
             // Especializacion
             // 
             this.Especializacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -214,7 +206,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Especializacion;
     }
 }

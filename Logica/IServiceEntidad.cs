@@ -8,6 +8,6 @@ namespace Logica
 {
     public interface IServiceEntidad<T>: ICrud<T>
     {
-        int GenerarIdUnico();
+        string GenerarIdUnico();
     }
 }

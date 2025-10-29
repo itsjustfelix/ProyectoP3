@@ -8,7 +8,7 @@ namespace Logica
 {
     public interface IServicePersonas<T> : ICrud<T>
     {
-        bool IdUnico(int id);
+        bool IdUnico(string id);
     }
 
 }

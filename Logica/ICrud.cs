@@ -12,8 +12,8 @@ namespace Logica
         string Guardar(T entidad);
         List<T> Consultar();
         string Actualizar(T NuevaEntidad);
-        string Borrar(int Id);
+        string Borrar(string Id);
         bool Validar(T entidad, out string mensaje);
-        T BuscarPorId(int id);
+        T BuscarPorId(string id);
     }
 }

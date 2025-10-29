@@ -9,8 +9,14 @@ namespace Logica
 {
     public class logEspecializacion : IServiceEntidad<Especializacion>
     {
-        Random random = new Random();
-        private readonly FileRepository<Especializacion> datoEspecializacion = new DatoEspecializacion(NombreArchivo.ARC_ESPECIALIZACION);
+        Random random;
+        private readonly FileRepository<Especializacion> datoEspecializacion;
+
+        public logEspecializacion()
+        {
+            datoEspecializacion = new DatoEspecializacion(NombreArchivo.ARC_ESPECIALIZACION);
+            random = new Random();
+        }
         public string Guardar(Especializacion entidad)
         {
             try
@@ -55,30 +61,30 @@ namespace Logica
             }
         }
 
-        public string Borrar(int Id)
+        public string Borrar(string Id)
         {
             var listaEspecializaciones = Consultar();
-            int index = listaEspecializaciones.FindIndex(e => e.Codigo == Id);
+            int index = listaEspecializaciones.FindIndex(e => e.Codigo.Equals(Id));
             if (index == -1) throw new KeyNotFoundException("Especializacion no encontrada");
             listaEspecializaciones.RemoveAt(index);
             return datoEspecializacion.SobrescribirArchivo(listaEspecializaciones);
         }
 
-        public Especializacion BuscarPorId(int codigo)
+        public Especializacion BuscarPorId(string codigo)
         {
             return datoEspecializacion.BuscarPorId(codigo);
         }
 
 
 
-        public int GenerarIdUnico()
+        public string GenerarIdUnico()
         {
-            int codigo;
+            string codigo;
             var listaEspecializaciones = Consultar();
-            HashSet<int> codigosExistentes = new HashSet<int>(listaEspecializaciones.Select(e => e.Codigo));
+            HashSet<string> codigosExistentes = new HashSet<string>(listaEspecializaciones.Select(e => e.Codigo));
             do
             {
-                codigo = random.Next(1, 10000);
+                codigo = random.Next(1, 10000).ToString();
             } while (codigosExistentes.Contains(codigo));
             return codigo;
         }

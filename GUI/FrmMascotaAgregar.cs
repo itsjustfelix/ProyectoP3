@@ -17,7 +17,7 @@ namespace ProyectoP3
         IServiceRaza logRaza = new LogRaza();
         private void bttnBuscarProp_Click(object sender, EventArgs e)
         {
-            Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
+            Propietario propietario = buscarPropietario(txtIdProprietario.Text);
             if (propietario == null)
             {
                 MessageBox.Show("Propietario no encontrado", "Buscar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -28,7 +28,7 @@ namespace ProyectoP3
             lblNombreProp.Text = propietario.Nombres;
             SetControlesEstado(true);
         }
-        private Propietario buscarPropietario(int id)
+        private Propietario buscarPropietario(string id)
         {
             return logPropietario.BuscarPorId(id);
         }
@@ -80,11 +80,11 @@ namespace ProyectoP3
                 return ex.Message;
             }
         }
-        private Especie buscarEspecie(int id)
+        private Especie buscarEspecie(string id)
         {
             return logEspecie.BuscarPorId(id);
         }
-        private Raza buscarRaza(int id)
+        private Raza buscarRaza(string id)
         {
             return logRaza.BuscarPorId(id);
         }
@@ -115,11 +115,12 @@ namespace ProyectoP3
         }
         private void cargarCmbEspecie()
         {
+            cmbEspecie.DataSource = null;  
+            cmbEspecie.DataSource = logEspecie.Consultar();
             cmbEspecie.DisplayMember = "Nombre";
             cmbEspecie.ValueMember = "Codigo";
-            cmbEspecie.DataSource = logEspecie.Consultar();
         }
-        private void cargarCmbRaza(int idEspecie)
+        private void cargarCmbRaza(string idEspecie)
         {
             cmbRaza.DataSource = null;
             cmbRaza.DataSource = logRaza.ConsultarPorEspecie(idEspecie);
@@ -128,14 +129,14 @@ namespace ProyectoP3
         }
         private void cmbEspecie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cargarCmbRaza(int.Parse(cmbEspecie.SelectedValue.ToString()));
+            cargarCmbRaza(cmbEspecie.SelectedValue.ToString());
         }
 
         private Mascota Mapeo()
         {
-            Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
-            Especie especie = buscarEspecie(int.Parse(cmbEspecie.SelectedValue.ToString()));
-            Raza raza = buscarRaza(int.Parse(cmbRaza.SelectedValue.ToString()));
+            Propietario propietario = buscarPropietario(txtIdProprietario.Text);
+            Especie especie = buscarEspecie(cmbEspecie.SelectedValue.ToString());
+            Raza raza = buscarRaza(cmbRaza.SelectedValue.ToString());
             Mascota mascota = new Mascota();
             mascota.Nombre = txtNombre.Text;
             mascota.Propietario = propietario;

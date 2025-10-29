@@ -12,7 +12,7 @@ namespace Dato
         string Guardar(T objeto);
         List<T> Consultar();
         string SobrescribirArchivo(List<T> list);
-        T BuscarPorId(int id);
+        T BuscarPorId(string id);
        
     }
 }

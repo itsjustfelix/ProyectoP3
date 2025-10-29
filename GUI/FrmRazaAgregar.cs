@@ -70,7 +70,7 @@ namespace ProyectoP3
                 return e.Message;
             }
         }
-        private Especie buscarEspecie(int id)
+        private Especie buscarEspecie(string id)
         {
             return logEspecie.BuscarPorId(id);
         }
@@ -94,7 +94,7 @@ namespace ProyectoP3
         }
         private Raza Mapeo()
         {
-            Especie especie = buscarEspecie(int.Parse(cbxEspecie.SelectedValue.ToString()));
+            Especie especie = buscarEspecie(cbxEspecie.SelectedValue.ToString());
             Raza raza = new Raza();
             raza.Nombre = txtNombre.Text;
             raza.Especie = especie;

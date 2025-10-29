@@ -9,8 +9,13 @@ namespace Logica
 {
     public class LogRaza : IServiceRaza
     {
-        private readonly DatoRaza datoRaza = new DatoRaza(NombreArchivo.ARC_RAZA);
-        Random random = new Random();
+        private readonly DatoRaza datoRaza;
+        Random random;
+        public LogRaza()
+        {
+            datoRaza = new DatoRaza(NombreArchivo.ARC_RAZA);
+            random = new Random();
+        }
         public string Guardar(Raza entidad)
         {
             try
@@ -53,30 +58,30 @@ namespace Logica
             }
 
         }
-        public string Borrar(int id)
+        public string Borrar(string id)
         {
             var listaRazas = Consultar();
-            int index = listaRazas.FindIndex(r => r.Codigo == id);
+            int index = listaRazas.FindIndex(r => r.Codigo.Equals(id));
             if (index == -1) throw new KeyNotFoundException("Raza no encontrada");
             listaRazas.RemoveAt(index);
             return datoRaza.SobrescribirArchivo(listaRazas);
         }
-        public int GenerarIdUnico()
+        public string GenerarIdUnico()
         {
-            int id;
+            string id;
             List<Raza> listRaza = Consultar();
-            HashSet<int> idsExistentes = new HashSet<int>(listRaza.Select(m => m.Codigo));
+            HashSet<string> idsExistentes = new HashSet<string>(listRaza.Select(m => m.Codigo));
             do
             {
-                id = random.Next(1, 10000);
+                id = random.Next(1, 10000).ToString();
             } while (idsExistentes.Contains(id));
             return id;
         }
-        public Raza BuscarPorId(int id)
+        public Raza BuscarPorId(string id)
         {
             return datoRaza.BuscarPorId(id);
         }
-        public List<Raza> ConsultarPorEspecie(int idEspecie)
+        public List<Raza> ConsultarPorEspecie(string idEspecie)
         {
             return Consultar().Where(r => r.Especie.Codigo.Equals(idEspecie)).ToList();
         }

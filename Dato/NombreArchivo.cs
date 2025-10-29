@@ -8,13 +8,13 @@ namespace Dato
 {
     public class NombreArchivo
     {
-        public const string ARC_ESPECIE = "Especie.txt";
-        public const string ARC_RAZA = "Raza.txt";
-        public const string ARC_PROPIETARIO = "Propietario.txt";
-        public const string ARC_VETERINARIO = "Veterinario.txt";
-        public const string ARC_CONSULTA = "Consulta.txt";
-        public const string ARC_MASCOTA = "Mascota.txt";
-        public const string ARC_CITA = "Cita.txt";
-        public const string ARC_ESPECIALIZACION = "Especializacion.txt";
+        public const string ARC_ESPECIE = "especie.txt";
+        public const string ARC_RAZA = "raza.txt";
+        public const string ARC_PROPIETARIO = "propietario.txt";
+        public const string ARC_VETERINARIO = "veterinario.txt";
+        public const string ARC_CONSULTA = "consulta.txt";
+        public const string ARC_MASCOTA = "mascota.txt";
+        public const string ARC_CITA = "cita.txt";
+        public const string ARC_ESPECIALIZACION = "especializacion.txt";
     }
 }

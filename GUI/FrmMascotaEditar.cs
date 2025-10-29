@@ -10,14 +10,15 @@ namespace ProyectoP3
         public FrmMascotaEditar(Mascota mascota)
         {
             InitializeComponent();
-            mostrarMascota(mascota);
+            this.mascota = mascota;
             setEstadoControles(false);
         }
         IServicePersonas<Propietario> logPropietario = new LogPropietario();
         IServiceEntidad<Mascota> logMascota = new LogMascota();
         IServiceEntidad<Especie> logEspecie = new LogEspecie();
         IServiceRaza logRaza = new LogRaza();
-        int id;
+        private Mascota mascota;
+        string id;
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
@@ -59,15 +60,15 @@ namespace ProyectoP3
                 return ex.Message;
             }
         }
-        private Especie buscarEspecie(int id)
+        private Especie buscarEspecie(string id)
         {
             return logEspecie.BuscarPorId(id);
         }
-        private Raza buscarRaza(int id)
+        private Raza buscarRaza(string id)
         {
             return logRaza.BuscarPorId(id);
         }
-        private Propietario buscarPropietario(int id)
+        private Propietario buscarPropietario(string id)
         {
             return logPropietario.BuscarPorId(id);
         }
@@ -96,30 +97,32 @@ namespace ProyectoP3
         }
         private void cmbEspecie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cargarCmbRaza(int.Parse(cmbEspecie.SelectedValue.ToString()));
+            cargarCmbRaza(cmbEspecie.SelectedValue.ToString());
         }
         private void cargarCmbEspecie()
         {
-            cmbEspecie.DisplayMember = "nombre";
-            cmbEspecie.ValueMember = "id";
             cmbEspecie.DataSource = logEspecie.Consultar();
+            cmbEspecie.DisplayMember = "Nombre";
+            cmbEspecie.ValueMember = "Codigo";
+            
         }
-        private void cargarCmbRaza(int idEspecie)
+        private void cargarCmbRaza(string idEspecie)
         {
             cmbRaza.DataSource = null;
             cmbRaza.DataSource = logRaza.ConsultarPorEspecie(idEspecie);
-            cmbRaza.DisplayMember = "nombre";
-            cmbRaza.ValueMember = "id";
+            cmbRaza.DisplayMember = "Nombre";
+            cmbRaza.ValueMember = "Codigo";
         }
         private void FrmMascotaEditar_Load(object sender, EventArgs e)
         {
             cargarCmbEspecie();
+            mostrarMascota(mascota);
         }
         private Mascota Mapeo()
         {
-            Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
-            Especie especie = buscarEspecie(int.Parse(cmbEspecie.SelectedValue.ToString()));
-            Raza raza = buscarRaza(int.Parse(cmbRaza.SelectedValue.ToString()));
+            Propietario propietario = buscarPropietario(txtIdProprietario.Text);
+            Especie especie = buscarEspecie(cmbEspecie.SelectedValue.ToString());
+            Raza raza = buscarRaza(cmbRaza.SelectedValue.ToString());
             Mascota mascota = new Mascota();
             mascota.Codigo = id;
             mascota.Nombre = txtNombre.Text;

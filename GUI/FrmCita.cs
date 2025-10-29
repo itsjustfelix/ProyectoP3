@@ -30,7 +30,7 @@ namespace ProyectoP3
             mostrarFrm(new FrmCitaAgregar());
             cargarDGV();
         }
-        private Cita buscarCita(int id)
+        private Cita buscarCita(string id)
         {
             return logCita.BuscarPorId(id);
         }
@@ -38,7 +38,7 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la cita a buscar:", "Buscar cita", ""));
+                string id = Interaction.InputBox("Ingrese el codigo de la cita a buscar:", "Buscar cita", "");
                 Cita cita = buscarCita(id);
                 if (cita == null)
                 {
@@ -57,7 +57,7 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la cita a eliminar:", "Eliminar cita", ""));
+                string id = Interaction.InputBox("Ingrese el codigo de la cita a eliminar:", "Eliminar cita", "");
                 if (buscarCita(id) == null)
                 {
                     MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -78,7 +78,7 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private string borrarCita(int codigoCita)
+        private string borrarCita(string codigoCita)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el ID de la cita a buscar:", "Buscar cita", ""));
+                string id = Interaction.InputBox("Ingrese el ID de la cita a buscar:", "Buscar cita", "");
                 Cita cita = buscarCita(id);
                 if (cita == null)
                 {

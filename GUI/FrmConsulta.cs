@@ -30,14 +30,22 @@ namespace ProyectoP3
             DGVConsulta.Rows.Clear();
             foreach (var consulta in logConsulta.Consultar())
             {
-                DGVConsulta.Rows.Add(consulta.Codigo, consulta.Mascota.Nombre, consulta.Fecha.ToString("dd/MM/yyyy"), consulta.Veterinario.Nombres, consulta.Diagnostico, consulta.Tratamiento);
+                DGVConsulta.Rows.Add(
+                    consulta.Codigo,
+                    consulta.Mascota.Nombre,
+                    consulta.Fecha.ToString("dd/MM/yyyy"),
+                    consulta.Veterinario.Nombres,
+                    consulta.Descripcion, 
+                    consulta.Diagnostico, 
+                    consulta.Tratamiento
+                    );
             }
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el ID de la consulta a buscar:", "Buscar Consulta", ""));
+                string id = Interaction.InputBox("Ingrese el ID de la consulta a buscar:", "Buscar Consulta", "");
                 Consulta consulta = buscarConsulta(id);
                 if (consulta == null)
                 {
@@ -54,7 +62,7 @@ namespace ProyectoP3
 
         }
 
-        private Consulta buscarConsulta(int id)
+        private Consulta buscarConsulta(string id)
         {
             return logConsulta.BuscarPorId(id);
         }
@@ -63,7 +71,7 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la consulta a eliminar:", "Eliminar Consulta", ""));
+                string id = Interaction.InputBox("Ingrese el codigo de la consulta a eliminar:", "Eliminar Consulta", "");
                 if (buscarConsulta(id) == null)
                 {
                     MessageBox.Show("Consulta no encontrada.", "Eliminar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -85,7 +93,7 @@ namespace ProyectoP3
             }
         }
 
-        private string borrar(int codigo)
+        private string borrar(string codigo)
         {
             try
             {
@@ -130,7 +138,7 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la consulta que quiere hacerle PDF:", "Generar PDF", ""));
+                string id = Interaction.InputBox("Ingrese el codigo de la consulta que quiere hacerle PDF:", "Generar PDF", "");
                 var consulta = buscarConsulta(id);
                 if (consulta == null)
                 {
@@ -151,7 +159,7 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la consulta que quiere hacerle PDF:", "Generar PDF", ""));
+                string id = Interaction.InputBox("Ingrese el codigo de la consulta que quiere hacerle PDF:", "Generar PDF", "");
                 var consulta = buscarConsulta(id);
                 var email = consulta.Mascota.Propietario.Email;
                 if (consulta == null)

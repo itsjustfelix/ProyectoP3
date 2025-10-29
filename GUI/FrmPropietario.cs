@@ -32,7 +32,7 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha buscar", "Buscar Propietario", ""));
+                string id = Interaction.InputBox("Digite el ID de la persona ha buscar", "Buscar Propietario", "");
                 Propietario propietario = buscar(id);
                 if (propietario == null)
                 {
@@ -48,7 +48,7 @@ namespace ProyectoP3
             }
         }
 
-        private Propietario buscar(int id)
+        private Propietario buscar(string id)
         {
             try
             {
@@ -81,8 +81,7 @@ namespace ProyectoP3
                     item.ApellidoPaterno,
                     item.ApellidoMaterno,
                     item.Sexo, 
-                    item.TelefonoPrimario,
-                    item.TelefonoSecundario,
+                    item.Telefono,
                     item.Email
                 );
             }
@@ -96,7 +95,7 @@ namespace ProyectoP3
             try
             {
 
-                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
+                string id = Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", "");
                 Propietario propietario = buscar(id);
                 if (propietario == null)
                 {
@@ -120,7 +119,7 @@ namespace ProyectoP3
 
         }
 
-        private string eliminar(int id)
+        private string eliminar(string id)
         {
             try
             {

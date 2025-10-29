@@ -28,13 +28,13 @@ namespace Dato
         public override Especie MappyingType(string line)
         {
             Especie especie = new Especie();
-            especie.Codigo = int.Parse(line.Split(';')[0]);
+            especie.Codigo = line.Split(';')[0];
             especie.Nombre = line.Split(';')[1];
             return especie;
         }
-        public override Especie BuscarPorId(int id)
+        public override Especie BuscarPorId(string id)
         {
-            return Consultar().FirstOrDefault(e => e.Codigo == id);
+            return Consultar().FirstOrDefault(e => e.Codigo.Equals(id));
         }
     }
     

@@ -15,7 +15,7 @@ namespace ProyectoP3
         }
         IServiceEntidad<Cita> logCita = new LogCita();
         IServiceEntidad<Mascota> logMascota = new LogMascota();
-        int idCita;
+        string idCita;
         private void mostrarCita(Cita cita)
         {
             txtIdMascota.Text = cita.Mascota.Codigo.ToString();
@@ -66,7 +66,7 @@ namespace ProyectoP3
                 return ex.Message;
             }
         }
-        private Mascota buscarMascota(int id)
+        private Mascota buscarMascota(string id)
         {
             return logMascota.BuscarPorId(id);
         }
@@ -90,7 +90,7 @@ namespace ProyectoP3
         }
         private Cita Mapeo()
         {
-            Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+            Mascota mascota = buscarMascota(txtIdMascota.Text);
             Cita cita = new Cita();
             cita.Codigo = idCita;
             cita.Mascota = mascota;

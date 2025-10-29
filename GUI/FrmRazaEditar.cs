@@ -17,11 +17,12 @@ namespace ProyectoP3
         public FrmRazaEditar(Raza raza)
         {
             InitializeComponent();
-            mostrarRaza(raza);
+            this.raza = raza;
         }
         IServiceEntidad<Especie> logEspecie = new LogEspecie();
         IServiceRaza logRaza = new LogRaza();
-        int idRaza;
+        Raza raza;
+        string idRaza;
         private void mostrarRaza(Raza raza)
         {
             txtNombre.Text = raza.Nombre;
@@ -31,12 +32,13 @@ namespace ProyectoP3
         private void FrmRazaEditar_Load(object sender, EventArgs e)
         {
             cargarCmb();
+            mostrarRaza(raza);
         }
         private void cargarCmb()
         {
             cbxEspecie.DataSource = logEspecie.Consultar();
             cbxEspecie.DisplayMember = "nombre";
-            cbxEspecie.ValueMember = "id";
+            cbxEspecie.ValueMember = "Codigo";
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -98,13 +100,13 @@ namespace ProyectoP3
         {
             this.Close();
         }
-        private Especie buscarEspecie(int id)
+        private Especie buscarEspecie(string id)
         {
             return logEspecie.BuscarPorId(id);
         }
         private Raza Mapeo()
         {
-            Especie especie = buscarEspecie(int.Parse(cbxEspecie.SelectedValue.ToString()));
+            Especie especie = buscarEspecie(cbxEspecie.SelectedValue.ToString());
             Raza raza = new Raza();
             raza.Codigo = idRaza;
             raza.Nombre = txtNombre.Text;

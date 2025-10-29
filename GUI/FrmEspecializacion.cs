@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -60,7 +53,7 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Digite el codigo de la especializacion ha eliminar", "Eliminar especilizacion", ""));
+                string id = Interaction.InputBox("Digite el codigo de la especializacion ha eliminar", "Eliminar especilizacion", "");
                 Especializacion especializacion = buscar(id);
                 if (especializacion == null)
                 {
@@ -83,7 +76,7 @@ namespace ProyectoP3
             }
         }
 
-        private string eliminar(int id)
+        private string eliminar(string id)
         {
             try
             {
@@ -95,7 +88,7 @@ namespace ProyectoP3
             }
         }
 
-        private Especializacion buscar(int id)
+        private Especializacion buscar(string id)
         {
             try
             {
@@ -112,7 +105,7 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Digite el codigo de la especializacion ha buscar", "Buscar especializacion", ""));
+                string id = Interaction.InputBox("Digite el codigo de la especializacion ha buscar", "Buscar especializacion", "");
                 Especializacion especializacion = buscar(id);
                 if (especializacion == null)
                 {

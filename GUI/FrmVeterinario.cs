@@ -28,14 +28,21 @@ namespace ProyectoP3
             DGVeterinario.Rows.Clear();
             foreach (var item in logVeterinario.Consultar())
             {
-                DGVeterinario.Rows.Add(item.Cedula, item.Nombres, item.ApellidoMaterno, item.ApellidoMaterno, item.Sexo, item.TelefonoPrimario, item.TelefonoSecundario, item.Especializacion.Nombre);
+                DGVeterinario.Rows.Add(
+                    item.Cedula, 
+                    item.Nombres, 
+                    item.ApellidoMaterno, 
+                    item.ApellidoMaterno,
+                    item.Sexo, 
+                    item.Telefono, 
+                    item.Especializacion.Nombre);
             }
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
+                string id = Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", "");
                 Veterinario veterinario = buscar(id);
                 if (veterinario == null)
                 {
@@ -65,7 +72,7 @@ namespace ProyectoP3
             try
             {
                 string message = "";
-                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
+                string id = Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", "");
                 Veterinario veterinario = buscar(id);
                 if (veterinario == null)
                 {
@@ -84,7 +91,7 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private Veterinario buscar(int id)
+        private Veterinario buscar(string id)
         {
             try
             {
@@ -96,7 +103,7 @@ namespace ProyectoP3
                 return null;
             }
         }
-        private string eliminar(int codigo)
+        private string eliminar(string codigo)
         {
             try
             {

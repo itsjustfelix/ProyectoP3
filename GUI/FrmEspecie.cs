@@ -32,7 +32,7 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse((Interaction.InputBox("Digite el ID de la especie ha buscar", "Editar Especie", "")));
+                string id = Interaction.InputBox("Digite el ID de la especie ha buscar", "Editar Especie", "");
                 Especie especie = logEspecie.BuscarPorId(id);
                 if (especie == null)
                 {
@@ -65,7 +65,7 @@ namespace ProyectoP3
             try
             {
                 string message = "";
-                int id = int.Parse(Interaction.InputBox("Digite el ID de la especie ha eliminar", "Eliminar Especie", ""));
+                string id = Interaction.InputBox("Digite el ID de la especie ha eliminar", "Eliminar Especie", "");
                 Especie especie = logEspecie.BuscarPorId(id);
                 if (especie == null)
                 {
@@ -85,7 +85,7 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private string borrar(int id)
+        private string borrar(string id)
         {
             try
             {

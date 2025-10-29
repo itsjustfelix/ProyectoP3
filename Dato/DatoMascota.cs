@@ -32,16 +32,16 @@ namespace Dato
         public override Mascota MappyingType(string line)
         {
             Mascota mascota = new Mascota();
-            mascota.Codigo = int.Parse(line.Split(';')[0]);
+            mascota.Codigo = line.Split(';')[0];
             mascota.Nombre = line.Split(';')[1];
-            mascota.Especie = datoEspecie.BuscarPorId(int.Parse(line.Split(';')[2]));
-            mascota.Raza = datoRaza.BuscarPorId(int.Parse(line.Split(';')[3]));
-            mascota.Propietario = datoPropietario.BuscarPorId(int.Parse(line.Split(';')[4]));
+            mascota.Especie = datoEspecie.BuscarPorId(line.Split(';')[2]);
+            mascota.Raza = datoRaza.BuscarPorId(line.Split(';')[3]);
+            mascota.Propietario = datoPropietario.BuscarPorId(line.Split(';')[4]);
             return mascota;
         }
-        public override Mascota BuscarPorId(int id)
+        public override Mascota BuscarPorId(string id)
         {
-            return Consultar().FirstOrDefault(m => m.Codigo == id);
+            return Consultar().FirstOrDefault(m => m.Codigo.Equals(id));
         }
     }
     

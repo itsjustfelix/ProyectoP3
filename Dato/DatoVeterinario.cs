@@ -27,19 +27,18 @@ namespace Dato
         public override Veterinario MappyingType(string line)
         {
             Veterinario veterinario = new Veterinario();
-            veterinario.Cedula = int.Parse(line.Split(';')[0]);
+            veterinario.Cedula = line.Split(';')[0];
             veterinario.Nombres = line.Split(';')[1];
             veterinario.ApellidoPaterno = line.Split(';')[2];
             veterinario.ApellidoMaterno = line.Split(';')[3];
             veterinario.Sexo = line.Split(';')[4];
-            veterinario.TelefonoPrimario = line.Split(';')[5];
-            veterinario.TelefonoSecundario = line.Split(';')[6];
-            veterinario.Especializacion = datoEspecializacion.BuscarPorId(int.Parse(line.Split(';')[7]));
+            veterinario.Telefono = line.Split(';')[5];
+            veterinario.Especializacion = datoEspecializacion.BuscarPorId(line.Split(';')[6]);
             return veterinario;
         }
-        public override Veterinario BuscarPorId(int id)
+        public override Veterinario BuscarPorId(string id)
         {
-            return Consultar().FirstOrDefault(p => p.Cedula == id);
+            return Consultar().FirstOrDefault(p => p.Cedula.Equals(id));
         }
     }
 

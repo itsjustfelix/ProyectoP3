@@ -82,13 +82,12 @@ namespace ProyectoP3
         private Propietario Mappeo()
         {
             Propietario propietario = new Propietario();
-            propietario.Cedula = int.Parse(txtId.Text);
+            propietario.Cedula = txtId.Text;
             propietario.Nombres = txtNombre.Text;
             propietario.ApellidoPaterno = txtApellidoPaterno.Text;
             propietario.ApellidoMaterno = txtApellidoMaterno.Text;
-            propietario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
-            propietario.TelefonoPrimario = txtNumeroTelefonoPrimario.Text;
-            propietario.TelefonoSecundario = txtNumeroTelefonoSecundario.Text;
+            propietario.Sexo = RBFemenino.Checked ? "F" : "M";
+            propietario.Telefono = txtNumeroTelefonoPrimario.Text;
             propietario.Email = txtEmail.Text;
             return propietario;
         }
@@ -99,7 +98,6 @@ namespace ProyectoP3
             if (string.IsNullOrWhiteSpace(txtApellidoPaterno.Text)) throw new ArgumentNullException("El apellido paterno es obligatorio.");
             if (string.IsNullOrWhiteSpace(txtApellidoMaterno.Text)) throw new ArgumentNullException("El apellido materno es obligatorio.");
             if (string.IsNullOrWhiteSpace(txtNumeroTelefonoPrimario.Text)) throw new ArgumentNullException("El número de teléfono primario es obligatorio.");
-            if (string.IsNullOrEmpty(txtNumeroTelefonoSecundario.Text)) throw new ArgumentNullException("El número de teléfono secundario es obligatorio.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un género.");
             if(string.IsNullOrEmpty(txtEmail.Text)) throw new ArgumentNullException("El email es obligatorio.");
             return true;

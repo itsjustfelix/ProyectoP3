@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtApellidoMaterno = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtNumeroTelefonicoSecundario = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.RBMasculino = new System.Windows.Forms.RadioButton();
@@ -46,8 +46,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.nombres = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,8 +57,6 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtApellidoPaterno);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.txtNumeroTelefonicoSecundario);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Controls.Add(this.btnEditar);
             this.panel1.Controls.Add(this.RBMasculino);
@@ -76,6 +72,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(423, 330);
             this.panel1.TabIndex = 1;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(233, 231);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(180, 22);
+            this.txtEmail.TabIndex = 23;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(94, 234);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 20);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Email";
             // 
             // txtApellidoMaterno
             // 
@@ -112,24 +126,6 @@
             this.label6.Size = new System.Drawing.Size(125, 20);
             this.label6.TabIndex = 18;
             this.label6.Text = "Apellido Paterno";
-            // 
-            // txtNumeroTelefonicoSecundario
-            // 
-            this.txtNumeroTelefonicoSecundario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumeroTelefonicoSecundario.Location = new System.Drawing.Point(233, 203);
-            this.txtNumeroTelefonicoSecundario.Name = "txtNumeroTelefonicoSecundario";
-            this.txtNumeroTelefonicoSecundario.Size = new System.Drawing.Size(180, 22);
-            this.txtNumeroTelefonicoSecundario.TabIndex = 15;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(5, 206);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(227, 20);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Numero Telefonico Secundario\r\n";
             // 
             // btnCancelar
             // 
@@ -241,24 +237,6 @@
             this.nombres.TabIndex = 6;
             this.nombres.Text = "Nombres";
             // 
-            // txtEmail
-            // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(233, 231);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(180, 22);
-            this.txtEmail.TabIndex = 23;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(94, 234);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 20);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Email";
-            // 
             // FrmEditarPropietatio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,8 +266,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label nombres;
-        public System.Windows.Forms.TextBox txtNumeroTelefonicoSecundario;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtApellidoMaterno;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtApellidoPaterno;

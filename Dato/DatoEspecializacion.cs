@@ -32,14 +32,14 @@ namespace Dato
         public override Especializacion MappyingType(string line)
         {
             Especializacion especializacion = new Especializacion();
-            especializacion.Codigo = int.Parse(line.Split(';')[0]);
+            especializacion.Codigo = line.Split(';')[0];
             especializacion.Nombre = line.Split(';')[1];
             return especializacion;
         }
 
-        public override Especializacion BuscarPorId(int codigo)
+        public override Especializacion BuscarPorId(string codigo)
         {
-            return Consultar().FirstOrDefault(e => e.Codigo == codigo);
+            return Consultar().FirstOrDefault(e => e.Codigo.Equals(codigo));
         }
     }
 }

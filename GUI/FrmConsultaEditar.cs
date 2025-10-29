@@ -17,13 +17,15 @@ namespace ProyectoP3
         public FrmConsultaEditar(Consulta consulta)
         {
             InitializeComponent();
-            mostrarConsulta(consulta);
+            this.consulta = consulta;
+            
             SetControlesEstado(false);
         }
+        Consulta consulta;
         IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
         IServiceEntidad<Consulta> logConsulta = new LogConsulta();
         IServiceEntidad<Mascota> logMascota = new LogMascota();
-        int idConsulta;
+        string idConsulta;
         DateTime fechaConsulta;
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -84,11 +86,11 @@ namespace ProyectoP3
                 return ex.Message;
             }
         }
-        private Mascota buscarMascota(int id)
+        private Mascota buscarMascota(string id)
         {
             return logMascota.BuscarPorId(id);
         }
-        private Veterinario buscarVeterinario(int id)
+        private Veterinario buscarVeterinario(string id)
         {
             return logVeterinario.BuscarPorId(id);
         }
@@ -108,21 +110,23 @@ namespace ProyectoP3
         }
         private void FrmConsultaEditar_Load(object sender, EventArgs e)
         {
+            mostrarConsulta(consulta);
             cargarCmb();
         }
         private void cargarCmb()
         {
             cbxVeterinario.DataSource = logVeterinario.Consultar();
-            cbxVeterinario.DisplayMember = "nombre";
-            cbxVeterinario.ValueMember = "id";
+            cbxVeterinario.DisplayMember = "Nombres";
+            cbxVeterinario.ValueMember = "Cedula";
         }
 
         private Consulta Mapeo()
         {
-            Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
-            Veterinario veterinario = buscarVeterinario(int.Parse(cbxVeterinario.SelectedValue.ToString()));
+            Mascota mascota = buscarMascota(txtIdMascota.Text);
+            Veterinario veterinario = buscarVeterinario(cbxVeterinario.SelectedValue.ToString());
             Consulta consulta = new Consulta();
             consulta.Codigo = idConsulta;
+            consulta.Descripcion = txtDescripcion.Text;
             consulta.Diagnostico = txtDiagnostico.Text;
             consulta.Tratamiento = txtTratamiento.Text;
             consulta.Fecha = fechaConsulta;

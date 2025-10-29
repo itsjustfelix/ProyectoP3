@@ -66,6 +66,7 @@ namespace ProyectoP3
         {
             if (string.IsNullOrEmpty(txtDiagnostico.Text)) throw new Exception("El campo Diagnóstico es obligatorio.");
             if (string.IsNullOrEmpty(txtTratamiento.Text)) throw new Exception("El campo Tratamiento es obligatorio.");
+            if (string.IsNullOrEmpty(txtDescripcion.Text)) throw new Exception("El campo Descripción es obligatorio.");
             return true;
         }
         private string agregar(Consulta consulta)
@@ -81,12 +82,12 @@ namespace ProyectoP3
             
         }
 
-        private Mascota buscarMascota(int id)
+        private Mascota buscarMascota(string id)
         {
             return logMascota.BuscarPorId(id);
         }
 
-        private Veterinario buscarVeterinario(int id)
+        private Veterinario buscarVeterinario(string id)
         {
             return logVeterinario.BuscarPorId(id);
         }
@@ -141,7 +142,7 @@ namespace ProyectoP3
         {
             try
             {
-                Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+                Mascota mascota = buscarMascota(txtIdMascota.Text);
                 if (mascota == null)
                 {
                     MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -160,10 +161,11 @@ namespace ProyectoP3
 
         private Consulta Mapeo()
         {
-            Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
-            Veterinario veterinario = buscarVeterinario(int.Parse(cbxVeterinario.SelectedValue.ToString()));
+            Mascota mascota = buscarMascota(txtIdMascota.Text);
+            Veterinario veterinario = buscarVeterinario(cbxVeterinario.SelectedValue.ToString());
             Consulta consulta = new Consulta();
             consulta.Fecha = DateTime.Now.Date;
+            consulta.Descripcion = txtDescripcion.Text;
             consulta.Diagnostico = txtDiagnostico.Text;
             consulta.Tratamiento = txtTratamiento.Text;
             consulta.Mascota = mascota;

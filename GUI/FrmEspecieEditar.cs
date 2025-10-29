@@ -14,7 +14,7 @@ namespace ProyectoP3
         }
 
         IServiceEntidad<Especie> logEspecie = new LogEspecie();
-        int id;
+        string id;
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try

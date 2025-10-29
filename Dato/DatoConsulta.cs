@@ -32,19 +32,20 @@ namespace Dato
         public override Consulta MappyingType(string line)
         {
             Consulta consulta = new Consulta();
-            consulta.Codigo = int.Parse(line.Split(';')[0]);
+            consulta.Codigo = line.Split(';')[0];
             consulta.Fecha = DateTime.ParseExact(line.Split(';')[1], "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            consulta.Diagnostico = line.Split(';')[2];
-            consulta.Tratamiento = line.Split(';')[3];
-            consulta.Mascota = datoMascota.BuscarPorId(int.Parse(line.Split(';')[4]));
-            consulta.Veterinario = datoVeterinario.BuscarPorId(int.Parse(line.Split(';')[5]));
+            consulta.Descripcion = line.Split(';')[2];
+            consulta.Diagnostico = line.Split(';')[3];
+            consulta.Tratamiento = line.Split(';')[4];
+            consulta.Mascota = datoMascota.BuscarPorId(line.Split(';')[5]);
+            consulta.Veterinario = datoVeterinario.BuscarPorId(line.Split(';')[6]);
             return consulta;
         }
-        public override Consulta BuscarPorId(int id)
+        public override Consulta BuscarPorId(string id)
         {
-            return Consultar().FirstOrDefault(c => c.Codigo == id);
+            return Consultar().FirstOrDefault(c => c.Codigo.Equals(id));
         }
 
-        
+
     }
 }

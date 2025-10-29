@@ -82,17 +82,16 @@ namespace ProyectoP3
         private Veterinario Mapeo()
         {
             Veterinario veterinario = new Veterinario();
-            veterinario.Cedula = int.Parse(txtCedula.Text);
+            veterinario.Cedula = txtCedula.Text;
             veterinario.Nombres = txtNombre.Text;
             veterinario.ApellidoPaterno = txtApellidoPaterno.Text;
             veterinario.ApellidoMaterno = txtApellidoMaterno.Text;
-            veterinario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
-            veterinario.TelefonoPrimario = txtNumeroTelefonicoPrimario.Text;
-            veterinario.TelefonoSecundario = txtNumeroSecundario.Text;
-            veterinario.Especializacion = buscarEspecializacion(int.Parse(cmbEspecilizacion.SelectedValue.ToString()));
+            veterinario.Sexo = RBFemenino.Checked ? "F" : "M";
+            veterinario.Telefono = txtNumeroTelefonicoPrimario.Text;
+            veterinario.Especializacion = buscarEspecializacion(cmbEspecilizacion.SelectedValue.ToString());
             return veterinario;
         }
-        private Especializacion buscarEspecializacion(int codigo)
+        private Especializacion buscarEspecializacion(string codigo)
         {
            return logEspecializacion.BuscarPorId(codigo);
         }
@@ -103,7 +102,6 @@ namespace ProyectoP3
             if (string.IsNullOrEmpty(txtApellidoPaterno.Text)) throw new ArgumentNullException("El campo Apellido Paterno es obligatorio.");
             if (string.IsNullOrEmpty(txtApellidoMaterno.Text)) throw new ArgumentNullException("El campo Apellido Materno es obligatorio.");
             if (string.IsNullOrEmpty(txtNumeroTelefonicoPrimario.Text)) throw new ArgumentNullException("El campo Teléfono primario es obligatorio.");
-            if (string.IsNullOrEmpty(txtNumeroSecundario.Text)) throw new ArgumentNullException("El campo Teléfono secundario es obligatorio.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentNullException("El campo Sexo es obligatorio.");
             return true;
         }

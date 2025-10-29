@@ -23,8 +23,8 @@ namespace ProyectoP3
             txtNombre.Text = propietario.Nombres;
             txtApellidoPaterno.Text = propietario.ApellidoPaterno;
             txtApellidoMaterno.Text = propietario.ApellidoMaterno;
-            txtNumeroTelefonicoPrimario.Text = propietario.TelefonoPrimario;
-            txtNumeroTelefonicoSecundario.Text = propietario.TelefonoSecundario;
+            txtNumeroTelefonicoPrimario.Text = propietario.Telefono;
+            txtEmail.Text = propietario.Email;
             if (propietario.Sexo == "Femenino") RBFemenino.Checked = true;
             else RBMasculino.Checked = true;
         }
@@ -44,14 +44,14 @@ namespace ProyectoP3
                     {
                         MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
+
         }
         private string editar(Propietario propietario)
         {
@@ -89,13 +89,12 @@ namespace ProyectoP3
         private Propietario Mapeo()
         {
             Propietario propietario = new Propietario();
-            propietario.Cedula = int.Parse(txtCedula.Text);
+            propietario.Cedula = txtCedula.Text;
             propietario.Nombres = txtNombre.Text;
             propietario.ApellidoPaterno = txtApellidoPaterno.Text;
             propietario.ApellidoMaterno = txtApellidoMaterno.Text;
-            propietario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
-            propietario.TelefonoPrimario = txtNumeroTelefonicoPrimario.Text;
-            propietario.TelefonoSecundario = txtNumeroTelefonicoSecundario.Text;
+            propietario.Sexo = RBFemenino.Checked ? "F" : "M";
+            propietario.Telefono = txtNumeroTelefonicoPrimario.Text;
             propietario.Email = txtEmail.Text;
             return propietario;
         }
@@ -105,8 +104,7 @@ namespace ProyectoP3
             if (string.IsNullOrWhiteSpace(txtApellidoPaterno.Text)) throw new ArgumentException("El apellido paterno no puede estar vacío.");
             if (string.IsNullOrWhiteSpace(txtApellidoMaterno.Text)) throw new ArgumentException("El apellido materno no puede estar vacío.");
             if (string.IsNullOrWhiteSpace(txtNumeroTelefonicoPrimario.Text)) throw new ArgumentException("El número de teléfono no puede estar vacío.");
-            if (string.IsNullOrWhiteSpace(txtNumeroTelefonicoSecundario.Text)) throw new ArgumentException("El número de teléfono secundario no puede estar vacío.");
-            if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un sexo."); 
+            if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un sexo.");
             if (string.IsNullOrEmpty(txtEmail.Text)) throw new ArgumentException("El email no puede estar vacío.");
             return true;
         }

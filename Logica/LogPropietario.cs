@@ -49,7 +49,7 @@ namespace Logica
 
 
         }
-        public string Borrar(int Id)
+        public string Borrar(string Id)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace Logica
             }
            
         }
-        public Propietario BuscarPorId(int id)
+        public Propietario BuscarPorId(string id)
         {
             return datoPropietario.BuscarPorId(id);
         }
@@ -103,23 +103,14 @@ namespace Logica
                 mensaje = "La cedula no puede contener letras";
                 return false;
             }
-            if (entidad.TelefonoPrimario.Any(char.IsLetter))
+            if (entidad.Telefono.Any(char.IsLetter))
             {
                 mensaje = "El telefono primario no puede contener letras";
                 return false;
             }
-            if (entidad.TelefonoSecundario.Any(char.IsLetter))
-            {
-                mensaje = "El telefono secundario no puede contener letras";
-            }
-            if (entidad.TelefonoPrimario.Length != 10)
+            if (entidad.Telefono.Length != 10)
             {
                 mensaje = "El telefono primario debe tener 10 digitos";
-                return false;
-            }
-            if (entidad.TelefonoSecundario.Length != 10)
-            {
-                mensaje = "El telefono secundario debe tener 10 digitos";
                 return false;
             }
             if(entidad.Email.AsParallel().Count(c => c == '@') != 1 || entidad.Email.StartsWith("@") || entidad.Email.EndsWith("@"))
@@ -129,7 +120,7 @@ namespace Logica
             }
             return true;
         }
-        public bool IdUnico(int id)
+        public bool IdUnico(string id)
         {
             if (BuscarPorId(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
             return true;

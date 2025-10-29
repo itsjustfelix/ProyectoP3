@@ -5,16 +5,25 @@ using System.Linq;
 using Dato;
 using Entidad;
 using GeneradorDeDocumento;
+using QuestPDF.Infrastructure;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Logica
 {
     public class LogConsulta : IServiceEntidad<Consulta>
     {
-        private readonly FileRepository<Consulta> datoConsulta = new DatoConsulta(NombreArchivo.ARC_CONSULTA);
+        private readonly FileRepository<Consulta> datoConsulta;
         private GeneradorDePDF<Consulta> generadorPDF;
-        private ServicioEmail servicioEmail = new ServicioEmail("vet.vida03@gmail.com", "wyjv vikl acif boti");
-        private Random random = new Random();
+        private ServicioEmail servicioEmail;
+        private Random random;
+
+        public LogConsulta()
+        {
+            datoConsulta = new DatoConsulta(NombreArchivo.ARC_CONSULTA);
+            servicioEmail = new ServicioEmail("vet.vida03@gmail.com", "wyjv vikl acif boti");
+            random = new Random();
+            QuestPDF.Settings.License = LicenseType.Community;
+        }
         public string Guardar(Consulta entidad)
         {
             try
@@ -57,27 +66,27 @@ namespace Logica
                 return ex.Message;
             }
         }
-        public string Borrar(int id)
+        public string Borrar(string id)
         {
             var listaConsultas = Consultar();
-            int index = listaConsultas.FindIndex(c => c.Codigo == id);
+            int index = listaConsultas.FindIndex(c => c.Codigo.Equals(id));
             if (index == -1) throw new KeyNotFoundException("Consulta no encontrada");
             listaConsultas.RemoveAt(index);
             return datoConsulta.SobrescribirArchivo(listaConsultas);
         }
-        public int GenerarIdUnico()
+        public string GenerarIdUnico()
         {
-            int id;
+            string id;
             List<Consulta> consultasExistentes = Consultar();
-            HashSet<int> idsExistentes = new HashSet<int>(consultasExistentes.Select(m => m.Codigo));
+            HashSet<string> idsExistentes = new HashSet<string>(consultasExistentes.Select(m => m.Codigo));
             do
             {
-                id = random.Next(1000, 10000);
+                id = random.Next(1000, 10000).ToString();
             }
             while (idsExistentes.Contains(id));
             return id;
         }
-        public Consulta BuscarPorId(int id)
+        public Consulta BuscarPorId(string id)
         {
             return datoConsulta.BuscarPorId(id);
         }

@@ -43,7 +43,7 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el ID de la raza a buscar:", "Buscar Raza", ""));
+                string id = Interaction.InputBox("Ingrese el ID de la raza a buscar:", "Buscar Raza", "");
                 Raza raza = buscarRaza(id);
                 if (raza == null)
                 {
@@ -64,7 +64,7 @@ namespace ProyectoP3
             try
             {
                 string message = "";
-                int codigo = int.Parse(Interaction.InputBox("Ingrese el codigo de la raza a eliminar:", "Eliminar Raza", ""));
+                string codigo = Interaction.InputBox("Ingrese el codigo de la raza a eliminar:", "Eliminar Raza", "");
                 Raza raza = buscarRaza(codigo);
                 if (raza == null)
                 {
@@ -84,7 +84,7 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private string borrar(int id)
+        private string borrar(string id)
         {
             try
             {
@@ -97,7 +97,7 @@ namespace ProyectoP3
             }
             
         }
-        private Raza buscarRaza(int id)
+        private Raza buscarRaza(string id)
         {
             return logRaza.BuscarPorId(id);
         }

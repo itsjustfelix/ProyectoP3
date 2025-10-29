@@ -54,7 +54,7 @@ namespace Dato
                 return e.Message;
             }
         }
-        public abstract T BuscarPorId(int id);
+        public abstract T BuscarPorId(string id);
         
     }
 }

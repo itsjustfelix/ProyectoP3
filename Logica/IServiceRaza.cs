@@ -9,6 +9,6 @@ namespace Logica
 {
     public interface IServiceRaza :IServiceEntidad<Raza>
     {
-        List<Raza> ConsultarPorEspecie(int idEspecie);
+        List<Raza> ConsultarPorEspecie(string idEspecie);
     }
 }

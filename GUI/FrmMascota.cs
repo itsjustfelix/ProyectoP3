@@ -37,7 +37,7 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Digite el codigo de la mascota a buscar", "Buscar Mascota", ""));
+                string id = Interaction.InputBox("Digite el codigo de la mascota a buscar", "Buscar Mascota", "");
                 Mascota mascota = buscarMascota(id);
                 if (mascota == null)
                 {
@@ -56,7 +56,7 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Digite el codigo de la mascota ha eliminar", "Eliminar mascota", ""));
+                string id = Interaction.InputBox("Digite el codigo de la mascota ha eliminar", "Eliminar mascota", "");
                 Mascota mascota = buscar(id);
                 if (mascota == null)
                 {
@@ -78,11 +78,11 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private Mascota buscar(int id)
+        private Mascota buscar(string id)
         {
             return logMascota.BuscarPorId(id);
         }
-        private string borrar(int id)
+        private string borrar(string id)
         {
             try
             {
@@ -103,7 +103,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private Mascota buscarMascota(int id)
+        private Mascota buscarMascota(string id)
         {
             return logMascota.BuscarPorId(id);
         }

@@ -9,7 +9,7 @@ namespace Entidad
 {
     public class Cita
     {
-        public int Codigo { get; set; }
+        public string Codigo { get; set; }
         public DateTime Fecha { get; set; }
         public DateTime Hora { get; set; }
         public Mascota Mascota { get; set; }

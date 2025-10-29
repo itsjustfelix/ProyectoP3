@@ -46,15 +46,15 @@ namespace Logica
                 return ex.Message;
             }
         }
-        public string Borrar(int id)
+        public string Borrar(string id)
         {
             var listaVeterinario = Consultar();
-            int index = listaVeterinario.FindIndex(v => v.Cedula == id);
+            int index = listaVeterinario.FindIndex(v => v.Cedula.Equals(id));
             if (index == -1) throw new KeyNotFoundException("Veterinario no encontrado para borrar.");
             listaVeterinario.RemoveAt(index);
             return datoVeterinario.SobrescribirArchivo(listaVeterinario);
         }
-        public Veterinario BuscarPorId(int id)
+        public Veterinario BuscarPorId(string id)
         {
             return datoVeterinario.BuscarPorId(id);
         }
@@ -96,29 +96,19 @@ namespace Logica
                 mensaje = "La cedula no puede contener letras";
                 return false;
             }
-            if (entidad.TelefonoPrimario.Any(char.IsLetter))
+            if (entidad.Telefono.Any(char.IsLetter))
             {
                 mensaje = "El telefono primario no puede contener letras";
                 return false;
             }
-            if (entidad.TelefonoSecundario.Any(char.IsLetter))
-            {
-                mensaje = "El telefono secundario no puede contener letras";
-                return false;
-            }
-            if (entidad.TelefonoPrimario.Length != 10)
+            if (entidad.Telefono.Length != 10)
             {
                 mensaje = "El telefono primario debe tener 10 digitos";
                 return false;
             }
-            if (entidad.TelefonoSecundario.Length != 10)
-            {
-                mensaje = "El telefono secundario debe tener 10 digitos";
-                return false;
-            }
             return true;
         }
-        public bool IdUnico(int id)
+        public bool IdUnico(string id)
         {
             if (BuscarPorId(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
             return true;

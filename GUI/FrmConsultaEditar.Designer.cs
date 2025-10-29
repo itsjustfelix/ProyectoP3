@@ -34,12 +34,14 @@
             this.lblNombreMascota = new System.Windows.Forms.Label();
             this.nombre = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTratamiento = new System.Windows.Forms.TextBox();
+            this.txtDiagnostico = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTratamiento = new System.Windows.Forms.TextBox();
-            this.txtDiagnostico = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +49,7 @@
             // 
             this.cbxVeterinario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.cbxVeterinario.FormattingEnabled = true;
-            this.cbxVeterinario.Location = new System.Drawing.Point(116, 103);
+            this.cbxVeterinario.Location = new System.Drawing.Point(116, 94);
             this.cbxVeterinario.Name = "cbxVeterinario";
             this.cbxVeterinario.Size = new System.Drawing.Size(199, 24);
             this.cbxVeterinario.TabIndex = 4;
@@ -64,7 +66,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label4.Location = new System.Drawing.Point(12, 103);
+            this.label4.Location = new System.Drawing.Point(12, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 20);
             this.label4.TabIndex = 0;
@@ -92,6 +94,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtDescripcion);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtTratamiento);
             this.groupBox1.Controls.Add(this.txtDiagnostico);
             this.groupBox1.Controls.Add(this.btnCancelar);
@@ -105,14 +109,32 @@
             this.groupBox1.Controls.Add(this.nombre);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(336, 307);
+            this.groupBox1.Size = new System.Drawing.Size(336, 349);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
+            // 
+            // txtTratamiento
+            // 
+            this.txtTratamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtTratamiento.Location = new System.Drawing.Point(116, 244);
+            this.txtTratamiento.Multiline = true;
+            this.txtTratamiento.Name = "txtTratamiento";
+            this.txtTratamiento.Size = new System.Drawing.Size(199, 39);
+            this.txtTratamiento.TabIndex = 16;
+            // 
+            // txtDiagnostico
+            // 
+            this.txtDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtDiagnostico.Location = new System.Drawing.Point(116, 192);
+            this.txtDiagnostico.Multiline = true;
+            this.txtDiagnostico.Name = "txtDiagnostico";
+            this.txtDiagnostico.Size = new System.Drawing.Size(199, 39);
+            this.txtDiagnostico.TabIndex = 17;
             // 
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(169, 255);
+            this.btnCancelar.Location = new System.Drawing.Point(169, 301);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(103, 33);
             this.btnCancelar.TabIndex = 15;
@@ -123,7 +145,7 @@
             // btnEditar
             // 
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(44, 255);
+            this.btnEditar.Location = new System.Drawing.Point(44, 301);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(103, 33);
             this.btnEditar.TabIndex = 14;
@@ -135,7 +157,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(7, 198);
+            this.label3.Location = new System.Drawing.Point(7, 253);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 20);
             this.label3.TabIndex = 0;
@@ -145,35 +167,36 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(13, 146);
+            this.label1.Location = new System.Drawing.Point(13, 201);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Diagnostico";
             // 
-            // txtTratamiento
+            // txtDescripcion
             // 
-            this.txtTratamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtTratamiento.Location = new System.Drawing.Point(116, 198);
-            this.txtTratamiento.Multiline = true;
-            this.txtTratamiento.Name = "txtTratamiento";
-            this.txtTratamiento.Size = new System.Drawing.Size(199, 39);
-            this.txtTratamiento.TabIndex = 16;
+            this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtDescripcion.Location = new System.Drawing.Point(116, 147);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(199, 39);
+            this.txtDescripcion.TabIndex = 19;
             // 
-            // txtDiagnostico
+            // label2
             // 
-            this.txtDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtDiagnostico.Location = new System.Drawing.Point(116, 146);
-            this.txtDiagnostico.Multiline = true;
-            this.txtDiagnostico.Name = "txtDiagnostico";
-            this.txtDiagnostico.Size = new System.Drawing.Size(199, 39);
-            this.txtDiagnostico.TabIndex = 17;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label2.Location = new System.Drawing.Point(13, 156);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 20);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Descripcion";
             // 
             // FrmConsultaEditar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 333);
+            this.ClientSize = new System.Drawing.Size(360, 373);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmConsultaEditar";
             this.Text = "FrmConsultaEditar";
@@ -197,5 +220,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTratamiento;
         private System.Windows.Forms.TextBox txtDiagnostico;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.Label label2;
     }
 }

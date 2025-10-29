@@ -24,7 +24,7 @@ namespace ProyectoP3
         {
             try
             {
-                Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+                Mascota mascota = buscarMascota(txtIdMascota.Text);
                 if (mascota == null)
                 {
                     MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -40,7 +40,7 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private Mascota buscarMascota(int id)
+        private Mascota buscarMascota(string id)
         {
             return logMascota.BuscarPorId(id);
         }
@@ -116,7 +116,7 @@ namespace ProyectoP3
 
         private Cita Mapeo()
         {
-            Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+            Mascota mascota = buscarMascota(txtIdMascota.Text);
             Cita cita = new Cita();
             cita.Mascota = mascota;
             cita.Fecha = DTPFecha.Value;

@@ -62,6 +62,15 @@ namespace GeneradorDeDocumento
                     // --- Espacio separador ---
                     col.Item().PaddingVertical(10).LineHorizontal(1).LineColor(Colors.Grey.Medium);
 
+                    col.Item().Text("Descripcion del propietario:")
+                        .Bold()
+                        .FontSize(14)
+                        .AlignLeft();
+
+                    col.Item().Text($"{entidad.Descripcion}")
+                        .FontSize(12)
+                        .AlignLeft();
+
                     // --- Sección 2: texto normal debajo ---
                     col.Item().Text("Motivo de la consulta:")
                         .Bold()

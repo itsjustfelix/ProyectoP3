@@ -10,8 +10,13 @@ namespace Logica
 {
     public class LogMascota : IServiceEntidad<Mascota>
     {
-        Random random = new Random();
-        private readonly DatoMascota datoMascota = new DatoMascota(NombreArchivo.ARC_MASCOTA);
+        Random random;
+        private readonly DatoMascota datoMascota;
+        public LogMascota()
+        {
+            datoMascota = new DatoMascota(NombreArchivo.ARC_MASCOTA);
+            random = new Random();
+        }
         public string Guardar(Mascota entidad)
         {
             try
@@ -56,26 +61,26 @@ namespace Logica
                 return ex.Message;
             }
         }
-        public string Borrar(int id)
+        public string Borrar(string id)
         {
             var listMascotas = Consultar();
-            int index = listMascotas.FindIndex(m => m.Codigo == id);
+            int index = listMascotas.FindIndex(m => m.Codigo.Equals(id));
             if (index == -1) throw new ArgumentException("Mascota no encontrada.");
             listMascotas.RemoveAt(index);
             return datoMascota.SobrescribirArchivo(listMascotas);
         }
-        public Mascota BuscarPorId(int id)
+        public Mascota BuscarPorId(string id)
         {
             return datoMascota.BuscarPorId(id);
         }
-        public int GenerarIdUnico()
+        public string GenerarIdUnico()
         {
-            int id;
+            string id;
             List<Mascota> mascotasExistentes = Consultar();
-            HashSet<int> idsExistentes = new HashSet<int>(mascotasExistentes.Select(m => m.Codigo));
+            HashSet<string> idsExistentes = new HashSet<string>(mascotasExistentes.Select(m => m.Codigo));
             do
             {
-                id = random.Next(1, 10000);
+                id = random.Next(1, 10000).ToString();
             } while (idsExistentes.Contains(id));
             return id;
         }
@@ -86,22 +91,22 @@ namespace Logica
             {
                 mensaje = "Mascota nula";
                 return false;
-            } 
+            }
             if (entidad.Propietario == null)
             {
                 mensaje = "Propietario nulo";
                 return false;
-            }   
+            }
             if (entidad.Especie == null)
             {
                 mensaje = "Especie nula";
                 return false;
-            }   
-            if (entidad.Raza == null) 
+            }
+            if (entidad.Raza == null)
             {
                 mensaje = "Raza nula";
                 return false;
-            }   
+            }
             if (entidad.Nombre.Any(char.IsDigit))
             {
                 mensaje = "El nombre de la mascota no puede contener numeros";
