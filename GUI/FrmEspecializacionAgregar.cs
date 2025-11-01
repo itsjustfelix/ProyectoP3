@@ -6,7 +6,7 @@ namespace ProyectoP3
 {
     public partial class FrmEspecializacionAgregar : Form
     {
-        IServiceEntidad<Especializacion> logEspecializacion = new logEspecializacion();
+        ICrud<Especializacion> logEspecializacion = new logEspecializacion();
         public FrmEspecializacionAgregar()
         {
             InitializeComponent();
@@ -76,6 +76,11 @@ namespace ProyectoP3
              MessageBoxButtons.YesNo,
              MessageBoxIcon.Question
              );
+        }
+
+        private void FrmEspecializacionAgregar_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

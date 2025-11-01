@@ -7,27 +7,17 @@ namespace ProyectoP3
 {
     public partial class FrmVeterinarioEditar : Form
     {
+        Veterinario veterinario;
+        IServiceVeterinario logVeterinario;
+        ICrud<Especializacion> logEspecializacion;
         public FrmVeterinarioEditar(Veterinario veterinario)
         {
             InitializeComponent();
+            logVeterinario = new LogVeterinario();
+            logEspecializacion = new logEspecializacion();
             this.veterinario = veterinario;
         }
-        Veterinario veterinario;
-        IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
-        IServiceEntidad<Especializacion> logEspecializacion = new logEspecializacion();
-        private void mostrarVeterinario(Veterinario veterinario)
-        {
-            txtCedula.Text = veterinario.Cedula.ToString();
-            txtNombre.Text = veterinario.Nombres;
-            txtApellidoPaterno.Text = veterinario.ApellidoPaterno;
-            txtApellidoMaterno.Text = veterinario.ApellidoMaterno;
-            txtNumeroTelefonicoPrimario.Text = veterinario.Telefono;
-            if (veterinario.Sexo == "Femenino") RBFemenino.Checked = true;
-            else RBMasculino.Checked = true;
-            cmbEspecilizacion.SelectedValue = veterinario.Especializacion.Codigo;
-
-        }
-
+        
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
@@ -53,6 +43,36 @@ namespace ProyectoP3
             }
 
         }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes)
+            {
+                salir();
+            }
+        }
+        private Especializacion buscarEspecializacion(string codigo)
+        {
+            return logEspecializacion.BuscarPorId(codigo);
+        }
+        private void FrmVeterinarioEditar_Load(object sender, EventArgs e)
+        {
+            cargarCmbEspecializacion();
+            mostrarVeterinario(veterinario);
+        }
+
+        private void mostrarVeterinario(Veterinario veterinario)
+        {
+            txtCedula.Text = veterinario.Cedula.ToString();
+            txtNombre.Text = veterinario.Nombres;
+            txtApellidoPaterno.Text = veterinario.ApellidoPaterno;
+            txtApellidoMaterno.Text = veterinario.ApellidoMaterno;
+            txtNumeroTelefonicoPrimario.Text = veterinario.Telefono;
+            if (veterinario.Sexo == "Femenino") RBFemenino.Checked = true;
+            else RBMasculino.Checked = true;
+            cmbEspecilizacion.SelectedValue = veterinario.Especializacion.Codigo;
+
+        }
         private string editar(Veterinario veterinario)
         {
             try
@@ -65,18 +85,6 @@ namespace ProyectoP3
             }
 
         }
-        private void salir()
-        {
-            this.Close();
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes)
-            {
-                salir();
-            }
-        }
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -85,6 +93,12 @@ namespace ProyectoP3
              MessageBoxButtons.YesNo,
              MessageBoxIcon.Question
              );
+        }
+        private void cargarCmbEspecializacion()
+        {
+            cmbEspecilizacion.DataSource = logEspecializacion.Consultar();
+            cmbEspecilizacion.DisplayMember = "Nombre";
+            cmbEspecilizacion.ValueMember = "Codigo";
         }
         private Veterinario Mapeo()
         {
@@ -108,20 +122,9 @@ namespace ProyectoP3
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentNullException("El campo Sexo es obligatorio.");
             return true;
         }
-        private Especializacion buscarEspecializacion(string codigo)
+        private void salir()
         {
-            return logEspecializacion.BuscarPorId(codigo);
-        }
-        private void FrmVeterinarioEditar_Load(object sender, EventArgs e)
-        {
-            cargarCmbEspecializacion();
-            mostrarVeterinario(veterinario);
-        }
-        private void cargarCmbEspecializacion()
-        {
-            cmbEspecilizacion.DataSource = logEspecializacion.Consultar();
-            cmbEspecilizacion.DisplayMember = "Nombre";
-            cmbEspecilizacion.ValueMember = "Codigo";
+            this.Close();
         }
     }
 

@@ -19,7 +19,7 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        IServiceEntidad<Mascota> logMascota = new LogMascota();
+        ICrud<Mascota> logMascota = new LogMascota();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmMascotaAgregar());

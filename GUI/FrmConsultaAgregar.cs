@@ -7,24 +7,31 @@ namespace ProyectoP3
 {
     public partial class FrmConsultaAgregar : Form
     {
+        ICrud<Consulta> logConsulta;
+        ICrud<Mascota> logMascota;
+        IServiceVeterinario logVeterinario;
+        logEspecializacion logEspecializacion;
+        public DialogResult resultado;
         public FrmConsultaAgregar()
         {
             InitializeComponent();
             SetControlesEstado(false);
+            logConsulta = new LogConsulta();
+            logMascota = new LogMascota();
+            logVeterinario = new LogVeterinario();
+            logEspecializacion = new logEspecializacion();
             lblNombreMascota.Text = "";
         }
         public FrmConsultaAgregar(Mascota mascota,Veterinario veterinario)
         {
             InitializeComponent();
-            mostrarInformacion(mascota,veterinario);
             setEstado(false);
+            logConsulta = new LogConsulta();
+            logMascota = new LogMascota();
+            logVeterinario = new LogVeterinario();
+            logEspecializacion = new logEspecializacion();
+            mostrarInformacion(mascota, veterinario);
         }
-
-        IServiceEntidad<Consulta> logConsulta = new LogConsulta();
-        IServiceEntidad<Mascota> logMascota = new LogMascota();
-        LogVeterinario logVeterinario = new LogVeterinario();
-        logEspecializacion logEspecializacion = new logEspecializacion();
-        public DialogResult resultado;
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -50,50 +57,12 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-        private void salir()
-        {
-            this.Close();
-        }
-
-        private bool validar()
-        {
-            if (string.IsNullOrEmpty(txtDiagnostico.Text)) throw new Exception("El campo Diagnóstico es obligatorio.");
-            if (string.IsNullOrEmpty(txtTratamiento.Text)) throw new Exception("El campo Tratamiento es obligatorio.");
-            if (string.IsNullOrEmpty(txtDescripcion.Text)) throw new Exception("El campo Descripción es obligatorio.");
-            if (cbmVeterinario.SelectedIndex == -1) throw new Exception("Debe seleccionar un veterinario.");
-            return true;
-        }
-        private string agregar(Consulta consulta)
-        {
-            try
-            {
-                return logConsulta.Guardar(consulta);
-            }
-            catch (Exception e)
-            {
-                return e.Message;
-            }
-            
-        }
-
-        private Mascota buscarMascota(string id)
-        {
-            return logMascota.BuscarPorId(id);
-        }
-
-        private Veterinario buscarVeterinario(string id)
-        {
-            return logVeterinario.BuscarPorId(id);
-        }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) salir();
             
         }
-
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -111,42 +80,10 @@ namespace ProyectoP3
             txtDiagnostico.Enabled = estado;
             txtTratamiento.Enabled = estado;
         }
-
         private void FrmConsultaAgregar_Load(object sender, EventArgs e)
         {
             cargarCmbEspecializacion();
         }
-
-        private void cargarCmbVeterinario(string especializacion)
-        {
-            cbmVeterinario.DataSource = logVeterinario.BuscarPorEspecializacion(especializacion);
-            cbmVeterinario.DisplayMember = "Nombres";
-            cbmVeterinario.ValueMember = "Cedula";
-            cbmVeterinario.SelectedIndex = -1;
-        }
-
-        private void cargarCmbEspecializacion()
-        {
-            cmbEspecializacion.DataSource = logEspecializacion.Consultar();
-            cmbEspecializacion.DisplayMember = "Nombre";
-            cmbEspecializacion.ValueMember = "Codigo";
-        }
-        private void setEstado(bool estado)
-        {
-            txtIdMascota.Enabled = estado;
-            btnBuscarMascota.Enabled = estado;
-            cbmVeterinario.Enabled = estado;
-            cmbEspecializacion.Enabled = estado;
-        }
-        private void mostrarInformacion(Mascota mascota,Veterinario veterinario)
-        {
-            txtIdMascota.Text = mascota.Codigo.ToString();
-            lblNombreMascota.Text = mascota.Nombre;
-            cmbEspecializacion.SelectedValue = veterinario.Especializacion.Codigo;
-            cargarCmbVeterinario(veterinario.Especializacion.Codigo);
-            cbmVeterinario.SelectedValue = veterinario.Cedula;
-        }
-
         private void btnBuscarMascota_Click(object sender, EventArgs e)
         {
             try
@@ -168,6 +105,63 @@ namespace ProyectoP3
             }
         }
 
+        private void cmbEspecializacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbEspecializacion.SelectedIndex!=-1) 
+                cargarCmbVeterinario(cmbEspecializacion.SelectedValue.ToString());
+        }
+        private void cargarCmbVeterinario(string especializacion)
+        {
+            cbmVeterinario.DataSource = logVeterinario.BuscarPorCualidad(especializacion);
+            cbmVeterinario.DisplayMember = "Nombres";
+            cbmVeterinario.ValueMember = "Cedula";
+            cbmVeterinario.SelectedIndex = -1;
+        }
+        private void cargarCmbEspecializacion()
+        {
+            cmbEspecializacion.DataSource = logEspecializacion.Consultar();
+            cmbEspecializacion.DisplayMember = "Nombre";
+            cmbEspecializacion.ValueMember = "Codigo";
+        }
+        private void setEstado(bool estado)
+        {
+            txtIdMascota.Enabled = estado;
+            btnBuscarMascota.Enabled = estado;
+            cbmVeterinario.Enabled = estado;
+            cmbEspecializacion.Enabled = estado;
+        }
+        private void salir()
+        {
+            this.Close();
+        }
+        private bool validar()
+        {
+            if (string.IsNullOrEmpty(txtDiagnostico.Text)) throw new Exception("El campo Diagnóstico es obligatorio.");
+            if (string.IsNullOrEmpty(txtTratamiento.Text)) throw new Exception("El campo Tratamiento es obligatorio.");
+            if (string.IsNullOrEmpty(txtDescripcion.Text)) throw new Exception("El campo Descripción es obligatorio.");
+            if (cbmVeterinario.SelectedIndex == -1) throw new Exception("Debe seleccionar un veterinario.");
+            return true;
+        }
+        private string agregar(Consulta consulta)
+        {
+            try
+            {
+                return logConsulta.Guardar(consulta);
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
+        }
+        private Mascota buscarMascota(string id)
+        {
+            return logMascota.BuscarPorId(id);
+        }
+        private Veterinario buscarVeterinario(string id)
+        {
+            return logVeterinario.BuscarPorId(id);
+        }
         private Consulta Mapeo()
         {
             Mascota mascota = buscarMascota(txtIdMascota.Text);
@@ -181,11 +175,13 @@ namespace ProyectoP3
             consulta.Veterinario = veterinario;
             return consulta;
         }
-
-        private void cmbEspecializacion_SelectedIndexChanged(object sender, EventArgs e)
+        private void mostrarInformacion(Mascota mascota, Veterinario veterinario)
         {
-            if(cmbEspecializacion.SelectedIndex!=-1) 
-                cargarCmbVeterinario(cmbEspecializacion.SelectedValue.ToString());
+            txtIdMascota.Text = mascota.Codigo.ToString();
+            lblNombreMascota.Text = mascota.Nombre;
+            cmbEspecializacion.SelectedValue = veterinario.Especializacion.Codigo;
+            cargarCmbVeterinario(veterinario.Especializacion.Codigo);
+            cbmVeterinario.SelectedValue = veterinario.Cedula;
         }
     }
 }

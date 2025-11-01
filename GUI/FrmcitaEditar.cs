@@ -7,10 +7,10 @@ namespace ProyectoP3
 {
     public partial class FrmcitaEditar : Form
     {
-        IServiceEntidad<Cita> logCita;
-        IServiceEntidad<Mascota> logMascota;
-        LogVeterinario logVeterinario;
-        logEspecializacion logEspecializacion;
+        ICrud<Cita> logCita;
+        ICrud<Mascota> logMascota;
+        IServiceVeterinario logVeterinario;
+        ICrud<Especializacion> logEspecializacion;
         Cita Cita;
         public FrmcitaEditar(Cita cita)
         {
@@ -80,7 +80,7 @@ namespace ProyectoP3
         private void cargarCmbVeterinario(string especialializacion)
         {
             cmbVeterinario.DataSource = null;
-            cmbVeterinario.DataSource = logVeterinario.BuscarPorEspecializacion(especialializacion);
+            cmbVeterinario.DataSource = logVeterinario.BuscarPorCualidad(especialializacion);
             cmbVeterinario.DisplayMember = "Nombres";
             cmbVeterinario.ValueMember = "Cedula";
             cmbEspecializacion.SelectedIndex = -1;

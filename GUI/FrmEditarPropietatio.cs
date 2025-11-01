@@ -7,13 +7,14 @@ namespace ProyectoP3
 {
     public partial class FrmEditarPropietatio : Form
     {
+        ICrud<Propietario> logPropietario;
         public FrmEditarPropietatio(Propietario propietario)
         {
+            logPropietario = new LogPropietario();
             InitializeComponent();
             mostrarPropietario(propietario);
             txtCedula.Enabled = false;
         }
-        IServicePersonas<Propietario> logPropietario = new LogPropietario();
         private void FrmEditarPropietatio_Load(object sender, EventArgs e)
         {
         }

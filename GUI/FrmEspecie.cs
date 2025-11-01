@@ -13,7 +13,7 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        IServiceEntidad<Especie> logEspecie = new LogEspecie();
+        ICrud<Especie> logEspecie = new LogEspecie();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmEspecieAgregar());

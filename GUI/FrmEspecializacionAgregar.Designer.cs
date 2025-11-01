@@ -95,6 +95,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FrmEspecializacionAgregar";
             this.Text = "FrmEspecializacionAgregar";
+            this.Load += new System.EventHandler(this.FrmEspecializacionAgregar_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

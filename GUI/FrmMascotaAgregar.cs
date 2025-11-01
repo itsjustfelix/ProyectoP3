@@ -7,14 +7,18 @@ namespace ProyectoP3
 {
     public partial class FrmMascotaAgregar : Form
     {
+        ICrud<Propietario> logPropietario;
+        ICrud<Mascota> logMascota;
+        ICrud<Especie> logEspecie;
+        IServiceRaza logRaza;
         public FrmMascotaAgregar()
         {
             InitializeComponent();
+            logPropietario = new LogPropietario();
+            logMascota = new LogMascota();
+            logEspecie = new LogEspecie();
+            logRaza = new LogRaza();
         }
-        IServicePersonas<Propietario> logPropietario = new LogPropietario();
-        IServiceEntidad<Mascota> logMascota = new LogMascota();
-        IServiceEntidad<Especie> logEspecie = new LogEspecie();
-        IServiceRaza logRaza = new LogRaza();
         private void bttnBuscarProp_Click(object sender, EventArgs e)
         {
             Propietario propietario = buscarPropietario(txtIdProprietario.Text);
@@ -27,16 +31,6 @@ namespace ProyectoP3
             }
             lblNombreProp.Text = propietario.Nombres;
             SetControlesEstado(true);
-        }
-        private Propietario buscarPropietario(string id)
-        {
-            return logPropietario.BuscarPorId(id);
-        }
-        private void SetControlesEstado(bool estado)
-        {
-            txtNombre.Enabled = estado;
-            cmbEspecie.Enabled = estado;
-            cmbRaza.Enabled = estado;
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -64,6 +58,31 @@ namespace ProyectoP3
 
 
         }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) salir();
+
+        }
+        private DialogResult dialogoPregunta(string accion)
+        {
+            return MessageBox.Show(
+             $"¿Está seguro de que desea {accion}?",
+             $"Confirmar {accion}",
+             MessageBoxButtons.YesNo,
+             MessageBoxIcon.Question
+             );
+        }
+        private void FrmMascotaAgregar_Load(object sender, EventArgs e)
+        {
+            cargarCmbEspecie();
+            SetControlesEstado(false);
+            lblNombreProp.Text = string.Empty;
+        }
+        private void cmbEspecie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cargarCmbRaza(cmbEspecie.SelectedValue.ToString());
+        }
         private bool validar()
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentNullException("El nombre de la mascota es obligatorio.");
@@ -88,34 +107,19 @@ namespace ProyectoP3
         {
             return logRaza.BuscarPorId(id);
         }
-        private void salir()
+        private Propietario buscarPropietario(string id)
         {
-            this.Close();
+            return logPropietario.BuscarPorId(id);
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void SetControlesEstado(bool estado)
         {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) salir();
-
-        }
-        private DialogResult dialogoPregunta(string accion)
-        {
-            return MessageBox.Show(
-             $"¿Está seguro de que desea {accion}?",
-             $"Confirmar {accion}",
-             MessageBoxButtons.YesNo,
-             MessageBoxIcon.Question
-             );
-        }
-        private void FrmMascotaAgregar_Load(object sender, EventArgs e)
-        {
-            cargarCmbEspecie();
-            SetControlesEstado(false);
-            lblNombreProp.Text = string.Empty;
+            txtNombre.Enabled = estado;
+            cmbEspecie.Enabled = estado;
+            cmbRaza.Enabled = estado;
         }
         private void cargarCmbEspecie()
         {
-            cmbEspecie.DataSource = null;  
+            cmbEspecie.DataSource = null;
             cmbEspecie.DataSource = logEspecie.Consultar();
             cmbEspecie.DisplayMember = "Nombre";
             cmbEspecie.ValueMember = "Codigo";
@@ -123,15 +127,14 @@ namespace ProyectoP3
         private void cargarCmbRaza(string idEspecie)
         {
             cmbRaza.DataSource = null;
-            cmbRaza.DataSource = logRaza.ConsultarPorEspecie(idEspecie);
+            cmbRaza.DataSource = logRaza.BuscarPorCualidad(idEspecie);
             cmbRaza.DisplayMember = "Nombre";
             cmbRaza.ValueMember = "Codigo";
         }
-        private void cmbEspecie_SelectedIndexChanged(object sender, EventArgs e)
+        private void salir()
         {
-            cargarCmbRaza(cmbEspecie.SelectedValue.ToString());
+            this.Close();
         }
-
         private Mascota Mapeo()
         {
             Propietario propietario = buscarPropietario(txtIdProprietario.Text);

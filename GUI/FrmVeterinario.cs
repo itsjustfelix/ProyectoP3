@@ -8,35 +8,17 @@ namespace ProyectoP3
 {
     public partial class FrmVeterinario : Form
     {
+        IServiceVeterinario logVeterinario;
         public FrmVeterinario()
         {
             InitializeComponent();
+            logVeterinario = new LogVeterinario();
         }
-        IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
+        
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmVeterinarioAgregar());
             cargarDGV();
-        }
-        private void mostrarFrm(Form frm)
-        {
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.ShowDialog();
-        }
-        private void cargarDGV()
-        {
-            DGVeterinario.Rows.Clear();
-            foreach (var item in logVeterinario.Consultar())
-            {
-                DGVeterinario.Rows.Add(
-                    item.Cedula, 
-                    item.Nombres, 
-                    item.ApellidoMaterno, 
-                    item.ApellidoMaterno,
-                    item.Sexo, 
-                    item.Telefono, 
-                    item.Especializacion.Nombre);
-            }
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -57,15 +39,6 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-        }
-        private DialogResult dialogoPregunta(string accion)
-        {
-            return MessageBox.Show(
-             $"¿Está seguro de que desea {accion}?",
-             $"Confirmar {accion}",
-             MessageBoxButtons.YesNo,
-             MessageBoxIcon.Question
-             );
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -91,6 +64,11 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        private void FrmVeterinario_Load(object sender, EventArgs e)
+        {
+            cargarDGV();
+        }
+
         private Veterinario buscar(string id)
         {
             try
@@ -115,9 +93,34 @@ namespace ProyectoP3
                 return e.Message;
             }
         }
-        private void FrmVeterinario_Load(object sender, EventArgs e)
+        private DialogResult dialogoPregunta(string accion)
         {
-            cargarDGV();
+            return MessageBox.Show(
+             $"¿Está seguro de que desea {accion}?",
+             $"Confirmar {accion}",
+             MessageBoxButtons.YesNo,
+             MessageBoxIcon.Question
+             );
+        }
+        private void mostrarFrm(Form frm)
+        {
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.ShowDialog();
+        }
+        private void cargarDGV()
+        {
+            DGVeterinario.Rows.Clear();
+            foreach (var item in logVeterinario.Consultar())
+            {
+                DGVeterinario.Rows.Add(
+                    item.Cedula,
+                    item.Nombres,
+                    item.ApellidoMaterno,
+                    item.ApellidoMaterno,
+                    item.Sexo,
+                    item.Telefono,
+                    item.Especializacion.Nombre);
+            }
         }
     }
 }

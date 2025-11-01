@@ -7,7 +7,7 @@ using Entidad;
 using Dato;
 namespace Logica
 {
-    public class LogRaza : IServiceRaza
+    public class LogRaza : IServiceRaza, IGenerarIdUnico
     {
         private readonly DatoRaza datoRaza;
         Random random;
@@ -81,10 +81,6 @@ namespace Logica
         {
             return datoRaza.BuscarPorId(id);
         }
-        public List<Raza> ConsultarPorEspecie(string idEspecie)
-        {
-            return Consultar().Where(r => r.Especie.Codigo.Equals(idEspecie)).ToList();
-        }
         public bool Validar(Raza entidad, out string mensaje)
         {
             mensaje = string.Empty;
@@ -106,6 +102,10 @@ namespace Logica
             //if (Consultar().Any(r => r.nombre.Equals(entidad.nombre) && r.especie.id.Equals(entidad.especie.id)))
             //    throw new ArgumentException("El nombre de la raza ya existe para la especie seleccionada");
             return true;
+        }
+        public List<Raza> BuscarPorCualidad(string cualidad)
+        {
+            return Consultar().Where(r => r.Especie.Codigo.Equals(cualidad)).ToList();
         }
     }
 }
