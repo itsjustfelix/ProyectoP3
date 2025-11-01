@@ -5,9 +5,14 @@ using Dato;
 using Entidad;
 namespace Logica
 {
-    public class LogVeterinario : IServicePersonas<Veterinario>
+    public class LogVeterinario : IServiceVeterinario, IIDUnico
     {
-        private readonly DatoVeterinario datoVeterinario = new DatoVeterinario(NombreArchivo.ARC_VETERINARIO);
+        private readonly DatoVeterinario datoVeterinario;
+
+        public LogVeterinario()
+        {
+            datoVeterinario = new DatoVeterinario(NombreArchivo.ARC_VETERINARIO);
+        }
         public string Guardar(Veterinario entidad)
         {
             try
@@ -58,7 +63,7 @@ namespace Logica
         {
             return datoVeterinario.BuscarPorId(id);
         }
-        public bool Validar(Veterinario entidad,out string mensaje)
+        public bool Validar(Veterinario entidad, out string mensaje)
         {
             mensaje = string.Empty;
             if (entidad == null)
@@ -66,7 +71,7 @@ namespace Logica
                 mensaje = "Propietario nulo";
                 return false;
             }
-            if(entidad.Especializacion == null)
+            if (entidad.Especializacion == null)
             {
                 mensaje = "La especializacion no puede ser nula";
                 return false;
@@ -112,6 +117,11 @@ namespace Logica
         {
             if (BuscarPorId(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
             return true;
+        }
+
+        public List<Veterinario> BuscarPorCualidad(string cualidad)
+        {
+            return Consultar().Where(r => r.Especializacion.Codigo.Equals(cualidad)).ToList();
         }
     }
 }

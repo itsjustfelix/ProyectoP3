@@ -40,6 +40,7 @@ namespace Dato
             cita.Fecha = DateTime.ParseExact(line.Split(';')[1], "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             cita.Hora = DateTime.ParseExact(line.Split(';')[2], "hh:mm tt", System.Globalization.CultureInfo.InvariantCulture);
             cita.Mascota = new DatoMascota(NombreArchivo.ARC_MASCOTA).BuscarPorId(line.Split(';')[3]);
+            cita.Veterinario = new DatoVeterinario(NombreArchivo.ARC_VETERINARIO).BuscarPorId(line.Split(';')[4]);
             return cita;
         }
     }

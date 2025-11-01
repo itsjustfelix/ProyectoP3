@@ -7,22 +7,29 @@ namespace ProyectoP3
 {
     public partial class FrmcitaEditar : Form
     {
+        ICrud<Cita> logCita;
+        ICrud<Mascota> logMascota;
+        IServiceVeterinario logVeterinario;
+        ICrud<Especializacion> logEspecializacion;
+        Cita Cita;
         public FrmcitaEditar(Cita cita)
         {
             InitializeComponent();
-            mostrarCita(cita);
+            this.Cita = cita;
+            logVeterinario = new LogVeterinario();
+            logCita = new LogCita();
+            logMascota = new LogMascota();
+            logEspecializacion = new logEspecializacion();
+        }
+        private void FrmcitaEditar_Load(object sender, EventArgs e)
+        {
+            cargarCmbEspecializacion();
+            mostrarCita(Cita);
             SetEstadoControles(false);
         }
-        IServiceEntidad<Cita> logCita = new LogCita();
-        IServiceEntidad<Mascota> logMascota = new LogMascota();
-        string idCita;
-        private void mostrarCita(Cita cita)
+        private void cmbEspecializacion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtIdMascota.Text = cita.Mascota.Codigo.ToString();
-            lblNombreMascota.Text = cita.Mascota.Nombre;
-            DTPFecha.Value = cita.Fecha;
-            DTPHora.Value = cita.Hora;
-            idCita = cita.Codigo;
+            cargarCmbVeterinario(cmbEspecializacion.SelectedValue.ToString());
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -48,11 +55,43 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) Salir();
+        }
+
+        private void mostrarCita(Cita cita)
+        {
+            txtIdMascota.Text = cita.Mascota.Codigo.ToString();
+            lblNombreMascota.Text = cita.Mascota.Nombre;
+            DTPFecha.Value = cita.Fecha;
+            DTPHora.Value = cita.Hora;
+            cmbEspecializacion.SelectedValue = cita.Veterinario.Especializacion.Codigo;
+            cmbVeterinario.SelectedValue = cita.Veterinario.Cedula;
+        }
+        private void cargarCmbEspecializacion()
+        {
+            cmbEspecializacion.DataSource = null;
+            cmbEspecializacion.DataSource = logEspecializacion.Consultar();
+            cmbEspecializacion.DisplayMember = "Nombre";
+            cmbEspecializacion.ValueMember = "Codigo";
+        }
+        private void cargarCmbVeterinario(string especialializacion)
+        {
+            cmbVeterinario.DataSource = null;
+            cmbVeterinario.DataSource = logVeterinario.BuscarPorCualidad(especialializacion);
+            cmbVeterinario.DisplayMember = "Nombres";
+            cmbVeterinario.ValueMember = "Cedula";
+            cmbEspecializacion.SelectedIndex = -1;
+        }
         private bool Validar()
         {
             if (string.IsNullOrWhiteSpace(txtIdMascota.Text)) throw new ArgumentNullException("Debe ingresar el codigo de la mascota.");
             if (DTPFecha.Value < DateTime.Now) throw new ArgumentException("La fecha de la cita no puede ser en el pasado.");
             if (DTPHora.Value.TimeOfDay < DateTime.Now.TimeOfDay && DTPFecha.Value.Date == DateTime.Now.Date) throw new ArgumentException("La hora de la cita no puede ser en el pasado.");
+            if (cmbEspecializacion.SelectedIndex == -1) throw new ArgumentException("Debe seleccionar una especializacion.");
+            if (cmbVeterinario.SelectedIndex == -1) throw new ArgumentException("Debe seleccionar un veterinario.");
             return true;
         }
         private string Editar(Cita cita)
@@ -70,14 +109,9 @@ namespace ProyectoP3
         {
             return logMascota.BuscarPorId(id);
         }
-        private void Salir()
+        private Veterinario buscarVeterinario(string cedula)
         {
-            this.Close();
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) Salir();
+            return logVeterinario.BuscarPorId(cedula);
         }
         private DialogResult dialogoPregunta(string accion)
         {
@@ -89,19 +123,22 @@ namespace ProyectoP3
              );
         }
         private Cita Mapeo()
-        {
-            Mascota mascota = buscarMascota(txtIdMascota.Text);
+        { 
             Cita cita = new Cita();
-            cita.Codigo = idCita;
-            cita.Mascota = mascota;
+            cita.Codigo = this.Cita.Codigo;
+            cita.Mascota = buscarMascota(txtIdMascota.Text);
             cita.Fecha = DTPFecha.Value;
             cita.Hora = DTPHora.Value;
+            cita.Veterinario = buscarVeterinario(cmbVeterinario.SelectedValue.ToString());
             return cita;
         }
-
         private void SetEstadoControles(bool estado)
         {
             txtIdMascota.Enabled = estado;
+        }
+        private void Salir()
+        {
+            this.Close();
         }
     }
 }

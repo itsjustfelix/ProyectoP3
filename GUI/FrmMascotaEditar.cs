@@ -13,9 +13,9 @@ namespace ProyectoP3
             this.mascota = mascota;
             setEstadoControles(false);
         }
-        IServicePersonas<Propietario> logPropietario = new LogPropietario();
-        IServiceEntidad<Mascota> logMascota = new LogMascota();
-        IServiceEntidad<Especie> logEspecie = new LogEspecie();
+        ICrud<Propietario> logPropietario = new LogPropietario();
+        ICrud<Mascota> logMascota = new LogMascota();
+        ICrud<Especie> logEspecie = new LogEspecie();
         IServiceRaza logRaza = new LogRaza();
         private Mascota mascota;
         string id;
@@ -109,7 +109,7 @@ namespace ProyectoP3
         private void cargarCmbRaza(string idEspecie)
         {
             cmbRaza.DataSource = null;
-            cmbRaza.DataSource = logRaza.ConsultarPorEspecie(idEspecie);
+            cmbRaza.DataSource = logRaza.BuscarPorCualidad(idEspecie);
             cmbRaza.DisplayMember = "Nombre";
             cmbRaza.ValueMember = "Codigo";
         }

@@ -10,7 +10,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Logica
 {
-    public class LogConsulta : IServiceEntidad<Consulta>
+    public class LogConsulta : ICrud<Consulta>, IGenerarIdUnico
     {
         private readonly FileRepository<Consulta> datoConsulta;
         private GeneradorDePDF<Consulta> generadorPDF;

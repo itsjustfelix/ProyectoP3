@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.DTPHora = new System.Windows.Forms.DateTimePicker();
             this.DTPFecha = new System.Windows.Forms.DateTimePicker();
             this.btnBuscarMascota = new System.Windows.Forms.Button();
@@ -37,13 +39,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblNombreMascota = new System.Windows.Forms.Label();
             this.nombre = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbEspecializacion = new System.Windows.Forms.ComboBox();
+            this.cmbVeterianrio = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbVeterianrio);
+            this.groupBox1.Controls.Add(this.cmbEspecializacion);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.btnAgregar);
             this.groupBox1.Controls.Add(this.DTPHora);
@@ -60,10 +68,32 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(155, 234);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(103, 33);
+            this.btnCancelar.TabIndex = 17;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(30, 234);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(103, 33);
+            this.btnAgregar.TabIndex = 16;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
             // DTPHora
             // 
             this.DTPHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DTPHora.Location = new System.Drawing.Point(73, 171);
+            this.DTPHora.Location = new System.Drawing.Point(73, 202);
             this.DTPHora.Name = "DTPHora";
             this.DTPHora.ShowUpDown = true;
             this.DTPHora.Size = new System.Drawing.Size(230, 20);
@@ -71,7 +101,7 @@
             // 
             // DTPFecha
             // 
-            this.DTPFecha.Location = new System.Drawing.Point(73, 122);
+            this.DTPFecha.Location = new System.Drawing.Point(73, 176);
             this.DTPFecha.Name = "DTPFecha";
             this.DTPFecha.Size = new System.Drawing.Size(230, 20);
             this.DTPFecha.TabIndex = 6;
@@ -97,7 +127,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(13, 171);
+            this.label3.Location = new System.Drawing.Point(13, 202);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 20);
             this.label3.TabIndex = 0;
@@ -107,7 +137,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(13, 122);
+            this.label1.Location = new System.Drawing.Point(13, 176);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 20);
             this.label1.TabIndex = 0;
@@ -117,7 +147,7 @@
             // 
             this.lblNombreMascota.AutoSize = true;
             this.lblNombreMascota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreMascota.Location = new System.Drawing.Point(30, 67);
+            this.lblNombreMascota.Location = new System.Drawing.Point(22, 50);
             this.lblNombreMascota.Name = "lblNombreMascota";
             this.lblNombreMascota.Size = new System.Drawing.Size(108, 16);
             this.lblNombreMascota.TabIndex = 0;
@@ -133,27 +163,40 @@
             this.nombre.TabIndex = 0;
             this.nombre.Text = "Id Mascota";
             // 
-            // btnCancelar
+            // label2
             // 
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(155, 234);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(103, 33);
-            this.btnCancelar.TabIndex = 17;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 98);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Especializacion";
             // 
-            // btnAgregar
+            // label4
             // 
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(30, 234);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(103, 33);
-            this.btnAgregar.TabIndex = 16;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(30, 130);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Veterinerio";
+            // 
+            // cmbEspecializacion
+            // 
+            this.cmbEspecializacion.FormattingEnabled = true;
+            this.cmbEspecializacion.Location = new System.Drawing.Point(120, 95);
+            this.cmbEspecializacion.Name = "cmbEspecializacion";
+            this.cmbEspecializacion.Size = new System.Drawing.Size(183, 21);
+            this.cmbEspecializacion.TabIndex = 20;
+            this.cmbEspecializacion.SelectedIndexChanged += new System.EventHandler(this.cmbEspecializacion_SelectedIndexChanged);
+            // 
+            // cmbVeterianrio
+            // 
+            this.cmbVeterianrio.FormattingEnabled = true;
+            this.cmbVeterianrio.Location = new System.Drawing.Point(120, 122);
+            this.cmbVeterianrio.Name = "cmbVeterianrio";
+            this.cmbVeterianrio.Size = new System.Drawing.Size(183, 21);
+            this.cmbVeterianrio.TabIndex = 21;
             // 
             // FrmCitaAgregar
             // 
@@ -183,5 +226,9 @@
         private System.Windows.Forms.Label nombre;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.ComboBox cmbVeterianrio;
+        private System.Windows.Forms.ComboBox cmbEspecializacion;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
     }
 }

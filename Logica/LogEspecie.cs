@@ -8,7 +8,7 @@ using Dato;
 using Entidad;
 namespace Logica
 {
-    public class LogEspecie : IServiceEntidad<Especie>
+    public class LogEspecie : ICrud<Especie>, IGenerarIdUnico
     {
         Random random;
         private readonly FileRepository<Especie> datoEspecie;

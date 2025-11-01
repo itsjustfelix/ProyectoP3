@@ -14,12 +14,15 @@ namespace ProyectoP3
 {
     public partial class FrmVeterinarioAgregar : Form
     {
+        IServiceVeterinario logVeterinario;
+        ICrud<Especializacion> logEspecializacion;
         public FrmVeterinarioAgregar()
         {
             InitializeComponent();
+            logVeterinario = new LogVeterinario();
+            logEspecializacion = new logEspecializacion();
         }
-        IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
-        IServiceEntidad<Especializacion> logEspecializacion = new logEspecializacion();
+        
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -46,22 +49,6 @@ namespace ProyectoP3
             }
             
         }
-        private string agregar(Veterinario veterinario)
-        {
-            try
-            {
-                return logVeterinario.Guardar(veterinario);
-            }
-            catch (Exception e)
-            {
-                return e.Message;
-            }
-
-        }
-        private void salir()
-        {
-            this.Close();
-        }
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -79,6 +66,14 @@ namespace ProyectoP3
                 salir();
             }
         }
+        private Especializacion buscarEspecializacion(string codigo)
+        {
+           return logEspecializacion.BuscarPorId(codigo);
+        }
+        private void FrmVeterinarioAgregar_Load(object sender, EventArgs e)
+        {
+            cargarCmbEspecializacion();
+        }
         private Veterinario Mapeo()
         {
             Veterinario veterinario = new Veterinario();
@@ -90,10 +85,6 @@ namespace ProyectoP3
             veterinario.Telefono = txtNumeroTelefonicoPrimario.Text;
             veterinario.Especializacion = buscarEspecializacion(cmbEspecilizacion.SelectedValue.ToString());
             return veterinario;
-        }
-        private Especializacion buscarEspecializacion(string codigo)
-        {
-           return logEspecializacion.BuscarPorId(codigo);
         }
         private bool validar()
         {
@@ -111,9 +102,21 @@ namespace ProyectoP3
             cmbEspecilizacion.DisplayMember = "Nombre";
             cmbEspecilizacion.ValueMember = "Codigo";
         }
-        private void FrmVeterinarioAgregar_Load(object sender, EventArgs e)
+        private string agregar(Veterinario veterinario)
         {
-            cargarCmbEspecializacion();
+            try
+            {
+                return logVeterinario.Guardar(veterinario);
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
+        }
+        private void salir()
+        {
+            this.Close();
         }
     }
 }

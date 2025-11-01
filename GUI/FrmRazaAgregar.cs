@@ -18,7 +18,7 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        IServiceEntidad<Especie> logEspecie = new LogEspecie();
+        ICrud<Especie> logEspecie = new LogEspecie();
         IServiceRaza logRaza = new LogRaza();
         private void FrmRazaAgregar_Load(object sender, EventArgs e)
         {

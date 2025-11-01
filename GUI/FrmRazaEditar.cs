@@ -19,7 +19,7 @@ namespace ProyectoP3
             InitializeComponent();
             this.raza = raza;
         }
-        IServiceEntidad<Especie> logEspecie = new LogEspecie();
+        ICrud<Especie> logEspecie = new LogEspecie();
         IServiceRaza logRaza = new LogRaza();
         Raza raza;
         string idRaza;

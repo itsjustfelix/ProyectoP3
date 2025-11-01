@@ -8,7 +8,7 @@ namespace ProyectoP3
 {
     public partial class FrmCita : Form
     {
-        IServiceEntidad<Cita> logCita = new LogCita();
+        ICrud<Cita> logCita = new LogCita();
         public FrmCita()
         {
             InitializeComponent();
@@ -20,9 +20,9 @@ namespace ProyectoP3
         private void cargarDGV()
         {
             DGVCita.Rows.Clear();
-            foreach (Cita cita in logCita.Consultar())
+            foreach (Cita item in logCita.Consultar())
             {
-                DGVCita.Rows.Add(cita.Codigo, cita.Fecha.ToString("dd/MM/yyyy"), cita.Hora.ToString("HH:mm tt"), cita.Mascota.Nombre);
+                DGVCita.Rows.Add(item.Codigo, item.Fecha.ToString("dd/MM/yyyy"), item.Hora.ToString("HH:mm tt"), item.Mascota.Nombre, item.Veterinario.Nombres);
             }
         }
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -109,7 +109,7 @@ namespace ProyectoP3
                     MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                var frm = new FrmConsultaAgregar(cita.Mascota);
+                var frm = new FrmConsultaAgregar(cita.Mascota,cita.Veterinario);
                 mostrarFrm(frm);
                 if (frm.resultado == DialogResult.OK)
                 {
