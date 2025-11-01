@@ -58,6 +58,10 @@ namespace Logica
         {
             return datoVeterinario.BuscarPorId(id);
         }
+        public List<Veterinario> BuscarPorEspecializacion(string idEspecializacion)
+        {
+            return Consultar().Where(r => r.Especializacion.Codigo.Equals(idEspecializacion)).ToList();
+        }
         public bool Validar(Veterinario entidad,out string mensaje)
         {
             mensaje = string.Empty;

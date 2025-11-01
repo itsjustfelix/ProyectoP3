@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -20,16 +13,17 @@ namespace ProyectoP3
             SetControlesEstado(false);
             lblNombreMascota.Text = "";
         }
-        public FrmConsultaAgregar(Mascota mascota)
+        public FrmConsultaAgregar(Mascota mascota,Veterinario veterinario)
         {
             InitializeComponent();
-            mostrarMascota(mascota);
+            mostrarInformacion(mascota,veterinario);
             setEstado(false);
         }
 
         IServiceEntidad<Consulta> logConsulta = new LogConsulta();
         IServiceEntidad<Mascota> logMascota = new LogMascota();
-        IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
+        LogVeterinario logVeterinario = new LogVeterinario();
+        logEspecializacion logEspecializacion = new logEspecializacion();
         public DialogResult resultado;
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -67,6 +61,7 @@ namespace ProyectoP3
             if (string.IsNullOrEmpty(txtDiagnostico.Text)) throw new Exception("El campo Diagnóstico es obligatorio.");
             if (string.IsNullOrEmpty(txtTratamiento.Text)) throw new Exception("El campo Tratamiento es obligatorio.");
             if (string.IsNullOrEmpty(txtDescripcion.Text)) throw new Exception("El campo Descripción es obligatorio.");
+            if (cbmVeterinario.SelectedIndex == -1) throw new Exception("Debe seleccionar un veterinario.");
             return true;
         }
         private string agregar(Consulta consulta)
@@ -110,32 +105,46 @@ namespace ProyectoP3
         }
         private void SetControlesEstado(bool estado)
         {
-            cbxVeterinario.Enabled = estado;
+            cmbEspecializacion.Enabled = estado;
+            cbmVeterinario.Enabled = estado;
+            txtDescripcion.Enabled = estado;
             txtDiagnostico.Enabled = estado;
             txtTratamiento.Enabled = estado;
         }
 
         private void FrmConsultaAgregar_Load(object sender, EventArgs e)
         {
-            cargarCmb();
+            cargarCmbEspecializacion();
         }
 
-        private void cargarCmb()
+        private void cargarCmbVeterinario(string especializacion)
         {
-            cbxVeterinario.DataSource = logVeterinario.Consultar();
-            cbxVeterinario.DisplayMember = "Nombres";
-            cbxVeterinario.ValueMember = "Cedula";
+            cbmVeterinario.DataSource = logVeterinario.BuscarPorEspecializacion(especializacion);
+            cbmVeterinario.DisplayMember = "Nombres";
+            cbmVeterinario.ValueMember = "Cedula";
+            cbmVeterinario.SelectedIndex = -1;
         }
 
+        private void cargarCmbEspecializacion()
+        {
+            cmbEspecializacion.DataSource = logEspecializacion.Consultar();
+            cmbEspecializacion.DisplayMember = "Nombre";
+            cmbEspecializacion.ValueMember = "Codigo";
+        }
         private void setEstado(bool estado)
         {
             txtIdMascota.Enabled = estado;
             btnBuscarMascota.Enabled = estado;
+            cbmVeterinario.Enabled = estado;
+            cmbEspecializacion.Enabled = estado;
         }
-        private void mostrarMascota(Mascota mascota)
+        private void mostrarInformacion(Mascota mascota,Veterinario veterinario)
         {
             txtIdMascota.Text = mascota.Codigo.ToString();
             lblNombreMascota.Text = mascota.Nombre;
+            cmbEspecializacion.SelectedValue = veterinario.Especializacion.Codigo;
+            cargarCmbVeterinario(veterinario.Especializacion.Codigo);
+            cbmVeterinario.SelectedValue = veterinario.Cedula;
         }
 
         private void btnBuscarMascota_Click(object sender, EventArgs e)
@@ -162,7 +171,7 @@ namespace ProyectoP3
         private Consulta Mapeo()
         {
             Mascota mascota = buscarMascota(txtIdMascota.Text);
-            Veterinario veterinario = buscarVeterinario(cbxVeterinario.SelectedValue.ToString());
+            Veterinario veterinario = buscarVeterinario(cbmVeterinario.SelectedValue.ToString());
             Consulta consulta = new Consulta();
             consulta.Fecha = DateTime.Now.Date;
             consulta.Descripcion = txtDescripcion.Text;
@@ -171,6 +180,12 @@ namespace ProyectoP3
             consulta.Mascota = mascota;
             consulta.Veterinario = veterinario;
             return consulta;
+        }
+
+        private void cmbEspecializacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbEspecializacion.SelectedIndex!=-1) 
+                cargarCmbVeterinario(cmbEspecializacion.SelectedValue.ToString());
         }
     }
 }
