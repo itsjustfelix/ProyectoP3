@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -19,7 +12,7 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        ICrud<Mascota> logMascota = new LogMascota();
+        ICrud<Mascota> logMascota = new MascotaService();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmMascotaAgregar());
@@ -37,7 +30,7 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Digite el codigo de la mascota a buscar", "Buscar Mascota", "");
+                int id = int.Parse(Interaction.InputBox("Digite el codigo de la mascota a buscar", "Buscar Mascota", ""));
                 Mascota mascota = buscarMascota(id);
                 if (mascota == null)
                 {
@@ -56,7 +49,7 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Digite el codigo de la mascota ha eliminar", "Eliminar mascota", "");
+                int id = int.Parse(Interaction.InputBox("Digite el codigo de la mascota ha eliminar", "Eliminar mascota", ""));
                 Mascota mascota = buscar(id);
                 if (mascota == null)
                 {
@@ -78,11 +71,11 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private Mascota buscar(string id)
+        private Mascota buscar(int id)
         {
             return logMascota.BuscarPorId(id);
         }
-        private string borrar(string id)
+        private string borrar(int id)
         {
             try
             {
@@ -92,7 +85,7 @@ namespace ProyectoP3
             {
                 throw new Exception(ex.Message);
             }
-            
+
         }
         private DialogResult dialogoPregunta(string accion)
         {
@@ -103,7 +96,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private Mascota buscarMascota(string id)
+        private Mascota buscarMascota(int id)
         {
             return logMascota.BuscarPorId(id);
         }

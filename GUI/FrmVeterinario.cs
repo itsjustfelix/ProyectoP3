@@ -8,13 +8,13 @@ namespace ProyectoP3
 {
     public partial class FrmVeterinario : Form
     {
-        IServiceVeterinario logVeterinario;
+        IServiceVeterinario VeterinarioService;
         public FrmVeterinario()
         {
             InitializeComponent();
-            logVeterinario = new LogVeterinario();
+            VeterinarioService = new VeterinarioService();
         }
-        
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmVeterinarioAgregar());
@@ -24,7 +24,7 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", "");
+                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
                 Veterinario veterinario = buscar(id);
                 if (veterinario == null)
                 {
@@ -45,7 +45,7 @@ namespace ProyectoP3
             try
             {
                 string message = "";
-                string id = Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", "");
+                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
                 Veterinario veterinario = buscar(id);
                 if (veterinario == null)
                 {
@@ -69,11 +69,11 @@ namespace ProyectoP3
             cargarDGV();
         }
 
-        private Veterinario buscar(string id)
+        private Veterinario buscar(int id)
         {
             try
             {
-                return logVeterinario.BuscarPorId(id);
+                return VeterinarioService.BuscarPorId(id);
             }
             catch (Exception ex)
             {
@@ -81,11 +81,11 @@ namespace ProyectoP3
                 return null;
             }
         }
-        private string eliminar(string codigo)
+        private string eliminar(int codigo)
         {
             try
             {
-                return logVeterinario.Borrar(codigo);
+                return VeterinarioService.Borrar(codigo);
             }
             catch (Exception e)
             {
@@ -110,7 +110,7 @@ namespace ProyectoP3
         private void cargarDGV()
         {
             DGVeterinario.Rows.Clear();
-            foreach (var item in logVeterinario.Consultar())
+            foreach (var item in VeterinarioService.Consultar())
             {
                 DGVeterinario.Rows.Add(
                     item.Cedula,

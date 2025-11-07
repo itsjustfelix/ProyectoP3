@@ -8,7 +8,7 @@ namespace Entidad
 {
     public class Consulta
     {
-        public string Codigo { get; set; }
+        public int Codigo { get; set; }
         public DateTime Fecha { get; set; }
         public string Descripcion { get; set; }
         public string Diagnostico { get; set; }

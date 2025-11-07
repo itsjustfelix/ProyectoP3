@@ -9,11 +9,13 @@ namespace ProyectoP3
 {
     public partial class FrmConsulta : Form
     {
+        ConsultaService consultaService;
         public FrmConsulta()
         {
             InitializeComponent();
+            consultaService = new ConsultaService();
         }
-        LogConsulta logConsulta = new LogConsulta();
+        
         private void FrmConsulta_Load(object sender, EventArgs e)
         {
             cargarDGV();
@@ -25,27 +27,12 @@ namespace ProyectoP3
             cargarDGV();
         }
 
-        private void cargarDGV()
-        {
-            DGVConsulta.Rows.Clear();
-            foreach (var consulta in logConsulta.Consultar())
-            {
-                DGVConsulta.Rows.Add(
-                    consulta.Codigo,
-                    consulta.Mascota.Nombre,
-                    consulta.Fecha.ToString("dd/MM/yyyy"),
-                    consulta.Veterinario.Nombres,
-                    consulta.Descripcion, 
-                    consulta.Diagnostico, 
-                    consulta.Tratamiento
-                    );
-            }
-        }
+        
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
             {
-                string id = Interaction.InputBox("Ingrese el ID de la consulta a buscar:", "Buscar Consulta", "");
+                int id = int.Parse(Interaction.InputBox("Ingrese el ID de la consulta a buscar:", "Buscar Consulta", ""));
                 Consulta consulta = buscarConsulta(id);
                 if (consulta == null)
                 {
@@ -62,16 +49,11 @@ namespace ProyectoP3
 
         }
 
-        private Consulta buscarConsulta(string id)
-        {
-            return logConsulta.BuscarPorId(id);
-        }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
-                string id = Interaction.InputBox("Ingrese el codigo de la consulta a eliminar:", "Eliminar Consulta", "");
+                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la consulta a eliminar:", "Eliminar Consulta", ""));
                 if (buscarConsulta(id) == null)
                 {
                     MessageBox.Show("Consulta no encontrada.", "Eliminar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -93,33 +75,6 @@ namespace ProyectoP3
             }
         }
 
-        private string borrar(string codigo)
-        {
-            try
-            {
-                return logConsulta.Borrar(codigo);
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-        }
-
-        private DialogResult dialogoPregunta(string accion)
-        {
-            return MessageBox.Show(
-             $"¿Está seguro de que desea {accion}?",
-             $"Confirmar {accion}",
-             MessageBoxButtons.YesNo,
-             MessageBoxIcon.Question
-             );
-        }
-
-        private void mostrarFrm(Form frm)
-        {
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.ShowDialog();
-        }
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -138,14 +93,14 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Ingrese el codigo de la consulta que quiere hacerle PDF:", "Generar PDF", "");
+                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la consulta que quiere hacerle PDF:", "Generar PDF", ""));
                 var consulta = buscarConsulta(id);
                 if (consulta == null)
                 {
                     MessageBox.Show("Consulta no encontrada.", "Eliminar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                var ruta = logConsulta.GenerarDocumento(consulta);
+                var ruta = consultaService.GenerarDocumento(consulta);
                 MessageBox.Show($"Documento generado en: {ruta}", "Generar PDF", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -159,7 +114,7 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Ingrese el codigo de la consulta que quiere hacerle PDF:", "Generar PDF", "");
+                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la consulta que quiere hacerle PDF:", "Generar PDF", ""));
                 var consulta = buscarConsulta(id);
                 var email = consulta.Mascota.Propietario.Email;
                 if (consulta == null)
@@ -167,13 +122,59 @@ namespace ProyectoP3
                     MessageBox.Show("Consulta no encontrada.", "Eliminar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                var ruta = logConsulta.GenerarDocumento(consulta);
-                var mensaje = logConsulta.enviarEmail(email, ruta);
+                var ruta = consultaService.GenerarDocumento(consulta);
+                var mensaje = consultaService.enviarEmail(email, ruta);
                 MessageBox.Show(mensaje, "Enviar Email", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private DialogResult dialogoPregunta(string accion)
+        {
+            return MessageBox.Show(
+             $"¿Está seguro de que desea {accion}?",
+             $"Confirmar {accion}",
+             MessageBoxButtons.YesNo,
+             MessageBoxIcon.Question
+             );
+        }
+        private string borrar(int codigo)
+        {
+            try
+            {
+                return consultaService.Borrar(codigo);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+        private void mostrarFrm(Form frm)
+        {
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.ShowDialog();
+        }
+        private Consulta buscarConsulta(int id)
+        {
+            return consultaService.BuscarPorId(id);
+        }
+        private void cargarDGV()
+        {
+            DGVConsulta.Rows.Clear();
+            foreach (var consulta in consultaService.Consultar())
+            {
+                DGVConsulta.Rows.Add(
+                    consulta.Codigo,
+                    consulta.Mascota.Nombre,
+                    consulta.Fecha.ToString("dd/MM/yyyy"),
+                    consulta.Veterinario.Nombres,
+                    consulta.Descripcion,
+                    consulta.Diagnostico,
+                    consulta.Tratamiento
+                    );
             }
         }
     }

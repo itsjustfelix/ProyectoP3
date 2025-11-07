@@ -6,13 +6,13 @@ namespace ProyectoP3
 {
     public partial class FrmEspecializacionEditar : Form
     {
-        ICrud<Especializacion> logEspecializacion = new logEspecializacion();
+        ICrud<Especializacion> logEspecializacion = new EspecializacionService();
         public FrmEspecializacionEditar(Especializacion especializacion)
         {
             InitializeComponent();
             mostrarEspecializacion(especializacion);
         }
-        string codigo;
+        int codigo;
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try

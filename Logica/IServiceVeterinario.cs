@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Entidad;
+﻿using Entidad;
 namespace Logica
 {
-    public interface IServiceVeterinario : ICrud<Veterinario>,IBuscarPorCualidad<Veterinario>
+    public interface IServiceVeterinario : ICrud<Veterinario>, IBuscarPorCualidad<Veterinario>
     {
     }
 }

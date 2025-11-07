@@ -7,7 +7,7 @@ namespace ProyectoP3
 {
     public partial class FrmEspecializacion : Form
     {
-        ICrud<Especializacion> logEspecializacion = new logEspecializacion();
+        ICrud<Especializacion> logEspecializacion = new EspecializacionService();
         public FrmEspecializacion()
         {
             InitializeComponent();
@@ -53,7 +53,7 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Digite el codigo de la especializacion ha eliminar", "Eliminar especilizacion", "");
+                int id = int.Parse(Interaction.InputBox("Digite el codigo de la especializacion ha eliminar", "Eliminar especilizacion", ""));
                 Especializacion especializacion = buscar(id);
                 if (especializacion == null)
                 {
@@ -76,7 +76,7 @@ namespace ProyectoP3
             }
         }
 
-        private string eliminar(string id)
+        private string eliminar(int id)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace ProyectoP3
             }
         }
 
-        private Especializacion buscar(string id)
+        private Especializacion buscar(int id)
         {
             try
             {
@@ -105,7 +105,7 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Digite el codigo de la especializacion ha buscar", "Buscar especializacion", "");
+                int id = int.Parse(Interaction.InputBox("Digite el codigo de la especializacion ha buscar", "Buscar especializacion", ""));
                 Especializacion especializacion = buscar(id);
                 if (especializacion == null)
                 {

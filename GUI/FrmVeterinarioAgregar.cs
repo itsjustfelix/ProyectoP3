@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -19,10 +12,9 @@ namespace ProyectoP3
         public FrmVeterinarioAgregar()
         {
             InitializeComponent();
-            logVeterinario = new LogVeterinario();
-            logEspecializacion = new logEspecializacion();
+            logVeterinario = new VeterinarioService();
+            logEspecializacion = new EspecializacionService();
         }
-        
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -39,15 +31,15 @@ namespace ProyectoP3
                     {
                         MessageBox.Show(mensaje, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                        
+
                 }
-                
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
         private DialogResult dialogoPregunta(string accion)
         {
@@ -62,40 +54,14 @@ namespace ProyectoP3
         {
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes)
-            {
                 salir();
-            }
-        }
-        private Especializacion buscarEspecializacion(string codigo)
-        {
-           return logEspecializacion.BuscarPorId(codigo);
+            
         }
         private void FrmVeterinarioAgregar_Load(object sender, EventArgs e)
         {
             cargarCmbEspecializacion();
         }
-        private Veterinario Mapeo()
-        {
-            Veterinario veterinario = new Veterinario();
-            veterinario.Cedula = txtCedula.Text;
-            veterinario.Nombres = txtNombre.Text;
-            veterinario.ApellidoPaterno = txtApellidoPaterno.Text;
-            veterinario.ApellidoMaterno = txtApellidoMaterno.Text;
-            veterinario.Sexo = RBFemenino.Checked ? "F" : "M";
-            veterinario.Telefono = txtNumeroTelefonicoPrimario.Text;
-            veterinario.Especializacion = buscarEspecializacion(cmbEspecilizacion.SelectedValue.ToString());
-            return veterinario;
-        }
-        private bool validar()
-        {
-            if (string.IsNullOrEmpty(txtCedula.Text)) throw new ArgumentNullException("El campo Cédula es obligatorio.");
-            if (string.IsNullOrEmpty(txtNombre.Text)) throw new ArgumentNullException("El campo Nombre es obligatorio.");
-            if (string.IsNullOrEmpty(txtApellidoPaterno.Text)) throw new ArgumentNullException("El campo Apellido Paterno es obligatorio.");
-            if (string.IsNullOrEmpty(txtApellidoMaterno.Text)) throw new ArgumentNullException("El campo Apellido Materno es obligatorio.");
-            if (string.IsNullOrEmpty(txtNumeroTelefonicoPrimario.Text)) throw new ArgumentNullException("El campo Teléfono primario es obligatorio.");
-            if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentNullException("El campo Sexo es obligatorio.");
-            return true;
-        }
+
         private void cargarCmbEspecializacion()
         {
             cmbEspecilizacion.DataSource = logEspecializacion.Consultar();
@@ -114,9 +80,35 @@ namespace ProyectoP3
             }
 
         }
+        private Especializacion buscarEspecializacion(int codigo)
+        {
+            return logEspecializacion.BuscarPorId(codigo);
+        }
         private void salir()
         {
             this.Close();
+        }
+        private Veterinario Mapeo()
+        {
+            Veterinario veterinario = new Veterinario();
+            veterinario.Cedula = int.Parse(txtCedula.Text);
+            veterinario.Nombres = txtNombre.Text;
+            veterinario.ApellidoPaterno = txtApellidoPaterno.Text;
+            veterinario.ApellidoMaterno = txtApellidoMaterno.Text;
+            veterinario.Sexo = RBFemenino.Checked ? "F" : "M";
+            veterinario.Telefono = txtNumeroTelefonicoPrimario.Text;
+            veterinario.Especializacion = buscarEspecializacion(int.Parse(cmbEspecilizacion.SelectedValue.ToString()));
+            return veterinario;
+        }
+        private bool validar()
+        {
+            if (string.IsNullOrEmpty(txtCedula.Text)) throw new ArgumentNullException("El campo Cédula es obligatorio.");
+            if (string.IsNullOrEmpty(txtNombre.Text)) throw new ArgumentNullException("El campo Nombre es obligatorio.");
+            if (string.IsNullOrEmpty(txtApellidoPaterno.Text)) throw new ArgumentNullException("El campo Apellido Paterno es obligatorio.");
+            if (string.IsNullOrEmpty(txtApellidoMaterno.Text)) throw new ArgumentNullException("El campo Apellido Materno es obligatorio.");
+            if (string.IsNullOrEmpty(txtNumeroTelefonicoPrimario.Text)) throw new ArgumentNullException("El campo Teléfono primario es obligatorio.");
+            if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentNullException("El campo Sexo es obligatorio.");
+            return true;
         }
     }
 }

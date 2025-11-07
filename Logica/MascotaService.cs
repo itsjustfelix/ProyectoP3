@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Entidad;
 using Dato;
+using Entidad;
 
 namespace Logica
 {
-    public class LogMascota : ICrud<Mascota>, IGenerarIdUnico
+    public class MascotaService : ICrud<Mascota>
     {
-        Random random;
-        private readonly DatoMascota datoMascota;
-        public LogMascota()
+        private readonly IRepository<Mascota> datoMascota;
+        public MascotaService()
         {
-            datoMascota = new DatoMascota(NombreArchivo.ARC_MASCOTA);
-            random = new Random();
+            datoMascota = new DatoMascota();
         }
         public string Guardar(Mascota entidad)
         {
@@ -23,10 +19,8 @@ namespace Logica
             {
                 string mensaje = string.Empty;
                 if (Validar(entidad, out mensaje))
-                {
-                    entidad.Codigo = GenerarIdUnico();
                     mensaje = datoMascota.Guardar(entidad);
-                }
+
                 return mensaje;
             }
             catch (Exception ex)
@@ -47,13 +41,8 @@ namespace Logica
             {
                 string mensaje = string.Empty;
                 if (Validar(NuevaEntidad, out mensaje))
-                {
-                    var listMascotas = Consultar();
-                    int index = listMascotas.FindIndex(m => m.Codigo == NuevaEntidad.Codigo);
-                    if (index == -1) throw new ArgumentException("Mascota no encontrada para actualizar.");
-                    listMascotas[index] = NuevaEntidad;
-                    mensaje = datoMascota.SobrescribirArchivo(listMascotas);
-                }
+                    mensaje = datoMascota.Actualizar(NuevaEntidad);
+
                 return mensaje;
             }
             catch (Exception ex)
@@ -61,28 +50,13 @@ namespace Logica
                 return ex.Message;
             }
         }
-        public string Borrar(string id)
+        public string Borrar(int codigo)
         {
-            var listMascotas = Consultar();
-            int index = listMascotas.FindIndex(m => m.Codigo.Equals(id));
-            if (index == -1) throw new ArgumentException("Mascota no encontrada.");
-            listMascotas.RemoveAt(index);
-            return datoMascota.SobrescribirArchivo(listMascotas);
+            return datoMascota.Eliminar(codigo);
         }
-        public Mascota BuscarPorId(string id)
+        public Mascota BuscarPorId(int id)
         {
             return datoMascota.BuscarPorId(id);
-        }
-        public string GenerarIdUnico()
-        {
-            string id;
-            List<Mascota> mascotasExistentes = Consultar();
-            HashSet<string> idsExistentes = new HashSet<string>(mascotasExistentes.Select(m => m.Codigo));
-            do
-            {
-                id = random.Next(1, 10000).ToString();
-            } while (idsExistentes.Contains(id));
-            return id;
         }
         public bool Validar(Mascota entidad, out string mensaje)
         {

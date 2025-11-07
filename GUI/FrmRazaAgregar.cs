@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -18,8 +11,8 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        ICrud<Especie> logEspecie = new LogEspecie();
-        IServiceRaza logRaza = new LogRaza();
+        ICrud<Especie> logEspecie = new EspecieService();
+        IServiceRaza logRaza = new RazaService();
         private void FrmRazaAgregar_Load(object sender, EventArgs e)
         {
             CargarCbx();
@@ -70,7 +63,7 @@ namespace ProyectoP3
                 return e.Message;
             }
         }
-        private Especie buscarEspecie(string id)
+        private Especie buscarEspecie(int id)
         {
             return logEspecie.BuscarPorId(id);
         }
@@ -94,7 +87,7 @@ namespace ProyectoP3
         }
         private Raza Mapeo()
         {
-            Especie especie = buscarEspecie(cbxEspecie.SelectedValue.ToString());
+            Especie especie = buscarEspecie(int.Parse(cbxEspecie.SelectedValue.ToString()));
             Raza raza = new Raza();
             raza.Nombre = txtNombre.Text;
             raza.Especie = especie;

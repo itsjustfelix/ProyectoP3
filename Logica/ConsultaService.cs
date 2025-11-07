@@ -1,40 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Dato;
 using Entidad;
 using GeneradorDeDocumento;
 using QuestPDF.Infrastructure;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Logica
 {
-    public class LogConsulta : ICrud<Consulta>, IGenerarIdUnico
+    public class ConsultaService : ICrud<Consulta>
     {
-        private readonly FileRepository<Consulta> datoConsulta;
+        private readonly IRepository<Consulta> datoConsulta;
         private GeneradorDePDF<Consulta> generadorPDF;
         private ServicioEmail servicioEmail;
-        private Random random;
-
-        public LogConsulta()
+        public ConsultaService()
         {
-            datoConsulta = new DatoConsulta(NombreArchivo.ARC_CONSULTA);
+            datoConsulta = new DatoConsulta();
             servicioEmail = new ServicioEmail("vet.vida03@gmail.com", "wyjv vikl acif boti");
-            random = new Random();
             QuestPDF.Settings.License = LicenseType.Community;
         }
+
         public string Guardar(Consulta entidad)
         {
             try
             {
                 string mensaje = string.Empty;
                 if (Validar(entidad, out mensaje))
-                {
-                    entidad.Codigo = GenerarIdUnico();
                     mensaje = datoConsulta.Guardar(entidad);
 
-                }
                 return mensaje;
             }
             catch (Exception ex)
@@ -52,13 +45,8 @@ namespace Logica
             {
                 string mensaje = string.Empty;
                 if (Validar(NuevaEntidad, out mensaje))
-                {
-                    var listaConsultas = Consultar();
-                    int index = listaConsultas.FindIndex(c => c.Codigo == NuevaEntidad.Codigo);
-                    if (index == -1) throw new KeyNotFoundException("Consulta no encontrada");
-                    listaConsultas[index] = NuevaEntidad;
-                    mensaje = datoConsulta.SobrescribirArchivo(listaConsultas);
-                }
+                    mensaje = datoConsulta.Actualizar(NuevaEntidad);
+
                 return mensaje;
             }
             catch (Exception ex)
@@ -66,29 +54,13 @@ namespace Logica
                 return ex.Message;
             }
         }
-        public string Borrar(string id)
+        public string Borrar(int codigo)
         {
-            var listaConsultas = Consultar();
-            int index = listaConsultas.FindIndex(c => c.Codigo.Equals(id));
-            if (index == -1) throw new KeyNotFoundException("Consulta no encontrada");
-            listaConsultas.RemoveAt(index);
-            return datoConsulta.SobrescribirArchivo(listaConsultas);
+            return datoConsulta.Eliminar(codigo);
         }
-        public string GenerarIdUnico()
+        public Consulta BuscarPorId(int codigo)
         {
-            string id;
-            List<Consulta> consultasExistentes = Consultar();
-            HashSet<string> idsExistentes = new HashSet<string>(consultasExistentes.Select(m => m.Codigo));
-            do
-            {
-                id = random.Next(1000, 10000).ToString();
-            }
-            while (idsExistentes.Contains(id));
-            return id;
-        }
-        public Consulta BuscarPorId(string id)
-        {
-            return datoConsulta.BuscarPorId(id);
+            return datoConsulta.BuscarPorId(codigo);
         }
         public bool Validar(Consulta entidad, out string mensaje)
         {
@@ -125,7 +97,6 @@ namespace Logica
             }
             return true;
         }
-
         public string GenerarDocumento(Consulta entidad)
         {
             try
@@ -141,7 +112,6 @@ namespace Logica
                 throw new Exception(ex.Message);
             }
         }
-
         public string enviarEmail(string email, string rutaDocumento)
         {
             try
@@ -154,7 +124,7 @@ namespace Logica
             {
                 return ex.Message;
             }
-            
+
         }
     }
 }

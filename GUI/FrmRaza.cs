@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -12,7 +11,7 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        IServiceRaza logRaza = new LogRaza();
+        IServiceRaza logRaza = new RazaService();
         private void FrmRaza_Load(object sender, EventArgs e)
         {
             cargarDGV();
@@ -43,7 +42,7 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Ingrese el ID de la raza a buscar:", "Buscar Raza", "");
+                int id = int.Parse(Interaction.InputBox("Ingrese el ID de la raza a buscar:", "Buscar Raza", ""));
                 Raza raza = buscarRaza(id);
                 if (raza == null)
                 {
@@ -64,7 +63,7 @@ namespace ProyectoP3
             try
             {
                 string message = "";
-                string codigo = Interaction.InputBox("Ingrese el codigo de la raza a eliminar:", "Eliminar Raza", "");
+                int codigo = int.Parse(Interaction.InputBox("Ingrese el codigo de la raza a eliminar:", "Eliminar Raza", ""));
                 Raza raza = buscarRaza(codigo);
                 if (raza == null)
                 {
@@ -84,7 +83,7 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private string borrar(string id)
+        private string borrar(int id)
         {
             try
             {
@@ -95,9 +94,9 @@ namespace ProyectoP3
 
                 throw new Exception(ex.Message);
             }
-            
+
         }
-        private Raza buscarRaza(string id)
+        private Raza buscarRaza(int id)
         {
             return logRaza.BuscarPorId(id);
         }

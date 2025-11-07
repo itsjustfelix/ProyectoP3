@@ -5,20 +5,21 @@ using Dato;
 using Entidad;
 namespace Logica
 {
-    public class LogVeterinario : IServiceVeterinario, IIDUnico
+    public class VeterinarioService : IServiceVeterinario, IIDUnico
     {
-        private readonly DatoVeterinario datoVeterinario;
+        private readonly IRepository<Veterinario> datoVeterinario;
 
-        public LogVeterinario()
+        public VeterinarioService()
         {
-            datoVeterinario = new DatoVeterinario(NombreArchivo.ARC_VETERINARIO);
+            datoVeterinario = new DatoVeterinario();
         }
         public string Guardar(Veterinario entidad)
         {
             try
             {
                 string mensaje = string.Empty;
-                if (Validar(entidad, out mensaje) && IdUnico(entidad.Cedula)) mensaje = datoVeterinario.Guardar(entidad);
+                if (Validar(entidad, out mensaje) && IdUnico(entidad.Cedula)) 
+                    mensaje = datoVeterinario.Guardar(entidad);
                 return mensaje;
             }
             catch (Exception ex)
@@ -37,13 +38,8 @@ namespace Logica
             {
                 string mensaje = string.Empty;
                 if (Validar(NuevaEntidad, out mensaje))
-                {
-                    var listaVeterinario = Consultar();
-                    int index = listaVeterinario.FindIndex(v => v.Cedula == NuevaEntidad.Cedula);
-                    if (index == -1) throw new KeyNotFoundException("Veterinario no encontrado para actualizar.");
-                    listaVeterinario[index] = NuevaEntidad;
-                    mensaje = datoVeterinario.SobrescribirArchivo(listaVeterinario);
-                }
+                    mensaje = datoVeterinario.Actualizar(NuevaEntidad);
+                
                 return mensaje;
             }
             catch (Exception ex)
@@ -51,15 +47,12 @@ namespace Logica
                 return ex.Message;
             }
         }
-        public string Borrar(string id)
+        public string Borrar(int id)
         {
-            var listaVeterinario = Consultar();
-            int index = listaVeterinario.FindIndex(v => v.Cedula.Equals(id));
-            if (index == -1) throw new KeyNotFoundException("Veterinario no encontrado para borrar.");
-            listaVeterinario.RemoveAt(index);
-            return datoVeterinario.SobrescribirArchivo(listaVeterinario);
+            
+            return datoVeterinario.Eliminar(id);
         }
-        public Veterinario BuscarPorId(string id)
+        public Veterinario BuscarPorId(int id)
         {
             return datoVeterinario.BuscarPorId(id);
         }
@@ -113,13 +106,13 @@ namespace Logica
             }
             return true;
         }
-        public bool IdUnico(string id)
+        public bool IdUnico(int id)
         {
             if (BuscarPorId(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
             return true;
         }
-
-        public List<Veterinario> BuscarPorCualidad(string cualidad)
+        //esto lo tengo que hacer en la base de datos
+        public List<Veterinario> BuscarPorCualidad(int cualidad)
         {
             return Consultar().Where(r => r.Especializacion.Codigo.Equals(cualidad)).ToList();
         }

@@ -8,6 +8,6 @@ namespace Logica
 {
     public interface IIDUnico
     {
-        bool IdUnico(string id);
+        bool IdUnico(int id);
     }
 }

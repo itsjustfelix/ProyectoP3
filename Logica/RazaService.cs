@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Entidad;
 using Dato;
+using Entidad;
 namespace Logica
 {
-    public class LogRaza : IServiceRaza, IGenerarIdUnico
+    public class RazaService : IServiceRaza
     {
-        private readonly DatoRaza datoRaza;
-        Random random;
-        public LogRaza()
+        private readonly IRepository<Raza> datoRaza;
+        public RazaService()
         {
-            datoRaza = new DatoRaza(NombreArchivo.ARC_RAZA);
-            random = new Random();
+            datoRaza = new DatoRaza();
         }
         public string Guardar(Raza entidad)
         {
@@ -22,10 +18,8 @@ namespace Logica
             {
                 string mensaje = string.Empty;
                 if (Validar(entidad, out mensaje))
-                {
-                    entidad.Codigo = GenerarIdUnico();
                     mensaje = datoRaza.Guardar(entidad);
-                }
+
                 return mensaje;
             }
             catch (Exception ex)
@@ -43,13 +37,8 @@ namespace Logica
             {
                 string mensaje = string.Empty;
                 if (Validar(NuevaEntidad, out mensaje))
-                {
-                    var listaRazas = Consultar();
-                    int index = listaRazas.FindIndex(r => r.Codigo == NuevaEntidad.Codigo);
-                    if (index == -1) throw new KeyNotFoundException("Raza no encontrada");
-                    listaRazas[index] = NuevaEntidad;
-                    mensaje = datoRaza.SobrescribirArchivo(listaRazas);
-                }
+                    mensaje = datoRaza.Actualizar(NuevaEntidad);
+
                 return mensaje;
             }
             catch (Exception ex)
@@ -58,28 +47,13 @@ namespace Logica
             }
 
         }
-        public string Borrar(string id)
+        public string Borrar(int codigo)
         {
-            var listaRazas = Consultar();
-            int index = listaRazas.FindIndex(r => r.Codigo.Equals(id));
-            if (index == -1) throw new KeyNotFoundException("Raza no encontrada");
-            listaRazas.RemoveAt(index);
-            return datoRaza.SobrescribirArchivo(listaRazas);
+            return datoRaza.Eliminar(codigo);
         }
-        public string GenerarIdUnico()
+        public Raza BuscarPorId(int codigo)
         {
-            string id;
-            List<Raza> listRaza = Consultar();
-            HashSet<string> idsExistentes = new HashSet<string>(listRaza.Select(m => m.Codigo));
-            do
-            {
-                id = random.Next(1, 10000).ToString();
-            } while (idsExistentes.Contains(id));
-            return id;
-        }
-        public Raza BuscarPorId(string id)
-        {
-            return datoRaza.BuscarPorId(id);
+            return datoRaza.BuscarPorId(codigo);
         }
         public bool Validar(Raza entidad, out string mensaje)
         {
@@ -103,9 +77,9 @@ namespace Logica
             //    throw new ArgumentException("El nombre de la raza ya existe para la especie seleccionada");
             return true;
         }
-        public List<Raza> BuscarPorCualidad(string cualidad)
+        public List<Raza> BuscarPorCualidad(int cualidad)
         {
             return Consultar().Where(r => r.Especie.Codigo.Equals(cualidad)).ToList();
-        }
+        }//esto lo debo hacer en la base da datos
     }
 }

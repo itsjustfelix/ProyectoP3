@@ -6,7 +6,7 @@ namespace ProyectoP3
 {
     public partial class FrmEspecializacionAgregar : Form
     {
-        ICrud<Especializacion> logEspecializacion = new logEspecializacion();
+        ICrud<Especializacion> logEspecializacion = new EspecializacionService();
         public FrmEspecializacionAgregar()
         {
             InitializeComponent();

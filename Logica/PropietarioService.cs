@@ -6,19 +6,20 @@ using Entidad;
 
 namespace Logica
 {
-    public class LogPropietario : ICrud<Propietario>, IIDUnico
+    public class PropietarioService : ICrud<Propietario>, IIDUnico
     {
-        private readonly DatoPropietario datoPropietario;
-        public LogPropietario()
+        private readonly IRepository<Propietario> datoPropietario;
+        public PropietarioService()
         {
-            datoPropietario = new DatoPropietario(NombreArchivo.ARC_PROPIETARIO);
+            datoPropietario = new DatoPropietario();
         }
         public string Guardar(Propietario entidad)
         {
             try
             {
                 string mensaje = string.Empty;
-                if (Validar(entidad, out mensaje) && IdUnico(entidad.Cedula)) mensaje = datoPropietario.Guardar(entidad);
+                if (Validar(entidad, out mensaje) && IdUnico(entidad.Cedula)) 
+                    mensaje = datoPropietario.Guardar(entidad);
                 return mensaje;
             }
             catch (Exception e)
@@ -37,13 +38,7 @@ namespace Logica
             {
                 string mensaje;
                 if (Validar(NuevaEntidad, out mensaje))
-                {
-                    var listaPropietario = Consultar();
-                    int index = listaPropietario.FindIndex(p => p.Cedula == NuevaEntidad.Cedula);
-                    if (index == -1) throw new KeyNotFoundException("Propietario no encontrado");
-                    listaPropietario[index] = NuevaEntidad;
-                    mensaje = datoPropietario.SobrescribirArchivo(listaPropietario);
-                }
+                 mensaje = datoPropietario.Actualizar(NuevaEntidad);
                 return mensaje;
             }
             catch (Exception e)
@@ -53,16 +48,11 @@ namespace Logica
 
 
         }
-        public string Borrar(string Id)
+        public string Borrar(int Id) 
         {
             try
             {
-                var listaPropietario = Consultar();
-                int index = listaPropietario.FindIndex(p => p.Cedula == Id);
-                if (index == -1) throw new KeyNotFoundException("Propietario no encontrado");
-                listaPropietario.RemoveAt(index);
-                datoPropietario.SobrescribirArchivo(listaPropietario);
-                return "Propietario borrado correctamente";
+                return datoPropietario.Eliminar(Id);
             }
             catch (Exception ex)
             {
@@ -70,7 +60,7 @@ namespace Logica
             }
            
         }
-        public Propietario BuscarPorId(string id)
+        public Propietario BuscarPorId(int id)
         {
             return datoPropietario.BuscarPorId(id);
         }
@@ -124,7 +114,7 @@ namespace Logica
             }
             return true;
         }
-        public bool IdUnico(string id)
+        public bool IdUnico(int id)
         {
             if (BuscarPorId(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
             return true;

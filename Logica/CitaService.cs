@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Dato;
 using Entidad;
 
 namespace Logica
 {
-    public class LogCita : ICrud<Cita>,IGenerarIdUnico
+    public class CitaService : ICrud<Cita>
     {
-        private Random random = new Random();
-        private readonly DatoCita datoCita = new DatoCita(NombreArchivo.ARC_CITA);
+        private readonly IRepository<Cita> datoCita = new DatoCita();
+        public CitaService()
+        {
+            datoCita = new DatoCita();
+        }
         public string Guardar(Cita entidad)
         {
             try
             {
                 string mensaje = string.Empty;
                 if (Validar(entidad, out mensaje))
-                {
-                    entidad.Codigo = GenerarIdUnico();
                     mensaje = datoCita.Guardar(entidad);
-                }
                 return mensaje;
             }
             catch (Exception ex)
@@ -31,28 +30,17 @@ namespace Logica
         {
             return datoCita.Consultar();
         }
-        public string Borrar(string id)
+        public string Borrar(int codigo)
         {
-            int index = Consultar().FindIndex(c => c.Codigo.Equals(id));
-            if (index == -1) throw new KeyNotFoundException("Cita no encontrada");
-            List<Cita> citas = Consultar();
-            citas.RemoveAt(index);
-            return datoCita.SobrescribirArchivo(citas);
+            return datoCita.Eliminar(codigo);
         }
-
         public string Actualizar(Cita NuevaEntidad)
         {
             try
             {
                 string mensaje = string.Empty;
                 if (Validar(NuevaEntidad, out mensaje))
-                {
-                    int index = Consultar().FindIndex(c => c.Codigo == NuevaEntidad.Codigo);
-                    if (index == -1) throw new KeyNotFoundException("Cita no encontrada");
-                    List<Cita> citas = Consultar();
-                    citas[index] = NuevaEntidad;
-                    mensaje = datoCita.SobrescribirArchivo(citas);
-                }
+                    mensaje = datoCita.Actualizar(NuevaEntidad);
                 return mensaje;
             }
             catch (Exception ex)
@@ -60,19 +48,6 @@ namespace Logica
                 return ex.Message;
             }
         }
-        public string GenerarIdUnico()
-        {
-            string id;
-            List<Cita> consultasExistentes = Consultar();
-            HashSet<string> idsExistentes = new HashSet<string>(consultasExistentes.Select(m => m.Codigo));
-            do
-            {
-                id = random.Next(1000, 10000).ToString();
-            }
-            while (idsExistentes.Contains(id));
-            return id;
-        }
-
         public bool Validar(Cita entidad, out string mensaje)
         {
             mensaje = string.Empty;
@@ -98,8 +73,7 @@ namespace Logica
             }
             return true;
         }
-
-        public Cita BuscarPorId(string id)
+        public Cita BuscarPorId(int id)
         {
             return datoCita.BuscarPorId(id);
         }

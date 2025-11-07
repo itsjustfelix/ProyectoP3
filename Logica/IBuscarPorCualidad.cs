@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Logica
 {
     public interface IBuscarPorCualidad<T>
     {
-        List<T> BuscarPorCualidad(string cualidad);
+        List<T> BuscarPorCualidad(int cualidad);
     }
 }

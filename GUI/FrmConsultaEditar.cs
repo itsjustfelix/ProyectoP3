@@ -15,9 +15,9 @@ namespace ProyectoP3
     public partial class FrmConsultaEditar : Form
     {
         Consulta consulta;
-        IServiceVeterinario logVeterinario = new LogVeterinario();
-        ICrud<Consulta> logConsulta = new LogConsulta();
-        ICrud<Mascota> logMascota = new LogMascota();
+        IServiceVeterinario logVeterinario = new VeterinarioService();
+        ICrud<Consulta> logConsulta = new ConsultaService();
+        ICrud<Mascota> logMascota = new MascotaService();
         string idConsulta;
         DateTime fechaConsulta;
         public FrmConsultaEditar(Consulta consulta)
@@ -69,10 +69,10 @@ namespace ProyectoP3
         }
         private Consulta Mapeo()
         {
-            Mascota mascota = buscarMascota(txtIdMascota.Text);
-            Veterinario veterinario = buscarVeterinario(cbxVeterinario.SelectedValue.ToString());
+            Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+            Veterinario veterinario = buscarVeterinario(int.Parse(cbxVeterinario.SelectedValue.ToString()));
             Consulta consulta = new Consulta();
-            consulta.Codigo = idConsulta;
+            consulta.Codigo = int.Parse(idConsulta);
             consulta.Descripcion = txtDescripcion.Text;
             consulta.Diagnostico = txtDiagnostico.Text;
             consulta.Tratamiento = txtTratamiento.Text;
@@ -87,7 +87,7 @@ namespace ProyectoP3
         }
         private void mostrarConsulta(Consulta consulta)
         {
-            idConsulta = consulta.Codigo;
+            idConsulta = consulta.Codigo.ToString();
             fechaConsulta = consulta.Fecha;
             txtIdMascota.Text = consulta.Mascota.Codigo.ToString();
             lblNombreMascota.Text = consulta.Mascota.Nombre;
@@ -116,11 +116,11 @@ namespace ProyectoP3
                 return ex.Message;
             }
         }
-        private Mascota buscarMascota(string id)
+        private Mascota buscarMascota(int id)
         {
             return logMascota.BuscarPorId(id);
         }
-        private Veterinario buscarVeterinario(string id)
+        private Veterinario buscarVeterinario(int id)
         {
             return logVeterinario.BuscarPorId(id);
         }

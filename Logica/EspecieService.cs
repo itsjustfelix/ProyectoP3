@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Dato;
 using Entidad;
 namespace Logica
 {
-    public class LogEspecie : ICrud<Especie>, IGenerarIdUnico
+    public class EspecieService : ICrud<Especie>
     {
-        Random random;
-        private readonly FileRepository<Especie> datoEspecie;
-        public LogEspecie()
+        private readonly IRepository<Especie> datoEspecie;
+        public EspecieService()
         {
-            datoEspecie = new DatoEspecie(NombreArchivo.ARC_ESPECIE);
-            random = new Random();
+            datoEspecie = new DatoEspecie();
         }
         public string Guardar(Especie entidad)
         {
@@ -23,10 +18,8 @@ namespace Logica
             {
                 string mensaje = string.Empty;
                 if (Validar(entidad, out mensaje))
-                {
-                    entidad.Codigo = GenerarIdUnico();
                     mensaje = datoEspecie.Guardar(entidad);
-                }
+
                 return mensaje;
             }
             catch (Exception ex)
@@ -46,11 +39,7 @@ namespace Logica
                 string mensaje = string.Empty;
                 if (Validar(NuevaEntidad, out mensaje))
                 {
-                    var listaEspecies = Consultar();
-                    int index = listaEspecies.FindIndex(e => e.Codigo == NuevaEntidad.Codigo);
-                    if (index == -1) throw new KeyNotFoundException("Especie no encontrada");
-                    listaEspecies[index] = NuevaEntidad;
-                    mensaje = datoEspecie.SobrescribirArchivo(listaEspecies);
+                    mensaje = datoEspecie.Actualizar(NuevaEntidad);
                 }
                 return mensaje;
             }
@@ -60,28 +49,13 @@ namespace Logica
             }
 
         }
-        public string Borrar(string id)
+        public string Borrar(int codigo)
         {
-            var listaEspecies = Consultar();
-            int index = listaEspecies.FindIndex(e => e.Codigo.Equals(id));
-            if (index == -1) throw new KeyNotFoundException("Especie no encontrada");
-            listaEspecies.RemoveAt(index);
-            return datoEspecie.SobrescribirArchivo(listaEspecies);
+            return datoEspecie.Eliminar(codigo);
         }
-        public Especie BuscarPorId(string id)
+        public Especie BuscarPorId(int codigo)
         {
-            return datoEspecie.BuscarPorId(id);
-        }
-        public string GenerarIdUnico()
-        {
-            string id;
-            var especiesExistentes = Consultar();
-            HashSet<string> idsExistentes = new HashSet<string>(especiesExistentes.Select(m => m.Codigo));
-            do
-            {
-                id = random.Next(1, 10000).ToString();
-            } while (idsExistentes.Contains(id));
-            return id;
+            return datoEspecie.BuscarPorId(codigo);
         }
         public bool Validar(Especie entidad, out string mensaje)
         {

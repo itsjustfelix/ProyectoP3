@@ -13,7 +13,7 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
-        ICrud<Especie> logEspecie = new LogEspecie();
+        ICrud<Especie> logEspecie = new EspecieService();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmEspecieAgregar());
@@ -32,7 +32,7 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Digite el ID de la especie ha buscar", "Editar Especie", "");
+                int id = int.Parse(Interaction.InputBox("Digite el ID de la especie ha buscar", "Editar Especie", ""));
                 Especie especie = logEspecie.BuscarPorId(id);
                 if (especie == null)
                 {
@@ -65,7 +65,7 @@ namespace ProyectoP3
             try
             {
                 string message = "";
-                string id = Interaction.InputBox("Digite el ID de la especie ha eliminar", "Eliminar Especie", "");
+                int id = int.Parse(Interaction.InputBox("Digite el ID de la especie ha eliminar", "Eliminar Especie", ""));
                 Especie especie = logEspecie.BuscarPorId(id);
                 if (especie == null)
                 {
@@ -85,7 +85,7 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private string borrar(string id)
+        private string borrar(int id)
         {
             try
             {

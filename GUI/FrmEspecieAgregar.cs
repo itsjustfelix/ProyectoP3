@@ -19,7 +19,7 @@ namespace ProyectoP3
             InitializeComponent();
         }
 
-        ICrud<Especie> logEspecie = new LogEspecie();
+        ICrud<Especie> logEspecie = new EspecieService();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
