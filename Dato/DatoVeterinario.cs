@@ -15,7 +15,7 @@ namespace Dato
         {
             DatoEspecializacion = new DatoEspecializacion();
         }
-        public string Guardar(Veterinario veterinario)
+        public bool Guardar(Veterinario veterinario)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Veterinario guardado correctamente.";
+                        return true;// "Veterinario guardado correctamente.";
                     }
                 }
             }
@@ -76,7 +76,7 @@ namespace Dato
                 throw new Exception($"Error al obtener veterinarios: {ex.Message}", ex);
             }
         }
-        public string Actualizar(Veterinario veterinario)
+        public bool Actualizar(Veterinario veterinario)
         {
             try
             {
@@ -95,7 +95,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Veterinario actulizado correctamente.";
+                        return true;// "Veterinario actulizado correctamente.";
                     }
                 }
             }
@@ -136,7 +136,7 @@ namespace Dato
                 throw new Exception($"Error al buscar veterinario: {ex.Message}", ex);
             }
         }
-        public string Eliminar(int id)
+        public bool Eliminar(int id)
         {
             try
             {
@@ -149,7 +149,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Veterinario eliminado correctamente.";
+                        return true;// "Veterinario eliminado correctamente.";
                     }
                 }
             }

@@ -8,7 +8,7 @@ namespace Dato
 {
     public class DatoEspecializacion : IRepository<Especializacion>
     {
-        public string Guardar(Especializacion especializacion)
+        public bool Guardar(Especializacion especializacion)
         {
             try
             {
@@ -21,7 +21,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Especializacion guardada correctamente.";
+                        return true;// "Especializacion guardada correctamente.";
                     }
                 }
             }
@@ -65,7 +65,7 @@ namespace Dato
             }
         }
 
-        public string Actualizar(Especializacion especializacion)
+        public bool Actualizar(Especializacion especializacion)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Especializacion actualizada correctamente.";
+                        return true; //"Especializacion actualizada correctamente.";
                     }
                 }
             }
@@ -89,7 +89,7 @@ namespace Dato
             }
         }
 
-        public string Eliminar(int id)
+        public bool Eliminar(int id)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Especializacion eliminada correctamente.";
+                        return true; // "Especializacion eliminada correctamente.";
                     }
                 }
             }

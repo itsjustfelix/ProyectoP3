@@ -13,19 +13,18 @@ namespace Logica
         {
             datoMascota = new DatoMascota();
         }
-        public string Guardar(Mascota entidad)
+        public bool Guardar(Mascota entidad)
         {
             try
             {
-                string mensaje = string.Empty;
-                if (Validar(entidad, out mensaje))
-                    mensaje = datoMascota.Guardar(entidad);
-
-                return mensaje;
+                if (Validar(entidad))
+                    return datoMascota.Guardar(entidad);
+                else 
+                    return false;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
 
 
@@ -35,22 +34,21 @@ namespace Logica
         {
             return datoMascota.Consultar();
         }
-        public string Actualizar(Mascota NuevaEntidad)
+        public bool Actualizar(Mascota NuevaEntidad)
         {
             try
             {
-                string mensaje = string.Empty;
-                if (Validar(NuevaEntidad, out mensaje))
-                    mensaje = datoMascota.Actualizar(NuevaEntidad);
-
-                return mensaje;
+                if (Validar(NuevaEntidad))
+                    return datoMascota.Actualizar(NuevaEntidad);
+                else 
+                    return false;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
         }
-        public string Borrar(int codigo)
+        public bool Borrar(int codigo)
         {
             return datoMascota.Eliminar(codigo);
         }
@@ -58,34 +56,13 @@ namespace Logica
         {
             return datoMascota.BuscarPorId(id);
         }
-        public bool Validar(Mascota entidad, out string mensaje)
+        public bool Validar(Mascota entidad)
         {
-            mensaje = string.Empty;
-            if (entidad == null)
-            {
-                mensaje = "Mascota nula";
-                return false;
-            }
-            if (entidad.Propietario == null)
-            {
-                mensaje = "Propietario nulo";
-                return false;
-            }
-            if (entidad.Especie == null)
-            {
-                mensaje = "Especie nula";
-                return false;
-            }
-            if (entidad.Raza == null)
-            {
-                mensaje = "Raza nula";
-                return false;
-            }
-            if (entidad.Nombre.Any(char.IsDigit))
-            {
-                mensaje = "El nombre de la mascota no puede contener numeros";
-                return false;
-            }
+            if (entidad == null) throw new Exception("Mascota nula");
+            if (entidad.Propietario == null) throw new Exception("Propietario nulo");
+            if (entidad.Especie == null)throw new Exception("Especie nula");
+            if (entidad.Raza == null) throw new Exception("Raza nula");
+            if (entidad.Nombre.Any(char.IsDigit)) throw new Exception("El nombre de la mascota no puede contener numeros");
             return true;
         }
 

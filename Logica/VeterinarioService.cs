@@ -13,18 +13,19 @@ namespace Logica
         {
             datoVeterinario = new DatoVeterinario();
         }
-        public string Guardar(Veterinario entidad)
+        public bool Guardar(Veterinario entidad)
         {
             try
             {
-                string mensaje = string.Empty;
-                if (Validar(entidad, out mensaje) && IdUnico(entidad.Cedula)) 
-                    mensaje = datoVeterinario.Guardar(entidad);
-                return mensaje;
+
+                if (Validar(entidad) && IdUnico(entidad.Cedula)) 
+                   return datoVeterinario.Guardar(entidad);
+                else
+                    return false;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
 
         }
@@ -32,78 +33,47 @@ namespace Logica
         {
             return datoVeterinario.Consultar();
         }
-        public string Actualizar(Veterinario NuevaEntidad)
+        public bool Actualizar(Veterinario NuevaEntidad)
         {
             try
             {
-                string mensaje = string.Empty;
-                if (Validar(NuevaEntidad, out mensaje))
-                    mensaje = datoVeterinario.Actualizar(NuevaEntidad);
-                
-                return mensaje;
+                if (Validar(NuevaEntidad))
+                    return datoVeterinario.Actualizar(NuevaEntidad);
+                else 
+                    return false;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
         }
-        public string Borrar(int id)
+        public bool Borrar(int id)
         {
-            
             return datoVeterinario.Eliminar(id);
         }
         public Veterinario BuscarPorId(int id)
         {
             return datoVeterinario.BuscarPorId(id);
         }
-        public bool Validar(Veterinario entidad, out string mensaje)
+        public bool Validar(Veterinario entidad)
         {
-            mensaje = string.Empty;
-            if (entidad == null)
-            {
-                mensaje = "Propietario nulo";
-                return false;
-            }
-            if (entidad.Especializacion == null)
-            {
-                mensaje = "La especializacion no puede ser nula";
-                return false;
-            }
-            if (entidad.Nombres.Any(char.IsDigit))
-            {
-                mensaje = "El nombre no puede contener numeros";
-                return false;
-            }
-            if (entidad.ApellidoPaterno.Any(char.IsDigit))
-            {
-                mensaje = "El apellido paterno no puede contener numeros";
-                return false;
-            }
-            if (entidad.ApellidoMaterno.Any(char.IsDigit))
-            {
-                mensaje = "El apellido materno no puede contener numeros";
-                return false;
-            }
-            if (entidad.Cedula.ToString().Length < 8 || entidad.Cedula.ToString().Length > 10)
-            {
-                mensaje = "El ID debe tener entre 8 y 10 digitos";
-                return false;
-            }
-            if (entidad.Cedula.ToString().Any(char.IsLetter))
-            {
-                mensaje = "La cedula no puede contener letras";
-                return false;
-            }
-            if (entidad.Telefono.Any(char.IsLetter))
-            {
-                mensaje = "El telefono primario no puede contener letras";
-                return false;
-            }
-            if (entidad.Telefono.Length != 10)
-            {
-                mensaje = "El telefono primario debe tener 10 digitos";
-                return false;
-            }
+            if (entidad == null) throw new Exception("Veterinario nulo");
+            
+            if (entidad.Especializacion == null) throw new Exception("La especializacion no puede ser nula.");
+            
+            if (entidad.Nombres.Any(char.IsDigit)) throw new Exception("El nombre no puede contener numeros");
+            
+            if (entidad.ApellidoPaterno.Any(char.IsDigit)) throw new Exception("El apellido paterno no puede contener numeros");
+            
+            if (entidad.ApellidoMaterno.Any(char.IsDigit)) throw new Exception("El apellido materno no puede contener numeros");
+            
+            if (entidad.Cedula.ToString().Length < 8 || entidad.Cedula.ToString().Length > 10) throw new Exception("La cedula debe tener entre 8 y 10 digitos");
+            
+            if (entidad.Cedula.ToString().Any(char.IsLetter)) throw new Exception("La cedula no puede contener letras");
+           
+            if (entidad.Telefono.Any(char.IsLetter)) throw new Exception("El telefono no puede contener letras");
+            
+            if (entidad.Telefono.Length != 10) throw new Exception("El telefono debe tener 10 digitos");
             return true;
         }
         public bool IdUnico(int id)

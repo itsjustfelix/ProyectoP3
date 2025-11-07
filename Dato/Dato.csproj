@@ -83,7 +83,6 @@
     <Compile Include="DatoConsulta.cs" />
     <Compile Include="DatoEspecializacion.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="FileRepository.cs" />
     <Compile Include="DatoPropietario.cs" />
     <Compile Include="DatoEspecie.cs" />
     <Compile Include="DatoMascota.cs" />

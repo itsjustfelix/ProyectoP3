@@ -7,7 +7,7 @@ namespace Dato
 {
     public class DatoEspecie : IRepository<Especie>
     {
-        public string Actualizar(Especie especie)
+        public bool Actualizar(Especie especie)
         {
             try
             {
@@ -21,7 +21,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Especie actualizada correctamente.";
+                        return true; // "Especie actualizada correctamente.";
                     }
                 }
             }
@@ -98,7 +98,7 @@ namespace Dato
             }
         }
 
-        public string Eliminar(int id)
+        public bool Eliminar(int id)
         {
             try
             {
@@ -111,7 +111,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Especie eliminada correctamente.";
+                        return true;// "Especie eliminada correctamente.";
                     }
                 }
             }
@@ -121,7 +121,7 @@ namespace Dato
             }
         }
 
-        public string Guardar(Especie especie)
+        public bool Guardar(Especie especie)
         {
             try
             {
@@ -134,7 +134,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Especie guardada correctamente.";
+                        return true;// "Especie guardada correctamente.";
                     }
                 }
             }

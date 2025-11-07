@@ -13,18 +13,18 @@ namespace Logica
         {
             datoPropietario = new DatoPropietario();
         }
-        public string Guardar(Propietario entidad)
+        public bool Guardar(Propietario entidad)
         {
             try
             {
-                string mensaje = string.Empty;
-                if (Validar(entidad, out mensaje) && IdUnico(entidad.Cedula)) 
-                    mensaje = datoPropietario.Guardar(entidad);
-                return mensaje;
+                if (Validar(entidad) && IdUnico(entidad.Cedula))
+                    return datoPropietario.Guardar(entidad);
+                else
+                    return false;
             }
             catch (Exception e)
             {
-                return e.Message;
+                throw new Exception(e.Message);
             }
 
         }
@@ -32,23 +32,23 @@ namespace Logica
         {
             return datoPropietario.Consultar();
         }
-        public string Actualizar(Propietario NuevaEntidad)
+        public bool Actualizar(Propietario NuevaEntidad)
         {
             try
             {
-                string mensaje;
-                if (Validar(NuevaEntidad, out mensaje))
-                 mensaje = datoPropietario.Actualizar(NuevaEntidad);
-                return mensaje;
+                if (Validar(NuevaEntidad))
+                    return datoPropietario.Actualizar(NuevaEntidad);
+                else 
+                    return false;
             }
             catch (Exception e)
             {
-                return e.Message;
+                throw new Exception(e.Message);
             }
 
 
         }
-        public string Borrar(int Id) 
+        public bool Borrar(int Id) 
         {
             try
             {
@@ -56,7 +56,7 @@ namespace Logica
             }
             catch (Exception ex)
             {
-               return ex.Message;
+               throw new Exception(ex.Message);
             }
            
         }
@@ -64,54 +64,18 @@ namespace Logica
         {
             return datoPropietario.BuscarPorId(id);
         }
-        public bool Validar(Propietario entidad, out string mensaje)
+        public bool Validar(Propietario entidad)
         {
-            mensaje = string.Empty;
-            if (entidad == null)
-            {
-                mensaje = "Propietario nulo";
-                return false;
-            }
-            if (entidad.Nombres.Any(char.IsDigit))
-            {
-                mensaje = "El nombre no puede contener numeros";
-                return false;
-            } 
-            if (entidad.ApellidoPaterno.Any(char.IsDigit))
-            {
-                mensaje = "El apellido paterno no puede contener numeros";
-                return false;
-            }
-            if (entidad.ApellidoMaterno.Any(char.IsDigit))
-            {
-                mensaje = "El apellido materno no puede contener numeros";
-                return false;
-            }
-            if (entidad.Cedula.ToString().Length < 8 || entidad.Cedula.ToString().Length > 10)
-            {
-                mensaje = "El ID debe tener entre 8 y 10 digitos";
-                return false;
-            }
-            if (entidad.Cedula.ToString().Any(char.IsLetter))
-            {
-                mensaje = "La cedula no puede contener letras";
-                return false;
-            }
-            if (entidad.Telefono.Any(char.IsLetter))
-            {
-                mensaje = "El telefono primario no puede contener letras";
-                return false;
-            }
-            if (entidad.Telefono.Length != 10)
-            {
-                mensaje = "El telefono primario debe tener 10 digitos";
-                return false;
-            }
+            if (entidad == null) throw new Exception("Propietario nulo");
+            if (entidad.Nombres.Any(char.IsDigit)) throw new Exception("El nombre no puede contener numeros");
+            if (entidad.ApellidoPaterno.Any(char.IsDigit)) throw new Exception("El apellido paterno no puede contener numeros");
+            if (entidad.ApellidoMaterno.Any(char.IsDigit)) throw new Exception("El apellido materno no puede contener numeros");
+            if (entidad.Cedula.ToString().Length < 8 || entidad.Cedula.ToString().Length > 10) throw new Exception("La cedula debe tener entre 8 y 10 digitos");
+            if (entidad.Cedula.ToString().Any(char.IsLetter))throw new Exception("La cedula no puede contener letras");
+            if (entidad.Telefono.Any(char.IsLetter)) throw new Exception("El telefono no puede contener letras");
+            if (entidad.Telefono.Length != 10) throw new Exception("El telefono debe tener 10 digitos");
             if(entidad.Email.AsParallel().Count(c => c == '@') != 1 || entidad.Email.StartsWith("@") || entidad.Email.EndsWith("@"))
-            {
-                mensaje = "El correo electronico debe contener un solo @ y no puede estar al inicio o al final";
-                return false;
-            }
+                throw new Exception("El correo electronico debe contener un solo @ y no puede estar al inicio o al final");
             return true;
         }
         public bool IdUnico(int id)

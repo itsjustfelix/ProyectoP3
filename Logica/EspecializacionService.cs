@@ -13,70 +13,52 @@ namespace Logica
         {
             datoEspecializacion = new DatoEspecializacion();
         }
-        public string Guardar(Especializacion entidad)
+        public bool Guardar(Especializacion entidad)
         {
             try
             {
-                string mensaje = string.Empty;
-                if (Validar(entidad, out mensaje))
-                    mensaje = datoEspecializacion.Guardar(entidad);
-
-                return mensaje;
+                if (Validar(entidad))
+                    return datoEspecializacion.Guardar(entidad);
+                else
+                    return false;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
         }
         public List<Especializacion> Consultar()
         {
             return datoEspecializacion.Consultar();
         }
-
-        public string Actualizar(Especializacion NuevaEntidad)
+        public bool Actualizar(Especializacion NuevaEntidad)
         {
             try
             {
-                string mensaje = string.Empty;
-                if (Validar(NuevaEntidad, out mensaje))
-                    mensaje = datoEspecializacion.Actualizar(NuevaEntidad);
-
-                return mensaje;
+                if (Validar(NuevaEntidad))
+                    return datoEspecializacion.Actualizar(NuevaEntidad);
+                else
+                    return false;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
         }
-
-        public string Borrar(int codigo)
+        public bool Borrar(int codigo)
         {
             return datoEspecializacion.Eliminar(codigo);
         }
-
         public Especializacion BuscarPorId(int codigo)
         {
             return datoEspecializacion.BuscarPorId(codigo);
         }
-
-        public bool Validar(Especializacion entidad, out string mensaje)
+        public bool Validar(Especializacion entidad)
         {
-            mensaje = string.Empty;
-            if (entidad == null)
-            {
-                mensaje = "La especializacion no puede ser nula";
-            }
-            if (entidad.Nombre.Any(char.IsDigit))
-            {
-                mensaje = "El nombre no puede contener numeros";
-                return false;
-            }
+            if (entidad == null) throw new Exception("La especializacion no puede ser nula.");
+            if (entidad.Nombre.Any(char.IsDigit)) throw new Exception("El nombre no puede contener numeros");
             if (Consultar().Any(e => e.Nombre.Equals(entidad.Nombre, StringComparison.OrdinalIgnoreCase)
-                   && e.Codigo != entidad.Codigo))
-            {
-                mensaje = "El nombre de la especializacion ya existe";
-                return false;
-            }
+                   && e.Codigo != entidad.Codigo)) throw new Exception("El nombre de la especializacion ya existe.");
             return true;
         }
     }

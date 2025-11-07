@@ -12,19 +12,18 @@ namespace Logica
         {
             datoEspecie = new DatoEspecie();
         }
-        public string Guardar(Especie entidad)
+        public bool Guardar(Especie entidad)
         {
             try
             {
-                string mensaje = string.Empty;
-                if (Validar(entidad, out mensaje))
-                    mensaje = datoEspecie.Guardar(entidad);
-
-                return mensaje;
+                if (Validar(entidad))
+                    return datoEspecie.Guardar(entidad);
+                else
+                    return false;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
 
         }
@@ -32,24 +31,22 @@ namespace Logica
         {
             return datoEspecie.Consultar();
         }
-        public string Actualizar(Especie NuevaEntidad)
+        public bool Actualizar(Especie NuevaEntidad)
         {
             try
             {
-                string mensaje = string.Empty;
-                if (Validar(NuevaEntidad, out mensaje))
-                {
-                    mensaje = datoEspecie.Actualizar(NuevaEntidad);
-                }
-                return mensaje;
+                if (Validar(NuevaEntidad))
+                    return datoEspecie.Actualizar(NuevaEntidad);
+                else 
+                    return false;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
 
         }
-        public string Borrar(int codigo)
+        public bool Borrar(int codigo)
         {
             return datoEspecie.Eliminar(codigo);
         }
@@ -57,25 +54,12 @@ namespace Logica
         {
             return datoEspecie.BuscarPorId(codigo);
         }
-        public bool Validar(Especie entidad, out string mensaje)
+        public bool Validar(Especie entidad)
         {
-            mensaje = string.Empty;
-            if (entidad == null)
-            {
-                mensaje = "Especie nula";
-                return false;
-            }
-            if (entidad.Nombre.Any(char.IsDigit))
-            {
-                mensaje = "El nombre no puede contener numeros";
-                return false;
-            }
+            if (entidad == null) throw new Exception("Especie nula");
+            if (entidad.Nombre.Any(char.IsDigit)) throw new Exception("El nombre no puede contener numeros");
             if (Consultar().Any(e => e.Nombre.Equals(entidad.Nombre, StringComparison.OrdinalIgnoreCase)
-                    && e.Codigo != entidad.Codigo))
-            {
-                mensaje = "El nombre de la especie ya existe";
-                return false;
-            }
+                    && e.Codigo != entidad.Codigo)) throw new Exception("El nombre de la especie ya existe.");
             return true;
         }
     }

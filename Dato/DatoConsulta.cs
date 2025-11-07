@@ -16,7 +16,7 @@ namespace Dato
             datoMascota = new DatoMascota();
             datoVeterinario = new DatoVeterinario();
         }
-        public string Actualizar(Consulta consulta)
+        public bool Actualizar(Consulta consulta)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Consulta actualizada correctamente.";
+                        return true; // "Consulta actualizada correctamente.";
                     }
                 }
             }
@@ -113,7 +113,7 @@ namespace Dato
             }
         }
 
-        public string Eliminar(int id)
+        public bool Eliminar(int id)
         {
             try
             {
@@ -126,7 +126,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Consulta eliminada correctamente.";
+                        return true;// "Consulta eliminada correctamente.";
                     }
                 }
             }
@@ -136,7 +136,7 @@ namespace Dato
             }
         }
 
-        public string Guardar(Consulta consulta)
+        public bool Guardar(Consulta consulta)
         {
             try
             {
@@ -154,7 +154,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Consulta guardada correcctamente.";
+                        return true; //"Consulta guardada correcctamente.";
                     }
                 }
             }

@@ -5,10 +5,10 @@ namespace Dato
 {
     public interface IRepository<T>
     {
-        string Guardar(T objeto);
+        bool Guardar(T objeto);
         List<T> Consultar();
-        string Eliminar(int id);
-        string Actualizar(T objeto);
+        bool Eliminar(int id);
+        bool Actualizar(T objeto);
         T BuscarPorId(int id);
         T MappyingType(OracleDataReader line);
 

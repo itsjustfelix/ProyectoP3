@@ -12,65 +12,48 @@ namespace Logica
         {
             datoCita = new DatoCita();
         }
-        public string Guardar(Cita entidad)
+        public bool Guardar(Cita entidad)
         {
             try
             {
-                string mensaje = string.Empty;
-                if (Validar(entidad, out mensaje))
-                    mensaje = datoCita.Guardar(entidad);
-                return mensaje;
+
+                if (Validar(entidad))
+                    return datoCita.Guardar(entidad);
+                else return false;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
         }
         public List<Cita> Consultar()
         {
             return datoCita.Consultar();
         }
-        public string Borrar(int codigo)
+        public bool Borrar(int codigo)
         {
             return datoCita.Eliminar(codigo);
         }
-        public string Actualizar(Cita NuevaEntidad)
+        public bool Actualizar(Cita NuevaEntidad)
         {
             try
             {
-                string mensaje = string.Empty;
-                if (Validar(NuevaEntidad, out mensaje))
-                    mensaje = datoCita.Actualizar(NuevaEntidad);
-                return mensaje;
+                if (Validar(NuevaEntidad))
+                    return datoCita.Actualizar(NuevaEntidad);
+                else 
+                    return false;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
         }
-        public bool Validar(Cita entidad, out string mensaje)
+        public bool Validar(Cita entidad)
         {
-            mensaje = string.Empty;
-            if (entidad == null)
-            {
-                mensaje = "La entidad no puede ser nula.";
-                return false;
-            }
-            if (entidad.Mascota == null)
-            {
-                mensaje = "La mascota no puede ser nula.";
-                return false;
-            }
-            if (entidad.Fecha == default)
-            {
-                mensaje = "La fecha no puede ser vacía.";
-                return false;
-            }
-            if (entidad.Hora == default)
-            {
-                mensaje = "La hora no puede ser vacía.";
-                return false;
-            }
+            if (entidad == null) throw new Exception("La cita no puede ser nula.");
+            if (entidad.Mascota == null) throw new Exception("La mascota no puede ser nula.");
+            if (entidad.Fecha == null) throw new Exception("La fecha no puede ser nula.");
+            if (entidad.Hora == default) throw new Exception("La hora no puede ser nula.");
             return true;
         }
         public Cita BuscarPorId(int id)

@@ -20,41 +20,39 @@ namespace Logica
             QuestPDF.Settings.License = LicenseType.Community;
         }
 
-        public string Guardar(Consulta entidad)
+        public bool Guardar(Consulta entidad)
         {
             try
             {
-                string mensaje = string.Empty;
-                if (Validar(entidad, out mensaje))
-                    mensaje = datoConsulta.Guardar(entidad);
-
-                return mensaje;
+                if (Validar(entidad))
+                    return datoConsulta.Guardar(entidad);
+                else
+                    return false;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
         }
         public List<Consulta> Consultar()
         {
             return datoConsulta.Consultar();
         }
-        public string Actualizar(Consulta NuevaEntidad)
+        public bool Actualizar(Consulta NuevaEntidad)
         {
             try
             {
-                string mensaje = string.Empty;
-                if (Validar(NuevaEntidad, out mensaje))
-                    mensaje = datoConsulta.Actualizar(NuevaEntidad);
-
-                return mensaje;
+                if (Validar(NuevaEntidad))
+                    return datoConsulta.Actualizar(NuevaEntidad);
+                else 
+                    return false;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
         }
-        public string Borrar(int codigo)
+        public bool Borrar(int codigo)
         {
             return datoConsulta.Eliminar(codigo);
         }
@@ -62,39 +60,15 @@ namespace Logica
         {
             return datoConsulta.BuscarPorId(codigo);
         }
-        public bool Validar(Consulta entidad, out string mensaje)
+        public bool Validar(Consulta entidad)
         {
-            mensaje = string.Empty;
-            if (entidad == null)
-            {
-                mensaje = "La entidad no puede ser nula.";
-                return false;
-            }
-            if (entidad.Mascota == null)
-            {
-                mensaje = "La mascota no puede ser nula.";
-                return false;
-            }
-            if (entidad.Veterinario == null)
-            {
-                mensaje = "El veterinario no puede ser nulo.";
-                return false;
-            }
-            if (entidad.Fecha == default)
-            {
-                mensaje = "La fecha no puede ser vacia.";
-                return false;
-            }
-            if (entidad.Diagnostico.Length == 0)
-            {
-                mensaje = "El diagnostico debe ser rellenado";
-                return false;
-            }
-            if (entidad.Tratamiento.Length == 0)
-            {
-                mensaje = "El tratamiento debe ser rellenado";
-                return false;
-            }
+            if (entidad == null) throw new Exception("La consulta no puede ser nula.");
+            if (entidad.Mascota == null) throw new Exception("La mascota no puede ser nula.");
+            if (entidad.Veterinario == null) throw new Exception("El veterinario no puede ser nulo.");
+            if (entidad.Fecha == default) throw new Exception("La fecha no puede ser nula.");
+            if (entidad.Descripcion.Length == 0) throw new Exception("La descripcion debe ser rellenada.");
+            if (entidad.Diagnostico.Length == 0) throw new Exception("El diagnostico debe ser rellenado.");
+            if (entidad.Tratamiento.Length == 0) throw new Exception("El tratamiento debe ser rellenado.");
             return true;
         }
         public string GenerarDocumento(Consulta entidad)

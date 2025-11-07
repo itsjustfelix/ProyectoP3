@@ -20,7 +20,7 @@ namespace ProyectoP3
                 if (validar())
                 {
                     string mensaje = agregar(Mappeo());
-                    if (mensaje.Contains("Guardado"))
+                    if (mensaje.Contains(""))
                     {
                         MessageBox.Show(mensaje, "Agregar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();

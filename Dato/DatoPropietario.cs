@@ -9,7 +9,7 @@ namespace Dato
     public class DatoPropietario : IRepository<Propietario>
     {
 
-        public string Guardar(Propietario propietario)
+        public bool Guardar(Propietario propietario)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Propietario guardado exitosamente.";
+                        return true;
                     }
                 }
             }
@@ -72,7 +72,7 @@ namespace Dato
             }
         }
 
-        public string Actualizar(Propietario propietario)
+        public bool Actualizar(Propietario propietario)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Propietario actualizado correctamente";
+                        return true;// "Propietario actualizado correctamente";
                     }
                 }
             }
@@ -150,7 +150,7 @@ namespace Dato
             }
         }
 
-        public string Eliminar(int id)
+        public bool Eliminar(int id)
         {
             try
             {
@@ -163,7 +163,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Propietario eliminado con exito.";
+                        return true;// "Propietario eliminado con exito.";
                     }
                 }
             }

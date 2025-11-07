@@ -14,7 +14,7 @@ namespace Dato
             datoEspecie = new DatoEspecie();
         }
 
-        public string Guardar(Raza raza)
+        public bool Guardar(Raza raza)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Raza guardada correctamente.";
+                        return true;// "Raza guardada correctamente.";
                     }
                 }
             }
@@ -74,7 +74,7 @@ namespace Dato
 
         }
 
-        public string Actualizar(Raza raza)
+        public bool Actualizar(Raza raza)
         {
             try
             {
@@ -89,7 +89,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Raza actualizada correctamente.";
+                        return true;// "Raza actualizada correctamente.";
                     }
                 }
             }
@@ -99,7 +99,7 @@ namespace Dato
             }
         }
 
-        public string Eliminar(int id)
+        public bool Eliminar(int id)
         {
             try
             {
@@ -112,7 +112,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Raza aliminada correctamente";
+                        return true;//"Raza aliminada correctamente";
                     }
                 }
             }

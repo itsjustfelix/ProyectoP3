@@ -16,7 +16,7 @@ namespace Dato
             datoMascota = new DatoMascota();
             datoVeterinario = new DatoVeterinario();
         }
-        public string Actualizar(Cita cita)
+        public bool Actualizar(Cita cita)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Cita actualizada correctamente.";
+                        return true; //"Cita actualizada correctamente.";
                     }
                 }
             }
@@ -110,7 +110,7 @@ namespace Dato
             }
         }
 
-        public string Eliminar(int id)
+        public bool Eliminar(int id)
         {
             try
             {
@@ -123,7 +123,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Cita eliminada correctamente.";
+                        return true;  //"Cita eliminada correctamente.";
                     }
                 }
             }
@@ -133,7 +133,7 @@ namespace Dato
             }
         }
 
-        public string Guardar(Cita cita)
+        public bool Guardar(Cita cita)
         {
 
             try
@@ -150,7 +150,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return "Cita guardada correctamente.";
+                        return true; //"Cita guardada correctamente.";
                     }
                 }
             }
