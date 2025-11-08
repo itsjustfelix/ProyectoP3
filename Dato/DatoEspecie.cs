@@ -21,7 +21,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true; // "Especie actualizada correctamente.";
+                        return true;
                     }
                 }
             }
@@ -111,7 +111,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;// "Especie eliminada correctamente.";
+                        return true;
                     }
                 }
             }
@@ -134,7 +134,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;// "Especie guardada correctamente.";
+                        return true;
                     }
                 }
             }

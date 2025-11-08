@@ -19,15 +19,15 @@ namespace ProyectoP3
             {
                 if (validar())
                 {
-                    string mensaje = agregar(Mappeo());
-                    if (mensaje.Contains(""))
+                    var mensaje = agregar(Mappeo());
+                    if (mensaje)
                     {
-                        MessageBox.Show(mensaje, "Agregar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Propietario guardado con exito.", "Agregar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de guardar el propietario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
@@ -45,7 +45,6 @@ namespace ProyectoP3
             if (respuesta == DialogResult.Yes)
                 salir();
         }
-
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -55,7 +54,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private string agregar(Propietario propietario)
+        private bool agregar(Propietario propietario)
         {
             try
             {
@@ -63,7 +62,7 @@ namespace ProyectoP3
             }
             catch (Exception e)
             {
-                return e.Message;
+               throw new Exception(e.Message);
             }
 
         }

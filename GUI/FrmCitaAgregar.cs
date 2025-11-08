@@ -53,12 +53,12 @@ namespace ProyectoP3
                 if (Validar())
                 {
                     var mensaje = Agregar(Mapeo());
-                    if (mensaje.Contains("correctamente"))
+                    if (mensaje)
                     {
-                        MessageBox.Show(mensaje, "Agregar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Cita guardada correctamente.", "Agregar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Salir();
                     }
-                    else MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else MessageBox.Show("Hubo un error al momento de guardar la cita.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -76,7 +76,6 @@ namespace ProyectoP3
             if(cmbEspecializacion.SelectedIndex != -1) 
                 cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
         }
-
         private void cargarCmbVeterinario(int especialializacion)
         {
             cmbVeterianrio.DataSource = null;
@@ -94,7 +93,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private string Agregar(Cita cita)
+        private bool Agregar(Cita cita)
         {
             try
             {
@@ -102,7 +101,7 @@ namespace ProyectoP3
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
         }
         private Mascota buscarMascota(int id)
@@ -123,9 +122,9 @@ namespace ProyectoP3
         private void cargarCmbEspecializacion()
         {
             cmbEspecializacion.DataSource = null;
-            cmbEspecializacion.DataSource = logEspecializacion.Consultar();
             cmbEspecializacion.DisplayMember = "Nombre";
             cmbEspecializacion.ValueMember = "Codigo";
+            cmbEspecializacion.DataSource = logEspecializacion.Consultar();
             cmbEspecializacion.SelectedIndex = -1;
         }
         private Cita Mapeo()
@@ -151,5 +150,9 @@ namespace ProyectoP3
             this.Close();
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

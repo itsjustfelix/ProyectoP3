@@ -123,7 +123,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;  //"Cita eliminada correctamente.";
+                        return true;  //;
                     }
                 }
             }
@@ -150,7 +150,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true; //"Cita guardada correctamente.";
+                        return true;
                     }
                 }
             }

@@ -39,17 +39,16 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = agregar(Mapeo());
-                    if (message.Contains("Guardado"))
+                    if (message)
                     {
-                        MessageBox.Show(message, "Agregar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Consulta guardada correcctamente.", "Agregar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         resultado = DialogResult.OK;
                         salir();
                     }
                     else 
                     { 
-                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                        MessageBox.Show("Hubo un error al momento de guardar la consulta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
                     }
-                        
                 }
             }
             catch (Exception ex)
@@ -92,7 +91,6 @@ namespace ProyectoP3
             if(cmbEspecializacion.SelectedIndex!=-1) 
                 cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
         }
-
         private void cargarCmbVeterinario(int especializacion)
         {
             cbmVeterinario.DataSource = logVeterinario.BuscarPorCualidad(especializacion);
@@ -102,9 +100,9 @@ namespace ProyectoP3
         }
         private void cargarCmbEspecializacion()
         {
-            cmbEspecializacion.DataSource = logEspecializacion.Consultar();
             cmbEspecializacion.DisplayMember = "Nombre";
             cmbEspecializacion.ValueMember = "Codigo";
+            cmbEspecializacion.DataSource = logEspecializacion.Consultar();
         }
         private void setEstado(bool estado)
         {
@@ -125,7 +123,7 @@ namespace ProyectoP3
             if (cbmVeterinario.SelectedIndex == -1) throw new Exception("Debe seleccionar un veterinario.");
             return true;
         }
-        private string agregar(Consulta consulta)
+        private bool agregar(Consulta consulta)
         {
             try
             {
@@ -133,7 +131,7 @@ namespace ProyectoP3
             }
             catch (Exception e)
             {
-                return e.Message;
+                throw new Exception($"Error al agregar la consulta: {e.Message}", e);
             }
 
         }

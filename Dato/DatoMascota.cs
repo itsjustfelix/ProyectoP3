@@ -35,7 +35,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true; // "Mascota actualizada correctamente.";
+                        return true;
                     }
                 }
             }
@@ -125,7 +125,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true; // "Mascota eliminada correctamente.";
+                        return true; 
                     }
                 }
             }
@@ -151,7 +151,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;// "Mascota guardada correctamente.";
+                        return true;
                     }
                 }
             }

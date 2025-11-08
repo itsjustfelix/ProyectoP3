@@ -22,14 +22,14 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var mensaje = agregar(Mapeo());
-                    if (mensaje.Contains("Guardado"))
+                    if (mensaje)
                     {
-                        MessageBox.Show(mensaje, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Veterinario guardado correctamente.", "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(mensaje, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de guardar el veterinario.", "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -68,7 +68,7 @@ namespace ProyectoP3
             cmbEspecilizacion.DisplayMember = "Nombre";
             cmbEspecilizacion.ValueMember = "Codigo";
         }
-        private string agregar(Veterinario veterinario)
+        private bool agregar(Veterinario veterinario)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace ProyectoP3
             }
             catch (Exception e)
             {
-                return e.Message;
+                throw new Exception(e.Message);
             }
 
         }

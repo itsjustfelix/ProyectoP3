@@ -49,7 +49,6 @@ namespace ProyectoP3
         {
             try
             {
-
                 int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
                 Propietario propietario = buscar(id);
                 if (propietario == null)
@@ -58,14 +57,14 @@ namespace ProyectoP3
                     return;
                 }
                 var respuesta = dialogoPregunta("eliminar");
-                if (respuesta == DialogResult.No || respuesta == DialogResult.None)
+                if (respuesta == DialogResult.Yes)
                 {
-                    MessageBox.Show("Eliminación cancelada", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    eliminar(id);
+                    MessageBox.Show("Propietario actualizado correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV();
                     return;
                 }
-                var message = eliminar(id); 
-                MessageBox.Show(message, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV();
+                else return;
             }
             catch (Exception ex)
             {
@@ -73,13 +72,12 @@ namespace ProyectoP3
             }
 
         }
-
         private void mostrarFrm(Form frm)
         {
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
-        private string eliminar(int id)
+        private bool eliminar(int id)
         {
             try
             {
@@ -87,7 +85,7 @@ namespace ProyectoP3
             }
             catch (Exception e)
             {
-                return e.Message;
+                throw new Exception(e.Message);
             }
         }
         private Propietario buscar(int id)

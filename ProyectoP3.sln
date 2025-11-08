@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Herramientas", "GeneradorDe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelo IA", "Modelo IA\Modelo IA.csproj", "{0A4205DB-CF66-467E-BA33-6008DCCEAAF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "prueba", "prueba\prueba.csproj", "{159B89B1-DFFE-427D-B8EC-21ACA7DAECA6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{0A4205DB-CF66-467E-BA33-6008DCCEAAF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A4205DB-CF66-467E-BA33-6008DCCEAAF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A4205DB-CF66-467E-BA33-6008DCCEAAF7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{159B89B1-DFFE-427D-B8EC-21ACA7DAECA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{159B89B1-DFFE-427D-B8EC-21ACA7DAECA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{159B89B1-DFFE-427D-B8EC-21ACA7DAECA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{159B89B1-DFFE-427D-B8EC-21ACA7DAECA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

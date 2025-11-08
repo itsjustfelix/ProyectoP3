@@ -31,8 +31,16 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = editar(Mapeo());
-                    MessageBox.Show(message, "Editar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    salir();
+                    if (message)
+                    {
+                        MessageBox.Show("Mascota actualizada correctamente.", "Editar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al momento de actualizar la mascota.", "Editar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                 }
             }
             catch (Exception ex)
@@ -54,7 +62,7 @@ namespace ProyectoP3
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentNullException("El nombre de la mascota es obligatorio.");
             return true;
         }
-        private string editar(Mascota mascota)
+        private bool editar(Mascota mascota)
         {
             try
             {
@@ -62,7 +70,7 @@ namespace ProyectoP3
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
         }
         private Especie buscarEspecie(int id)

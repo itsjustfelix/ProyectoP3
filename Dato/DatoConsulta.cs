@@ -35,7 +35,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true; // "Consulta actualizada correctamente.";
+                        return true;
                     }
                 }
             }
@@ -154,7 +154,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true; //"Consulta guardada correcctamente.";
+                        return true; //;
                     }
                 }
             }

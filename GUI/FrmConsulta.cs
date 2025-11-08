@@ -60,14 +60,14 @@ namespace ProyectoP3
                     return;
                 }
                 var confirmacion = dialogoPregunta("eliminar la consulta");
-                if (confirmacion == DialogResult.No || confirmacion == DialogResult.None)
+                if (confirmacion == DialogResult.Yes)
                 {
+                    borrar(id);
                     MessageBox.Show("Operación cancelada.", "Eliminar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV();
                     return;
                 }
-                string message = borrar(id);
-                MessageBox.Show(message, "Eliminar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV();
+                else return;
             }
             catch (Exception ex)
             {
@@ -141,7 +141,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private string borrar(int codigo)
+        private bool borrar(int codigo)
         {
             try
             {
@@ -149,7 +149,7 @@ namespace ProyectoP3
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
         }
         private void mostrarFrm(Form frm)

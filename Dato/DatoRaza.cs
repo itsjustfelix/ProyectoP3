@@ -28,7 +28,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;// "Raza guardada correctamente.";
+                        return true;
                     }
                 }
             }
@@ -89,7 +89,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;// "Raza actualizada correctamente.";
+                        return true;
                     }
                 }
             }
@@ -112,7 +112,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;//"Raza aliminada correctamente";
+                        return true;
                     }
                 }
             }

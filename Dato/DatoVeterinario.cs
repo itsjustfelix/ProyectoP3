@@ -34,7 +34,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;// "Veterinario guardado correctamente.";
+                        return true;// ;
                     }
                 }
             }
@@ -95,7 +95,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;// "Veterinario actulizado correctamente.";
+                        return true;
                     }
                 }
             }
@@ -149,7 +149,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;// "Veterinario eliminado correctamente.";
+                        return true;
                     }
                 }
             }

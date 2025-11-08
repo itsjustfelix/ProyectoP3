@@ -21,7 +21,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;// "Especializacion guardada correctamente.";
+                        return true;
                     }
                 }
             }
@@ -79,7 +79,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true; //"Especializacion actualizada correctamente.";
+                        return true; 
                     }
                 }
             }

@@ -44,7 +44,6 @@ namespace ProyectoP3
         {
             try
             {
-                string message = "";
                 int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
                 Veterinario veterinario = buscar(id);
                 if (veterinario == null)
@@ -53,11 +52,13 @@ namespace ProyectoP3
                     return;
                 }
                 var respuesta = dialogoPregunta("eliminar");
-                if (respuesta == DialogResult.Yes) message = eliminar(id);
-                else if (respuesta == DialogResult.No) message = "Eliminacion cancelada";
-                else if (respuesta == DialogResult.None) message = "Eliminacion cancelada";
-                MessageBox.Show(message, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV();
+                if (respuesta == DialogResult.Yes)
+                {
+                    eliminar(id);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV();
+                }
+               
             }
             catch (Exception ex)
             {
@@ -69,11 +70,11 @@ namespace ProyectoP3
             cargarDGV();
         }
 
-        private Veterinario buscar(int id)
+        private Veterinario buscar(int codigo)
         {
             try
             {
-                return VeterinarioService.BuscarPorId(id);
+                return VeterinarioService.BuscarPorId(codigo);
             }
             catch (Exception ex)
             {
@@ -81,7 +82,7 @@ namespace ProyectoP3
                 return null;
             }
         }
-        private string eliminar(int codigo)
+        private bool eliminar(int codigo)
         {
             try
             {
@@ -90,7 +91,7 @@ namespace ProyectoP3
             catch (Exception e)
             {
 
-                return e.Message;
+                throw new Exception(e.Message);
             }
         }
         private DialogResult dialogoPregunta(string accion)

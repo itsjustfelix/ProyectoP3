@@ -27,14 +27,14 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = editar(Mapeo());
-                    if (message.Contains("correctamente"))
+                    if (message)
                     {
-                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Propietario editado con exito.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de editar el propietario. ", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -65,7 +65,7 @@ namespace ProyectoP3
             if (propietario.Sexo == "F") RBFemenino.Checked = true;
             else RBMasculino.Checked = true;
         }
-        private string editar(Propietario propietario)
+        private bool editar(Propietario propietario)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace ProyectoP3
             }
             catch (Exception e)
             {
-                return e.Message;
+                throw new Exception(e.Message);
             }
         }
         private DialogResult dialogoPregunta(string accion)

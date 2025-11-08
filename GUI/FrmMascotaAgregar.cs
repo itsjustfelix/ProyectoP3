@@ -39,16 +39,15 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = agregar(Mapeo());
-                    if (message.Contains("Guardado"))
+                    if (message)
                     {
-                        MessageBox.Show(message, "Agregar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Mascota guardada correctamente.", "Agregar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de guardar la mascota.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
                 }
             }
             catch (Exception ex)
@@ -88,7 +87,7 @@ namespace ProyectoP3
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentNullException("El nombre de la mascota es obligatorio.");
             return true;
         }
-        private string agregar(Mascota mascota)
+        private bool agregar(Mascota mascota)
         {
             try
             {
@@ -96,7 +95,7 @@ namespace ProyectoP3
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception($"Error al agregar la mascota: {ex.Message}", ex);
             }
         }
         private Especie buscarEspecie(int id)
@@ -120,9 +119,9 @@ namespace ProyectoP3
         private void cargarCmbEspecie()
         {
             cmbEspecie.DataSource = null;
-            cmbEspecie.DataSource = logEspecie.Consultar();
             cmbEspecie.DisplayMember = "Nombre";
             cmbEspecie.ValueMember = "Codigo";
+            cmbEspecie.DataSource = logEspecie.Consultar();
         }
         private void cargarCmbRaza(int idEspecie)
         {

@@ -92,7 +92,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;// "Propietario actualizado correctamente";
+                        return true;
                     }
                 }
             }
@@ -163,7 +163,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;// "Propietario eliminado con exito.";
+                        return true;
                     }
                 }
             }

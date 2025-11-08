@@ -7,6 +7,10 @@ namespace ProyectoP3
 {
     public partial class FrmRazaEditar : Form
     {
+        ICrud<Especie> logEspecie;
+        IServiceRaza logRaza;
+        Raza raza;
+        int idRaza;
         public FrmRazaEditar(Raza raza)
         {
             InitializeComponent();
@@ -14,10 +18,6 @@ namespace ProyectoP3
             logEspecie = new EspecieService();
             logRaza = new RazaService();
         }
-        ICrud<Especie> logEspecie;
-        IServiceRaza logRaza;
-        Raza raza;
-        int idRaza;
         private void mostrarRaza(Raza raza)
         {
             txtNombre.Text = raza.Nombre;
@@ -42,14 +42,14 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = editar(Mapeo());
-                    if (message.Contains("correctamente"))
+                    if (message)
                     {
-                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Raza actualizada correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de actualizar la raza correctamente", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -66,7 +66,7 @@ namespace ProyectoP3
             if (string.IsNullOrEmpty(txtNombre.Text)) throw new ArgumentNullException("El campo Nombre es obligatorio.");
             return true;
         }
-        private string editar(Raza raza)
+        private bool editar(Raza raza)
         {
             try
             {
@@ -74,7 +74,7 @@ namespace ProyectoP3
             }
             catch (Exception e)
             {
-                return e.Message;
+                throw new Exception(e.Message);
             }
         }
         private void btnCancelar_Click(object sender, EventArgs e)

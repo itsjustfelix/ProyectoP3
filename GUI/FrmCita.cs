@@ -71,21 +71,22 @@ namespace ProyectoP3
                     return;
                 }
                 DialogResult result = dialogoPregunta("eliminar la cita");
-                if (result == DialogResult.No || result == DialogResult.None)
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Operación cancelada.", "Eliminar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    borrarCita(id);
+                    MessageBox.Show("Cita eliminada correctamente.", "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV();
                     return;
                 }
-                string message = borrarCita(id);
-                MessageBox.Show(message, "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV();
+                else
+                    return;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private string borrarCita(int codigoCita)
+        private bool borrarCita(int codigoCita)
         {
             try
             {
@@ -93,7 +94,7 @@ namespace ProyectoP3
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception($"Error al eliminar cita: {ex.Message}", ex);
             }
         }
         private DialogResult dialogoPregunta(string accion)

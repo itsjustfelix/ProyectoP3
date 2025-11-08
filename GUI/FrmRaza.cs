@@ -10,8 +10,9 @@ namespace ProyectoP3
         public FrmRaza()
         {
             InitializeComponent();
+            logRaza = new RazaService();
         }
-        IServiceRaza logRaza = new RazaService();
+        IServiceRaza logRaza;
         private void FrmRaza_Load(object sender, EventArgs e)
         {
             cargarDGV();
@@ -73,17 +74,19 @@ namespace ProyectoP3
                 var confirmacion = dialogoPregunta("Eliminar la raza");
                 if (confirmacion == DialogResult.Yes)
                 {
-                    message = borrar(codigo);
-                    MessageBox.Show(message, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    borrar(codigo);
+                    MessageBox.Show("Raza aliminada correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cargarDGV();
+                    return;
                 }
+                else return;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private string borrar(int id)
+        private bool borrar(int id)
         {
             try
             {

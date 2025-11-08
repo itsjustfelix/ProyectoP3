@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbVeterianrio = new System.Windows.Forms.ComboBox();
+            this.cmbEspecializacion = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.DTPHora = new System.Windows.Forms.DateTimePicker();
@@ -39,10 +43,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblNombreMascota = new System.Windows.Forms.Label();
             this.nombre = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cmbEspecializacion = new System.Windows.Forms.ComboBox();
-            this.cmbVeterianrio = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +67,42 @@
             this.groupBox1.Size = new System.Drawing.Size(309, 285);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // cmbVeterianrio
+            // 
+            this.cmbVeterianrio.FormattingEnabled = true;
+            this.cmbVeterianrio.Location = new System.Drawing.Point(120, 122);
+            this.cmbVeterianrio.Name = "cmbVeterianrio";
+            this.cmbVeterianrio.Size = new System.Drawing.Size(183, 21);
+            this.cmbVeterianrio.TabIndex = 21;
+            // 
+            // cmbEspecializacion
+            // 
+            this.cmbEspecializacion.FormattingEnabled = true;
+            this.cmbEspecializacion.Location = new System.Drawing.Point(120, 95);
+            this.cmbEspecializacion.Name = "cmbEspecializacion";
+            this.cmbEspecializacion.Size = new System.Drawing.Size(183, 21);
+            this.cmbEspecializacion.TabIndex = 20;
+            this.cmbEspecializacion.SelectedIndexChanged += new System.EventHandler(this.cmbEspecializacion_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(30, 130);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Veterinerio";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 98);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Especializacion";
             // 
             // btnCancelar
             // 
@@ -162,41 +198,6 @@
             this.nombre.Size = new System.Drawing.Size(88, 20);
             this.nombre.TabIndex = 0;
             this.nombre.Text = "Id Mascota";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 98);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Especializacion";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 130);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Veterinerio";
-            // 
-            // cmbEspecializacion
-            // 
-            this.cmbEspecializacion.FormattingEnabled = true;
-            this.cmbEspecializacion.Location = new System.Drawing.Point(120, 95);
-            this.cmbEspecializacion.Name = "cmbEspecializacion";
-            this.cmbEspecializacion.Size = new System.Drawing.Size(183, 21);
-            this.cmbEspecializacion.TabIndex = 20;
-            this.cmbEspecializacion.SelectedIndexChanged += new System.EventHandler(this.cmbEspecializacion_SelectedIndexChanged);
-            // 
-            // cmbVeterianrio
-            // 
-            this.cmbVeterianrio.FormattingEnabled = true;
-            this.cmbVeterianrio.Location = new System.Drawing.Point(120, 122);
-            this.cmbVeterianrio.Name = "cmbVeterianrio";
-            this.cmbVeterianrio.Size = new System.Drawing.Size(183, 21);
-            this.cmbVeterianrio.TabIndex = 21;
             // 
             // FrmCitaAgregar
             // 

@@ -39,14 +39,14 @@ namespace ProyectoP3
                 if (Validar())
                 {
                     var message = Editar(Mapeo());
-                    if (message.Contains("correctamente"))
+                    if (message)
                     {
-                        MessageBox.Show(message, "Editar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Cita actualizada correctamente.", "Editar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Salir();
                     }
                     else
                     {
-                        MessageBox.Show(message, "Editar Cita", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error a la hora de editar la cita.", "Editar Cita", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -61,7 +61,6 @@ namespace ProyectoP3
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) Salir();
         }
-
         private void mostrarCita(Cita cita)
         {
             txtIdMascota.Text = cita.Mascota.Codigo.ToString();
@@ -86,7 +85,7 @@ namespace ProyectoP3
             cmbVeterinario.ValueMember = "Cedula";
             cmbEspecializacion.SelectedIndex = -1;
         }
-        private string Editar(Cita cita)
+        private bool Editar(Cita cita)
         {
             try
             {
@@ -94,7 +93,7 @@ namespace ProyectoP3
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(ex.Message);
             }
         }
         private Mascota buscarMascota(int id)
