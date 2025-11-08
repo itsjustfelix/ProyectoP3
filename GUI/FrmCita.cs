@@ -32,7 +32,7 @@ namespace ProyectoP3
                     );
             }
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmCitaAgregar());
             cargarDGV();
@@ -41,7 +41,7 @@ namespace ProyectoP3
         {
             return CitaService.BuscarPorId(id);
         }
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void bttnActualizar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -60,11 +60,11 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
-                int id =int.Parse(Interaction.InputBox("Ingrese el codigo de la cita a eliminar:", "Eliminar cita", ""));
+                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la cita a eliminar:", "Eliminar cita", ""));
                 if (buscarCita(id) == null)
                 {
                     MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -106,18 +106,18 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void bttnAtenderCita_Click(object sender, EventArgs e)
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el ID de la cita a buscar:", "Buscar cita", ""));
+                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la cita a buscar:", "Buscar cita", ""));
                 Cita cita = buscarCita(id);
                 if (cita == null)
                 {
                     MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                var frm = new FrmConsultaAgregar(cita.Mascota,cita.Veterinario);
+                var frm = new FrmConsultaAgregar(cita.Mascota, cita.Veterinario);
                 mostrarFrm(frm);
                 if (frm.resultado == DialogResult.OK)
                 {
