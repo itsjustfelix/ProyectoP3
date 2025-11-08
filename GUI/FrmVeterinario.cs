@@ -15,56 +15,6 @@ namespace ProyectoP3
             VeterinarioService = new VeterinarioService();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            mostrarFrm(new FrmVeterinarioAgregar());
-            cargarDGV();
-        }
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
-                Veterinario veterinario = buscar(id);
-                if (veterinario == null)
-                {
-                    MessageBox.Show("Veterinario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                mostrarFrm(new FrmVeterinarioEditar(veterinario));
-                cargarDGV();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-        }
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
-                Veterinario veterinario = buscar(id);
-                if (veterinario == null)
-                {
-                    MessageBox.Show("Propietario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                var respuesta = dialogoPregunta("eliminar");
-                if (respuesta == DialogResult.Yes)
-                {
-                    eliminar(id);
-                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
-                }
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
         private void FrmVeterinario_Load(object sender, EventArgs e)
         {
             cargarDGV();
@@ -121,6 +71,58 @@ namespace ProyectoP3
                     item.Sexo,
                     item.Telefono,
                     item.Especializacion.Nombre);
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            mostrarFrm(new FrmVeterinarioAgregar());
+            cargarDGV();
+        }
+
+        private void bttnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
+                Veterinario veterinario = buscar(id);
+                if (veterinario == null)
+                {
+                    MessageBox.Show("Veterinario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                mostrarFrm(new FrmVeterinarioEditar(veterinario));
+                cargarDGV();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnEliminar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
+                Veterinario veterinario = buscar(id);
+                if (veterinario == null)
+                {
+                    MessageBox.Show("Propietario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                var respuesta = dialogoPregunta("eliminar");
+                if (respuesta == DialogResult.Yes)
+                {
+                    eliminar(id);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
