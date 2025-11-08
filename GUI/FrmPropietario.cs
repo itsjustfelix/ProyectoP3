@@ -11,15 +11,10 @@ namespace ProyectoP3
         public FrmPropietario()
         {
             InitializeComponent();
+            propietarioService = new PropietarioService();
         }
 
-        ICrud<Propietario> logPropietario = new LogPropietario();
-
-        private void mostrarFrm(Form frm)
-        {
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.ShowDialog();
-        }
+        ICrud<Propietario> propietarioService;
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -27,12 +22,11 @@ namespace ProyectoP3
             mostrarFrm(new FrmPropietarioAgregar());
             cargarDGV();
         }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
             {
-                string id = Interaction.InputBox("Digite el ID de la persona ha buscar", "Buscar Propietario", "");
+                int id = int.Parse(Interaction.InputBox("Digite la cedula del propietario ha buscar", "Buscar Propietario", ""));
                 Propietario propietario = buscar(id);
                 if (propietario == null)
                 {
@@ -47,12 +41,58 @@ namespace ProyectoP3
                 MessageBox.Show("La cedula debe ser solamente numeros", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-        private Propietario buscar(string id)
+        private void FrmPropietario_Load(object sender, EventArgs e)
+        {
+            cargarDGV();
+        }
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
-                return logPropietario.BuscarPorId(id);
+                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
+                Propietario propietario = buscar(id);
+                if (propietario == null)
+                {
+                    MessageBox.Show("Propietario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                var respuesta = dialogoPregunta("eliminar");
+                if (respuesta == DialogResult.Yes)
+                {
+                    eliminar(id);
+                    MessageBox.Show("Propietario actualizado correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV();
+                    return;
+                }
+                else return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+        private void mostrarFrm(Form frm)
+        {
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.ShowDialog();
+        }
+        private bool eliminar(int id)
+        {
+            try
+            {
+                return propietarioService.Borrar(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        private Propietario buscar(int id)
+        {
+            try
+            {
+                return propietarioService.BuscarPorId(id);
             }
             catch (Exception ex)
             {
@@ -60,7 +100,6 @@ namespace ProyectoP3
                 return null;
             }
         }
-
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -73,65 +112,19 @@ namespace ProyectoP3
         private void cargarDGV()
         {
             DGVPropietario.Rows.Clear();
-            foreach (var item in logPropietario.Consultar())
+            foreach (var item in propietarioService.Consultar())
             {
                 DGVPropietario.Rows.Add(
                     item.Cedula,
                     item.Nombres,
                     item.ApellidoPaterno,
                     item.ApellidoMaterno,
-                    item.Sexo, 
+                    item.Sexo,
                     item.Telefono,
                     item.Email
                 );
             }
         }
-        private void FrmPropietario_Load(object sender, EventArgs e)
-        {
-            cargarDGV();
-        }
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                string id = Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", "");
-                Propietario propietario = buscar(id);
-                if (propietario == null)
-                {
-                    MessageBox.Show("Propietario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                var respuesta = dialogoPregunta("eliminar");
-                if (respuesta == DialogResult.No || respuesta == DialogResult.None)
-                {
-                    MessageBox.Show("Eliminación cancelada", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                var message = eliminar(id);
-                MessageBox.Show(message, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-        }
-
-        private string eliminar(string id)
-        {
-            try
-            {
-                return logPropietario.Borrar(id);
-            }
-            catch (Exception e)
-            {
-
-                return e.Message;
-            }
-        }
-
 
     }
 }

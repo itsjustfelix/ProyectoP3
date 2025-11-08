@@ -8,10 +8,11 @@ namespace ProyectoP3
 {
     public partial class FrmCita : Form
     {
-        ICrud<Cita> logCita = new LogCita();
+        ICrud<Cita> CitaService;
         public FrmCita()
         {
             InitializeComponent();
+            CitaService = new CitaService();
         }
         private void FrmCita_Load(object sender, EventArgs e)
         {
@@ -20,9 +21,15 @@ namespace ProyectoP3
         private void cargarDGV()
         {
             DGVCita.Rows.Clear();
-            foreach (Cita item in logCita.Consultar())
+            foreach (Cita item in CitaService.Consultar())
             {
-                DGVCita.Rows.Add(item.Codigo, item.Fecha.ToString("dd/MM/yyyy"), item.Hora.ToString("HH:mm tt"), item.Mascota.Nombre, item.Veterinario.Nombres);
+                DGVCita.Rows.Add(
+                    item.Codigo,
+                    item.Fecha,
+                    item.Hora,
+                    item.Mascota.Nombre,
+                    item.Veterinario.Nombres
+                    );
             }
         }
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -30,15 +37,15 @@ namespace ProyectoP3
             mostrarFrm(new FrmCitaAgregar());
             cargarDGV();
         }
-        private Cita buscarCita(string id)
+        private Cita buscarCita(int id)
         {
-            return logCita.BuscarPorId(id);
+            return CitaService.BuscarPorId(id);
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
             {
-                string id = Interaction.InputBox("Ingrese el codigo de la cita a buscar:", "Buscar cita", "");
+                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la cita a buscar:", "Buscar cita", ""));
                 Cita cita = buscarCita(id);
                 if (cita == null)
                 {
@@ -57,36 +64,37 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Ingrese el codigo de la cita a eliminar:", "Eliminar cita", "");
+                int id =int.Parse(Interaction.InputBox("Ingrese el codigo de la cita a eliminar:", "Eliminar cita", ""));
                 if (buscarCita(id) == null)
                 {
                     MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 DialogResult result = dialogoPregunta("eliminar la cita");
-                if (result == DialogResult.No || result == DialogResult.None)
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Operación cancelada.", "Eliminar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    borrarCita(id);
+                    MessageBox.Show("Cita eliminada correctamente.", "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV();
                     return;
                 }
-                string message = borrarCita(id);
-                MessageBox.Show(message, "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV();
+                else
+                    return;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private string borrarCita(string codigoCita)
+        private bool borrarCita(int codigoCita)
         {
             try
             {
-                return logCita.Borrar(codigoCita);
+                return CitaService.Borrar(codigoCita);
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception($"Error al eliminar cita: {ex.Message}", ex);
             }
         }
         private DialogResult dialogoPregunta(string accion)
@@ -102,7 +110,7 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Ingrese el ID de la cita a buscar:", "Buscar cita", "");
+                int id = int.Parse(Interaction.InputBox("Ingrese el ID de la cita a buscar:", "Buscar cita", ""));
                 Cita cita = buscarCita(id);
                 if (cita == null)
                 {

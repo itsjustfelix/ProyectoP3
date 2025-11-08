@@ -6,13 +6,14 @@ namespace ProyectoP3
 {
     public partial class FrmEspecializacionEditar : Form
     {
-        ICrud<Especializacion> logEspecializacion = new logEspecializacion();
+        ICrud<Especializacion> logEspecializacion;
         public FrmEspecializacionEditar(Especializacion especializacion)
         {
             InitializeComponent();
             mostrarEspecializacion(especializacion);
+            logEspecializacion = new EspecializacionService();
         }
-        string codigo;
+        int codigo;
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
@@ -20,14 +21,14 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var mensaje = editar(Mapeo());
-                    if (mensaje.Contains("correctamente"))
+                    if (mensaje)
                     {
-                        MessageBox.Show(mensaje, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Especializacion actualizada correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(mensaje, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de actualizar la especializacion.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -37,12 +38,10 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void salir()
         {
             this.Close();
         }
-
         private Especializacion Mapeo()
         {
             Especializacion especializacion = new Especializacion();
@@ -50,8 +49,7 @@ namespace ProyectoP3
             especializacion.Nombre = txtNombre.Text;
             return especializacion;
         }
-
-        private string editar(Especializacion especializacion)
+        private bool editar(Especializacion especializacion)
         {
             try
             {
@@ -62,7 +60,6 @@ namespace ProyectoP3
                 throw new Exception(e.Message);
             }
         }
-
         private bool validar()
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new Exception("El nombre de la especie no puede estar vacia.");
@@ -73,7 +70,6 @@ namespace ProyectoP3
             txtNombre.Text = especializacion.Nombre;
             codigo = especializacion.Codigo;
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");

@@ -1,43 +1,168 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Entidad;
+using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 
 namespace Dato
 {
-    public class DatoRaza: FileRepository<Raza>
+    public class DatoRaza : IRepository<Raza>
     {
-        private DatoEspecie datoEspecie = new DatoEspecie(NombreArchivo.ARC_ESPECIE);
-        public DatoRaza(string filePath) : base(filePath)
+        IRepository<Especie> datoEspecie;
+        public DatoRaza()
         {
-            this.filePath = filePath;
+            datoEspecie = new DatoEspecie();
         }
-        public override List<Raza> Consultar()
+
+        public bool Guardar(Raza raza)
         {
-            List<Raza> lista = new List<Raza>();
-            using (StreamReader sr = new StreamReader(filePath))
+            try
             {
-                while (!sr.EndOfStream)
+                using (OracleConnection conn = OracleDBConnection.GetConnection())
                 {
-                    lista.Add(MappyingType(sr.ReadLine()));
+                    using (OracleCommand cmd = new OracleCommand("PKG_RAZAS.PRC_guardar", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add("v_nombre", OracleDbType.Varchar2).Value = raza.Nombre;
+                        cmd.Parameters.Add("v_codigo_especie", OracleDbType.Int64).Value = raza.Especie.Codigo;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        return true;
+                    }
                 }
             }
-            return lista;
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al insertar raza: {ex.Message}", ex);
+            }
         }
-        public override Raza MappyingType(string line)
+
+        public List<Raza> Consultar()
+        {
+            List<Raza> lista = new List<Raza>();
+
+            try
+            {
+                using (OracleConnection conn = OracleDBConnection.GetConnection())
+                {
+                    using (OracleCommand cmd = new OracleCommand("PKG_RAZAS.FN_consultar", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add("return_value", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.ReturnValue;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        OracleRefCursor refCursor = (OracleRefCursor)cmd.Parameters["return_value"].Value;
+                        using (OracleDataReader reader = refCursor.GetDataReader())
+                        {
+                            while (reader.Read())
+                            {
+                                lista.Add(MappyingType(reader));
+                            }
+                        }
+                    }
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al obtener razas: {ex.Message}", ex);
+            }
+
+        }
+
+        public bool Actualizar(Raza raza)
+        {
+            try
+            {
+                using (OracleConnection conn = OracleDBConnection.GetConnection())
+                {
+                    using (OracleCommand cmd = new OracleCommand("PKG_RAZAS.PRC_actualizar", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Int64).Value = raza.Codigo;
+                        cmd.Parameters.Add("v_nombre", OracleDbType.Varchar2).Value = raza.Nombre;
+                        cmd.Parameters.Add("v_codigo_especie", OracleDbType.Int64).Value = raza.Especie.Codigo;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al actualizar raza: {ex.Message}", ex);
+            }
+        }
+
+        public bool Eliminar(int id)
+        {
+            try
+            {
+                using (OracleConnection conn = OracleDBConnection.GetConnection())
+                {
+                    using (OracleCommand cmd = new OracleCommand("PKG_RAZAS.PRC_eliminar", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Int32).Value = id;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al eliminar raza: {ex.Message}", ex);
+            }
+        }
+
+        public Raza BuscarPorId(int id)
+        {
+            try
+            {
+                using (OracleConnection conn = OracleDBConnection.GetConnection())
+                {
+                    using (OracleCommand cmd = new OracleCommand("PKG_RAZAS.FN_buscar_por_codigo", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add("return_value", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.ReturnValue;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Int64).Value = id;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        OracleRefCursor refCursor = (OracleRefCursor)cmd.Parameters["return_value"].Value;
+                        using (OracleDataReader reader = refCursor.GetDataReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return MappyingType(reader);
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al buscar raza: {ex.Message}", ex);
+            }
+        }
+
+        public Raza MappyingType(OracleDataReader line)
         {
             Raza raza = new Raza();
-            raza.Codigo = line.Split(';')[0];
-            raza.Nombre = line.Split(';')[1];
-            raza.Especie = datoEspecie.BuscarPorId(line.Split(';')[2]);
+            raza.Codigo = int.Parse(line["CODIGO"].ToString());
+            raza.Nombre = line["NOMBRE"].ToString();
+            raza.Especie = datoEspecie.BuscarPorId(int.Parse(line["CODIGO_ESPECIE"].ToString()));
             return raza;
         }
-        public override Raza BuscarPorId(string id)
-        {
-            return Consultar().FirstOrDefault(r => r.Codigo.Equals(id));
-        }
+
     }
 }

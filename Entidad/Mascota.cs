@@ -8,7 +8,7 @@ namespace Entidad
 {
     public class Mascota
     {
-        public string Codigo { get; set; }
+        public int Codigo { get; set; }
         public string Nombre { get; set; }
         public Especie Especie { get; set; }
         public Raza Raza { get; set; }

@@ -8,26 +8,17 @@ namespace ProyectoP3
     public partial class FrmEditarPropietatio : Form
     {
         ICrud<Propietario> logPropietario;
+        Propietario propietario;
         public FrmEditarPropietatio(Propietario propietario)
         {
-            logPropietario = new LogPropietario();
             InitializeComponent();
-            mostrarPropietario(propietario);
-            txtCedula.Enabled = false;
+            logPropietario = new PropietarioService();
+            this.propietario = propietario;
         }
         private void FrmEditarPropietatio_Load(object sender, EventArgs e)
         {
-        }
-        private void mostrarPropietario(Propietario propietario)
-        {
-            txtCedula.Text = propietario.Cedula.ToString();
-            txtNombre.Text = propietario.Nombres;
-            txtApellidoPaterno.Text = propietario.ApellidoPaterno;
-            txtApellidoMaterno.Text = propietario.ApellidoMaterno;
-            txtNumeroTelefonicoPrimario.Text = propietario.Telefono;
-            txtEmail.Text = propietario.Email;
-            if (propietario.Sexo == "Femenino") RBFemenino.Checked = true;
-            else RBMasculino.Checked = true;
+            mostrarPropietario(propietario);
+            txtCedula.Enabled = false;
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -36,14 +27,14 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = editar(Mapeo());
-                    if (message.Contains("correctamente"))
+                    if (message)
                     {
-                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Propietario editado con exito.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de editar el propietario. ", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -54,7 +45,27 @@ namespace ProyectoP3
             }
 
         }
-        private string editar(Propietario propietario)
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes)
+            {
+                salir();
+            }
+        }
+
+        private void mostrarPropietario(Propietario propietario)
+        {
+            txtCedula.Text = propietario.Cedula.ToString();
+            txtNombre.Text = propietario.Nombres;
+            txtApellidoPaterno.Text = propietario.ApellidoPaterno;
+            txtApellidoMaterno.Text = propietario.ApellidoMaterno;
+            txtNumeroTelefonicoPrimario.Text = propietario.Telefono;
+            txtEmail.Text = propietario.Email;
+            if (propietario.Sexo == "F") RBFemenino.Checked = true;
+            else RBMasculino.Checked = true;
+        }
+        private bool editar(Propietario propietario)
         {
             try
             {
@@ -62,12 +73,8 @@ namespace ProyectoP3
             }
             catch (Exception e)
             {
-                return e.Message;
+                throw new Exception(e.Message);
             }
-        }
-        private void salir()
-        {
-            this.Close();
         }
         private DialogResult dialogoPregunta(string accion)
         {
@@ -79,18 +86,10 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes)
-            {
-                salir();
-            }
-        }
         private Propietario Mapeo()
         {
             Propietario propietario = new Propietario();
-            propietario.Cedula = txtCedula.Text;
+            propietario.Cedula = int.Parse(txtCedula.Text);
             propietario.Nombres = txtNombre.Text;
             propietario.ApellidoPaterno = txtApellidoPaterno.Text;
             propietario.ApellidoMaterno = txtApellidoMaterno.Text;
@@ -108,6 +107,10 @@ namespace ProyectoP3
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un sexo.");
             if (string.IsNullOrEmpty(txtEmail.Text)) throw new ArgumentException("El email no puede estar vacío.");
             return true;
+        }
+        private void salir()
+        {
+            this.Close();
         }
     }
 }

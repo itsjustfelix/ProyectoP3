@@ -8,13 +8,13 @@ namespace ProyectoP3
 {
     public partial class FrmVeterinario : Form
     {
-        IServiceVeterinario logVeterinario;
+        IServiceVeterinario VeterinarioService;
         public FrmVeterinario()
         {
             InitializeComponent();
-            logVeterinario = new LogVeterinario();
+            VeterinarioService = new VeterinarioService();
         }
-        
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmVeterinarioAgregar());
@@ -24,7 +24,7 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", "");
+                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
                 Veterinario veterinario = buscar(id);
                 if (veterinario == null)
                 {
@@ -44,8 +44,7 @@ namespace ProyectoP3
         {
             try
             {
-                string message = "";
-                string id = Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", "");
+                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
                 Veterinario veterinario = buscar(id);
                 if (veterinario == null)
                 {
@@ -53,11 +52,13 @@ namespace ProyectoP3
                     return;
                 }
                 var respuesta = dialogoPregunta("eliminar");
-                if (respuesta == DialogResult.Yes) message = eliminar(id);
-                else if (respuesta == DialogResult.No) message = "Eliminacion cancelada";
-                else if (respuesta == DialogResult.None) message = "Eliminacion cancelada";
-                MessageBox.Show(message, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV();
+                if (respuesta == DialogResult.Yes)
+                {
+                    eliminar(id);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV();
+                }
+               
             }
             catch (Exception ex)
             {
@@ -69,11 +70,11 @@ namespace ProyectoP3
             cargarDGV();
         }
 
-        private Veterinario buscar(string id)
+        private Veterinario buscar(int codigo)
         {
             try
             {
-                return logVeterinario.BuscarPorId(id);
+                return VeterinarioService.BuscarPorId(codigo);
             }
             catch (Exception ex)
             {
@@ -81,16 +82,16 @@ namespace ProyectoP3
                 return null;
             }
         }
-        private string eliminar(string codigo)
+        private bool eliminar(int codigo)
         {
             try
             {
-                return logVeterinario.Borrar(codigo);
+                return VeterinarioService.Borrar(codigo);
             }
             catch (Exception e)
             {
 
-                return e.Message;
+                throw new Exception(e.Message);
             }
         }
         private DialogResult dialogoPregunta(string accion)
@@ -110,7 +111,7 @@ namespace ProyectoP3
         private void cargarDGV()
         {
             DGVeterinario.Rows.Clear();
-            foreach (var item in logVeterinario.Consultar())
+            foreach (var item in VeterinarioService.Consultar())
             {
                 DGVeterinario.Rows.Add(
                     item.Cedula,

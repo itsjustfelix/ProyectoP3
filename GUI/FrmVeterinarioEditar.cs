@@ -8,13 +8,13 @@ namespace ProyectoP3
     public partial class FrmVeterinarioEditar : Form
     {
         Veterinario veterinario;
-        IServiceVeterinario logVeterinario;
+        IServiceVeterinario VeterinarioService;
         ICrud<Especializacion> logEspecializacion;
         public FrmVeterinarioEditar(Veterinario veterinario)
         {
             InitializeComponent();
-            logVeterinario = new LogVeterinario();
-            logEspecializacion = new logEspecializacion();
+            VeterinarioService = new VeterinarioService();
+            logEspecializacion = new EspecializacionService();
             this.veterinario = veterinario;
         }
         
@@ -24,16 +24,16 @@ namespace ProyectoP3
             {
                 if (validar())
                 {
-                    string message;
-                    message = editar(Mapeo());
-                    if (message.Contains("correctamente"))
+                    
+                    var message = editar(Mapeo());
+                    if (message)
                     {
-                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Veterinario actulizado correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de actualizar el veterinario.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -51,16 +51,16 @@ namespace ProyectoP3
                 salir();
             }
         }
-        private Especializacion buscarEspecializacion(string codigo)
-        {
-            return logEspecializacion.BuscarPorId(codigo);
-        }
         private void FrmVeterinarioEditar_Load(object sender, EventArgs e)
         {
             cargarCmbEspecializacion();
             mostrarVeterinario(veterinario);
         }
 
+        private Especializacion buscarEspecializacion(int codigo)
+        {
+            return logEspecializacion.BuscarPorId(codigo);
+        }
         private void mostrarVeterinario(Veterinario veterinario)
         {
             txtCedula.Text = veterinario.Cedula.ToString();
@@ -68,20 +68,20 @@ namespace ProyectoP3
             txtApellidoPaterno.Text = veterinario.ApellidoPaterno;
             txtApellidoMaterno.Text = veterinario.ApellidoMaterno;
             txtNumeroTelefonicoPrimario.Text = veterinario.Telefono;
-            if (veterinario.Sexo == "Femenino") RBFemenino.Checked = true;
+            if (veterinario.Sexo == "F") RBFemenino.Checked = true;
             else RBMasculino.Checked = true;
             cmbEspecilizacion.SelectedValue = veterinario.Especializacion.Codigo;
 
         }
-        private string editar(Veterinario veterinario)
+        private bool editar(Veterinario veterinario)
         {
             try
             {
-                return logVeterinario.Actualizar(veterinario);
+                return VeterinarioService.Actualizar(veterinario);
             }
             catch (Exception e)
             {
-                return e.Message;
+                throw new Exception(e.Message);
             }
 
         }
@@ -103,13 +103,13 @@ namespace ProyectoP3
         private Veterinario Mapeo()
         {
             Veterinario veterinario = new Veterinario();
-            veterinario.Cedula = txtCedula.Text;
+            veterinario.Cedula = int.Parse(txtCedula.Text);
             veterinario.Nombres = txtNombre.Text;
             veterinario.ApellidoPaterno = txtApellidoPaterno.Text;
             veterinario.ApellidoMaterno = txtApellidoMaterno.Text;
             veterinario.Sexo = RBFemenino.Checked ? "F" : "M";
             veterinario.Telefono = txtNumeroTelefonicoPrimario.Text;
-            veterinario.Especializacion = buscarEspecializacion(cmbEspecilizacion.SelectedValue.ToString());
+            veterinario.Especializacion = buscarEspecializacion(int.Parse(cmbEspecilizacion.SelectedValue.ToString()));
             return veterinario;
         }
         private bool validar()

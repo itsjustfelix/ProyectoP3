@@ -9,11 +9,11 @@ namespace Logica
 {
     public interface ICrud<T>
     {
-        string Guardar(T entidad);
+        bool Guardar(T entidad);
         List<T> Consultar();
-        string Actualizar(T NuevaEntidad);
-        string Borrar(string Id);
-        bool Validar(T entidad, out string mensaje);
-        T BuscarPorId(string id);
+        bool Actualizar(T NuevaEntidad);
+        bool Borrar(int Id);
+        bool Validar(T entidad);
+        T BuscarPorId(int id);
     }
 }

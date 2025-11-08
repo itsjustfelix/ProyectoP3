@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -14,10 +15,10 @@ namespace ProyectoP3
         public FrmCitaAgregar()
         {
             InitializeComponent();
-            logMascota = new LogMascota();
-            logCita = new LogCita();
-            logVeterinario = new LogVeterinario();
-            logEspecializacion = new logEspecializacion();
+            logMascota = new MascotaService();
+            logCita = new CitaService();
+            logVeterinario = new VeterinarioService();
+            logEspecializacion = new EspecializacionService();
         }
         private void FrmCitaAgregar_Load(object sender, EventArgs e)
         {
@@ -29,7 +30,7 @@ namespace ProyectoP3
         {
             try
             {
-                Mascota mascota = buscarMascota(txtIdMascota.Text);
+                Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));  
                 if (mascota == null)
                 {
                     MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -52,12 +53,12 @@ namespace ProyectoP3
                 if (Validar())
                 {
                     var mensaje = Agregar(Mapeo());
-                    if (mensaje.Contains("Guardado"))
+                    if (mensaje)
                     {
-                        MessageBox.Show(mensaje, "Agregar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Cita guardada correctamente.", "Agregar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Salir();
                     }
-                    else MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else MessageBox.Show("Hubo un error al momento de guardar la cita.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -72,25 +73,16 @@ namespace ProyectoP3
         }
         private void cmbEspecializacion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbEspecializacion.SelectedIndex != -1) { cargarCmbVeterinario(cmbEspecializacion.SelectedValue.ToString());}  
+            if(cmbEspecializacion.SelectedIndex != -1) 
+                cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
         }
-
-
-        private void cargarCmbVeterinario(string especialializacion)
+        private void cargarCmbVeterinario(int especialializacion)
         {
             cmbVeterianrio.DataSource = null;
             cmbVeterianrio.DataSource = logVeterinario.BuscarPorCualidad(especialializacion);
             cmbVeterianrio.DisplayMember = "Nombres";
             cmbVeterianrio.ValueMember = "Cedula";
             cmbVeterianrio.SelectedIndex = -1;
-        }
-        private void cargarCmbEspecializacion()
-        {
-            cmbEspecializacion.DataSource = null;
-            cmbEspecializacion.DataSource = logEspecializacion.Consultar();
-            cmbEspecializacion.DisplayMember = "Nombre";
-            cmbEspecializacion.ValueMember = "Codigo";
-            cmbEspecializacion.SelectedIndex = -1;
         }
         private DialogResult DialogoPregunta(string accion)
         {
@@ -101,14 +93,47 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
+        private bool Agregar(Cita cita)
+        {
+            try
+            {
+                return logCita.Guardar(cita);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        private Mascota buscarMascota(int id)
+        {
+            return logMascota.BuscarPorId(id);
+        }
+        private void SetControlesEstado(bool estado)
+        {
+            DTPHora.Enabled = estado;
+            DTPFecha.Enabled = estado;
+            cmbEspecializacion.Enabled = estado;
+            cmbVeterianrio.Enabled = estado;
+        }
+        private Veterinario buscarVeterinario(int id)
+        {
+            return logVeterinario.BuscarPorId(id);
+        }
+        private void cargarCmbEspecializacion()
+        {
+            cmbEspecializacion.DataSource = null;
+            cmbEspecializacion.DisplayMember = "Nombre";
+            cmbEspecializacion.ValueMember = "Codigo";
+            cmbEspecializacion.DataSource = logEspecializacion.Consultar();
+            cmbEspecializacion.SelectedIndex = -1;
+        }
         private Cita Mapeo()
         {
-            Mascota mascota = buscarMascota(txtIdMascota.Text);
             Cita cita = new Cita();
-            cita.Mascota = mascota;
-            cita.Fecha = DTPFecha.Value;
-            cita.Hora = DTPHora.Value;
-            cita.Veterinario = buscarVeterinario(cmbVeterianrio.SelectedValue.ToString());
+            cita.Mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+            cita.Fecha = DTPFecha.Value.ToString("dd/MM/yyyy");
+            cita.Hora = DTPHora.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture);
+            cita.Veterinario = buscarVeterinario(int.Parse(cmbVeterianrio.SelectedValue.ToString()));
             return cita;
         }
         private bool Validar()
@@ -124,32 +149,10 @@ namespace ProyectoP3
         {
             this.Close();
         }
-        private string Agregar(Cita cita)
-        {
-            try
-            {
-                return logCita.Guardar(cita);
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-        }
-        private Mascota buscarMascota(string id)
-        {
-            return logMascota.BuscarPorId(id);
-        }
-        private void SetControlesEstado(bool estado)
-        {
-            DTPHora.Enabled = estado;
-            DTPFecha.Enabled = estado;
-            cmbEspecializacion.Enabled = estado;
-            cmbVeterianrio.Enabled = estado;
-        }
-        private Veterinario buscarVeterinario(string id)
-        {
-            return logVeterinario.BuscarPorId(id);
-        }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

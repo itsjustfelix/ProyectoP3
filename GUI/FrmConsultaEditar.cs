@@ -15,9 +15,9 @@ namespace ProyectoP3
     public partial class FrmConsultaEditar : Form
     {
         Consulta consulta;
-        IServiceVeterinario logVeterinario = new LogVeterinario();
-        ICrud<Consulta> logConsulta = new LogConsulta();
-        ICrud<Mascota> logMascota = new LogMascota();
+        IServiceVeterinario logVeterinario = new VeterinarioService();
+        ICrud<Consulta> logConsulta = new ConsultaService();
+        ICrud<Mascota> logMascota = new MascotaService();
         string idConsulta;
         DateTime fechaConsulta;
         public FrmConsultaEditar(Consulta consulta)
@@ -33,14 +33,14 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = editar(Mapeo());
-                    if (message.Contains("correctamente"))
+                    if (message)
                     {
-                        MessageBox.Show(message, "Editar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Consulta actualizada correctamente.", "Editar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(message, "Editar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de actualizar la consulta", "Editar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -69,10 +69,10 @@ namespace ProyectoP3
         }
         private Consulta Mapeo()
         {
-            Mascota mascota = buscarMascota(txtIdMascota.Text);
-            Veterinario veterinario = buscarVeterinario(cbxVeterinario.SelectedValue.ToString());
+            Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+            Veterinario veterinario = buscarVeterinario(int.Parse(cbxVeterinario.SelectedValue.ToString()));
             Consulta consulta = new Consulta();
-            consulta.Codigo = idConsulta;
+            consulta.Codigo = int.Parse(idConsulta);
             consulta.Descripcion = txtDescripcion.Text;
             consulta.Diagnostico = txtDiagnostico.Text;
             consulta.Tratamiento = txtTratamiento.Text;
@@ -87,7 +87,7 @@ namespace ProyectoP3
         }
         private void mostrarConsulta(Consulta consulta)
         {
-            idConsulta = consulta.Codigo;
+            idConsulta = consulta.Codigo.ToString();
             fechaConsulta = consulta.Fecha;
             txtIdMascota.Text = consulta.Mascota.Codigo.ToString();
             lblNombreMascota.Text = consulta.Mascota.Nombre;
@@ -105,7 +105,7 @@ namespace ProyectoP3
             if (string.IsNullOrEmpty(txtTratamiento.Text)) throw new Exception("El campo Tratamiento es obligatorio.");
             return true;
         }
-        private string editar(Consulta consulta)
+        private bool editar(Consulta consulta)
         {
             try
             {
@@ -113,14 +113,14 @@ namespace ProyectoP3
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception($"Error al agregar la consulta: {ex.Message}", ex);
             }
         }
-        private Mascota buscarMascota(string id)
+        private Mascota buscarMascota(int id)
         {
             return logMascota.BuscarPorId(id);
         }
-        private Veterinario buscarVeterinario(string id)
+        private Veterinario buscarVeterinario(int id)
         {
             return logVeterinario.BuscarPorId(id);
         }

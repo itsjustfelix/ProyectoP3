@@ -1,46 +1,173 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using Entidad;
+using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 
 namespace Dato
 {
-    public class DatoCita : FileRepository<Cita>
+    public class DatoCita : IRepository<Cita>
     {
-        public DatoCita(string filePath) : base(filePath)
+        IRepository<Mascota> datoMascota;
+        IRepository<Veterinario> datoVeterinario;
+        public DatoCita()
         {
-            this.filePath = filePath;
+            datoMascota = new DatoMascota();
+            datoVeterinario = new DatoVeterinario();
         }
-
-        public override Cita BuscarPorId(string id)
+        public bool Actualizar(Cita cita)
         {
-            return Consultar().FirstOrDefault(c => c.Codigo.Equals(id));
-        }
-
-        public override List<Cita> Consultar()
-        {
-            using (StreamReader sr = new StreamReader(filePath))
+            try
             {
-                List<Cita> lista = new List<Cita>();
-                while (!sr.EndOfStream)
+                using (OracleConnection conn = OracleDBConnection.GetConnection())
                 {
-                    lista.Add(MappyingType(sr.ReadLine()));
+                    using (OracleCommand cmd = new OracleCommand("PKG_CITAS.PRC_actualizar", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Int64).Value = cita.Codigo;
+                        cmd.Parameters.Add("v_fecha", OracleDbType.Varchar2).Value = cita.Fecha;
+                        cmd.Parameters.Add("v_hora", OracleDbType.Varchar2).Value = cita.Hora;
+                        cmd.Parameters.Add("v_codigo_mascota", OracleDbType.Int64).Value = cita.Mascota.Codigo;
+                        cmd.Parameters.Add("v_cedula_veterinario", OracleDbType.Int64).Value = cita.Veterinario.Cedula;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        return true; //"Cita actualizada correctamente.";
+                    }
                 }
-                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al actualizar cita: {ex.Message}", ex);
             }
         }
 
-        public override Cita MappyingType(string line)
+        public Cita BuscarPorId(int id)
+        {
+            try
+            {
+                using (OracleConnection conn = OracleDBConnection.GetConnection())
+                {
+                    using (OracleCommand cmd = new OracleCommand("PKG_CITAS.FN_buscar_por_codigo", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add("return_value", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.ReturnValue;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Int64).Value = id;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        OracleRefCursor refCursor = (OracleRefCursor)cmd.Parameters["return_value"].Value;
+                        using (OracleDataReader reader = refCursor.GetDataReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return MappyingType(reader);
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al buscar cita: {ex.Message}", ex);
+            }
+        }
+
+        public List<Cita> Consultar()
+        {
+            List<Cita> lista = new List<Cita>();
+
+            try
+            {
+                using (OracleConnection conn = OracleDBConnection.GetConnection())
+                {
+                    using (OracleCommand cmd = new OracleCommand("PKG_CITAS.FN_consultar", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add("return_value", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.ReturnValue;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        OracleRefCursor refCursor = (OracleRefCursor)cmd.Parameters["return_value"].Value;
+                        using (OracleDataReader reader = refCursor.GetDataReader())
+                        {
+                            while (reader.Read())
+                            {
+                                lista.Add(MappyingType(reader));
+                            }
+                        }
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al obtener citas: {ex.Message}", ex);
+            }
+        }
+
+        public bool Eliminar(int id)
+        {
+            try
+            {
+                using (OracleConnection conn = OracleDBConnection.GetConnection())
+                {
+                    using (OracleCommand cmd = new OracleCommand("PKG_CITAS.PRC_eliminar", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Int64).Value = id;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        return true;  //;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al eliminar cita: {ex.Message}", ex);
+            }
+        }
+
+        public bool Guardar(Cita cita)
+        {
+
+            try
+            {
+                using (OracleConnection conn = OracleDBConnection.GetConnection())
+                {
+                    using (OracleCommand cmd = new OracleCommand("PKG_CITAS.PRC_guardar", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add("v_fecha", OracleDbType.Varchar2).Value = cita.Fecha;
+                        cmd.Parameters.Add("v_hora", OracleDbType.Varchar2).Value = cita.Hora;
+                        cmd.Parameters.Add("v_codigo_mascota", OracleDbType.Int64).Value = cita.Mascota.Codigo;
+                        cmd.Parameters.Add("v_cedula_veterinario", OracleDbType.Int64).Value = cita.Veterinario.Cedula;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al insertar cita: {ex.Message}", ex);
+            }
+        }
+
+        public Cita MappyingType(OracleDataReader linea)
         {
             Cita cita = new Cita();
-            cita.Codigo = line.Split(';')[0];
-            cita.Fecha = DateTime.ParseExact(line.Split(';')[1], "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-            cita.Hora = DateTime.ParseExact(line.Split(';')[2], "hh:mm tt", System.Globalization.CultureInfo.InvariantCulture);
-            cita.Mascota = new DatoMascota(NombreArchivo.ARC_MASCOTA).BuscarPorId(line.Split(';')[3]);
-            cita.Veterinario = new DatoVeterinario(NombreArchivo.ARC_VETERINARIO).BuscarPorId(line.Split(';')[4]);
+            cita.Codigo = Convert.ToInt32(linea["CODIGO"]);
+            cita.Fecha = linea["FECHA"].ToString();
+            cita.Hora = linea["HORA"].ToString();
+            cita.Mascota = datoMascota.BuscarPorId(int.Parse(linea["CODIGO_MASCOTA"].ToString()));
+            cita.Veterinario = datoVeterinario.BuscarPorId(int.Parse(linea["CEDULA_VETERINARIO"].ToString()));
             return cita;
         }
     }

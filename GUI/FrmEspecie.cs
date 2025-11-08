@@ -9,17 +9,17 @@ namespace ProyectoP3
 {
     public partial class FrmEspecie : Form
     {
+        ICrud<Especie> logEspecie;
         public FrmEspecie()
         {
             InitializeComponent();
+            logEspecie = new EspecieService();
         }
-        ICrud<Especie> logEspecie = new LogEspecie();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmEspecieAgregar());
             cargarDGV();
         }
-
         private void cargarDGV()
         {
             DGVEspecie.Rows.Clear();
@@ -32,7 +32,7 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Digite el ID de la especie ha buscar", "Editar Especie", "");
+                int id = int.Parse(Interaction.InputBox("Digite el ID de la especie ha buscar", "Editar Especie", ""));
                 Especie especie = logEspecie.BuscarPorId(id);
                 if (especie == null)
                 {
@@ -49,7 +49,6 @@ namespace ProyectoP3
             }
 
         }
-
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -59,13 +58,11 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
-                string message = "";
-                string id = Interaction.InputBox("Digite el ID de la especie ha eliminar", "Eliminar Especie", "");
+                int id = int.Parse(Interaction.InputBox("Digite el ID de la especie ha eliminar", "Eliminar Especie", ""));
                 Especie especie = logEspecie.BuscarPorId(id);
                 if (especie == null)
                 {
@@ -73,19 +70,21 @@ namespace ProyectoP3
                     return;
                 }
                 var respuesta = dialogoPregunta("eliminar");
-                if (respuesta == DialogResult.Yes) message = borrar(id);
-                else if (respuesta == DialogResult.No) message = "Eliminación cancelada";
-                else if (respuesta == DialogResult.None) message = "Eliminación cancelada";
-                MessageBox.Show(message, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV();
+                if (respuesta == DialogResult.Yes)
+                {
+                    borrar(id);
+                    MessageBox.Show("Especie eliminada correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV();
+                    return;
+                }
+                else return;
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private string borrar(string id)
+        private bool borrar(int id)
         {
             try
             {

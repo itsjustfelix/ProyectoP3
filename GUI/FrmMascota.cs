@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -15,11 +8,12 @@ namespace ProyectoP3
 {
     public partial class FrmMascota : Form
     {
+        ICrud<Mascota> logMascota;
         public FrmMascota()
         {
             InitializeComponent();
+            logMascota = new MascotaService();
         }
-        ICrud<Mascota> logMascota = new LogMascota();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmMascotaAgregar());
@@ -30,14 +24,20 @@ namespace ProyectoP3
             DGVMascota.Rows.Clear();
             foreach (var item in logMascota.Consultar())
             {
-                DGVMascota.Rows.Add(item.Codigo, item.Nombre, item.Especie.Nombre, item.Raza.Nombre, item.Propietario.Nombres);
+                DGVMascota.Rows.Add(
+                    item.Codigo,
+                    item.Nombre,
+                    item.Especie.Nombre,
+                    item.Raza.Nombre,
+                    item.Propietario.Nombres
+                    );
             }
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
             {
-                string id = Interaction.InputBox("Digite el codigo de la mascota a buscar", "Buscar Mascota", "");
+                int id = int.Parse(Interaction.InputBox("Digite el codigo de la mascota a buscar", "Buscar Mascota", ""));
                 Mascota mascota = buscarMascota(id);
                 if (mascota == null)
                 {
@@ -56,7 +56,7 @@ namespace ProyectoP3
         {
             try
             {
-                string id = Interaction.InputBox("Digite el codigo de la mascota ha eliminar", "Eliminar mascota", "");
+                int id = int.Parse(Interaction.InputBox("Digite el codigo de la mascota ha eliminar", "Eliminar mascota", ""));
                 Mascota mascota = buscar(id);
                 if (mascota == null)
                 {
@@ -64,25 +64,25 @@ namespace ProyectoP3
                     return;
                 }
                 DialogResult result = dialogoPregunta("eliminar la mascota");
-                if (result == DialogResult.No || result == DialogResult.None)
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Operación cancelada.", "Eliminar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    borrar(id);
+                    MessageBox.Show("Mascota eliminada correctamente.", "Eliminar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV();
                     return;
                 }
-                string message = borrar(id);
-                MessageBox.Show(message, "Eliminar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV();
+                else return;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private Mascota buscar(string id)
+        private Mascota buscar(int id)
         {
             return logMascota.BuscarPorId(id);
         }
-        private string borrar(string id)
+        private bool borrar(int id)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace ProyectoP3
             {
                 throw new Exception(ex.Message);
             }
-            
+
         }
         private DialogResult dialogoPregunta(string accion)
         {
@@ -103,7 +103,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private Mascota buscarMascota(string id)
+        private Mascota buscarMascota(int id)
         {
             return logMascota.BuscarPorId(id);
         }

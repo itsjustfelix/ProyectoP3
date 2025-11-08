@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -14,61 +7,43 @@ namespace ProyectoP3
 {
     public partial class FrmPropietarioAgregar : Form
     {
+        ICrud<Propietario> propietarioService;
         public FrmPropietarioAgregar()
         {
             InitializeComponent();
+            propietarioService = new PropietarioService();
         }
-        ICrud<Propietario> logPropietario = new LogPropietario();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
                 if (validar())
                 {
-                    string mensaje = agregar(Mappeo());
-                    if (mensaje.Contains("Guardado"))
+                    var mensaje = agregar(Mappeo());
+                    if (mensaje)
                     {
-                        MessageBox.Show(mensaje, "Agregar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Propietario guardado con exito.", "Agregar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de guardar el propietario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
 
-        }
-        private string agregar(Propietario propietario)
-        {
-            try
-            {
-                return logPropietario.Guardar(propietario);
-            }
-            catch (Exception e)
-            {
-                return e.Message;
-            }
 
-        }
-        private void salir()
-        {
-            this.Close();
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes)
-            {
                 salir();
-            }
-
         }
         private DialogResult dialogoPregunta(string accion)
         {
@@ -79,10 +54,22 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
+        private bool agregar(Propietario propietario)
+        {
+            try
+            {
+                return propietarioService.Guardar(propietario);
+            }
+            catch (Exception e)
+            {
+               throw new Exception(e.Message);
+            }
+
+        }
         private Propietario Mappeo()
         {
             Propietario propietario = new Propietario();
-            propietario.Cedula = txtId.Text;
+            propietario.Cedula = int.Parse(txtId.Text);
             propietario.Nombres = txtNombre.Text;
             propietario.ApellidoPaterno = txtApellidoPaterno.Text;
             propietario.ApellidoMaterno = txtApellidoMaterno.Text;
@@ -99,8 +86,12 @@ namespace ProyectoP3
             if (string.IsNullOrWhiteSpace(txtApellidoMaterno.Text)) throw new ArgumentNullException("El apellido materno es obligatorio.");
             if (string.IsNullOrWhiteSpace(txtNumeroTelefonoPrimario.Text)) throw new ArgumentNullException("El número de teléfono primario es obligatorio.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un género.");
-            if(string.IsNullOrEmpty(txtEmail.Text)) throw new ArgumentNullException("El email es obligatorio.");
+            if (string.IsNullOrEmpty(txtEmail.Text)) throw new ArgumentNullException("El email es obligatorio.");
             return true;
+        }
+        private void salir()
+        {
+            this.Close();
         }
     }
 }
