@@ -15,20 +15,16 @@ namespace ProyectoP3
             InitializeComponent();
             logEspecie = new EspecieService();
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmEspecieAgregar());
             cargarDGV();
         }
-        private void cargarDGV()
+        private void FrmEspecie_Load(object sender, EventArgs e)
         {
-            DGVEspecie.Rows.Clear();
-            foreach (var especie in logEspecie.Consultar())
-            {
-                DGVEspecie.Rows.Add(especie.Codigo, especie.Nombre);
-            }
+            cargarDGV();
         }
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void bttnActualizar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -47,18 +43,8 @@ namespace ProyectoP3
 
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
-        private DialogResult dialogoPregunta(string accion)
-        {
-            return MessageBox.Show(
-             $"¿Está seguro de que desea {accion}?",
-             $"Confirmar {accion}",
-             MessageBoxButtons.YesNo,
-             MessageBoxIcon.Question
-             );
-        }
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -84,6 +70,15 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        private DialogResult dialogoPregunta(string accion)
+        {
+            return MessageBox.Show(
+             $"¿Está seguro de que desea {accion}?",
+             $"Confirmar {accion}",
+             MessageBoxButtons.YesNo,
+             MessageBoxIcon.Question
+             );
+        }
         private bool borrar(int id)
         {
             try
@@ -95,14 +90,18 @@ namespace ProyectoP3
                 throw new Exception(e.Message);
             }
         }
-        private void FrmEspecie_Load(object sender, EventArgs e)
-        {
-            cargarDGV();
-        }
         private void mostrarFrm(Form frm)
         {
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
+        }
+        private void cargarDGV()
+        {
+            DGVEspecie.Rows.Clear();
+            foreach (var especie in logEspecie.Consultar())
+            {
+                DGVEspecie.Rows.Add(especie.Codigo, especie.Nombre);
+            }
         }
 
 
