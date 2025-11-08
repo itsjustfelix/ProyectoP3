@@ -20,36 +20,7 @@ namespace ProyectoP3
         {
             cargarDGV();
         }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            mostrarFrm(new FrmConsultaAgregar());
-            cargarDGV();
-        }
-
-        
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int id = int.Parse(Interaction.InputBox("Ingrese el ID de la consulta a buscar:", "Buscar Consulta", ""));
-                Consulta consulta = buscarConsulta(id);
-                if (consulta == null)
-                {
-                    MessageBox.Show("Consulta no encontrada.", "Buscar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                mostrarFrm(new FrmConsultaEditar(consulta));
-                cargarDGV();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -74,22 +45,32 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
+            mostrarFrm(new FrmConsultaAgregar());
+            cargarDGV();
+        }
+        private void bttnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(Interaction.InputBox("Ingrese el ID de la consulta a buscar:", "Buscar Consulta", ""));
+                Consulta consulta = buscarConsulta(id);
+                if (consulta == null)
+                {
+                    MessageBox.Show("Consulta no encontrada.", "Buscar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                mostrarFrm(new FrmConsultaEditar(consulta));
+                cargarDGV();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
-        private void DGVConsulta_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCrearPDF_Click(object sender, EventArgs e)
+        private void btnCrearPDF_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -107,10 +88,8 @@ namespace ProyectoP3
             {
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
-
-        private void txtCrearPDFEnviar_Click(object sender, EventArgs e)
+        private void bttnCrearPDFEnviar_Click(object sender, EventArgs e)
         {
             try
             {
