@@ -17,29 +17,12 @@ namespace ProyectoP3
         {
             cargarDGV();
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmRazaAgregar());
             cargarDGV();
         }
-        private void cargarDGV()
-        {
-            DGVRaza.Rows.Clear();
-            foreach (var raza in logRaza.Consultar())
-            {
-                DGVRaza.Rows.Add(raza.Codigo, raza.Nombre, raza.Especie.Nombre);
-            }
-        }
-        private DialogResult dialogoPregunta(string accion)
-        {
-            return MessageBox.Show(
-             $"¿Está seguro de que desea {accion}?",
-             $"Confirmar {accion}",
-             MessageBoxButtons.YesNo,
-             MessageBoxIcon.Question
-             );
-        }
-        private void tbnEditar_Click(object sender, EventArgs e)
+        private void bttnActualizar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -57,9 +40,8 @@ namespace ProyectoP3
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -86,6 +68,24 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        private DialogResult dialogoPregunta(string accion)
+        {
+            return MessageBox.Show(
+             $"¿Está seguro de que desea {accion}?",
+             $"Confirmar {accion}",
+             MessageBoxButtons.YesNo,
+             MessageBoxIcon.Question
+             );
+        }
+        private Raza buscarRaza(int id)
+        {
+            return logRaza.BuscarPorId(id);
+        }
+        private void mostrarFrm(Form frm)
+        {
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.ShowDialog();
+        }
         private bool borrar(int id)
         {
             try
@@ -99,14 +99,13 @@ namespace ProyectoP3
             }
 
         }
-        private Raza buscarRaza(int id)
+        private void cargarDGV()
         {
-            return logRaza.BuscarPorId(id);
-        }
-        private void mostrarFrm(Form frm)
-        {
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.ShowDialog();
+            DGVRaza.Rows.Clear();
+            foreach (var raza in logRaza.Consultar())
+            {
+                DGVRaza.Rows.Add(raza.Codigo, raza.Nombre, raza.Especie.Nombre);
+            }
         }
     }
 }
