@@ -16,13 +16,12 @@ namespace ProyectoP3
 
         ICrud<Propietario> propietarioService;
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-
             mostrarFrm(new FrmPropietarioAgregar());
             cargarDGV();
         }
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void guna2Button1_Click(object sender, EventArgs e)
         {
             try
             {
@@ -45,7 +44,7 @@ namespace ProyectoP3
         {
             cargarDGV();
         }
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -70,7 +69,6 @@ namespace ProyectoP3
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
         private void mostrarFrm(Form frm)
         {
@@ -125,6 +123,5 @@ namespace ProyectoP3
                 );
             }
         }
-
     }
 }
