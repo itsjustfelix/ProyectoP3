@@ -36,8 +36,10 @@
             // 
             // txtHistorial
             // 
+            this.txtHistorial.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtHistorial.Location = new System.Drawing.Point(9, 10);
-            this.txtHistorial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHistorial.Margin = new System.Windows.Forms.Padding(2);
             this.txtHistorial.Name = "txtHistorial";
             this.txtHistorial.ReadOnly = true;
             this.txtHistorial.Size = new System.Drawing.Size(560, 258);
@@ -47,7 +49,7 @@
             // txtPregunta
             // 
             this.txtPregunta.Location = new System.Drawing.Point(9, 288);
-            this.txtPregunta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPregunta.Margin = new System.Windows.Forms.Padding(2);
             this.txtPregunta.Name = "txtPregunta";
             this.txtPregunta.Size = new System.Drawing.Size(319, 20);
             this.txtPregunta.TabIndex = 1;
@@ -56,7 +58,7 @@
             // btnEnviar
             // 
             this.btnEnviar.Location = new System.Drawing.Point(367, 288);
-            this.btnEnviar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEnviar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Size = new System.Drawing.Size(56, 19);
             this.btnEnviar.TabIndex = 2;
@@ -83,7 +85,7 @@
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.txtPregunta);
             this.Controls.Add(this.txtHistorial);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmIA";
             this.Text = "FrmIA";
             this.Load += new System.EventHandler(this.FrmIA_Load);
