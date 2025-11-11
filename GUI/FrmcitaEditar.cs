@@ -140,5 +140,10 @@ namespace ProyectoP3
             cita.Veterinario = buscarVeterinario(int.Parse(cmbVeterinario.SelectedValue.ToString()));
             return cita;
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
