@@ -32,36 +32,8 @@ namespace ProyectoP3
             logEspecializacion = new EspecializacionService();
             mostrarInformacion(mascota, veterinario);
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (validar())
-                {
-                    var message = agregar(Mapeo());
-                    if (message)
-                    {
-                        MessageBox.Show("Consulta guardada correcctamente.", "Agregar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        resultado = DialogResult.OK;
-                        salir();
-                    }
-                    else 
-                    { 
-                        MessageBox.Show("Hubo un error al momento de guardar la consulta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) salir();
-            
-        }
+        
+       
         private void FrmConsultaAgregar_Load(object sender, EventArgs e)
         {
             cargarCmbEspecializacion();
@@ -86,11 +58,7 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void cmbEspecializacion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(cmbEspecializacion.SelectedIndex!=-1) 
-                cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
-        }
+        
         private void cargarCmbVeterinario(int especializacion)
         {
             cbmVeterinario.DataSource = logVeterinario.BuscarPorCualidad(especializacion);
@@ -180,6 +148,45 @@ namespace ProyectoP3
             cmbEspecializacion.SelectedValue = veterinario.Especializacion.Codigo;
             cargarCmbVeterinario(veterinario.Especializacion.Codigo);
             cbmVeterinario.SelectedValue = veterinario.Cedula;
+        }
+
+        private void cmbEspecializacion_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+            if (cmbEspecializacion.SelectedIndex != -1)
+                cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
+        }
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (validar())
+                {
+                    var message = agregar(Mapeo());
+                    if (message)
+                    {
+                        MessageBox.Show("Consulta guardada correcctamente.", "Agregar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        resultado = DialogResult.OK;
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al momento de guardar la consulta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) salir();
+
         }
     }
 }

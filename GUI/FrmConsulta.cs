@@ -156,5 +156,10 @@ namespace ProyectoP3
                     );
             }
         }
+
+        private void DGVConsulta_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
