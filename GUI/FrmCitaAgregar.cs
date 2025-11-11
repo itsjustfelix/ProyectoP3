@@ -46,36 +46,8 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Validar())
-                {
-                    var mensaje = Agregar(Mapeo());
-                    if (mensaje)
-                    {
-                        MessageBox.Show("Cita guardada correctamente.", "Agregar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Salir();
-                    }
-                    else MessageBox.Show("Hubo un error al momento de guardar la cita.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = DialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) Salir();
-        }
-        private void cmbEspecializacion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(cmbEspecializacion.SelectedIndex != -1) 
-                cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
-        }
+        
+        
         private void cargarCmbVeterinario(int especialializacion)
         {
             cmbVeterianrio.DataSource = null;
@@ -153,6 +125,39 @@ namespace ProyectoP3
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmbEspecializacion_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (cmbEspecializacion.SelectedIndex != -1)
+                cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
+        }
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Validar())
+                {
+                    var mensaje = Agregar(Mapeo());
+                    if (mensaje)
+                    {
+                        MessageBox.Show("Cita guardada correctamente.", "Agregar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Salir();
+                    }
+                    else MessageBox.Show("Hubo un error al momento de guardar la cita.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            var respuesta = DialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) Salir();
         }
     }
 }
