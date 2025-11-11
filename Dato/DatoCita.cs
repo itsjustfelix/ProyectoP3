@@ -173,6 +173,7 @@ namespace Dato
                 {
 
                     OracleCommand cmd = new OracleCommand(query, conn);
+                    conn.Open();
                     OracleDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())

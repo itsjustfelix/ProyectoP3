@@ -118,6 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="guna2Button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAXpJREFUWEft
+        lz1Ow0AUhF1QUHKJ3CHdSm+2zxUQHUKCOl0uQA0VTXo4SQQNEinoggRXiPjTRGsrO2zkdbxJQ0b6mn3v
+        eWbXjq1U1UEdBGAE4BHAp/f+Zx2uhdpI54oomH+pscKenYTg7mhgZtfOuWOtc421EOJJ671VH3vKvBZr
+        9e3QWm/VR6zrqty+zsq9cG5fUs65IwATAG8AvvUB2xZeK1xzQg/1bQTgTodLQw/1Xcl7Pyi5600Ej4H6
+        c/dn2rwr6KX+DHCjjS3w1NbR+kYA3Ko/A8y0sYU+AWaROV8gAJba2EKfAMvohea9H2pTG9EO1n7/HRg2
+        wwAuEw1KtGOV1hPzEfRshgFMtSFB6QDTZhjAizYkKBrAzOarQefcSc53Xg1UWk/MR9CT3ty912IOiQB/
+        etqgNwOMtZBDoQBjBrjXQg6FAjwwwEILORQKsNhqsCQ8gQ9d3CPvlZldJQp7wcwu6vt3bmavme+DXoQ/
+        MM9mdqrP0UH/U7/tUPcE5BC0XgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
@@ -271,7 +283,7 @@
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADsAAAAqCAYAAAANryONAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
-        MAAA6mAAADqYAAAXcJy6UTwAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAHdElNRQfpCwsBCwZWG0AzAAAO
+        MAAA6mAAADqYAAAXcJy6UTwAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAAHdElNRQfpCwsBCwZWG0AzAAAO
         TElEQVRoQ+2ZCVBUV7qAf+KuWZ7RmNGn8yYaIgp97m0kmkkcM47RSWIyMb5xnEWnXozRRH0xbpk3OhoX
         MIqiUaMCIkIDvYAii4DIJjvN1g00NN1N3+679L3dt0E0Jm7RnFenfczEO6YqUw8zk6p8VV23i77//5//
         P+f85/8PAD/QPzy1eEPgGbpVA9QnxaCKrYNf65vBZLVDg7EO2tvbYdiwYUqx7xHDxoJ6fz7QWzVAxzcA
