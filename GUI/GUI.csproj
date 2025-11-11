@@ -121,6 +121,12 @@
     <Compile Include="FrmEspecieAgregar.Designer.cs">
       <DependentUpon>FrmEspecieAgregar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEstadistica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEstadistica.Designer.cs">
+      <DependentUpon>FrmEstadistica.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmIA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEspecieEditar.resx">
       <DependentUpon>FrmEspecieEditar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEstadistica.resx">
+      <DependentUpon>FrmEstadistica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmIA.resx">
       <DependentUpon>FrmIA.cs</DependentUpon>

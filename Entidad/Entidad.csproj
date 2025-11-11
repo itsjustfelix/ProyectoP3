@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cita.cs" />
+    <Compile Include="citasPorFechas.cs" />
     <Compile Include="Consulta.cs" />
     <Compile Include="Especializacion.cs" />
     <Compile Include="Persona.cs" />

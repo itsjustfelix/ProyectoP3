@@ -160,6 +160,42 @@ namespace Dato
             }
         }
 
+        public List<citasPorFechas> obtenerCitasPorFechas()
+        {
+            //esto lo tengo que arreglar despues
+            try
+            {
+                List<citasPorFechas> datos = new List<citasPorFechas>();
+
+                string query = "SELECT COUNT(*) as TOTAL, FECHA FROM citas GROUP BY FECHA ORDER BY FECHA";
+
+                using (OracleConnection conn = OracleDBConnection.GetConnection())
+                {
+
+                    OracleCommand cmd = new OracleCommand(query, conn);
+                    OracleDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        datos.Add(new citasPorFechas
+                        {
+                            cantidad = Convert.ToInt32(reader["TOTAL"]),
+                            fecha = reader["FECHA"].ToString()
+                        });
+                    }
+
+                    reader.Close();
+                }
+
+                return datos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener las citas por fecha: " + ex.Message);
+            }
+
+        }
+
         public Cita MappyingType(OracleDataReader linea)
         {
             Cita cita = new Cita();

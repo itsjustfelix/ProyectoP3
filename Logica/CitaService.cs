@@ -60,5 +60,12 @@ namespace Logica
         {
             return datoCita.BuscarPorId(id);
         }
+
+        public List<citasPorFechas> ObtenerCitasPorFechas()
+        {
+            //esto lo tengo que arreglar despues
+            DatoCita datoCita = new DatoCita();
+            return datoCita.obtenerCitasPorFechas();
+        }
     }
 }
