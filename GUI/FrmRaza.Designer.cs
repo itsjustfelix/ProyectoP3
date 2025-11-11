@@ -43,12 +43,14 @@
             // 
             // DGVRaza
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.DGVRaza.AllowUserToAddRows = false;
+            this.DGVRaza.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
             this.DGVRaza.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DGVRaza.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -62,55 +64,60 @@
             this.Column5,
             this.Column6});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DGVRaza.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DGVRaza.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.DGVRaza.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
             this.DGVRaza.Location = new System.Drawing.Point(12, 12);
             this.DGVRaza.Name = "DGVRaza";
+            this.DGVRaza.ReadOnly = true;
             this.DGVRaza.RowHeadersVisible = false;
             this.DGVRaza.Size = new System.Drawing.Size(801, 400);
             this.DGVRaza.TabIndex = 4;
-            this.DGVRaza.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.DGVRaza.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
+            this.DGVRaza.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
             this.DGVRaza.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.DGVRaza.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.DGVRaza.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.DGVRaza.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
             this.DGVRaza.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.DGVRaza.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DGVRaza.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.DGVRaza.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
+            this.DGVRaza.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.DGVRaza.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.DGVRaza.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DGVRaza.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.DGVRaza.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DGVRaza.ThemeStyle.HeaderStyle.Height = 15;
-            this.DGVRaza.ThemeStyle.ReadOnly = false;
-            this.DGVRaza.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.DGVRaza.ThemeStyle.ReadOnly = true;
+            this.DGVRaza.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
             this.DGVRaza.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DGVRaza.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DGVRaza.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.DGVRaza.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
             this.DGVRaza.ThemeStyle.RowsStyle.Height = 22;
-            this.DGVRaza.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DGVRaza.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.DGVRaza.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
+            this.DGVRaza.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Codigo";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Nombre";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Raza";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // bttnActualizar
             // 
