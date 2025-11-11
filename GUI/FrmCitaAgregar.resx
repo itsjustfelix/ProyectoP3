@@ -120,17 +120,16 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnCancelar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAIESURBVFhHxVdRTgIxEG0Av7yCnoBA6Js76CUkeyUSbqAegG/5gQ8NR5BEv/Qcat6mJd2h3Xaz
-        IC95P9vpvNnOdNoa0wGTyeRmNptV1toFgBWAjeOK30Skoo2e1xcja+0DgFcAPyLy20baAHjjHM7VzjpB
-        RO4AvGuRUnIugHvtNwsRuQKwLPnjHN2KLOlT60QxnU6vAbxoR31Jn/St9Rpwf35ycU/nO70SbqmOJp6S
-        1NC6NVzB9c55jq4mjgpzlKt2AN8istPfI9w5W/099LVvbFHuWW2kJnyOx+NbY8wAwJMe97TWPhtjhrQV
-        kQ89rmznhwDYZLSBJ//GiXtEg/Di3ohz2laCzao2ZOvM5H5H0SAAYhgGocUdBm0po2b9Y+ztelCTYrEg
-        KJwSB/Co/URYMf88RPTAEVNB9BDnyi2Y/5UeSDERRIhicedvxQA2eqCNLUF0Ene+tp0DSOScaBRmCX0A
-        xSloEfeIbtEU6xSUFmFCnKnQ6SgOoi5CbgU9oJkSp1CiJkqDqEobUVTc26SCKGpEBNuiNggMi1qxDqK4
-        FRO5w4gHS8lh5IPofBid4Tj+inwPfTWPY4KXhEwtnISpC0mNi17JiH+4lK5bL6XEGa/l6+y13OOiD5MQ
-        rjD32mkpOTdZcB3Ax+mcjaNkRYLHKfd5v8ephmsw4fN863h4nquumcUfVVc81GFSFxUAAAAASUVORK5C
-        YII=
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAgRJREFUWEfF
+        V1FOAjEQbQC/vIKegEDomzvoJSR7JRJuoB6Ab/mBDw1HkES/9Bxq3qYl3aHddrMgL3k/2+m82c502hrT
+        AZPJ5GY2m1XW2gWAFYCN44rfRKSijZ7XFyNr7QOAVwA/IvLbRtoAeOMcztXOOkFE7gC8a5FSci6Ae+03
+        CxG5ArAs+eMc3Yos6VPrRDGdTq8BvGhHfUmf9K31GnB/fnJxT+c7vRJuqY4mnpLU0Lo1XMH1znmOriaO
+        CnOUq3YA3yKy098j3Dlb/T30tW9sUe5ZbaQmfI7H41tjzADAkx73tNY+G2OGtBWRDz2ubOeHANhktIEn
+        /8aJe0SD8OLeiHPaVoLNqjZk68zkfkfRIABiGAahxR0GbSmjZv1j7O16UJNisSAonBIH8Kj9RFgx/zxE
+        9MARU0H0EOfKLZj/lR5IMRFEiGJx52/FADZ6oI0tQXQSd762nQNI5JxoFGYJfQDFKWgR94hu0RTrFJQW
+        YUKcqdDpKA6iLkJuBT2gmRKnUKImSoOoShtRVNzbpIIoakQE26I2CAyLWrEOorgVE7nDiAdLyWHkg+h8
+        GJ3hOP6KfA99NY9jgpeETC2chKkLSY2LXsmIf7iUrlsvpcQZr+Xr7LXc46IPkxCuMPfaaSk5N1lwHcDH
+        6ZyNo2RFgscp93m/x6mGazDh83zreHieq66ZxR9VVzzUYVIXFQAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="btnAgregar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

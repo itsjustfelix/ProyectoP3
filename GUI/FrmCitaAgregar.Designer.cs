@@ -66,14 +66,14 @@
             this.groupBox1.Controls.Add(this.nombre);
             this.groupBox1.Location = new System.Drawing.Point(12, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(352, 347);
+            this.groupBox1.Size = new System.Drawing.Size(363, 347);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // cmbVeterianrio
             // 
-            this.cmbVeterianrio.BackColor = System.Drawing.Color.LightGray;
+            this.cmbVeterianrio.BackColor = System.Drawing.Color.White;
             this.cmbVeterianrio.FormattingEnabled = true;
             this.cmbVeterianrio.Location = new System.Drawing.Point(163, 154);
             this.cmbVeterianrio.Name = "cmbVeterianrio";
@@ -82,7 +82,7 @@
             // 
             // cmbEspecializacion
             // 
-            this.cmbEspecializacion.BackColor = System.Drawing.Color.LightGray;
+            this.cmbEspecializacion.BackColor = System.Drawing.Color.White;
             this.cmbEspecializacion.FormattingEnabled = true;
             this.cmbEspecializacion.Location = new System.Drawing.Point(163, 114);
             this.cmbEspecializacion.Name = "cmbEspecializacion";
@@ -93,20 +93,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(30, 154);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 17);
+            this.label4.Size = new System.Drawing.Size(79, 16);
             this.label4.TabIndex = 19;
             this.label4.Text = "Veterinario";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(30, 114);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 17);
+            this.label2.Size = new System.Drawing.Size(124, 18);
             this.label2.TabIndex = 18;
             this.label2.Text = "Especializacion";
             // 
@@ -170,7 +170,7 @@
             // 
             // txtIdMascota
             // 
-            this.txtIdMascota.BackColor = System.Drawing.Color.LightGray;
+            this.txtIdMascota.BackColor = System.Drawing.Color.White;
             this.txtIdMascota.Location = new System.Drawing.Point(163, 22);
             this.txtIdMascota.Name = "txtIdMascota";
             this.txtIdMascota.Size = new System.Drawing.Size(183, 20);
@@ -179,30 +179,30 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(30, 240);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 17);
+            this.label3.Size = new System.Drawing.Size(43, 18);
             this.label3.TabIndex = 0;
             this.label3.Text = "Hora";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(30, 199);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 17);
+            this.label1.Size = new System.Drawing.Size(46, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Fecha";
             // 
             // lblNombreMascota
             // 
             this.lblNombreMascota.AutoSize = true;
-            this.lblNombreMascota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreMascota.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreMascota.Location = new System.Drawing.Point(30, 74);
             this.lblNombreMascota.Name = "lblNombreMascota";
-            this.lblNombreMascota.Size = new System.Drawing.Size(108, 16);
+            this.lblNombreMascota.Size = new System.Drawing.Size(115, 16);
             this.lblNombreMascota.TabIndex = 0;
             this.lblNombreMascota.Text = "NombreMascota";
             // 
@@ -220,7 +220,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(376, 362);
+            this.ClientSize = new System.Drawing.Size(386, 365);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmCitaAgregar";
             this.Text = "FrmCitaAgregar";
