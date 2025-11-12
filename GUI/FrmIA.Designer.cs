@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.txtHistorial = new System.Windows.Forms.RichTextBox();
-            this.txtPregunta = new System.Windows.Forms.TextBox();
             this.btnEnviar = new System.Windows.Forms.Button();
             this.lblEstado = new System.Windows.Forms.Label();
+            this.txtPregunta = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtHistorial
@@ -45,15 +45,6 @@
             this.txtHistorial.Size = new System.Drawing.Size(560, 258);
             this.txtHistorial.TabIndex = 0;
             this.txtHistorial.Text = "";
-            // 
-            // txtPregunta
-            // 
-            this.txtPregunta.Location = new System.Drawing.Point(9, 288);
-            this.txtPregunta.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPregunta.Name = "txtPregunta";
-            this.txtPregunta.Size = new System.Drawing.Size(319, 20);
-            this.txtPregunta.TabIndex = 1;
-            this.txtPregunta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPregunta_KeyDown);
             // 
             // btnEnviar
             // 
@@ -76,6 +67,15 @@
             this.lblEstado.TabIndex = 3;
             this.lblEstado.Text = "Listo";
             // 
+            // txtPregunta
+            // 
+            this.txtPregunta.Location = new System.Drawing.Point(9, 288);
+            this.txtPregunta.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPregunta.Name = "txtPregunta";
+            this.txtPregunta.Size = new System.Drawing.Size(319, 20);
+            this.txtPregunta.TabIndex = 1;
+            this.txtPregunta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPregunta_KeyDown);
+            // 
             // FrmIA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -97,8 +97,8 @@
         #endregion
 
         private System.Windows.Forms.RichTextBox txtHistorial;
-        private System.Windows.Forms.TextBox txtPregunta;
         private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.TextBox txtPregunta;
     }
 }

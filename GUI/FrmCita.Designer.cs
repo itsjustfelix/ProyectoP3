@@ -81,7 +81,7 @@
             this.DGVCita.Name = "DGVCita";
             this.DGVCita.ReadOnly = true;
             this.DGVCita.RowHeadersVisible = false;
-            this.DGVCita.Size = new System.Drawing.Size(801, 403);
+            this.DGVCita.Size = new System.Drawing.Size(1062, 403);
             this.DGVCita.TabIndex = 4;
             this.DGVCita.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVCita.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -217,7 +217,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(825, 490);
+            this.ClientSize = new System.Drawing.Size(1086, 651);
             this.Controls.Add(this.bttnAtenderCita);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.bttnActualizar);
