@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.Charts.WinForms.ChartFont chartFont41 = new Guna.Charts.WinForms.ChartFont();
-            Guna.Charts.WinForms.ChartFont chartFont42 = new Guna.Charts.WinForms.ChartFont();
-            Guna.Charts.WinForms.ChartFont chartFont43 = new Guna.Charts.WinForms.ChartFont();
-            Guna.Charts.WinForms.ChartFont chartFont44 = new Guna.Charts.WinForms.ChartFont();
-            Guna.Charts.WinForms.Grid grid16 = new Guna.Charts.WinForms.Grid();
-            Guna.Charts.WinForms.Tick tick16 = new Guna.Charts.WinForms.Tick();
-            Guna.Charts.WinForms.ChartFont chartFont45 = new Guna.Charts.WinForms.ChartFont();
-            Guna.Charts.WinForms.Grid grid17 = new Guna.Charts.WinForms.Grid();
-            Guna.Charts.WinForms.Tick tick17 = new Guna.Charts.WinForms.Tick();
-            Guna.Charts.WinForms.ChartFont chartFont46 = new Guna.Charts.WinForms.ChartFont();
-            Guna.Charts.WinForms.Grid grid18 = new Guna.Charts.WinForms.Grid();
-            Guna.Charts.WinForms.PointLabel pointLabel6 = new Guna.Charts.WinForms.PointLabel();
-            Guna.Charts.WinForms.ChartFont chartFont47 = new Guna.Charts.WinForms.ChartFont();
-            Guna.Charts.WinForms.Tick tick18 = new Guna.Charts.WinForms.Tick();
-            Guna.Charts.WinForms.ChartFont chartFont48 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont1 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont2 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont3 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont4 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Grid grid1 = new Guna.Charts.WinForms.Grid();
+            Guna.Charts.WinForms.Tick tick1 = new Guna.Charts.WinForms.Tick();
+            Guna.Charts.WinForms.ChartFont chartFont5 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Grid grid2 = new Guna.Charts.WinForms.Grid();
+            Guna.Charts.WinForms.Tick tick2 = new Guna.Charts.WinForms.Tick();
+            Guna.Charts.WinForms.ChartFont chartFont6 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Grid grid3 = new Guna.Charts.WinForms.Grid();
+            Guna.Charts.WinForms.PointLabel pointLabel1 = new Guna.Charts.WinForms.PointLabel();
+            Guna.Charts.WinForms.ChartFont chartFont7 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Tick tick3 = new Guna.Charts.WinForms.Tick();
+            Guna.Charts.WinForms.ChartFont chartFont8 = new Guna.Charts.WinForms.ChartFont();
             this.gunaChart1 = new Guna.Charts.WinForms.GunaChart();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,37 +64,37 @@
             // 
             // gunaChart1
             // 
-            chartFont41.FontName = "Arial";
-            this.gunaChart1.Legend.LabelFont = chartFont41;
+            chartFont1.FontName = "Arial";
+            this.gunaChart1.Legend.LabelFont = chartFont1;
             this.gunaChart1.Location = new System.Drawing.Point(12, 190);
             this.gunaChart1.Name = "gunaChart1";
             this.gunaChart1.Size = new System.Drawing.Size(818, 248);
             this.gunaChart1.TabIndex = 0;
-            chartFont42.FontName = "Arial";
-            chartFont42.Size = 12;
-            chartFont42.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
-            this.gunaChart1.Title.Font = chartFont42;
-            chartFont43.FontName = "Arial";
-            this.gunaChart1.Tooltips.BodyFont = chartFont43;
-            chartFont44.FontName = "Arial";
-            chartFont44.Size = 9;
-            chartFont44.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
-            this.gunaChart1.Tooltips.TitleFont = chartFont44;
-            this.gunaChart1.XAxes.GridLines = grid16;
-            chartFont45.FontName = "Arial";
-            tick16.Font = chartFont45;
-            this.gunaChart1.XAxes.Ticks = tick16;
-            this.gunaChart1.YAxes.GridLines = grid17;
-            chartFont46.FontName = "Arial";
-            tick17.Font = chartFont46;
-            this.gunaChart1.YAxes.Ticks = tick17;
-            this.gunaChart1.ZAxes.GridLines = grid18;
-            chartFont47.FontName = "Arial";
-            pointLabel6.Font = chartFont47;
-            this.gunaChart1.ZAxes.PointLabels = pointLabel6;
-            chartFont48.FontName = "Arial";
-            tick18.Font = chartFont48;
-            this.gunaChart1.ZAxes.Ticks = tick18;
+            chartFont2.FontName = "Arial";
+            chartFont2.Size = 12;
+            chartFont2.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
+            this.gunaChart1.Title.Font = chartFont2;
+            chartFont3.FontName = "Arial";
+            this.gunaChart1.Tooltips.BodyFont = chartFont3;
+            chartFont4.FontName = "Arial";
+            chartFont4.Size = 9;
+            chartFont4.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
+            this.gunaChart1.Tooltips.TitleFont = chartFont4;
+            this.gunaChart1.XAxes.GridLines = grid1;
+            chartFont5.FontName = "Arial";
+            tick1.Font = chartFont5;
+            this.gunaChart1.XAxes.Ticks = tick1;
+            this.gunaChart1.YAxes.GridLines = grid2;
+            chartFont6.FontName = "Arial";
+            tick2.Font = chartFont6;
+            this.gunaChart1.YAxes.Ticks = tick2;
+            this.gunaChart1.ZAxes.GridLines = grid3;
+            chartFont7.FontName = "Arial";
+            pointLabel1.Font = chartFont7;
+            this.gunaChart1.ZAxes.PointLabels = pointLabel1;
+            chartFont8.FontName = "Arial";
+            tick3.Font = chartFont8;
+            this.gunaChart1.ZAxes.Ticks = tick3;
             // 
             // guna2GradientPanel1
             // 
@@ -111,6 +111,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(64, 48);
             this.label2.Name = "label2";
@@ -121,7 +122,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(16, 13);
             this.label1.Name = "label1";
@@ -144,6 +145,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(71, 48);
             this.label4.Name = "label4";
@@ -154,7 +156,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(11, 13);
             this.label3.Name = "label3";
@@ -178,6 +180,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(70, 48);
             this.label6.Name = "label6";
@@ -188,7 +191,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(32, 13);
             this.label5.Name = "label5";
@@ -215,6 +218,7 @@
             // lblTotalCitas
             // 
             this.lblTotalCitas.AutoSize = true;
+            this.lblTotalCitas.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalCitas.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalCitas.Location = new System.Drawing.Point(77, 48);
             this.lblTotalCitas.Name = "lblTotalCitas";
@@ -225,7 +229,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(46, 13);
             this.label8.Name = "label8";
