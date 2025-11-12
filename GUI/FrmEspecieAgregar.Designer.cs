@@ -28,85 +28,104 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtNombre = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEspecieAgregar));
             this.nombre = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.btnCancelar = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAgregar = new Guna.UI2.WinForms.Guna2Button();
+            this.txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnCancelar);
-            this.panel1.Controls.Add(this.btnAgregar);
-            this.panel1.Controls.Add(this.txtNombre);
-            this.panel1.Controls.Add(this.nombre);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(371, 237);
-            this.panel1.TabIndex = 0;
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtNombre.Location = new System.Drawing.Point(147, 68);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(180, 22);
-            this.txtNombre.TabIndex = 3;
             // 
             // nombre
             // 
             this.nombre.AutoSize = true;
-            this.nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.nombre.Location = new System.Drawing.Point(40, 73);
+            this.nombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nombre.Location = new System.Drawing.Point(62, 66);
             this.nombre.Name = "nombre";
-            this.nombre.Size = new System.Drawing.Size(65, 20);
+            this.nombre.Size = new System.Drawing.Size(73, 19);
             this.nombre.TabIndex = 2;
             this.nombre.Text = "Nombre";
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(187, 175);
+            this.btnCancelar.Animated = true;
+            this.btnCancelar.AutoRoundedCorners = true;
+            this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCancelar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCancelar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.Location = new System.Drawing.Point(281, 160);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(103, 33);
-            this.btnCancelar.TabIndex = 15;
+            this.btnCancelar.Size = new System.Drawing.Size(130, 45);
+            this.btnCancelar.TabIndex = 33;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(62, 175);
+            this.btnAgregar.Animated = true;
+            this.btnAgregar.AutoRoundedCorners = true;
+            this.btnAgregar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAgregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAgregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAgregar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAgregar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnAgregar.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
+            this.btnAgregar.Location = new System.Drawing.Point(97, 160);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(103, 33);
-            this.btnAgregar.TabIndex = 14;
+            this.btnAgregar.Size = new System.Drawing.Size(130, 45);
+            this.btnAgregar.TabIndex = 32;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click_1);
             // 
-            // FrmAgregarEspecie
+            // txtNombre
+            // 
+            this.txtNombre.Animated = true;
+            this.txtNombre.AutoRoundedCorners = true;
+            this.txtNombre.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNombre.DefaultText = "";
+            this.txtNombre.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtNombre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtNombre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNombre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNombre.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.ForeColor = System.Drawing.Color.Black;
+            this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNombre.Location = new System.Drawing.Point(196, 55);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.PlaceholderText = "";
+            this.txtNombre.SelectedText = "";
+            this.txtNombre.Size = new System.Drawing.Size(283, 40);
+            this.txtNombre.TabIndex = 31;
+            // 
+            // FrmEspecieAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 265);
-            this.Controls.Add(this.panel1);
-            this.Name = "FrmAgregarEspecie";
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(529, 287);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.nombre);
+            this.Controls.Add(this.txtNombre);
+            this.Name = "FrmEspecieAgregar";
             this.Text = "FrmAgregarEspecie";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label nombre;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnAgregar;
+        private Guna.UI2.WinForms.Guna2Button btnCancelar;
+        private Guna.UI2.WinForms.Guna2Button btnAgregar;
+        private Guna.UI2.WinForms.Guna2TextBox txtNombre;
     }
 }
