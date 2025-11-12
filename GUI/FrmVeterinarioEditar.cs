@@ -18,39 +18,8 @@ namespace ProyectoP3
             this.veterinario = veterinario;
         }
         
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (validar())
-                {
-                    
-                    var message = editar(Mapeo());
-                    if (message)
-                    {
-                        MessageBox.Show("Veterinario actulizado correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        salir();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hubo un error al momento de actualizar el veterinario.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes)
-            {
-                salir();
-            }
-        }
+        
+       
         private void FrmVeterinarioEditar_Load(object sender, EventArgs e)
         {
             cargarCmbEspecializacion();
@@ -125,6 +94,40 @@ namespace ProyectoP3
         private void salir()
         {
             this.Close();
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes)
+            {
+                salir();
+            }
+        }
+
+        private void btnEditar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (validar())
+                {
+
+                    var message = editar(Mapeo());
+                    if (message)
+                    {
+                        MessageBox.Show("Veterinario actulizado correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al momento de actualizar el veterinario.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 
