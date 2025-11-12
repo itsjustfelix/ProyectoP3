@@ -51,7 +51,7 @@
             // 
             this.nombre.AutoSize = true;
             this.nombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombre.Location = new System.Drawing.Point(33, 21);
+            this.nombre.Location = new System.Drawing.Point(69, 21);
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(137, 19);
             this.nombre.TabIndex = 0;
@@ -61,7 +61,7 @@
             // 
             this.lblNombreMascota.AutoSize = true;
             this.lblNombreMascota.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreMascota.Location = new System.Drawing.Point(33, 83);
+            this.lblNombreMascota.Location = new System.Drawing.Point(69, 83);
             this.lblNombreMascota.Name = "lblNombreMascota";
             this.lblNombreMascota.Size = new System.Drawing.Size(139, 19);
             this.lblNombreMascota.TabIndex = 0;
@@ -71,7 +71,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(33, 188);
+            this.label4.Location = new System.Drawing.Point(69, 188);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 19);
             this.label4.TabIndex = 0;
@@ -81,7 +81,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 358);
+            this.label1.Location = new System.Drawing.Point(69, 360);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 19);
             this.label1.TabIndex = 0;
@@ -91,7 +91,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(33, 449);
+            this.label3.Location = new System.Drawing.Point(69, 449);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 19);
             this.label3.TabIndex = 0;
@@ -101,7 +101,7 @@
             // 
             this.btnBuscarMascota.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnBuscarMascota.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarMascota.Image")));
-            this.btnBuscarMascota.Location = new System.Drawing.Point(445, 12);
+            this.btnBuscarMascota.Location = new System.Drawing.Point(516, 12);
             this.btnBuscarMascota.Name = "btnBuscarMascota";
             this.btnBuscarMascota.Size = new System.Drawing.Size(49, 40);
             this.btnBuscarMascota.TabIndex = 5;
@@ -112,7 +112,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(33, 261);
+            this.label2.Location = new System.Drawing.Point(69, 272);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 19);
             this.label2.TabIndex = 16;
@@ -122,7 +122,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(33, 133);
+            this.label5.Location = new System.Drawing.Point(69, 133);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(129, 19);
             this.label5.TabIndex = 18;
@@ -142,7 +142,7 @@
             this.txtIdMascota.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdMascota.ForeColor = System.Drawing.Color.Black;
             this.txtIdMascota.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtIdMascota.Location = new System.Drawing.Point(201, 21);
+            this.txtIdMascota.Location = new System.Drawing.Point(269, 21);
             this.txtIdMascota.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtIdMascota.Name = "txtIdMascota";
             this.txtIdMascota.PlaceholderText = "";
@@ -161,7 +161,7 @@
             this.cmbEspecializacion.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbEspecializacion.ForeColor = System.Drawing.Color.Black;
             this.cmbEspecializacion.ItemHeight = 30;
-            this.cmbEspecializacion.Location = new System.Drawing.Point(201, 133);
+            this.cmbEspecializacion.Location = new System.Drawing.Point(269, 133);
             this.cmbEspecializacion.Name = "cmbEspecializacion";
             this.cmbEspecializacion.Size = new System.Drawing.Size(225, 36);
             this.cmbEspecializacion.TabIndex = 24;
@@ -178,7 +178,7 @@
             this.cbmVeterinario.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbmVeterinario.ForeColor = System.Drawing.Color.Black;
             this.cbmVeterinario.ItemHeight = 30;
-            this.cbmVeterinario.Location = new System.Drawing.Point(201, 188);
+            this.cbmVeterinario.Location = new System.Drawing.Point(269, 188);
             this.cbmVeterinario.Name = "cbmVeterinario";
             this.cbmVeterinario.Size = new System.Drawing.Size(225, 36);
             this.cbmVeterinario.TabIndex = 25;
@@ -197,7 +197,7 @@
             this.txtDescripcion.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.ForeColor = System.Drawing.Color.Black;
             this.txtDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDescripcion.Location = new System.Drawing.Point(201, 245);
+            this.txtDescripcion.Location = new System.Drawing.Point(269, 246);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.PlaceholderText = "";
@@ -219,7 +219,7 @@
             this.txtDiagnostico.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiagnostico.ForeColor = System.Drawing.Color.Black;
             this.txtDiagnostico.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDiagnostico.Location = new System.Drawing.Point(201, 335);
+            this.txtDiagnostico.Location = new System.Drawing.Point(269, 333);
             this.txtDiagnostico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDiagnostico.Name = "txtDiagnostico";
             this.txtDiagnostico.PlaceholderText = "";
@@ -241,7 +241,7 @@
             this.txtTratamiento.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTratamiento.ForeColor = System.Drawing.Color.Black;
             this.txtTratamiento.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTratamiento.Location = new System.Drawing.Point(201, 424);
+            this.txtTratamiento.Location = new System.Drawing.Point(269, 422);
             this.txtTratamiento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTratamiento.Name = "txtTratamiento";
             this.txtTratamiento.PlaceholderText = "";
@@ -261,7 +261,7 @@
             this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnAgregar.ForeColor = System.Drawing.Color.Black;
             this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
-            this.btnAgregar.Location = new System.Drawing.Point(60, 544);
+            this.btnAgregar.Location = new System.Drawing.Point(112, 529);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(149, 45);
             this.btnAgregar.TabIndex = 29;
@@ -280,7 +280,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.Location = new System.Drawing.Point(248, 544);
+            this.btnCancelar.Location = new System.Drawing.Point(297, 529);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(148, 45);
             this.btnCancelar.TabIndex = 30;
@@ -292,7 +292,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(506, 639);
+            this.ClientSize = new System.Drawing.Size(577, 578);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtTratamiento);
