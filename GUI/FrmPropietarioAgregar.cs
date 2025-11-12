@@ -13,38 +13,8 @@ namespace ProyectoP3
             InitializeComponent();
             propietarioService = new PropietarioService();
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (validar())
-                {
-                    var mensaje = agregar(Mappeo());
-                    if (mensaje)
-                    {
-                        MessageBox.Show("Propietario guardado con exito.", "Agregar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        salir();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hubo un error al momento de guardar el propietario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes)
-                salir();
-        }
+     
+       
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -92,6 +62,49 @@ namespace ProyectoP3
         private void salir()
         {
             this.Close();
+        }
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (validar())
+                {
+                    var mensaje = agregar(Mappeo());
+                    if (mensaje)
+                    {
+                        MessageBox.Show("Propietario guardado con exito.", "Agregar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al momento de guardar el propietario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes)
+                salir();
+        }
+
+        private void RBMasculino_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RBFemenino_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
