@@ -74,7 +74,7 @@
             this.DGVEspecie.Name = "DGVEspecie";
             this.DGVEspecie.ReadOnly = true;
             this.DGVEspecie.RowHeadersVisible = false;
-            this.DGVEspecie.Size = new System.Drawing.Size(801, 415);
+            this.DGVEspecie.Size = new System.Drawing.Size(1078, 556);
             this.DGVEspecie.TabIndex = 4;
             this.DGVEspecie.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVEspecie.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -123,7 +123,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.Black;
             this.btnEliminar.IndicateFocus = true;
-            this.btnEliminar.Location = new System.Drawing.Point(475, 433);
+            this.btnEliminar.Location = new System.Drawing.Point(603, 574);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(141, 45);
             this.btnEliminar.TabIndex = 13;
@@ -142,7 +142,7 @@
             this.bttnActualizar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnActualizar.ForeColor = System.Drawing.Color.Black;
             this.bttnActualizar.IndicateFocus = true;
-            this.bttnActualizar.Location = new System.Drawing.Point(328, 433);
+            this.bttnActualizar.Location = new System.Drawing.Point(456, 574);
             this.bttnActualizar.Name = "bttnActualizar";
             this.bttnActualizar.Size = new System.Drawing.Size(141, 45);
             this.bttnActualizar.TabIndex = 12;
@@ -161,7 +161,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.IndicateFocus = true;
-            this.btnGuardar.Location = new System.Drawing.Point(181, 433);
+            this.btnGuardar.Location = new System.Drawing.Point(309, 574);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(141, 45);
             this.btnGuardar.TabIndex = 11;
@@ -172,11 +172,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 490);
+            this.ClientSize = new System.Drawing.Size(1102, 690);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.bttnActualizar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.DGVEspecie);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmEspecie";
             this.Text = "Form4";
             this.Load += new System.EventHandler(this.FrmEspecie_Load);

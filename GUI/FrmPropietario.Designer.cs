@@ -86,7 +86,7 @@ namespace ProyectoP3
             this.DGVPropietario.Name = "DGVPropietario";
             this.DGVPropietario.ReadOnly = true;
             this.DGVPropietario.RowHeadersVisible = false;
-            this.DGVPropietario.Size = new System.Drawing.Size(886, 399);
+            this.DGVPropietario.Size = new System.Drawing.Size(1074, 537);
             this.DGVPropietario.TabIndex = 4;
             this.DGVPropietario.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVPropietario.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -165,7 +165,7 @@ namespace ProyectoP3
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.IndicateFocus = true;
-            this.btnGuardar.Location = new System.Drawing.Point(218, 433);
+            this.btnGuardar.Location = new System.Drawing.Point(341, 576);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(141, 45);
             this.btnGuardar.TabIndex = 5;
@@ -184,7 +184,7 @@ namespace ProyectoP3
             this.guna2Button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.Black;
             this.guna2Button1.IndicateFocus = true;
-            this.guna2Button1.Location = new System.Drawing.Point(365, 433);
+            this.guna2Button1.Location = new System.Drawing.Point(488, 576);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(141, 45);
             this.guna2Button1.TabIndex = 6;
@@ -203,7 +203,7 @@ namespace ProyectoP3
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.Black;
             this.btnEliminar.IndicateFocus = true;
-            this.btnEliminar.Location = new System.Drawing.Point(512, 433);
+            this.btnEliminar.Location = new System.Drawing.Point(635, 576);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(141, 45);
             this.btnEliminar.TabIndex = 7;
@@ -214,11 +214,12 @@ namespace ProyectoP3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 490);
+            this.ClientSize = new System.Drawing.Size(1102, 690);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.DGVPropietario);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmPropietario";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.FrmPropietario_Load);

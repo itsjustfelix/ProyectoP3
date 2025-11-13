@@ -86,7 +86,7 @@
             this.DGVConsulta.Name = "DGVConsulta";
             this.DGVConsulta.ReadOnly = true;
             this.DGVConsulta.RowHeadersVisible = false;
-            this.DGVConsulta.Size = new System.Drawing.Size(801, 390);
+            this.DGVConsulta.Size = new System.Drawing.Size(1078, 567);
             this.DGVConsulta.TabIndex = 4;
             this.DGVConsulta.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVConsulta.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -166,7 +166,7 @@
             this.btnCrearPDF.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCrearPDF.ForeColor = System.Drawing.Color.Black;
             this.btnCrearPDF.IndicateFocus = true;
-            this.btnCrearPDF.Location = new System.Drawing.Point(466, 433);
+            this.btnCrearPDF.Location = new System.Drawing.Point(582, 585);
             this.btnCrearPDF.Name = "btnCrearPDF";
             this.btnCrearPDF.Size = new System.Drawing.Size(141, 45);
             this.btnCrearPDF.TabIndex = 24;
@@ -185,7 +185,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.Black;
             this.btnEliminar.IndicateFocus = true;
-            this.btnEliminar.Location = new System.Drawing.Point(319, 433);
+            this.btnEliminar.Location = new System.Drawing.Point(435, 585);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(141, 45);
             this.btnEliminar.TabIndex = 23;
@@ -204,7 +204,7 @@
             this.bttnActualizar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnActualizar.ForeColor = System.Drawing.Color.Black;
             this.bttnActualizar.IndicateFocus = true;
-            this.bttnActualizar.Location = new System.Drawing.Point(172, 433);
+            this.bttnActualizar.Location = new System.Drawing.Point(288, 585);
             this.bttnActualizar.Name = "bttnActualizar";
             this.bttnActualizar.Size = new System.Drawing.Size(141, 45);
             this.bttnActualizar.TabIndex = 22;
@@ -224,7 +224,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.IndicateFocus = true;
-            this.btnGuardar.Location = new System.Drawing.Point(25, 433);
+            this.btnGuardar.Location = new System.Drawing.Point(141, 585);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(141, 45);
             this.btnGuardar.TabIndex = 21;
@@ -243,7 +243,7 @@
             this.bttnCrearPDFEnviar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnCrearPDFEnviar.ForeColor = System.Drawing.Color.Black;
             this.bttnCrearPDFEnviar.IndicateFocus = true;
-            this.bttnCrearPDFEnviar.Location = new System.Drawing.Point(613, 433);
+            this.bttnCrearPDFEnviar.Location = new System.Drawing.Point(729, 585);
             this.bttnCrearPDFEnviar.Name = "bttnCrearPDFEnviar";
             this.bttnCrearPDFEnviar.Size = new System.Drawing.Size(168, 45);
             this.bttnCrearPDFEnviar.TabIndex = 25;
@@ -254,13 +254,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 490);
+            this.ClientSize = new System.Drawing.Size(1102, 690);
             this.Controls.Add(this.bttnCrearPDFEnviar);
             this.Controls.Add(this.btnCrearPDF);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.bttnActualizar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.DGVConsulta);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmConsulta";
             this.Text = "Form7";
             this.Load += new System.EventHandler(this.FrmConsulta_Load);

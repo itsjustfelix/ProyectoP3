@@ -42,16 +42,16 @@
             this.txtHistorial.Margin = new System.Windows.Forms.Padding(2);
             this.txtHistorial.Name = "txtHistorial";
             this.txtHistorial.ReadOnly = true;
-            this.txtHistorial.Size = new System.Drawing.Size(560, 258);
+            this.txtHistorial.Size = new System.Drawing.Size(1082, 472);
             this.txtHistorial.TabIndex = 0;
             this.txtHistorial.Text = "";
             // 
             // btnEnviar
             // 
-            this.btnEnviar.Location = new System.Drawing.Point(367, 288);
+            this.btnEnviar.Location = new System.Drawing.Point(1022, 534);
             this.btnEnviar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(56, 19);
+            this.btnEnviar.Size = new System.Drawing.Size(56, 33);
             this.btnEnviar.TabIndex = 2;
             this.btnEnviar.Text = "Enviar";
             this.btnEnviar.UseVisualStyleBackColor = true;
@@ -60,7 +60,7 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(9, 331);
+            this.lblEstado.Location = new System.Drawing.Point(33, 627);
             this.lblEstado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(29, 13);
@@ -69,10 +69,11 @@
             // 
             // txtPregunta
             // 
-            this.txtPregunta.Location = new System.Drawing.Point(9, 288);
+            this.txtPregunta.Location = new System.Drawing.Point(11, 504);
             this.txtPregunta.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPregunta.Multiline = true;
             this.txtPregunta.Name = "txtPregunta";
-            this.txtPregunta.Size = new System.Drawing.Size(319, 20);
+            this.txtPregunta.Size = new System.Drawing.Size(984, 63);
             this.txtPregunta.TabIndex = 1;
             this.txtPregunta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPregunta_KeyDown);
             // 
@@ -80,11 +81,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(1102, 690);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.txtPregunta);
             this.Controls.Add(this.txtHistorial);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmIA";
             this.Text = "FrmIA";
