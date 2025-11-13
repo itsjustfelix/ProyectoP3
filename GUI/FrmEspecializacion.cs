@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -14,10 +7,11 @@ namespace ProyectoP3
 {
     public partial class FrmEspecializacion : Form
     {
-        IServiceEntidad<Especializacion> logEspecializacion = new logEspecializacion();
+        ICrud<Especializacion> logEspecializacion;
         public FrmEspecializacion()
         {
             InitializeComponent();
+            logEspecializacion = new EspecializacionService();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -68,14 +62,18 @@ namespace ProyectoP3
                     return;
                 }
                 var respuesta = dialogoPregunta("eliminar");
-                if (respuesta == DialogResult.No || respuesta == DialogResult.None)
+                if (respuesta == DialogResult.Yes)
                 {
+                    eliminar(id);
                     MessageBox.Show("Eliminación cancelada", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV();
                     return;
                 }
-                var message = eliminar(id);
-                MessageBox.Show(message, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV();
+                else
+                {
+                    return;
+                }
+               
             }
             catch (Exception ex)
             {
@@ -83,7 +81,7 @@ namespace ProyectoP3
             }
         }
 
-        private string eliminar(int id)
+        private bool eliminar(int id)
         {
             try
             {
@@ -91,7 +89,7 @@ namespace ProyectoP3
             }
             catch (Exception e)
             {
-                return e.Message;
+                throw new Exception($"Error al agregar la consulta: {e.Message}", e);
             }
         }
 

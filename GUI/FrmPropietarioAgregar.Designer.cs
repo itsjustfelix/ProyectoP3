@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtNumeroTelefonoSecundario = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtApellidoMaterno = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
@@ -46,8 +46,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.nombre = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,8 +53,6 @@
             // 
             this.panel1.Controls.Add(this.txtEmail);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.txtNumeroTelefonoSecundario);
-            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtApellidoMaterno);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtApellidoPaterno);
@@ -77,23 +73,23 @@
             this.panel1.Size = new System.Drawing.Size(423, 330);
             this.panel1.TabIndex = 0;
             // 
-            // txtNumeroTelefonoSecundario
+            // txtEmail
             // 
-            this.txtNumeroTelefonoSecundario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumeroTelefonoSecundario.Location = new System.Drawing.Point(233, 206);
-            this.txtNumeroTelefonoSecundario.Name = "txtNumeroTelefonoSecundario";
-            this.txtNumeroTelefonoSecundario.Size = new System.Drawing.Size(180, 22);
-            this.txtNumeroTelefonoSecundario.TabIndex = 19;
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(233, 234);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(180, 22);
+            this.txtEmail.TabIndex = 21;
             // 
-            // label6
+            // label7
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(5, 206);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(227, 20);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Numero Telefonico Secundario";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(94, 234);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 20);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Email";
             // 
             // txtApellidoMaterno
             // 
@@ -241,24 +237,6 @@
             this.nombre.TabIndex = 6;
             this.nombre.Text = "Nombres";
             // 
-            // txtEmail
-            // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(233, 234);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(180, 22);
-            this.txtEmail.TabIndex = 21;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(94, 234);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 20);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Email";
-            // 
             // FrmPropietarioAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,8 +265,6 @@
         private System.Windows.Forms.Label nombre;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.TextBox txtNumeroTelefonoSecundario;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtApellidoMaterno;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtApellidoPaterno;

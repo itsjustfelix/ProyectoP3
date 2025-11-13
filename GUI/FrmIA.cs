@@ -1,8 +1,7 @@
-﻿using Microsoft.VisualBasic;
-using Modelo_IA;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Modelo_IA;
 
 namespace ProyectoP3
 {
@@ -11,11 +10,11 @@ namespace ProyectoP3
         private readonly ServicioIA _gemini = new ServicioIA();
         private readonly List<Mensaje> prompt = new List<Mensaje>();
 
-        public FrmIA() 
+        public FrmIA()
         {
             InitializeComponent();
         }
-       
+
 
         private async void btnEnviar_Click(object sender, EventArgs e)
         {
@@ -65,7 +64,7 @@ namespace ProyectoP3
                 Role = role.Model,
                 Content = respuesta
             };
-            
+
             return mensaje;
         }
 

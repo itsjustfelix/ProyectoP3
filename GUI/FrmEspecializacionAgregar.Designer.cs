@@ -38,6 +38,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Controls.Add(this.txtNombre);
@@ -95,6 +96,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FrmEspecializacionAgregar";
             this.Text = "FrmEspecializacionAgregar";
+            this.Load += new System.EventHandler(this.FrmEspecializacionAgregar_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

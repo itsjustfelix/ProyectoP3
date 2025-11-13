@@ -7,14 +7,18 @@ namespace ProyectoP3
 {
     public partial class FrmMascotaAgregar : Form
     {
+        ICrud<Propietario> logPropietario;
+        ICrud<Mascota> logMascota;
+        ICrud<Especie> logEspecie;
+        IServiceRaza logRaza;
         public FrmMascotaAgregar()
         {
             InitializeComponent();
+            logPropietario = new PropietarioService();
+            logMascota = new MascotaService();
+            logEspecie = new EspecieService();
+            logRaza = new RazaService();
         }
-        IServicePersonas<Propietario> logPropietario = new LogPropietario();
-        IServiceEntidad<Mascota> logMascota = new LogMascota();
-        IServiceEntidad<Especie> logEspecie = new LogEspecie();
-        IServiceRaza logRaza = new LogRaza();
         private void bttnBuscarProp_Click(object sender, EventArgs e)
         {
             Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
@@ -28,16 +32,6 @@ namespace ProyectoP3
             lblNombreProp.Text = propietario.Nombres;
             SetControlesEstado(true);
         }
-        private Propietario buscarPropietario(int id)
-        {
-            return logPropietario.BuscarPorId(id);
-        }
-        private void SetControlesEstado(bool estado)
-        {
-            txtNombre.Enabled = estado;
-            cmbEspecie.Enabled = estado;
-            cmbRaza.Enabled = estado;
-        }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -45,16 +39,15 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = agregar(Mapeo());
-                    if (message.Contains("Guardado"))
+                    if (message)
                     {
-                        MessageBox.Show(message, "Agregar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Mascota guardada correctamente.", "Agregar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de guardar la mascota.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
                 }
             }
             catch (Exception ex)
@@ -63,34 +56,6 @@ namespace ProyectoP3
             }
 
 
-        }
-        private bool validar()
-        {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentNullException("El nombre de la mascota es obligatorio.");
-            return true;
-        }
-        private string agregar(Mascota mascota)
-        {
-            try
-            {
-                return logMascota.Guardar(mascota);
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-        }
-        private Especie buscarEspecie(int id)
-        {
-            return logEspecie.BuscarPorId(id);
-        }
-        private Raza buscarRaza(int id)
-        {
-            return logRaza.BuscarPorId(id);
-        }
-        private void salir()
-        {
-            this.Close();
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -113,8 +78,47 @@ namespace ProyectoP3
             SetControlesEstado(false);
             lblNombreProp.Text = string.Empty;
         }
+        private void cmbEspecie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cargarCmbRaza(int.Parse(cmbEspecie.SelectedValue.ToString()));
+        }
+        private bool validar()
+        {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentNullException("El nombre de la mascota es obligatorio.");
+            return true;
+        }
+        private bool agregar(Mascota mascota)
+        {
+            try
+            {
+                return logMascota.Guardar(mascota);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al agregar la mascota: {ex.Message}", ex);
+            }
+        }
+        private Especie buscarEspecie(int id)
+        {
+            return logEspecie.BuscarPorId(id);
+        }
+        private Raza buscarRaza(int id)
+        {
+            return logRaza.BuscarPorId(id);
+        }
+        private Propietario buscarPropietario(int id)
+        {
+            return logPropietario.BuscarPorId(id);
+        }
+        private void SetControlesEstado(bool estado)
+        {
+            txtNombre.Enabled = estado;
+            cmbEspecie.Enabled = estado;
+            cmbRaza.Enabled = estado;
+        }
         private void cargarCmbEspecie()
         {
+            cmbEspecie.DataSource = null;
             cmbEspecie.DisplayMember = "Nombre";
             cmbEspecie.ValueMember = "Codigo";
             cmbEspecie.DataSource = logEspecie.Consultar();
@@ -122,15 +126,14 @@ namespace ProyectoP3
         private void cargarCmbRaza(int idEspecie)
         {
             cmbRaza.DataSource = null;
-            cmbRaza.DataSource = logRaza.ConsultarPorEspecie(idEspecie);
+            cmbRaza.DataSource = logRaza.BuscarPorCualidad(idEspecie);
             cmbRaza.DisplayMember = "Nombre";
             cmbRaza.ValueMember = "Codigo";
         }
-        private void cmbEspecie_SelectedIndexChanged(object sender, EventArgs e)
+        private void salir()
         {
-            cargarCmbRaza(int.Parse(cmbEspecie.SelectedValue.ToString()));
+            this.Close();
         }
-
         private Mascota Mapeo()
         {
             Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));

@@ -148,9 +148,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\GeneradorDeDocumento\Herramientas.csproj">
       <Project>{b0db9532-cf3b-4890-bb33-8632204e005c}</Project>
       <Name>Herramientas</Name>

@@ -13,13 +13,12 @@ namespace Entidad
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
         public string Sexo { get; set; }
-        public string TelefonoPrimario { get; set; }
-        public string TelefonoSecundario { get; set; }
+        public string Telefono { get; set; }
 
         public Persona() { }
         public override string ToString()
         {
-            return $"{Cedula};{Nombres};{ApellidoPaterno};{ApellidoMaterno};{Sexo};{TelefonoPrimario};{TelefonoSecundario}";
+            return $"{Cedula};{Nombres};{ApellidoPaterno};{ApellidoMaterno};{Sexo};{Telefono}";
         }
     }
 }

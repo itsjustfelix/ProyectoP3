@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -13,10 +6,11 @@ namespace ProyectoP3
 {
     public partial class FrmEspecializacionAgregar : Form
     {
-        IServiceEntidad<Especializacion> logEspecializacion = new logEspecializacion();
+        ICrud<Especializacion> logEspecializacion;
         public FrmEspecializacionAgregar()
         {
             InitializeComponent();
+            logEspecializacion = new EspecializacionService();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -25,15 +19,15 @@ namespace ProyectoP3
             {
                 if (validar())
                 {
-                    string message = agregar(Mappeo());
-                    if (message.Contains("correctamente"))
+                    var message = agregar(Mappeo());
+                    if (message)
                     {
-                        MessageBox.Show(message, "Agregar Especializacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Especializacion guardada correctamente.", "Agregar Especializacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de guardar la especializacion.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -45,9 +39,9 @@ namespace ProyectoP3
         }
         private void salir()
         {
-           this.Close();
+            this.Close();
         }
-        private string agregar(Especializacion especialiacion)
+        private bool agregar(Especializacion especialiacion)
         {
             try
             {
@@ -55,8 +49,7 @@ namespace ProyectoP3
             }
             catch (Exception ex)
             {
-
-                return ex.Message;
+                throw new Exception($"Error al agregar la consulta: {ex.Message}", ex);
             }
         }
         private Especializacion Mappeo()
@@ -83,6 +76,11 @@ namespace ProyectoP3
              MessageBoxButtons.YesNo,
              MessageBoxIcon.Question
              );
+        }
+
+        private void FrmEspecializacionAgregar_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

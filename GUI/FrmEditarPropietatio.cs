@@ -7,26 +7,18 @@ namespace ProyectoP3
 {
     public partial class FrmEditarPropietatio : Form
     {
+        ICrud<Propietario> logPropietario;
+        Propietario propietario;
         public FrmEditarPropietatio(Propietario propietario)
         {
             InitializeComponent();
-            mostrarPropietario(propietario);
-            txtCedula.Enabled = false;
+            logPropietario = new PropietarioService();
+            this.propietario = propietario;
         }
-        IServicePersonas<Propietario> logPropietario = new LogPropietario();
         private void FrmEditarPropietatio_Load(object sender, EventArgs e)
         {
-        }
-        private void mostrarPropietario(Propietario propietario)
-        {
-            txtCedula.Text = propietario.Cedula.ToString();
-            txtNombre.Text = propietario.Nombres;
-            txtApellidoPaterno.Text = propietario.ApellidoPaterno;
-            txtApellidoMaterno.Text = propietario.ApellidoMaterno;
-            txtNumeroTelefonicoPrimario.Text = propietario.TelefonoPrimario;
-            txtNumeroTelefonicoSecundario.Text = propietario.TelefonoSecundario;
-            if (propietario.Sexo == "Femenino") RBFemenino.Checked = true;
-            else RBMasculino.Checked = true;
+            mostrarPropietario(propietario);
+            txtCedula.Enabled = false;
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -35,25 +27,45 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = editar(Mapeo());
-                    if (message.Contains("correctamente"))
+                    if (message)
                     {
-                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Propietario editado con exito.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de editar el propietario. ", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
+
         }
-        private string editar(Propietario propietario)
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes)
+            {
+                salir();
+            }
+        }
+
+        private void mostrarPropietario(Propietario propietario)
+        {
+            txtCedula.Text = propietario.Cedula.ToString();
+            txtNombre.Text = propietario.Nombres;
+            txtApellidoPaterno.Text = propietario.ApellidoPaterno;
+            txtApellidoMaterno.Text = propietario.ApellidoMaterno;
+            txtNumeroTelefonicoPrimario.Text = propietario.Telefono;
+            txtEmail.Text = propietario.Email;
+            if (propietario.Sexo == "F") RBFemenino.Checked = true;
+            else RBMasculino.Checked = true;
+        }
+        private bool editar(Propietario propietario)
         {
             try
             {
@@ -61,12 +73,8 @@ namespace ProyectoP3
             }
             catch (Exception e)
             {
-                return e.Message;
+                throw new Exception(e.Message);
             }
-        }
-        private void salir()
-        {
-            this.Close();
         }
         private DialogResult dialogoPregunta(string accion)
         {
@@ -78,14 +86,6 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes)
-            {
-                salir();
-            }
-        }
         private Propietario Mapeo()
         {
             Propietario propietario = new Propietario();
@@ -93,9 +93,8 @@ namespace ProyectoP3
             propietario.Nombres = txtNombre.Text;
             propietario.ApellidoPaterno = txtApellidoPaterno.Text;
             propietario.ApellidoMaterno = txtApellidoMaterno.Text;
-            propietario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
-            propietario.TelefonoPrimario = txtNumeroTelefonicoPrimario.Text;
-            propietario.TelefonoSecundario = txtNumeroTelefonicoSecundario.Text;
+            propietario.Sexo = RBFemenino.Checked ? "F" : "M";
+            propietario.Telefono = txtNumeroTelefonicoPrimario.Text;
             propietario.Email = txtEmail.Text;
             return propietario;
         }
@@ -105,10 +104,13 @@ namespace ProyectoP3
             if (string.IsNullOrWhiteSpace(txtApellidoPaterno.Text)) throw new ArgumentException("El apellido paterno no puede estar vacío.");
             if (string.IsNullOrWhiteSpace(txtApellidoMaterno.Text)) throw new ArgumentException("El apellido materno no puede estar vacío.");
             if (string.IsNullOrWhiteSpace(txtNumeroTelefonicoPrimario.Text)) throw new ArgumentException("El número de teléfono no puede estar vacío.");
-            if (string.IsNullOrWhiteSpace(txtNumeroTelefonicoSecundario.Text)) throw new ArgumentException("El número de teléfono secundario no puede estar vacío.");
-            if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un sexo."); 
+            if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un sexo.");
             if (string.IsNullOrEmpty(txtEmail.Text)) throw new ArgumentException("El email no puede estar vacío.");
             return true;
+        }
+        private void salir()
+        {
+            this.Close();
         }
     }
 }

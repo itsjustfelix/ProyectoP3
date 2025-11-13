@@ -16,6 +16,7 @@ namespace GeneradorDeDocumento
         public byte[] logo;
         public GeneradorDePDF(string nombreCarpeta, string rutaLogo)
         {
+            QuestPDF.Settings.License = LicenseType.Community;
             rutaDeGuardado = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, nombreCarpeta);
             if (!Directory.Exists(rutaDeGuardado))
                 Directory.CreateDirectory(rutaDeGuardado);

@@ -7,41 +7,33 @@ namespace ProyectoP3
 {
     public partial class FrmVeterinarioEditar : Form
     {
+        Veterinario veterinario;
+        IServiceVeterinario VeterinarioService;
+        ICrud<Especializacion> logEspecializacion;
         public FrmVeterinarioEditar(Veterinario veterinario)
         {
             InitializeComponent();
-            mostrarVeterinario(veterinario);
+            VeterinarioService = new VeterinarioService();
+            logEspecializacion = new EspecializacionService();
+            this.veterinario = veterinario;
         }
-
-        IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
-        IServiceEntidad<Especializacion> logEspecializacion = new logEspecializacion();
-        private void mostrarVeterinario(Veterinario veterinario)
-        {
-            txtCedula.Text = veterinario.Cedula.ToString();
-            txtNombre.Text = veterinario.Nombres;
-            txtNumeroTelefonicoPrimario.Text = veterinario.TelefonoPrimario;
-            if (veterinario.Sexo == "Femenino") RBFemenino.Checked = true;
-            else RBMasculino.Checked = true;
-            cmbEspecilizacion.SelectedValue = veterinario.Especializacion.Codigo;
-
-        }
-
+        
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
             {
                 if (validar())
                 {
-                    string message;
-                    message = editar(Mapeo());
-                    if (message.Contains("correctamente"))
+                    
+                    var message = editar(Mapeo());
+                    if (message)
                     {
-                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Veterinario actulizado correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de actualizar el veterinario.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -51,22 +43,6 @@ namespace ProyectoP3
             }
 
         }
-        private string editar(Veterinario veterinario)
-        {
-            try
-            {
-                return logVeterinario.Actualizar(veterinario);
-            }
-            catch (Exception e)
-            {
-                return e.Message;
-            }
-
-        }
-        private void salir()
-        {
-            this.Close();
-        }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
@@ -74,6 +50,40 @@ namespace ProyectoP3
             {
                 salir();
             }
+        }
+        private void FrmVeterinarioEditar_Load(object sender, EventArgs e)
+        {
+            cargarCmbEspecializacion();
+            mostrarVeterinario(veterinario);
+        }
+
+        private Especializacion buscarEspecializacion(int codigo)
+        {
+            return logEspecializacion.BuscarPorId(codigo);
+        }
+        private void mostrarVeterinario(Veterinario veterinario)
+        {
+            txtCedula.Text = veterinario.Cedula.ToString();
+            txtNombre.Text = veterinario.Nombres;
+            txtApellidoPaterno.Text = veterinario.ApellidoPaterno;
+            txtApellidoMaterno.Text = veterinario.ApellidoMaterno;
+            txtNumeroTelefonicoPrimario.Text = veterinario.Telefono;
+            if (veterinario.Sexo == "F") RBFemenino.Checked = true;
+            else RBMasculino.Checked = true;
+            cmbEspecilizacion.SelectedValue = veterinario.Especializacion.Codigo;
+
+        }
+        private bool editar(Veterinario veterinario)
+        {
+            try
+            {
+                return VeterinarioService.Actualizar(veterinario);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
         }
         private DialogResult dialogoPregunta(string accion)
         {
@@ -84,6 +94,12 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
+        private void cargarCmbEspecializacion()
+        {
+            cmbEspecilizacion.DataSource = logEspecializacion.Consultar();
+            cmbEspecilizacion.DisplayMember = "Nombre";
+            cmbEspecilizacion.ValueMember = "Codigo";
+        }
         private Veterinario Mapeo()
         {
             Veterinario veterinario = new Veterinario();
@@ -91,9 +107,8 @@ namespace ProyectoP3
             veterinario.Nombres = txtNombre.Text;
             veterinario.ApellidoPaterno = txtApellidoPaterno.Text;
             veterinario.ApellidoMaterno = txtApellidoMaterno.Text;
-            veterinario.Sexo = RBFemenino.Checked ? "Femenino" : "Masculino";
-            veterinario.TelefonoPrimario = txtNumeroTelefonicoPrimario.Text;
-            veterinario.TelefonoSecundario = txtNumeroTelefonoSecundario.Text;
+            veterinario.Sexo = RBFemenino.Checked ? "F" : "M";
+            veterinario.Telefono = txtNumeroTelefonicoPrimario.Text;
             veterinario.Especializacion = buscarEspecializacion(int.Parse(cmbEspecilizacion.SelectedValue.ToString()));
             return veterinario;
         }
@@ -104,23 +119,12 @@ namespace ProyectoP3
             if (string.IsNullOrEmpty(txtApellidoPaterno.Text)) throw new ArgumentNullException("El campo Apellido Paterno es obligatorio.");
             if (string.IsNullOrEmpty(txtApellidoMaterno.Text)) throw new ArgumentNullException("El campo Apellido Materno es obligatorio.");
             if (string.IsNullOrEmpty(txtNumeroTelefonicoPrimario.Text)) throw new ArgumentNullException("El campo Teléfono primarioes obligatorio.");
-            if (string.IsNullOrEmpty(txtNumeroTelefonoSecundario.Text)) throw new ArgumentNullException("El campo Teléfono secundario es obligatorio.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentNullException("El campo Sexo es obligatorio.");
             return true;
         }
-        private Especializacion buscarEspecializacion(int codigo)
+        private void salir()
         {
-            return logEspecializacion.BuscarPorId(codigo);
-        }
-        private void FrmVeterinarioEditar_Load(object sender, EventArgs e)
-        {
-            cargarCmbEspecializacion();
-        }
-        private void cargarCmbEspecializacion()
-        {
-            cmbEspecilizacion.DataSource = logEspecializacion.Consultar();
-            cmbEspecilizacion.DisplayMember = "Nombre";
-            cmbEspecilizacion.ValueMember = "Codigo";
+            this.Close();
         }
     }
 

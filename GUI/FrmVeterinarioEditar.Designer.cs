@@ -30,8 +30,6 @@
         {
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtNumeroTelefonoSecundario = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.txtApellidoMaterno = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
@@ -64,8 +62,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtNumeroTelefonoSecundario);
-            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.txtApellidoMaterno);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtApellidoPaterno);
@@ -87,24 +83,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(436, 322);
             this.panel1.TabIndex = 2;
-            // 
-            // txtNumeroTelefonoSecundario
-            // 
-            this.txtNumeroTelefonoSecundario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumeroTelefonoSecundario.Location = new System.Drawing.Point(239, 198);
-            this.txtNumeroTelefonoSecundario.Name = "txtNumeroTelefonoSecundario";
-            this.txtNumeroTelefonoSecundario.Size = new System.Drawing.Size(180, 22);
-            this.txtNumeroTelefonoSecundario.TabIndex = 23;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 198);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(227, 20);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "Numero Telefonico Secundario";
             // 
             // txtApellidoMaterno
             // 
@@ -295,7 +273,5 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtApellidoPaterno;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtNumeroTelefonoSecundario;
-        private System.Windows.Forms.Label label7;
     }
 }

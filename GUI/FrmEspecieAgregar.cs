@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -14,12 +7,12 @@ namespace ProyectoP3
 {
     public partial class FrmEspecieAgregar : Form
     {
+        ICrud<Especie> especieService;
         public FrmEspecieAgregar()
         {
             InitializeComponent();
+            especieService = new EspecieService();
         }
-
-        IServiceEntidad<Especie> logEspecie = new LogEspecie();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -27,15 +20,15 @@ namespace ProyectoP3
 
                 if (validar())
                 {
-                    string message = agregar(Mappeo());
-                    if (message.Contains("correctamente"))
+                    var message = agregar(Mappeo());
+                    if (message)
                     {
-                        MessageBox.Show(message, "Agregar Especie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Especie guardada correctamente.", "Agregar Especie", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo un error al momento de guardar la especie.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
@@ -46,34 +39,30 @@ namespace ProyectoP3
             }
 
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) salir();
         }
-
         private void salir()
         {
             this.Close();
         }
-
         private bool validar()
         {
 
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentException("El nombre de la especie no puede estar vacío.");
             return true;
         }
-
-        private string agregar(Especie especie)
+        private bool agregar(Especie especie)
         {
             try
             {
-                return logEspecie.Guardar(especie);
+                return especieService.Guardar(especie);
             }
             catch (Exception e)
             {
-                return e.Message;
+                throw new Exception($"Error al agregar la especie: {e.Message}", e);
             }
 
         }
@@ -86,7 +75,6 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-
         private Especie Mappeo()
         {
             Especie especie = new Especie();

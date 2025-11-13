@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Entidad;
+﻿using Entidad;
 
 namespace Logica
 {
-    public interface IServiceRaza :IServiceEntidad<Raza>
+    public interface IServiceRaza : ICrud<Raza>, IBuscarPorCualidad<Raza>
     {
-        List<Raza> ConsultarPorEspecie(int idEspecie);
     }
 }

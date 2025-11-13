@@ -50,18 +50,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBuscarPorCualidad.cs" />
     <Compile Include="ICrud.cs" />
-    <Compile Include="IServiceEntidad.cs" />
-    <Compile Include="IServicePersonas.cs" />
+    <Compile Include="IGenerarIdUnico.cs" />
+    <Compile Include="IIDUnico.cs" />
     <Compile Include="IServiceRaza.cs" />
-    <Compile Include="LogCita.cs" />
-    <Compile Include="logEspecializacion.cs" />
-    <Compile Include="LogPropietario.cs" />
-    <Compile Include="LogVeterinario.cs" />
-    <Compile Include="LogMascota.cs" />
-    <Compile Include="LogEspecie.cs" />
-    <Compile Include="LogRaza.cs" />
-    <Compile Include="LogConsulta.cs" />
+    <Compile Include="IServiceVeterinario.cs" />
+    <Compile Include="CitaService.cs" />
+    <Compile Include="EspecializacionService.cs" />
+    <Compile Include="PropietarioService.cs" />
+    <Compile Include="VeterinarioService.cs" />
+    <Compile Include="MascotaService.cs" />
+    <Compile Include="EspecieService.cs" />
+    <Compile Include="RazaService.cs" />
+    <Compile Include="ConsultaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -14,23 +7,31 @@ namespace ProyectoP3
 {
     public partial class FrmConsultaAgregar : Form
     {
+        ICrud<Consulta> logConsulta;
+        ICrud<Mascota> logMascota;
+        IServiceVeterinario logVeterinario;
+        EspecializacionService logEspecializacion;
+        public DialogResult resultado;
         public FrmConsultaAgregar()
         {
             InitializeComponent();
             SetControlesEstado(false);
+            logConsulta = new ConsultaService();
+            logMascota = new MascotaService();
+            logVeterinario = new VeterinarioService();
+            logEspecializacion = new EspecializacionService();
             lblNombreMascota.Text = "";
         }
-        public FrmConsultaAgregar(Mascota mascota)
+        public FrmConsultaAgregar(Mascota mascota,Veterinario veterinario)
         {
             InitializeComponent();
-            mostrarMascota(mascota);
             setEstado(false);
+            logConsulta = new ConsultaService();
+            logMascota = new MascotaService();
+            logVeterinario = new VeterinarioService();
+            logEspecializacion = new EspecializacionService();
+            mostrarInformacion(mascota, veterinario);
         }
-
-        IServiceEntidad<Consulta> logConsulta = new LogConsulta();
-        IServiceEntidad<Mascota> logMascota = new LogMascota();
-        IServicePersonas<Veterinario> logVeterinario = new LogVeterinario();
-        public DialogResult resultado;
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -38,17 +39,16 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var message = agregar(Mapeo());
-                    if (message.Contains("Guardado"))
+                    if (message)
                     {
-                        MessageBox.Show(message, "Agregar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Consulta guardada correcctamente.", "Agregar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         resultado = DialogResult.OK;
                         salir();
                     }
                     else 
                     { 
-                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                        MessageBox.Show("Hubo un error al momento de guardar la consulta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
                     }
-                        
                 }
             }
             catch (Exception ex)
@@ -56,87 +56,16 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-        private void salir()
-        {
-            this.Close();
-        }
-
-        private bool validar()
-        {
-            if (string.IsNullOrEmpty(txtDiagnostico.Text)) throw new Exception("El campo Diagnóstico es obligatorio.");
-            if (string.IsNullOrEmpty(txtTratamiento.Text)) throw new Exception("El campo Tratamiento es obligatorio.");
-            return true;
-        }
-        private string agregar(Consulta consulta)
-        {
-            try
-            {
-                return logConsulta.Guardar(consulta);
-            }
-            catch (Exception e)
-            {
-                return e.Message;
-            }
-            
-        }
-
-        private Mascota buscarMascota(int id)
-        {
-            return logMascota.BuscarPorId(id);
-        }
-
-        private Veterinario buscarVeterinario(int id)
-        {
-            return logVeterinario.BuscarPorId(id);
-        }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) salir();
             
         }
-
-        private DialogResult dialogoPregunta(string accion)
-        {
-            return MessageBox.Show(
-             $"¿Está seguro de que desea {accion}?",
-             $"Confirmar {accion}",
-             MessageBoxButtons.YesNo,
-             MessageBoxIcon.Question
-             );
-        }
-        private void SetControlesEstado(bool estado)
-        {
-            cbxVeterinario.Enabled = estado;
-            txtDiagnostico.Enabled = estado;
-            txtTratamiento.Enabled = estado;
-        }
-
         private void FrmConsultaAgregar_Load(object sender, EventArgs e)
         {
-            cargarCmb();
+            cargarCmbEspecializacion();
         }
-
-        private void cargarCmb()
-        {
-            cbxVeterinario.DataSource = logVeterinario.Consultar();
-            cbxVeterinario.DisplayMember = "Nombres";
-            cbxVeterinario.ValueMember = "Cedula";
-        }
-
-        private void setEstado(bool estado)
-        {
-            txtIdMascota.Enabled = estado;
-            btnBuscarMascota.Enabled = estado;
-        }
-        private void mostrarMascota(Mascota mascota)
-        {
-            txtIdMascota.Text = mascota.Codigo.ToString();
-            lblNombreMascota.Text = mascota.Nombre;
-        }
-
         private void btnBuscarMascota_Click(object sender, EventArgs e)
         {
             try
@@ -157,18 +86,100 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        private void cmbEspecializacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbEspecializacion.SelectedIndex!=-1) 
+                cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
+        }
+        private void cargarCmbVeterinario(int especializacion)
+        {
+            cbmVeterinario.DataSource = logVeterinario.BuscarPorCualidad(especializacion);
+            cbmVeterinario.DisplayMember = "Nombres";
+            cbmVeterinario.ValueMember = "Cedula";
+            cbmVeterinario.SelectedIndex = -1;
+        }
+        private void cargarCmbEspecializacion()
+        {
+            cmbEspecializacion.DisplayMember = "Nombre";
+            cmbEspecializacion.ValueMember = "Codigo";
+            cmbEspecializacion.DataSource = logEspecializacion.Consultar();
+        }
+        private void setEstado(bool estado)
+        {
+            txtIdMascota.Enabled = estado;
+            btnBuscarMascota.Enabled = estado;
+            cbmVeterinario.Enabled = estado;
+            cmbEspecializacion.Enabled = estado;
+        }
+        private void salir()
+        {
+            this.Close();
+        }
+        private bool validar()
+        {
+            if (string.IsNullOrEmpty(txtDiagnostico.Text)) throw new Exception("El campo Diagnóstico es obligatorio.");
+            if (string.IsNullOrEmpty(txtTratamiento.Text)) throw new Exception("El campo Tratamiento es obligatorio.");
+            if (string.IsNullOrEmpty(txtDescripcion.Text)) throw new Exception("El campo Descripción es obligatorio.");
+            if (cbmVeterinario.SelectedIndex == -1) throw new Exception("Debe seleccionar un veterinario.");
+            return true;
+        }
+        private bool agregar(Consulta consulta)
+        {
+            try
+            {
+                return logConsulta.Guardar(consulta);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Error al agregar la consulta: {e.Message}", e);
+            }
 
+        }
+        private Mascota buscarMascota(int id)
+        {
+            return logMascota.BuscarPorId(id);
+        }
+        private Veterinario buscarVeterinario(int id)
+        {
+            return logVeterinario.BuscarPorId(id);
+        }
         private Consulta Mapeo()
         {
             Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
-            Veterinario veterinario = buscarVeterinario(int.Parse(cbxVeterinario.SelectedValue.ToString()));
+            Veterinario veterinario = buscarVeterinario(int.Parse(cbmVeterinario.SelectedValue.ToString()));
             Consulta consulta = new Consulta();
             consulta.Fecha = DateTime.Now.Date;
+            consulta.Descripcion = txtDescripcion.Text;
             consulta.Diagnostico = txtDiagnostico.Text;
             consulta.Tratamiento = txtTratamiento.Text;
             consulta.Mascota = mascota;
             consulta.Veterinario = veterinario;
             return consulta;
+        }
+        private DialogResult dialogoPregunta(string accion)
+        {
+            return MessageBox.Show(
+             $"¿Está seguro de que desea {accion}?",
+             $"Confirmar {accion}",
+             MessageBoxButtons.YesNo,
+             MessageBoxIcon.Question
+             );
+        }
+        private void SetControlesEstado(bool estado)
+        {
+            cmbEspecializacion.Enabled = estado;
+            cbmVeterinario.Enabled = estado;
+            txtDescripcion.Enabled = estado;
+            txtDiagnostico.Enabled = estado;
+            txtTratamiento.Enabled = estado;
+        }
+        private void mostrarInformacion(Mascota mascota, Veterinario veterinario)
+        {
+            txtIdMascota.Text = mascota.Codigo.ToString();
+            lblNombreMascota.Text = mascota.Nombre;
+            cmbEspecializacion.SelectedValue = veterinario.Especializacion.Codigo;
+            cargarCmbVeterinario(veterinario.Especializacion.Codigo);
+            cbmVeterinario.SelectedValue = veterinario.Cedula;
         }
     }
 }

@@ -7,14 +7,14 @@ namespace ProyectoP3
 {
     public partial class FrmEspecieEditar : Form
     {
+        ICrud<Especie> logEspecie;
+        int codigo;
         public FrmEspecieEditar(Especie especie)
         {
+            logEspecie = new EspecieService();
             InitializeComponent();
             mostrarEspecie(especie);
         }
-
-        IServiceEntidad<Especie> logEspecie = new LogEspecie();
-        int id;
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
@@ -22,16 +22,15 @@ namespace ProyectoP3
                 if (validar())
                 {
                     var mensaje = editar(Mapeo());
-                    if (mensaje.Contains("correctamente"))
+                    if (mensaje)
                     {
-                        MessageBox.Show(mensaje, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Especie actualizada correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         salir();
                     }
                     else
                     {
-                        MessageBox.Show(mensaje, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hubo ub error al momento de actualizar la especie.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
                 }
             }
             catch (Exception ex)
@@ -41,7 +40,7 @@ namespace ProyectoP3
             
 
         }
-        private string editar(Especie especie)
+        private bool editar(Especie especie)
         {
             try
             {
@@ -60,7 +59,7 @@ namespace ProyectoP3
         private void mostrarEspecie(Especie especie)
         {
             txtNombre.Text = especie.Nombre;
-            id = especie.Codigo;
+            codigo = especie.Codigo;
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -83,7 +82,7 @@ namespace ProyectoP3
         private Especie Mapeo()
         {
             Especie especie = new Especie();
-            especie.Codigo = id;
+            especie.Codigo = codigo;
             especie.Nombre = txtNombre.Text;
             return especie;
         }

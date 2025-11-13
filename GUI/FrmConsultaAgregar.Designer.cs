@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             this.btnBuscarMascota = new System.Windows.Forms.Button();
-            this.cbxVeterinario = new System.Windows.Forms.ComboBox();
+            this.cbmVeterinario = new System.Windows.Forms.ComboBox();
             this.txtIdMascota = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblNombreMascota = new System.Windows.Forms.Label();
             this.nombre = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbEspecializacion = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.txtTratamiento = new System.Windows.Forms.TextBox();
@@ -54,14 +58,14 @@
             this.btnBuscarMascota.UseVisualStyleBackColor = true;
             this.btnBuscarMascota.Click += new System.EventHandler(this.btnBuscarMascota_Click);
             // 
-            // cbxVeterinario
+            // cbmVeterinario
             // 
-            this.cbxVeterinario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.cbxVeterinario.FormattingEnabled = true;
-            this.cbxVeterinario.Location = new System.Drawing.Point(116, 103);
-            this.cbxVeterinario.Name = "cbxVeterinario";
-            this.cbxVeterinario.Size = new System.Drawing.Size(199, 24);
-            this.cbxVeterinario.TabIndex = 4;
+            this.cbmVeterinario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.cbmVeterinario.FormattingEnabled = true;
+            this.cbmVeterinario.Location = new System.Drawing.Point(131, 122);
+            this.cbmVeterinario.Name = "cbmVeterinario";
+            this.cbmVeterinario.Size = new System.Drawing.Size(199, 24);
+            this.cbmVeterinario.TabIndex = 4;
             // 
             // txtIdMascota
             // 
@@ -75,7 +79,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label4.Location = new System.Drawing.Point(12, 103);
+            this.label4.Location = new System.Drawing.Point(12, 122);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 20);
             this.label4.TabIndex = 0;
@@ -103,10 +107,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbEspecializacion);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.txtDescripcion);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.btnAgregar);
             this.groupBox1.Controls.Add(this.btnBuscarMascota);
-            this.groupBox1.Controls.Add(this.cbxVeterinario);
+            this.groupBox1.Controls.Add(this.cbmVeterinario);
             this.groupBox1.Controls.Add(this.txtTratamiento);
             this.groupBox1.Controls.Add(this.txtDiagnostico);
             this.groupBox1.Controls.Add(this.txtIdMascota);
@@ -117,14 +125,53 @@
             this.groupBox1.Controls.Add(this.nombre);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(336, 307);
+            this.groupBox1.Size = new System.Drawing.Size(336, 349);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
+            // 
+            // cmbEspecializacion
+            // 
+            this.cmbEspecializacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.cmbEspecializacion.FormattingEnabled = true;
+            this.cmbEspecializacion.Location = new System.Drawing.Point(131, 92);
+            this.cmbEspecializacion.Name = "cmbEspecializacion";
+            this.cmbEspecializacion.Size = new System.Drawing.Size(199, 24);
+            this.cmbEspecializacion.TabIndex = 19;
+            this.cmbEspecializacion.SelectedIndexChanged += new System.EventHandler(this.cmbEspecializacion_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label5.Location = new System.Drawing.Point(6, 92);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(118, 20);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Especializacion";
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtDescripcion.Location = new System.Drawing.Point(116, 152);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(214, 39);
+            this.txtDescripcion.TabIndex = 17;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label2.Location = new System.Drawing.Point(17, 161);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 20);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Descripcion";
             // 
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(169, 255);
+            this.btnCancelar.Location = new System.Drawing.Point(169, 306);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(103, 33);
             this.btnCancelar.TabIndex = 15;
@@ -135,7 +182,7 @@
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(44, 255);
+            this.btnAgregar.Location = new System.Drawing.Point(44, 306);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(103, 33);
             this.btnAgregar.TabIndex = 14;
@@ -146,26 +193,26 @@
             // txtTratamiento
             // 
             this.txtTratamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtTratamiento.Location = new System.Drawing.Point(116, 198);
+            this.txtTratamiento.Location = new System.Drawing.Point(116, 249);
             this.txtTratamiento.Multiline = true;
             this.txtTratamiento.Name = "txtTratamiento";
-            this.txtTratamiento.Size = new System.Drawing.Size(199, 39);
+            this.txtTratamiento.Size = new System.Drawing.Size(214, 39);
             this.txtTratamiento.TabIndex = 1;
             // 
             // txtDiagnostico
             // 
             this.txtDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtDiagnostico.Location = new System.Drawing.Point(116, 146);
+            this.txtDiagnostico.Location = new System.Drawing.Point(116, 197);
             this.txtDiagnostico.Multiline = true;
             this.txtDiagnostico.Name = "txtDiagnostico";
-            this.txtDiagnostico.Size = new System.Drawing.Size(199, 39);
+            this.txtDiagnostico.Size = new System.Drawing.Size(214, 39);
             this.txtDiagnostico.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(11, 207);
+            this.label3.Location = new System.Drawing.Point(11, 258);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 20);
             this.label3.TabIndex = 0;
@@ -175,7 +222,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(17, 155);
+            this.label1.Location = new System.Drawing.Point(17, 206);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 20);
             this.label1.TabIndex = 0;
@@ -185,7 +232,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 333);
+            this.ClientSize = new System.Drawing.Size(360, 373);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmConsultaAgregar";
             this.Text = "FrmConsultaAgregar";
@@ -199,7 +246,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnBuscarMascota;
-        private System.Windows.Forms.ComboBox cbxVeterinario;
+        private System.Windows.Forms.ComboBox cbmVeterinario;
         private System.Windows.Forms.TextBox txtIdMascota;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblNombreMascota;
@@ -211,5 +258,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbEspecializacion;
+        private System.Windows.Forms.Label label5;
     }
 }
