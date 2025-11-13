@@ -16,8 +16,7 @@ namespace ProyectoP3
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            mostrarFrm(new FrmMascotaAgregar());
-            cargarDGV();
+            
         }
         private void cargarDGV()
         {
@@ -35,48 +34,11 @@ namespace ProyectoP3
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int id = int.Parse(Interaction.InputBox("Digite el codigo de la mascota a buscar", "Buscar Mascota", ""));
-                Mascota mascota = buscarMascota(id);
-                if (mascota == null)
-                {
-                    MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                mostrarFrm(new FrmMascotaEditar(mascota));
-                cargarDGV();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int id = int.Parse(Interaction.InputBox("Digite el codigo de la mascota ha eliminar", "Eliminar mascota", ""));
-                Mascota mascota = buscar(id);
-                if (mascota == null)
-                {
-                    MessageBox.Show("Mascota no encontrada", "Eliminar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                DialogResult result = dialogoPregunta("eliminar la mascota");
-                if (result == DialogResult.Yes)
-                {
-                    borrar(id);
-                    MessageBox.Show("Mascota eliminada correctamente.", "Eliminar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
-                    return;
-                }
-                else return;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
         private Mascota buscar(int id)
         {
@@ -115,6 +77,59 @@ namespace ProyectoP3
         private void FrmMascota_Load(object sender, EventArgs e)
         {
             cargarDGV();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            mostrarFrm(new FrmMascotaAgregar());
+            cargarDGV();
+        }
+
+        private void bttnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(Interaction.InputBox("Digite el codigo de la mascota a buscar", "Buscar Mascota", ""));
+                Mascota mascota = buscarMascota(id);
+                if (mascota == null)
+                {
+                    MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                mostrarFrm(new FrmMascotaEditar(mascota));
+                cargarDGV();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnEliminar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(Interaction.InputBox("Digite el codigo de la mascota ha eliminar", "Eliminar mascota", ""));
+                Mascota mascota = buscar(id);
+                if (mascota == null)
+                {
+                    MessageBox.Show("Mascota no encontrada", "Eliminar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                DialogResult result = dialogoPregunta("eliminar la mascota");
+                if (result == DialogResult.Yes)
+                {
+                    borrar(id);
+                    MessageBox.Show("Mascota eliminada correctamente.", "Eliminar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV();
+                    return;
+                }
+                else return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

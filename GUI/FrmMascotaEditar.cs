@@ -88,9 +88,10 @@ namespace ProyectoP3
             cmbEspecie.ValueMember = "Codigo";
             
         }
-        private void cargarCmbRaza(int idEspecie)
+        private void cargarCmbRaza(string id)
         {
-            cmbRaza.DataSource = null;
+            this.Text = id;
+            int idEspecie = int.Parse(id);
             cmbRaza.DataSource = logRaza.BuscarPorCualidad(idEspecie);
             cmbRaza.DisplayMember = "Nombre";
             cmbRaza.ValueMember = "Codigo";
@@ -116,7 +117,8 @@ namespace ProyectoP3
 
         private void cmbEspecie_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            cargarCmbRaza(int.Parse(cmbEspecie.SelectedValue.ToString()));
+            this.Text = cmbEspecie.SelectedValue.ToString();
+            cargarCmbRaza(cmbEspecie.SelectedValue.ToString());
         }
 
         private void btnEditar_Click_1(object sender, EventArgs e)

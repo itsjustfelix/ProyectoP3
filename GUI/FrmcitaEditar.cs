@@ -42,18 +42,16 @@ namespace ProyectoP3
         }
         private void cargarCmbEspecializacion()
         {
-            cmbEspecializacion.DataSource = null;
             cmbEspecializacion.DataSource = logEspecializacion.Consultar();
             cmbEspecializacion.DisplayMember = "Nombre";
             cmbEspecializacion.ValueMember = "Codigo";
         }
         private void cargarCmbVeterinario(int especialializacion)
         {
-            cmbVeterinario.DataSource = null;
+
             cmbVeterinario.DataSource = logVeterinario.BuscarPorCualidad(especialializacion);
             cmbVeterinario.DisplayMember = "Nombres";
             cmbVeterinario.ValueMember = "Cedula";
-            cmbEspecializacion.SelectedIndex = -1;
         }
         private bool Editar(Cita cita)
         {

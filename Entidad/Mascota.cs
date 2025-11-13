@@ -16,7 +16,7 @@ namespace Entidad
         public Mascota() { }
         public override string ToString()
         {
-            return $"{Codigo};{Nombre};{Especie.Codigo};{Raza.Codigo};{Propietario.Cedula}";
+            return $"{Codigo}";
         }
 
     }
