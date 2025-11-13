@@ -15,7 +15,7 @@ namespace Modelo_IA
             public ChatMensaje(string role, string content)
             {
                 Role = role;
-                Content = content;
+               Content = content;
             }
        
     }
