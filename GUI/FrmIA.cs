@@ -21,25 +21,28 @@ namespace ProyectoP3
         {
             try
             {
-                lblEstado.Text = "Consultando a la IA...";
-                lblEstado.Visible = true;
-
+                txtHistorial.SelectionColor = System.Drawing.Color.Black;
                 string textoUsuario = txtPregunta.Text.Trim();
+
+
                 if (string.IsNullOrWhiteSpace(textoUsuario))
                 {
                     lblEstado.Text = "Por favor escribe una pregunta.";
                     return;
                 }
+                lblEstado.Text = "Consultando a la IA...";
+                txtPregunta.Clear();
 
                 // Agregar mensaje del usuario
                 var mensajeUsuario = GetMensajeUsuario(textoUsuario);
                 prompt.Add(mensajeUsuario);
 
-                txtHistorial.AppendText($"Tú: {textoUsuario}\r\n");
+                txtHistorial.AppendText($"Tú: {textoUsuario}\r\n\r\n");
 
                 // ✅ Llamada asíncrona
                 string respuesta = await _gemini.GetResponseAsync(prompt);
 
+                txtHistorial.SelectionColor = System.Drawing.Color.DimGray;
                 txtHistorial.AppendText($"IA: {respuesta}\r\n\r\n");
 
                 // Agregar mensaje de la IA
@@ -47,7 +50,7 @@ namespace ProyectoP3
                 prompt.Add(mensajeIA);
 
                 lblEstado.Text = "Respuesta recibida ✔";
-                txtPregunta.Clear();
+                txtPregunta.Focus();
             }
             catch (Exception ex)
             {
