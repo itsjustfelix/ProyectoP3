@@ -88,6 +88,12 @@ namespace ProyectoP3
             }
 
         }
+
+        private void FrmIA_Load(object sender, EventArgs e)
+        {
+            txtPregunta.Focus();
+            lblEstado.Text = string.Empty;
+        }
     }
 }
 
