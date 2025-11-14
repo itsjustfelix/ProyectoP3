@@ -264,6 +264,7 @@
             this.cmbEspecializacion.Name = "cmbEspecializacion";
             this.cmbEspecializacion.Size = new System.Drawing.Size(286, 36);
             this.cmbEspecializacion.TabIndex = 28;
+            this.cmbEspecializacion.SelectedIndexChanged += new System.EventHandler(this.cmbEspecializacion_SelectedIndexChanged);
             // 
             // label5
             // 

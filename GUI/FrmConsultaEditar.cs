@@ -18,7 +18,8 @@ namespace ProyectoP3
         IServiceVeterinario logVeterinario = new VeterinarioService();
         ICrud<Consulta> logConsulta = new ConsultaService();
         ICrud<Mascota> logMascota = new MascotaService();
-        string idConsulta;
+        ICrud<Especializacion> logEspecializacion = new EspecializacionService();
+        int idConsulta;
         DateTime fechaConsulta;
         public FrmConsultaEditar(Consulta consulta)
         {
@@ -31,21 +32,23 @@ namespace ProyectoP3
         private void FrmConsultaEditar_Load(object sender, EventArgs e)
         {
             mostrarConsulta(consulta);
-            cargarCmb();
+            cargarCmbEspecializacion();
         }
 
-        private void cargarCmb()
+        private void cargarCmbEspecializacion()
         {
-            cbxVeterinario.DataSource = logVeterinario.Consultar();
-            cbxVeterinario.DisplayMember = "Nombres";
-            cbxVeterinario.ValueMember = "Cedula";
+            cmbEspecializacion.SelectedIndexChanged -= cmbEspecializacion_SelectedIndexChanged;
+            cmbEspecializacion.DataSource = logEspecializacion.Consultar();
+            cmbEspecializacion.DisplayMember = "Nombre";
+            cmbEspecializacion.ValueMember = "Codigo";
+            cmbEspecializacion.SelectedIndexChanged += cmbEspecializacion_SelectedIndexChanged;
         }
         private Consulta Mapeo()
         {
             Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
             Veterinario veterinario = buscarVeterinario(int.Parse(cbxVeterinario.SelectedValue.ToString()));
             Consulta consulta = new Consulta();
-            consulta.Codigo = int.Parse(idConsulta);
+            consulta.Codigo = idConsulta;
             consulta.Descripcion = txtDescripcion.Text;
             consulta.Diagnostico = txtDiagnostico.Text;
             consulta.Tratamiento = txtTratamiento.Text;
@@ -60,11 +63,14 @@ namespace ProyectoP3
         }
         private void mostrarConsulta(Consulta consulta)
         {
-            idConsulta = consulta.Codigo.ToString();
+            idConsulta = consulta.Codigo;
             fechaConsulta = consulta.Fecha;
             txtIdMascota.Text = consulta.Mascota.Codigo.ToString();
             lblNombreMascota.Text = consulta.Mascota.Nombre;
+            cmbEspecializacion.SelectedValue = consulta.Veterinario.Especializacion.Codigo;
+            cargarCmbVeterinario(consulta.Veterinario.Especializacion.Codigo);
             cbxVeterinario.SelectedValue = consulta.Veterinario.Cedula;
+            txtDescripcion.Text = consulta.Descripcion;
             txtDiagnostico.Text = consulta.Diagnostico;
             txtTratamiento.Text = consulta.Tratamiento;
         }
@@ -97,6 +103,7 @@ namespace ProyectoP3
         {
             return logVeterinario.BuscarPorId(id);
         }
+        
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -136,11 +143,21 @@ namespace ProyectoP3
         {
 
         }
-
+        private void cargarCmbVeterinario(int especializacion)
+        {
+            cbxVeterinario.DataSource = logVeterinario.BuscarPorCualidad(especializacion);
+            cbxVeterinario.DisplayMember = "Nombres";
+            cbxVeterinario.ValueMember = "Cedula";
+        }
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) salir();
+        }
+
+        private void cmbEspecializacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cargarCmbVeterinario(int.Parse(cbxVeterinario.SelectedValue.ToString()));
         }
     }
 }
