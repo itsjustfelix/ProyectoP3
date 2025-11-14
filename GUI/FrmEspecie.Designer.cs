@@ -117,6 +117,7 @@
             // 
             this.btnEliminar.Animated = true;
             this.btnEliminar.AutoRoundedCorners = true;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnEliminar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnEliminar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -136,6 +137,7 @@
             // 
             this.bttnActualizar.Animated = true;
             this.bttnActualizar.AutoRoundedCorners = true;
+            this.bttnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnActualizar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.bttnActualizar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.bttnActualizar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -155,6 +157,7 @@
             // 
             this.btnGuardar.Animated = true;
             this.btnGuardar.AutoRoundedCorners = true;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnGuardar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnGuardar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -174,6 +177,7 @@
             // 
             this.bttnFiltrarNombre.Animated = true;
             this.bttnFiltrarNombre.AutoRoundedCorners = true;
+            this.bttnFiltrarNombre.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnFiltrarNombre.DefaultAutoSize = true;
             this.bttnFiltrarNombre.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.bttnFiltrarNombre.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;

@@ -106,5 +106,10 @@ namespace ProyectoP3
         {
 
         }
+
+        private void FrmPropietarioAgregar_Load(object sender, EventArgs e)
+        {
+            txtId.Focus();
+        }
     }
 }

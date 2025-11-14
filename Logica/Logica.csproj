@@ -50,12 +50,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBuscarPorCualidad.cs" />
+    <Compile Include="ICitaService.cs" />
+    <Compile Include="IConsultaService.cs" />
     <Compile Include="ICrud.cs" />
-    <Compile Include="IGenerarIdUnico.cs" />
-    <Compile Include="IIDUnico.cs" />
-    <Compile Include="IServiceRaza.cs" />
-    <Compile Include="IServiceVeterinario.cs" />
+    <Compile Include="IEspecializacionService.cs" />
+    <Compile Include="IEspecieService.cs" />
+    <Compile Include="IMascotaService.cs" />
+    <Compile Include="IPropietarioService.cs" />
+    <Compile Include="IRazaService.cs" />
+    <Compile Include="IVeterinarioService.cs" />
     <Compile Include="CitaService.cs" />
     <Compile Include="EspecializacionService.cs" />
     <Compile Include="PropietarioService.cs" />

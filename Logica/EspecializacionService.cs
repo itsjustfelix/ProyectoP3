@@ -5,20 +5,20 @@ using Dato;
 using Entidad;
 namespace Logica
 {
-    public class EspecializacionService : ICrud<Especializacion>
+    public class EspecializacionService : IEspecializacionService
     {
-        private readonly IRepository<Especializacion> datoEspecializacion;
+        private readonly IRepository<Especializacion> especializacionRepository;
 
         public EspecializacionService()
         {
-            datoEspecializacion = new DatoEspecializacion();
+            especializacionRepository = new DatoEspecializacion();
         }
         public bool Guardar(Especializacion entidad)
         {
             try
             {
                 if (Validar(entidad))
-                    return datoEspecializacion.Guardar(entidad);
+                    return especializacionRepository.Guardar(entidad);
                 else
                     return false;
             }
@@ -29,14 +29,14 @@ namespace Logica
         }
         public List<Especializacion> Consultar()
         {
-            return datoEspecializacion.Consultar();
+            return especializacionRepository.Consultar();
         }
         public bool Actualizar(Especializacion NuevaEntidad)
         {
             try
             {
                 if (Validar(NuevaEntidad))
-                    return datoEspecializacion.Actualizar(NuevaEntidad);
+                    return especializacionRepository.Actualizar(NuevaEntidad);
                 else
                     return false;
             }
@@ -47,11 +47,11 @@ namespace Logica
         }
         public bool Borrar(int codigo)
         {
-            return datoEspecializacion.Eliminar(codigo);
+            return especializacionRepository.Eliminar(codigo);
         }
         public Especializacion BuscarPorId(int codigo)
         {
-            return datoEspecializacion.BuscarPorId(codigo);
+            return especializacionRepository.BuscarPorId(codigo);
         }
         public bool Validar(Especializacion entidad)
         {
@@ -63,7 +63,7 @@ namespace Logica
         }
         public List<Especializacion> BuscarPorNombre(string nombre)
         {
-            return datoEspecializacion.Consultar()
+            return especializacionRepository.Consultar()
                 .Where(e => e.Nombre.IndexOf(nombre, StringComparison.OrdinalIgnoreCase) >= 0)
                 .ToList();
         }

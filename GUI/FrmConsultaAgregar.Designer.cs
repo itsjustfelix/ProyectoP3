@@ -143,6 +143,7 @@
             // 
             this.cmbEspecializacion.AutoRoundedCorners = true;
             this.cmbEspecializacion.BackColor = System.Drawing.Color.Transparent;
+            this.cmbEspecializacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbEspecializacion.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbEspecializacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEspecializacion.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -160,6 +161,7 @@
             // 
             this.cbmVeterinario.AutoRoundedCorners = true;
             this.cbmVeterinario.BackColor = System.Drawing.Color.Transparent;
+            this.cbmVeterinario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbmVeterinario.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbmVeterinario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbmVeterinario.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -242,6 +244,7 @@
             // 
             this.btnAgregar.Animated = true;
             this.btnAgregar.AutoRoundedCorners = true;
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -262,6 +265,7 @@
             // 
             this.btnCancelar.Animated = true;
             this.btnCancelar.AutoRoundedCorners = true;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));

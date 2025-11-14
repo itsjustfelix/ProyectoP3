@@ -82,6 +82,7 @@
     <Compile Include="DatoCita.cs" />
     <Compile Include="DatoConsulta.cs" />
     <Compile Include="DatoEspecializacion.cs" />
+    <Compile Include="ICitaRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="DatoPropietario.cs" />
     <Compile Include="DatoEspecie.cs" />

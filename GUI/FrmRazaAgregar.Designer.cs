@@ -83,6 +83,7 @@
             // 
             this.cbxEspecie.AutoRoundedCorners = true;
             this.cbxEspecie.BackColor = System.Drawing.Color.Transparent;
+            this.cbxEspecie.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbxEspecie.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbxEspecie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEspecie.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -99,6 +100,7 @@
             // 
             this.btnCancelar.Animated = true;
             this.btnCancelar.AutoRoundedCorners = true;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -118,6 +120,7 @@
             // 
             this.btnAgregar.Animated = true;
             this.btnAgregar.AutoRoundedCorners = true;
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));

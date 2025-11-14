@@ -30,7 +30,6 @@ namespace Dato
                 throw new Exception($"Error al actualizar especie: {ex.Message}", ex);
             }
         }
-
         public Especie BuscarPorId(int id)
         {
             try
@@ -63,7 +62,6 @@ namespace Dato
                 throw new Exception($"Error al buscar especie: {ex.Message}", ex);
             }
         }
-
         public List<Especie> Consultar()
         {
             List<Especie> lista = new List<Especie>();
@@ -97,7 +95,6 @@ namespace Dato
                 throw new Exception($"Error al obtener especies: {ex.Message}", ex);
             }
         }
-
         public bool Eliminar(int id)
         {
             try
@@ -120,7 +117,6 @@ namespace Dato
                 throw new Exception($"Error al eliminar especie: {ex.Message}", ex);
             }
         }
-
         public bool Guardar(Especie especie)
         {
             try
@@ -145,7 +141,6 @@ namespace Dato
 
             }
         }
-
         public Especie MappyingType(OracleDataReader line)
         {
             Especie especie = new Especie();
@@ -154,5 +149,4 @@ namespace Dato
             return especie;
         }
     }
-
 }

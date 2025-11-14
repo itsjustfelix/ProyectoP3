@@ -8,7 +8,7 @@ namespace ProyectoP3
     public partial class FrmVeterinarioEditar : Form
     {
         Veterinario veterinario;
-        IServiceVeterinario VeterinarioService;
+        IVeterinarioService VeterinarioService;
         ICrud<Especializacion> logEspecializacion;
         public FrmVeterinarioEditar(Veterinario veterinario)
         {

@@ -5,13 +5,13 @@ using Dato;
 using Entidad;
 namespace Logica
 {
-    public class VeterinarioService : IServiceVeterinario, IIDUnico
+    public class VeterinarioService : IVeterinarioService
     {
-        private readonly IRepository<Veterinario> datoVeterinario;
+        private readonly IRepository<Veterinario> veterinarioRepository;
 
         public VeterinarioService()
         {
-            datoVeterinario = new DatoVeterinario();
+            veterinarioRepository = new DatoVeterinario();
         }
         public bool Guardar(Veterinario entidad)
         {
@@ -19,7 +19,7 @@ namespace Logica
             {
 
                 if (Validar(entidad) && IdUnico(entidad.Cedula)) 
-                   return datoVeterinario.Guardar(entidad);
+                   return veterinarioRepository.Guardar(entidad);
                 else
                     return false;
             }
@@ -31,14 +31,14 @@ namespace Logica
         }
         public List<Veterinario> Consultar()
         {
-            return datoVeterinario.Consultar();
+            return veterinarioRepository.Consultar();
         }
         public bool Actualizar(Veterinario NuevaEntidad)
         {
             try
             {
                 if (Validar(NuevaEntidad))
-                    return datoVeterinario.Actualizar(NuevaEntidad);
+                    return veterinarioRepository.Actualizar(NuevaEntidad);
                 else 
                     return false;
             }
@@ -49,11 +49,11 @@ namespace Logica
         }
         public bool Borrar(int id)
         {
-            return datoVeterinario.Eliminar(id);
+            return veterinarioRepository.Eliminar(id);
         }
         public Veterinario BuscarPorId(int id)
         {
-            return datoVeterinario.BuscarPorId(id);
+            return veterinarioRepository.BuscarPorId(id);
         }
         public bool Validar(Veterinario entidad)
         {
@@ -81,16 +81,19 @@ namespace Logica
             if (BuscarPorId(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
             return true;
         }
-        //esto lo tengo que hacer en la base de datos
-        public List<Veterinario> BuscarPorCualidad(int cualidad)
+        public List<Veterinario> buscarPorEspecializacion(int cualidad)
         {
             return Consultar().Where(r => r.Especializacion.Codigo.Equals(cualidad)).ToList();
         }
-        public List<Veterinario> bsucarPorEspecializacion(string nombreEspecializacion)
+        public List<Veterinario> bsucarPorNombreEspecializacion(string nombreEspecializacion)
         {
-            return datoVeterinario.Consultar()
+            return veterinarioRepository.Consultar()
                 .Where(v => v.Especializacion.Nombre.IndexOf(nombreEspecializacion, StringComparison.OrdinalIgnoreCase) >= 0)
                 .ToList();
+        }
+        public int totalVeterinarios()
+        {
+            return Consultar().Count;
         }
     }
 }

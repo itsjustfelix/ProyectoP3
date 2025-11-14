@@ -6,19 +6,19 @@ using Entidad;
 
 namespace Logica
 {
-    public class PropietarioService : ICrud<Propietario>, IIDUnico
+    public class PropietarioService : IPropietarioService
     {
-        private readonly IRepository<Propietario> datoPropietario;
+        private readonly IRepository<Propietario> propietarioRepository;
         public PropietarioService()
         {
-            datoPropietario = new DatoPropietario();
+            propietarioRepository = new DatoPropietario();
         }
         public bool Guardar(Propietario entidad)
         {
             try
             {
                 if (Validar(entidad) && IdUnico(entidad.Cedula))
-                    return datoPropietario.Guardar(entidad);
+                    return propietarioRepository.Guardar(entidad);
                 else
                     return false;
             }
@@ -30,14 +30,14 @@ namespace Logica
         }
         public List<Propietario> Consultar()
         {
-            return datoPropietario.Consultar();
+            return propietarioRepository.Consultar();
         }
         public bool Actualizar(Propietario NuevaEntidad)
         {
             try
             {
                 if (Validar(NuevaEntidad))
-                    return datoPropietario.Actualizar(NuevaEntidad);
+                    return propietarioRepository.Actualizar(NuevaEntidad);
                 else 
                     return false;
             }
@@ -52,7 +52,7 @@ namespace Logica
         {
             try
             {
-                return datoPropietario.Eliminar(Id);
+                return propietarioRepository.Eliminar(Id);
             }
             catch (Exception ex)
             {
@@ -62,7 +62,7 @@ namespace Logica
         }
         public Propietario BuscarPorId(int id)
         {
-            return datoPropietario.BuscarPorId(id);
+            return propietarioRepository.BuscarPorId(id);
         }
         public bool Validar(Propietario entidad)
         {
@@ -83,10 +83,9 @@ namespace Logica
             if (BuscarPorId(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
             return true;
         }
-
         public List<Propietario> BuscarPorCedula(int cedula)
         {
-            return datoPropietario.Consultar().Where(p => p.Cedula == cedula).ToList();
+            return propietarioRepository.Consultar().Where(p => p.Cedula == cedula).ToList();
         }
 
     }

@@ -110,6 +110,7 @@
             // 
             this.btnEditar.Animated = true;
             this.btnEditar.AutoRoundedCorners = true;
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnEditar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnEditar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -129,6 +130,7 @@
             // 
             this.cbxVeterinario.AutoRoundedCorners = true;
             this.cbxVeterinario.BackColor = System.Drawing.Color.Transparent;
+            this.cbxVeterinario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbxVeterinario.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbxVeterinario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxVeterinario.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -146,7 +148,7 @@
             // 
             this.txtIdMascota.Animated = true;
             this.txtIdMascota.AutoRoundedCorners = true;
-            this.txtIdMascota.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtIdMascota.Cursor = System.Windows.Forms.Cursors.No;
             this.txtIdMascota.DefaultText = "";
             this.txtIdMascota.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtIdMascota.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -234,6 +236,7 @@
             // 
             this.btnCancelar.Animated = true;
             this.btnCancelar.AutoRoundedCorners = true;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -253,6 +256,7 @@
             // 
             this.cmbEspecializacion.AutoRoundedCorners = true;
             this.cmbEspecializacion.BackColor = System.Drawing.Color.Transparent;
+            this.cmbEspecializacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbEspecializacion.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbEspecializacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEspecializacion.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));

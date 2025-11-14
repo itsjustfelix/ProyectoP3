@@ -5,12 +5,12 @@ using Entidad;
 
 namespace Logica
 {
-    public class CitaService : ICrud<Cita>
+    public class CitaService : ICitaService
     {
-        private readonly IRepository<Cita> datoCita = new DatoCita();
+        private readonly ICitaRepository citaRepository;
         public CitaService()
         {
-            datoCita = new DatoCita();
+            citaRepository = new DatoCita();
         }
         public bool Guardar(Cita entidad)
         {
@@ -18,7 +18,7 @@ namespace Logica
             {
 
                 if (Validar(entidad))
-                    return datoCita.Guardar(entidad);
+                    return citaRepository.Guardar(entidad);
                 else return false;
             }
             catch (Exception ex)
@@ -28,19 +28,19 @@ namespace Logica
         }
         public List<Cita> Consultar()
         {
-            return datoCita.Consultar();
+            return citaRepository.Consultar();
         }
         public bool Borrar(int codigo)
         {
-            return datoCita.Eliminar(codigo);
+            return citaRepository.Eliminar(codigo);
         }
         public bool Actualizar(Cita NuevaEntidad)
         {
             try
             {
                 if (Validar(NuevaEntidad))
-                    return datoCita.Actualizar(NuevaEntidad);
-                else 
+                    return citaRepository.Actualizar(NuevaEntidad);
+                else
                     return false;
             }
             catch (Exception ex)
@@ -58,14 +58,11 @@ namespace Logica
         }
         public Cita BuscarPorId(int id)
         {
-            return datoCita.BuscarPorId(id);
+            return citaRepository.BuscarPorId(id);
         }
-
         public List<citasPorFechas> ObtenerCitasPorFechas()
         {
-            //esto lo tengo que arreglar despues
-            DatoCita datoCita = new DatoCita();
-            return datoCita.obtenerCitasPorFechas();
+            return citaRepository.obtenerCitasPorFechas();
         }
         public List<Cita> buscarPorVeterinario(string nombre)
         {
@@ -74,6 +71,15 @@ namespace Logica
         public List<Cita> buscarPorFecha(string fecha)
         {
             return Consultar().FindAll(c => c.Fecha.Equals(fecha, StringComparison.OrdinalIgnoreCase));
+        }
+        public int totalCitasHoy(string fecha)
+        {
+            return Consultar().FindAll(c => c.Fecha.Equals(fecha, StringComparison.OrdinalIgnoreCase)).Count;
+        }
+        public int totalCitas()
+        {
+            return Consultar().Count;
+
         }
     }
 }

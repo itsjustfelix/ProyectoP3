@@ -5,19 +5,19 @@ using Dato;
 using Entidad;
 namespace Logica
 {
-    public class EspecieService : ICrud<Especie>
+    public class EspecieService : IEspecieService
     {
-        private readonly IRepository<Especie> datoEspecie;
+        private readonly IRepository<Especie> especieRepository;
         public EspecieService()
         {
-            datoEspecie = new DatoEspecie();
+            especieRepository = new DatoEspecie();
         }
         public bool Guardar(Especie entidad)
         {
             try
             {
                 if (Validar(entidad))
-                    return datoEspecie.Guardar(entidad);
+                    return especieRepository.Guardar(entidad);
                 else
                     return false;
             }
@@ -29,14 +29,14 @@ namespace Logica
         }
         public List<Especie> Consultar()
         {
-            return datoEspecie.Consultar();
+            return especieRepository.Consultar();
         }
         public bool Actualizar(Especie NuevaEntidad)
         {
             try
             {
                 if (Validar(NuevaEntidad))
-                    return datoEspecie.Actualizar(NuevaEntidad);
+                    return especieRepository.Actualizar(NuevaEntidad);
                 else 
                     return false;
             }
@@ -48,11 +48,11 @@ namespace Logica
         }
         public bool Borrar(int codigo)
         {
-            return datoEspecie.Eliminar(codigo);
+            return especieRepository.Eliminar(codigo);
         }
         public Especie BuscarPorId(int codigo)
         {
-            return datoEspecie.BuscarPorId(codigo);
+            return especieRepository.BuscarPorId(codigo);
         }
         public bool Validar(Especie entidad)
         {
@@ -62,10 +62,9 @@ namespace Logica
                     && e.Codigo != entidad.Codigo)) throw new Exception("El nombre de la especie ya existe.");
             return true;
         }
-
         public List<Especie> BuscarPorNombre(string nombre)
         {
-            return datoEspecie.Consultar()
+            return especieRepository.Consultar()
                 .Where(e => e.Nombre.IndexOf(nombre, StringComparison.OrdinalIgnoreCase) >= 0)
                 .ToList();
         }

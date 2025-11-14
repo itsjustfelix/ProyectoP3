@@ -61,8 +61,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.panel3.Controls.Add(this.guna2Button1);
             this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.guna2Button1);
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Controls.Add(this.button3);
@@ -86,6 +86,7 @@
             this.guna2Button1.AutoRoundedCorners = true;
             this.guna2Button1.BorderColor = System.Drawing.Color.Gray;
             this.guna2Button1.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -110,11 +111,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(79, 27);
+            this.label1.Location = new System.Drawing.Point(54, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 19);
+            this.label1.Size = new System.Drawing.Size(61, 19);
             this.label1.TabIndex = 14;
-            this.label1.Text = "MY VET";
+            this.label1.Text = "My Vet";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button4
@@ -123,6 +124,7 @@
             this.button4.AutoRoundedCorners = true;
             this.button4.BorderColor = System.Drawing.Color.Gray;
             this.button4.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -145,7 +147,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(56, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(61, 48);
             this.pictureBox1.TabIndex = 14;
@@ -157,6 +159,7 @@
             this.button3.AutoRoundedCorners = true;
             this.button3.BorderColor = System.Drawing.Color.Gray;
             this.button3.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -182,6 +185,7 @@
             this.button2.AutoRoundedCorners = true;
             this.button2.BorderColor = System.Drawing.Color.Gray;
             this.button2.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -207,6 +211,7 @@
             this.button1.AutoRoundedCorners = true;
             this.button1.BorderColor = System.Drawing.Color.Gray;
             this.button1.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -232,6 +237,7 @@
             this.btnConsulta.AutoRoundedCorners = true;
             this.btnConsulta.BorderColor = System.Drawing.Color.Gray;
             this.btnConsulta.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.btnConsulta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConsulta.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnConsulta.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnConsulta.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -257,6 +263,7 @@
             this.btnMascota.AutoRoundedCorners = true;
             this.btnMascota.BorderColor = System.Drawing.Color.Gray;
             this.btnMascota.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.btnMascota.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMascota.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnMascota.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnMascota.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -281,6 +288,7 @@
             this.btnRaza.Animated = true;
             this.btnRaza.AutoRoundedCorners = true;
             this.btnRaza.BorderColor = System.Drawing.Color.Gray;
+            this.btnRaza.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRaza.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnRaza.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnRaza.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -305,6 +313,7 @@
             this.btnEspecie.Animated = true;
             this.btnEspecie.AutoRoundedCorners = true;
             this.btnEspecie.BorderColor = System.Drawing.Color.Gray;
+            this.btnEspecie.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEspecie.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnEspecie.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnEspecie.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -329,6 +338,7 @@
             this.btnPropietario.Animated = true;
             this.btnPropietario.AutoRoundedCorners = true;
             this.btnPropietario.BorderColor = System.Drawing.Color.Gray;
+            this.btnPropietario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPropietario.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnPropietario.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnPropietario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -356,7 +366,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "My vet";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

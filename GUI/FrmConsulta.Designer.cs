@@ -164,6 +164,7 @@
             // 
             this.btnCrearPDF.Animated = true;
             this.btnCrearPDF.AutoRoundedCorners = true;
+            this.btnCrearPDF.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCrearPDF.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCrearPDF.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCrearPDF.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -183,6 +184,7 @@
             // 
             this.btnEliminar.Animated = true;
             this.btnEliminar.AutoRoundedCorners = true;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnEliminar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnEliminar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -202,6 +204,7 @@
             // 
             this.bttnActualizar.Animated = true;
             this.bttnActualizar.AutoRoundedCorners = true;
+            this.bttnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnActualizar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.bttnActualizar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.bttnActualizar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -222,6 +225,7 @@
             this.btnGuardar.Animated = true;
             this.btnGuardar.AutoRoundedCorners = true;
             this.btnGuardar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnGuardar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnGuardar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -241,6 +245,7 @@
             // 
             this.bttnCrearPDFEnviar.Animated = true;
             this.bttnCrearPDFEnviar.AutoRoundedCorners = true;
+            this.bttnCrearPDFEnviar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnCrearPDFEnviar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.bttnCrearPDFEnviar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.bttnCrearPDFEnviar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -260,6 +265,7 @@
             // 
             this.bttnFiltrarPorFecha.Animated = true;
             this.bttnFiltrarPorFecha.AutoRoundedCorners = true;
+            this.bttnFiltrarPorFecha.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnFiltrarPorFecha.DefaultAutoSize = true;
             this.bttnFiltrarPorFecha.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.bttnFiltrarPorFecha.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -319,6 +325,7 @@
             // 
             this.bttnFiltrarPorVeterinario.Animated = true;
             this.bttnFiltrarPorVeterinario.AutoRoundedCorners = true;
+            this.bttnFiltrarPorVeterinario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnFiltrarPorVeterinario.DefaultAutoSize = true;
             this.bttnFiltrarPorVeterinario.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.bttnFiltrarPorVeterinario.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -358,6 +365,7 @@
             // 
             this.bttnFiltrarPorMascota.Animated = true;
             this.bttnFiltrarPorMascota.AutoRoundedCorners = true;
+            this.bttnFiltrarPorMascota.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnFiltrarPorMascota.DefaultAutoSize = true;
             this.bttnFiltrarPorMascota.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.bttnFiltrarPorMascota.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;

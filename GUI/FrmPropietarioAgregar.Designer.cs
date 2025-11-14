@@ -81,6 +81,7 @@
             // RBMasculino
             // 
             this.RBMasculino.AutoSize = true;
+            this.RBMasculino.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RBMasculino.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RBMasculino.Location = new System.Drawing.Point(147, 304);
             this.RBMasculino.Name = "RBMasculino";
@@ -94,6 +95,7 @@
             // RBFemenino
             // 
             this.RBFemenino.AutoSize = true;
+            this.RBFemenino.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RBFemenino.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RBFemenino.Location = new System.Drawing.Point(270, 304);
             this.RBFemenino.Name = "RBFemenino";
@@ -148,6 +150,7 @@
             // 
             this.btnCancelar.Animated = true;
             this.btnCancelar.AutoRoundedCorners = true;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -288,6 +291,7 @@
             // 
             this.btnAgregar.Animated = true;
             this.btnAgregar.AutoRoundedCorners = true;
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -331,6 +335,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmPropietarioAgregar";
             this.Text = "FrmAgregarPropietario";
+            this.Load += new System.EventHandler(this.FrmPropietarioAgregar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

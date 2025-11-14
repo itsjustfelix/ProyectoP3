@@ -8,7 +8,7 @@ namespace ProyectoP3
     public partial class FrmConsultaEditar : Form
     {
         Consulta consulta;
-        IServiceVeterinario logVeterinario = new VeterinarioService();
+        IVeterinarioService logVeterinario = new VeterinarioService();
         ICrud<Consulta> logConsulta = new ConsultaService();
         ICrud<Mascota> logMascota = new MascotaService();
         ICrud<Especializacion> logEspecializacion = new EspecializacionService();
@@ -139,7 +139,7 @@ namespace ProyectoP3
         }
         private void cargarCmbVeterinario(int especializacion)
         {
-            cbxVeterinario.DataSource = logVeterinario.BuscarPorCualidad(especializacion);
+            cbxVeterinario.DataSource = logVeterinario.buscarPorEspecializacion(especializacion);
             cbxVeterinario.DisplayMember = "Nombres";
             cbxVeterinario.ValueMember = "Cedula";
         }

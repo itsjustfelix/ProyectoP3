@@ -82,6 +82,7 @@
             // RBMasculino
             // 
             this.RBMasculino.AutoSize = true;
+            this.RBMasculino.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RBMasculino.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RBMasculino.Location = new System.Drawing.Point(147, 304);
             this.RBMasculino.Name = "RBMasculino";
@@ -94,6 +95,7 @@
             // RBFemenino
             // 
             this.RBFemenino.AutoSize = true;
+            this.RBFemenino.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RBFemenino.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RBFemenino.Location = new System.Drawing.Point(270, 304);
             this.RBFemenino.Name = "RBFemenino";
@@ -167,7 +169,7 @@
             // 
             this.txtCedula.Animated = true;
             this.txtCedula.AutoRoundedCorners = true;
-            this.txtCedula.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCedula.Cursor = System.Windows.Forms.Cursors.No;
             this.txtCedula.DefaultText = "";
             this.txtCedula.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtCedula.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -267,6 +269,7 @@
             // 
             this.btnEditar.Animated = true;
             this.btnEditar.AutoRoundedCorners = true;
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnEditar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnEditar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -286,6 +289,7 @@
             // 
             this.btnCancelar.Animated = true;
             this.btnCancelar.AutoRoundedCorners = true;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));

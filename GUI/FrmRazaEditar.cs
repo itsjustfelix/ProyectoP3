@@ -8,7 +8,7 @@ namespace ProyectoP3
     public partial class FrmRazaEditar : Form
     {
         ICrud<Especie> logEspecie;
-        IServiceRaza logRaza;
+        IRazaService logRaza;
         Raza raza;
         int idRaza;
         public FrmRazaEditar(Raza raza)

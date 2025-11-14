@@ -136,7 +136,7 @@ namespace ProyectoP3
             }
             else
             {
-                cargarDGV(VeterinarioService.bsucarPorEspecializacion(txtFiltrarEspecializacion.Text.Trim()));
+                cargarDGV(VeterinarioService.bsucarPorNombreEspecializacion(txtFiltrarEspecializacion.Text.Trim()));
             }
         }
     }

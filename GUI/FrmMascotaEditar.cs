@@ -10,7 +10,7 @@ namespace ProyectoP3
         ICrud<Propietario> logPropietario;
         ICrud<Mascota> logMascota;
         ICrud<Especie> logEspecie;
-        IServiceRaza logRaza;
+        IRazaService logRaza;
         private Mascota mascota;
         int codigo;
         public FrmMascotaEditar(Mascota mascota)
@@ -92,7 +92,7 @@ namespace ProyectoP3
         {
             this.Text = id;
             int idEspecie = int.Parse(id);
-            cmbRaza.DataSource = logRaza.BuscarPorCualidad(idEspecie);
+            cmbRaza.DataSource = logRaza.BuscarPorEspecie(idEspecie);
             cmbRaza.DisplayMember = "Nombre";
             cmbRaza.ValueMember = "Codigo";
         }

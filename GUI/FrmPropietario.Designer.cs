@@ -159,6 +159,7 @@ namespace ProyectoP3
             // 
             this.btnGuardar.Animated = true;
             this.btnGuardar.AutoRoundedCorners = true;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnGuardar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnGuardar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -178,6 +179,7 @@ namespace ProyectoP3
             // 
             this.guna2Button1.Animated = true;
             this.guna2Button1.AutoRoundedCorners = true;
+            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -197,6 +199,7 @@ namespace ProyectoP3
             // 
             this.btnEliminar.Animated = true;
             this.btnEliminar.AutoRoundedCorners = true;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnEliminar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnEliminar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -216,6 +219,7 @@ namespace ProyectoP3
             // 
             this.bttnFiltrarPorCedula.Animated = true;
             this.bttnFiltrarPorCedula.AutoRoundedCorners = true;
+            this.bttnFiltrarPorCedula.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnFiltrarPorCedula.DefaultAutoSize = true;
             this.bttnFiltrarPorCedula.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.bttnFiltrarPorCedula.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;

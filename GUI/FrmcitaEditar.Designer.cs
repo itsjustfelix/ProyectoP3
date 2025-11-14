@@ -110,6 +110,7 @@
             this.DTPHora.Animated = true;
             this.DTPHora.AutoRoundedCorners = true;
             this.DTPHora.Checked = true;
+            this.DTPHora.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DTPHora.FillColor = System.Drawing.Color.White;
             this.DTPHora.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.DTPHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
@@ -126,6 +127,7 @@
             this.DTPFecha.Animated = true;
             this.DTPFecha.AutoRoundedCorners = true;
             this.DTPFecha.Checked = true;
+            this.DTPFecha.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DTPFecha.FillColor = System.Drawing.Color.White;
             this.DTPFecha.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.DTPFecha.Format = System.Windows.Forms.DateTimePickerFormat.Long;
@@ -216,7 +218,7 @@
             // 
             this.txtIdMascota.Animated = true;
             this.txtIdMascota.AutoRoundedCorners = true;
-            this.txtIdMascota.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtIdMascota.Cursor = System.Windows.Forms.Cursors.No;
             this.txtIdMascota.DefaultText = "";
             this.txtIdMascota.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtIdMascota.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));

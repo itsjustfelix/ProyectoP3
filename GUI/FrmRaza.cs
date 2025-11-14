@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -12,15 +13,15 @@ namespace ProyectoP3
             InitializeComponent();
             logRaza = new RazaService();
         }
-        IServiceRaza logRaza;
+        RazaService logRaza;
         private void FrmRaza_Load(object sender, EventArgs e)
         {
-            cargarDGV();
+            cargarDGV(logRaza.Consultar());
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmRazaAgregar());
-            cargarDGV();
+            cargarDGV(logRaza.Consultar());
         }
         private void bttnActualizar_Click(object sender, EventArgs e)
         {
@@ -34,7 +35,7 @@ namespace ProyectoP3
                     return;
                 }
                 mostrarFrm(new FrmRazaEditar(raza));
-                cargarDGV();
+                cargarDGV(logRaza.Consultar());
             }
             catch (Exception ex)
             {
@@ -58,7 +59,7 @@ namespace ProyectoP3
                 {
                     borrar(codigo);
                     MessageBox.Show("Raza aliminada correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
+                    cargarDGV(logRaza.Consultar());
                     return;
                 }
                 else return;
@@ -94,17 +95,42 @@ namespace ProyectoP3
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
 
         }
-        private void cargarDGV()
+        private void cargarDGV(List<Raza> lista)
         {
             DGVRaza.Rows.Clear();
-            foreach (var raza in logRaza.Consultar())
+            foreach (var raza in lista)
             {
                 DGVRaza.Rows.Add(raza.Codigo, raza.Nombre, raza.Especie.Nombre);
+            }
+        }
+
+        private void bttnFiltrarPorNombre_Click(object sender, EventArgs e)
+        {
+            if (txtFiltrarNombre.Text.Trim() == "")
+            {
+                cargarDGV(logRaza.Consultar());
+                return;
+            }
+            else 
+            {
+                logRaza.BuscarPorNombre(txtFiltrarNombre.Text.Trim());
+            }
+        }
+
+        private void bttnFiltrarEspecie_Click(object sender, EventArgs e)
+        {
+            if (txtFiltrarEspecie.Text.Trim() == "")
+            {
+                cargarDGV(logRaza.Consultar());
+                return;
+            }
+            else
+            { 
+                logRaza.BuscarPorNombreEspecie(txtFiltrarEspecie.Text.Trim());
             }
         }
     }

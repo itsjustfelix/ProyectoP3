@@ -84,6 +84,7 @@
             // 
             this.btnEnviar.Animated = true;
             this.btnEnviar.AutoRoundedCorners = true;
+            this.btnEnviar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEnviar.DefaultAutoSize = true;
             this.btnEnviar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnEnviar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;

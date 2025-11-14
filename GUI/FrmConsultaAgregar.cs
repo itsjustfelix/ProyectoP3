@@ -9,7 +9,7 @@ namespace ProyectoP3
     {
         ICrud<Consulta> logConsulta;
         ICrud<Mascota> logMascota;
-        IServiceVeterinario logVeterinario;
+        IVeterinarioService logVeterinario;
         EspecializacionService logEspecializacion;
         public DialogResult resultado;
         public FrmConsultaAgregar()
@@ -41,7 +41,7 @@ namespace ProyectoP3
         
         private void cargarCmbVeterinario(int especializacion)
         {
-            cbmVeterinario.DataSource = logVeterinario.BuscarPorCualidad(especializacion);
+            cbmVeterinario.DataSource = logVeterinario.buscarPorEspecializacion(especializacion);
             cbmVeterinario.DisplayMember = "Nombres";
             cbmVeterinario.ValueMember = "Cedula";
             cbmVeterinario.SelectedIndex = -1;

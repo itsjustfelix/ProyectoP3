@@ -7,7 +7,7 @@ namespace ProyectoP3
 {
     public partial class FrmVeterinarioAgregar : Form
     {
-        IServiceVeterinario logVeterinario;
+        IVeterinarioService logVeterinario;
         ICrud<Especializacion> logEspecializacion;
         public FrmVeterinarioAgregar()
         {

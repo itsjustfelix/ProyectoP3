@@ -209,6 +209,7 @@
             this.DTPFecha.Animated = true;
             this.DTPFecha.AutoRoundedCorners = true;
             this.DTPFecha.Checked = true;
+            this.DTPFecha.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DTPFecha.FillColor = System.Drawing.Color.White;
             this.DTPFecha.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.DTPFecha.Format = System.Windows.Forms.DateTimePickerFormat.Long;
@@ -225,6 +226,7 @@
             this.DTPHora.Animated = true;
             this.DTPHora.AutoRoundedCorners = true;
             this.DTPHora.Checked = true;
+            this.DTPHora.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DTPHora.FillColor = System.Drawing.Color.White;
             this.DTPHora.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.DTPHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
@@ -232,6 +234,7 @@
             this.DTPHora.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.DTPHora.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.DTPHora.Name = "DTPHora";
+            this.DTPHora.ShowUpDown = true;
             this.DTPHora.Size = new System.Drawing.Size(269, 36);
             this.DTPHora.TabIndex = 30;
             this.DTPHora.Value = new System.DateTime(2025, 11, 11, 12, 13, 43, 226);

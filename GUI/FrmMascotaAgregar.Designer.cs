@@ -97,6 +97,7 @@
             // 
             this.btnCancelar.Animated = true;
             this.btnCancelar.AutoRoundedCorners = true;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -117,6 +118,7 @@
             // 
             this.btnAgregar.Animated = true;
             this.btnAgregar.AutoRoundedCorners = true;
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -137,6 +139,7 @@
             // 
             this.cmbRaza.AutoRoundedCorners = true;
             this.cmbRaza.BackColor = System.Drawing.Color.Transparent;
+            this.cmbRaza.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbRaza.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbRaza.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRaza.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -153,6 +156,7 @@
             // 
             this.cmbEspecie.AutoRoundedCorners = true;
             this.cmbEspecie.BackColor = System.Drawing.Color.Transparent;
+            this.cmbEspecie.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbEspecie.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbEspecie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEspecie.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -214,6 +218,7 @@
             // 
             this.guna2Button1.Animated = true;
             this.guna2Button1.AutoRoundedCorners = true;
+            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2Button1.DefaultAutoSize = true;
             this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;

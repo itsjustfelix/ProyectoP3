@@ -14,7 +14,7 @@ namespace ProyectoP3
             logRaza = new RazaService();
         }
         ICrud<Especie> logEspecie;
-        IServiceRaza logRaza;
+        IRazaService logRaza;
         private void FrmRazaAgregar_Load(object sender, EventArgs e)
         {
             CargarCbx();

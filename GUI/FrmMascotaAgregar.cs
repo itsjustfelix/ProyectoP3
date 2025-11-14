@@ -10,7 +10,7 @@ namespace ProyectoP3
         ICrud<Propietario> logPropietario;
         ICrud<Mascota> logMascota;
         ICrud<Especie> logEspecie;
-        IServiceRaza logRaza;
+        IRazaService logRaza;
         public FrmMascotaAgregar()
         {
             InitializeComponent();
@@ -81,7 +81,7 @@ namespace ProyectoP3
         private void cargarCmbRaza(int idEspecie)
         {
             cmbRaza.DataSource = null;
-            cmbRaza.DataSource = logRaza.BuscarPorCualidad(idEspecie);
+            cmbRaza.DataSource = logRaza.BuscarPorEspecie(idEspecie);
             cmbRaza.DisplayMember = "Nombre";
             cmbRaza.ValueMember = "Codigo";
         }

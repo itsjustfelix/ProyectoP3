@@ -8,12 +8,11 @@ namespace Dato
 {
     public class DatoRaza : IRepository<Raza>
     {
-        IRepository<Especie> datoEspecie;
+        IRepository<Especie> especieRepository;
         public DatoRaza()
         {
-            datoEspecie = new DatoEspecie();
+            especieRepository = new DatoEspecie();
         }
-
         public bool Guardar(Raza raza)
         {
             try
@@ -37,7 +36,6 @@ namespace Dato
                 throw new Exception($"Error al insertar raza: {ex.Message}", ex);
             }
         }
-
         public List<Raza> Consultar()
         {
             List<Raza> lista = new List<Raza>();
@@ -73,7 +71,6 @@ namespace Dato
             }
 
         }
-
         public bool Actualizar(Raza raza)
         {
             try
@@ -98,7 +95,6 @@ namespace Dato
                 throw new Exception($"Error al actualizar raza: {ex.Message}", ex);
             }
         }
-
         public bool Eliminar(int id)
         {
             try
@@ -121,7 +117,6 @@ namespace Dato
                 throw new Exception($"Error al eliminar raza: {ex.Message}", ex);
             }
         }
-
         public Raza BuscarPorId(int id)
         {
             try
@@ -154,15 +149,13 @@ namespace Dato
                 throw new Exception($"Error al buscar raza: {ex.Message}", ex);
             }
         }
-
         public Raza MappyingType(OracleDataReader line)
         {
             Raza raza = new Raza();
             raza.Codigo = int.Parse(line["CODIGO"].ToString());
             raza.Nombre = line["NOMBRE"].ToString();
-            raza.Especie = datoEspecie.BuscarPorId(int.Parse(line["CODIGO_ESPECIE"].ToString()));
+            raza.Especie = especieRepository.BuscarPorId(int.Parse(line["CODIGO_ESPECIE"].ToString()));
             return raza;
         }
-
     }
 }

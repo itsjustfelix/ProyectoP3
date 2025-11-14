@@ -122,6 +122,7 @@
             // 
             this.btnCancelar.Animated = true;
             this.btnCancelar.AutoRoundedCorners = true;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -142,6 +143,7 @@
             // 
             this.btnAgregar.Animated = true;
             this.btnAgregar.AutoRoundedCorners = true;
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -161,6 +163,7 @@
             // RBFemenino
             // 
             this.RBFemenino.AutoSize = true;
+            this.RBFemenino.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RBFemenino.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RBFemenino.Location = new System.Drawing.Point(270, 304);
             this.RBFemenino.Name = "RBFemenino";
@@ -173,6 +176,7 @@
             // RBMasculino
             // 
             this.RBMasculino.AutoSize = true;
+            this.RBMasculino.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RBMasculino.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RBMasculino.Location = new System.Drawing.Point(147, 304);
             this.RBMasculino.Name = "RBMasculino";
@@ -286,6 +290,7 @@
             // 
             this.cmbEspecilizacion.AutoRoundedCorners = true;
             this.cmbEspecilizacion.BackColor = System.Drawing.Color.Transparent;
+            this.cmbEspecilizacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbEspecilizacion.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbEspecilizacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEspecilizacion.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
