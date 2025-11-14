@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCitaAgregar));
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnBuscarMascota = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblNombreMascota = new System.Windows.Forms.Label();
@@ -43,13 +42,16 @@
             this.btnAgregar = new Guna.UI2.WinForms.Guna2Button();
             this.DTPFecha = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.DTPHora = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnBuscarMascota = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(41, 262);
+            this.label4.Location = new System.Drawing.Point(123, 228);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 19);
             this.label4.TabIndex = 19;
@@ -59,27 +61,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(41, 190);
+            this.label2.Location = new System.Drawing.Point(123, 156);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 19);
             this.label2.TabIndex = 18;
             this.label2.Text = "Especializacion";
             // 
-            // btnBuscarMascota
-            // 
-            this.btnBuscarMascota.Location = new System.Drawing.Point(517, 65);
-            this.btnBuscarMascota.Name = "btnBuscarMascota";
-            this.btnBuscarMascota.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscarMascota.TabIndex = 5;
-            this.btnBuscarMascota.Text = "Buscar";
-            this.btnBuscarMascota.UseVisualStyleBackColor = true;
-            this.btnBuscarMascota.Click += new System.EventHandler(this.btnBuscarMascota_Click);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(41, 378);
+            this.label3.Location = new System.Drawing.Point(123, 356);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 19);
             this.label3.TabIndex = 0;
@@ -89,7 +81,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(41, 323);
+            this.label1.Location = new System.Drawing.Point(123, 289);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 19);
             this.label1.TabIndex = 0;
@@ -99,7 +91,7 @@
             // 
             this.lblNombreMascota.AutoSize = true;
             this.lblNombreMascota.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreMascota.Location = new System.Drawing.Point(41, 133);
+            this.lblNombreMascota.Location = new System.Drawing.Point(123, 97);
             this.lblNombreMascota.Name = "lblNombreMascota";
             this.lblNombreMascota.Size = new System.Drawing.Size(139, 19);
             this.lblNombreMascota.TabIndex = 0;
@@ -109,7 +101,7 @@
             // 
             this.nombre.AutoSize = true;
             this.nombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombre.Location = new System.Drawing.Point(41, 65);
+            this.nombre.Location = new System.Drawing.Point(123, 30);
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(137, 19);
             this.nombre.TabIndex = 0;
@@ -129,7 +121,7 @@
             this.txtIdMascota.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdMascota.ForeColor = System.Drawing.Color.Black;
             this.txtIdMascota.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtIdMascota.Location = new System.Drawing.Point(222, 65);
+            this.txtIdMascota.Location = new System.Drawing.Point(127, 53);
             this.txtIdMascota.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtIdMascota.Name = "txtIdMascota";
             this.txtIdMascota.PlaceholderText = "";
@@ -141,6 +133,7 @@
             // 
             this.cmbEspecializacion.AutoRoundedCorners = true;
             this.cmbEspecializacion.BackColor = System.Drawing.Color.Transparent;
+            this.cmbEspecializacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbEspecializacion.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbEspecializacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEspecializacion.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -148,7 +141,7 @@
             this.cmbEspecializacion.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEspecializacion.ForeColor = System.Drawing.Color.Black;
             this.cmbEspecializacion.ItemHeight = 30;
-            this.cmbEspecializacion.Location = new System.Drawing.Point(222, 190);
+            this.cmbEspecializacion.Location = new System.Drawing.Point(127, 178);
             this.cmbEspecializacion.Name = "cmbEspecializacion";
             this.cmbEspecializacion.Size = new System.Drawing.Size(269, 36);
             this.cmbEspecializacion.TabIndex = 25;
@@ -158,6 +151,7 @@
             // 
             this.cmbVeterianrio.AutoRoundedCorners = true;
             this.cmbVeterianrio.BackColor = System.Drawing.Color.Transparent;
+            this.cmbVeterianrio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbVeterianrio.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbVeterianrio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVeterianrio.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -165,7 +159,7 @@
             this.cmbVeterianrio.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbVeterianrio.ForeColor = System.Drawing.Color.Black;
             this.cmbVeterianrio.ItemHeight = 30;
-            this.cmbVeterianrio.Location = new System.Drawing.Point(222, 245);
+            this.cmbVeterianrio.Location = new System.Drawing.Point(127, 250);
             this.cmbVeterianrio.Name = "cmbVeterianrio";
             this.cmbVeterianrio.Size = new System.Drawing.Size(269, 36);
             this.cmbVeterianrio.TabIndex = 26;
@@ -174,6 +168,7 @@
             // 
             this.btnCancelar.Animated = true;
             this.btnCancelar.AutoRoundedCorners = true;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -182,7 +177,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.Location = new System.Drawing.Point(335, 450);
+            this.btnCancelar.Location = new System.Drawing.Point(298, 442);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(130, 45);
             this.btnCancelar.TabIndex = 28;
@@ -193,6 +188,7 @@
             // 
             this.btnAgregar.Animated = true;
             this.btnAgregar.AutoRoundedCorners = true;
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -201,7 +197,7 @@
             this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnAgregar.ForeColor = System.Drawing.Color.Black;
             this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
-            this.btnAgregar.Location = new System.Drawing.Point(132, 450);
+            this.btnAgregar.Location = new System.Drawing.Point(95, 442);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(130, 45);
             this.btnAgregar.TabIndex = 27;
@@ -216,7 +212,7 @@
             this.DTPFecha.FillColor = System.Drawing.Color.White;
             this.DTPFecha.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.DTPFecha.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.DTPFecha.Location = new System.Drawing.Point(222, 306);
+            this.DTPFecha.Location = new System.Drawing.Point(127, 311);
             this.DTPFecha.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.DTPFecha.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.DTPFecha.Name = "DTPFecha";
@@ -232,7 +228,7 @@
             this.DTPHora.FillColor = System.Drawing.Color.White;
             this.DTPHora.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.DTPHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DTPHora.Location = new System.Drawing.Point(222, 361);
+            this.DTPHora.Location = new System.Drawing.Point(127, 378);
             this.DTPHora.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.DTPHora.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.DTPHora.Name = "DTPHora";
@@ -240,36 +236,66 @@
             this.DTPHora.TabIndex = 30;
             this.DTPHora.Value = new System.DateTime(2025, 11, 11, 12, 13, 43, 226);
             // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.guna2Panel1.Controls.Add(this.btnBuscarMascota);
+            this.guna2Panel1.Controls.Add(this.label1);
+            this.guna2Panel1.Controls.Add(this.lblNombreMascota);
+            this.guna2Panel1.Controls.Add(this.label3);
+            this.guna2Panel1.Controls.Add(this.label2);
+            this.guna2Panel1.Controls.Add(this.nombre);
+            this.guna2Panel1.Controls.Add(this.label4);
+            this.guna2Panel1.Controls.Add(this.txtIdMascota);
+            this.guna2Panel1.Controls.Add(this.cmbEspecializacion);
+            this.guna2Panel1.Controls.Add(this.cmbVeterianrio);
+            this.guna2Panel1.Controls.Add(this.btnAgregar);
+            this.guna2Panel1.Controls.Add(this.btnCancelar);
+            this.guna2Panel1.Controls.Add(this.DTPFecha);
+            this.guna2Panel1.Controls.Add(this.DTPHora);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(539, 500);
+            this.guna2Panel1.TabIndex = 31;
+            // 
+            // btnBuscarMascota
+            // 
+            this.btnBuscarMascota.Animated = true;
+            this.btnBuscarMascota.AutoRoundedCorners = true;
+            this.btnBuscarMascota.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscarMascota.DefaultAutoSize = true;
+            this.btnBuscarMascota.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscarMascota.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscarMascota.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBuscarMascota.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBuscarMascota.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnBuscarMascota.ForeColor = System.Drawing.Color.White;
+            this.btnBuscarMascota.Location = new System.Drawing.Point(415, 55);
+            this.btnBuscarMascota.Name = "btnBuscarMascota";
+            this.btnBuscarMascota.Size = new System.Drawing.Size(65, 27);
+            this.btnBuscarMascota.TabIndex = 31;
+            this.btnBuscarMascota.Text = "Buscar";
+            this.btnBuscarMascota.Click += new System.EventHandler(this.btnBuscarMascota_Click_1);
+            // 
             // FrmCitaAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(606, 525);
-            this.Controls.Add(this.DTPHora);
-            this.Controls.Add(this.DTPFecha);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.cmbVeterianrio);
-            this.Controls.Add(this.cmbEspecializacion);
-            this.Controls.Add(this.txtIdMascota);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.nombre);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.lblNombreMascota);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnBuscarMascota);
+            this.ClientSize = new System.Drawing.Size(539, 500);
+            this.Controls.Add(this.guna2Panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmCitaAgregar";
             this.Text = "FrmCitaAgregar";
             this.Load += new System.EventHandler(this.FrmCitaAgregar_Load);
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btnBuscarMascota;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblNombreMascota;
@@ -283,5 +309,7 @@
         private Guna.UI2.WinForms.Guna2Button btnAgregar;
         private Guna.UI2.WinForms.Guna2DateTimePicker DTPFecha;
         private Guna.UI2.WinForms.Guna2DateTimePicker DTPHora;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Button btnBuscarMascota;
     }
 }

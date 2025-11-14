@@ -52,7 +52,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(38, 368);
+            this.label2.Location = new System.Drawing.Point(143, 408);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 19);
             this.label2.TabIndex = 22;
@@ -62,7 +62,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(38, 205);
+            this.label5.Location = new System.Drawing.Point(143, 217);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(143, 19);
             this.label5.TabIndex = 20;
@@ -73,7 +73,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(38, 144);
+            this.label6.Location = new System.Drawing.Point(143, 149);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(138, 19);
             this.label6.TabIndex = 18;
@@ -83,7 +83,7 @@
             // 
             this.RBMasculino.AutoSize = true;
             this.RBMasculino.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RBMasculino.Location = new System.Drawing.Point(230, 255);
+            this.RBMasculino.Location = new System.Drawing.Point(147, 304);
             this.RBMasculino.Name = "RBMasculino";
             this.RBMasculino.Size = new System.Drawing.Size(102, 22);
             this.RBMasculino.TabIndex = 10;
@@ -95,7 +95,7 @@
             // 
             this.RBFemenino.AutoSize = true;
             this.RBFemenino.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RBFemenino.Location = new System.Drawing.Point(351, 255);
+            this.RBFemenino.Location = new System.Drawing.Point(270, 304);
             this.RBFemenino.Name = "RBFemenino";
             this.RBFemenino.Size = new System.Drawing.Size(99, 22);
             this.RBFemenino.TabIndex = 11;
@@ -107,7 +107,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(38, 311);
+            this.label3.Location = new System.Drawing.Point(143, 342);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(155, 19);
             this.label3.TabIndex = 3;
@@ -117,7 +117,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(38, 255);
+            this.label1.Location = new System.Drawing.Point(143, 282);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 19);
             this.label1.TabIndex = 4;
@@ -127,7 +127,7 @@
             // 
             this.label.AutoSize = true;
             this.label.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.Location = new System.Drawing.Point(38, 35);
+            this.label.Location = new System.Drawing.Point(143, 27);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(67, 19);
             this.label.TabIndex = 5;
@@ -137,7 +137,7 @@
             // 
             this.nombres.AutoSize = true;
             this.nombres.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombres.Location = new System.Drawing.Point(38, 77);
+            this.nombres.Location = new System.Drawing.Point(143, 88);
             this.nombres.Name = "nombres";
             this.nombres.Size = new System.Drawing.Size(79, 19);
             this.nombres.TabIndex = 6;
@@ -156,7 +156,7 @@
             this.txtNombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNombre.Location = new System.Drawing.Point(230, 77);
+            this.txtNombre.Location = new System.Drawing.Point(147, 110);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PlaceholderText = "";
             this.txtNombre.SelectedText = "";
@@ -176,7 +176,7 @@
             this.txtCedula.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCedula.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCedula.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCedula.Location = new System.Drawing.Point(230, 18);
+            this.txtCedula.Location = new System.Drawing.Point(147, 49);
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.PlaceholderText = "";
             this.txtCedula.SelectedText = "";
@@ -196,11 +196,11 @@
             this.txtApellidoPaterno.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApellidoPaterno.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtApellidoPaterno.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtApellidoPaterno.Location = new System.Drawing.Point(230, 129);
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(147, 171);
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
             this.txtApellidoPaterno.PlaceholderText = "";
             this.txtApellidoPaterno.SelectedText = "";
-            this.txtApellidoPaterno.Size = new System.Drawing.Size(220, 43);
+            this.txtApellidoPaterno.Size = new System.Drawing.Size(225, 36);
             this.txtApellidoPaterno.TabIndex = 26;
             // 
             // txtNumeroTelefonicoPrimario
@@ -216,11 +216,11 @@
             this.txtNumeroTelefonicoPrimario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNumeroTelefonicoPrimario.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtNumeroTelefonicoPrimario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNumeroTelefonicoPrimario.Location = new System.Drawing.Point(230, 300);
+            this.txtNumeroTelefonicoPrimario.Location = new System.Drawing.Point(147, 364);
             this.txtNumeroTelefonicoPrimario.Name = "txtNumeroTelefonicoPrimario";
             this.txtNumeroTelefonicoPrimario.PlaceholderText = "";
             this.txtNumeroTelefonicoPrimario.SelectedText = "";
-            this.txtNumeroTelefonicoPrimario.Size = new System.Drawing.Size(220, 41);
+            this.txtNumeroTelefonicoPrimario.Size = new System.Drawing.Size(225, 36);
             this.txtNumeroTelefonicoPrimario.TabIndex = 27;
             // 
             // txtApellidoMaterno
@@ -236,11 +236,11 @@
             this.txtApellidoMaterno.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApellidoMaterno.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtApellidoMaterno.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtApellidoMaterno.Location = new System.Drawing.Point(230, 194);
+            this.txtApellidoMaterno.Location = new System.Drawing.Point(147, 239);
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
             this.txtApellidoMaterno.PlaceholderText = "";
             this.txtApellidoMaterno.SelectedText = "";
-            this.txtApellidoMaterno.Size = new System.Drawing.Size(220, 40);
+            this.txtApellidoMaterno.Size = new System.Drawing.Size(225, 36);
             this.txtApellidoMaterno.TabIndex = 28;
             // 
             // txtEmail
@@ -256,11 +256,11 @@
             this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(230, 359);
+            this.txtEmail.Location = new System.Drawing.Point(147, 430);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PlaceholderText = "";
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(220, 36);
+            this.txtEmail.Size = new System.Drawing.Size(225, 36);
             this.txtEmail.TabIndex = 29;
             // 
             // btnEditar
@@ -275,7 +275,7 @@
             this.btnEditar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.Black;
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
-            this.btnEditar.Location = new System.Drawing.Point(75, 458);
+            this.btnEditar.Location = new System.Drawing.Point(94, 479);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(143, 45);
             this.btnEditar.TabIndex = 30;
@@ -294,7 +294,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.Location = new System.Drawing.Point(258, 458);
+            this.btnCancelar.Location = new System.Drawing.Point(270, 479);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(143, 45);
             this.btnCancelar.TabIndex = 31;
@@ -305,8 +305,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(493, 548);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.ClientSize = new System.Drawing.Size(518, 546);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.txtEmail);
@@ -324,6 +324,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.RBMasculino);
             this.Controls.Add(this.RBFemenino);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmEditarPropietatio";
             this.Text = "FrmEditarPropietatio";
             this.Load += new System.EventHandler(this.FrmEditarPropietatio_Load);

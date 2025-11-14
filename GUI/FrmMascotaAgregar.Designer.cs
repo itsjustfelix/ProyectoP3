@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMascotaAgregar));
-            this.bttnBuscarProp = new System.Windows.Forms.Button();
             this.lblNombreProp = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,28 +40,14 @@
             this.cmbEspecie = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtIdProprietario = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
-            // 
-            // bttnBuscarProp
-            // 
-            this.bttnBuscarProp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.bttnBuscarProp.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnBuscarProp.Image = ((System.Drawing.Image)(resources.GetObject("bttnBuscarProp.Image")));
-            this.bttnBuscarProp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bttnBuscarProp.Location = new System.Drawing.Point(496, 51);
-            this.bttnBuscarProp.Name = "bttnBuscarProp";
-            this.bttnBuscarProp.Size = new System.Drawing.Size(107, 29);
-            this.bttnBuscarProp.TabIndex = 5;
-            this.bttnBuscarProp.Text = "Buscar ";
-            this.bttnBuscarProp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bttnBuscarProp.UseVisualStyleBackColor = false;
-            this.bttnBuscarProp.Click += new System.EventHandler(this.bttnBuscarProp_Click);
             // 
             // lblNombreProp
             // 
             this.lblNombreProp.AutoSize = true;
             this.lblNombreProp.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreProp.Location = new System.Drawing.Point(35, 116);
+            this.lblNombreProp.Location = new System.Drawing.Point(195, 98);
             this.lblNombreProp.Name = "lblNombreProp";
             this.lblNombreProp.Size = new System.Drawing.Size(160, 19);
             this.lblNombreProp.TabIndex = 0;
@@ -72,17 +57,17 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(35, 54);
+            this.label3.Location = new System.Drawing.Point(195, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 19);
+            this.label3.Size = new System.Drawing.Size(154, 19);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Id Propietario";
+            this.label3.Text = "Cedula Propietario";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 280);
+            this.label1.Location = new System.Drawing.Point(196, 283);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 19);
             this.label1.TabIndex = 0;
@@ -92,7 +77,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(35, 223);
+            this.label2.Location = new System.Drawing.Point(195, 212);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 19);
             this.label2.TabIndex = 0;
@@ -102,7 +87,7 @@
             // 
             this.nombre.AutoSize = true;
             this.nombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombre.Location = new System.Drawing.Point(35, 169);
+            this.nombre.Location = new System.Drawing.Point(195, 146);
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(73, 19);
             this.nombre.TabIndex = 0;
@@ -120,7 +105,8 @@
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.Location = new System.Drawing.Point(304, 385);
+            this.btnCancelar.IndicateFocus = true;
+            this.btnCancelar.Location = new System.Drawing.Point(334, 412);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(148, 45);
             this.btnCancelar.TabIndex = 36;
@@ -139,7 +125,8 @@
             this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnAgregar.ForeColor = System.Drawing.Color.Black;
             this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
-            this.btnAgregar.Location = new System.Drawing.Point(94, 385);
+            this.btnAgregar.IndicateFocus = true;
+            this.btnAgregar.Location = new System.Drawing.Point(124, 412);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(149, 45);
             this.btnAgregar.TabIndex = 35;
@@ -157,7 +144,7 @@
             this.cmbRaza.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbRaza.ForeColor = System.Drawing.Color.Black;
             this.cmbRaza.ItemHeight = 30;
-            this.cmbRaza.Location = new System.Drawing.Point(264, 280);
+            this.cmbRaza.Location = new System.Drawing.Point(199, 310);
             this.cmbRaza.Name = "cmbRaza";
             this.cmbRaza.Size = new System.Drawing.Size(225, 36);
             this.cmbRaza.TabIndex = 33;
@@ -173,7 +160,7 @@
             this.cmbEspecie.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbEspecie.ForeColor = System.Drawing.Color.Black;
             this.cmbEspecie.ItemHeight = 30;
-            this.cmbEspecie.Location = new System.Drawing.Point(264, 223);
+            this.cmbEspecie.Location = new System.Drawing.Point(199, 239);
             this.cmbEspecie.Name = "cmbEspecie";
             this.cmbEspecie.Size = new System.Drawing.Size(225, 36);
             this.cmbEspecie.TabIndex = 32;
@@ -193,7 +180,7 @@
             this.txtIdProprietario.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdProprietario.ForeColor = System.Drawing.Color.Black;
             this.txtIdProprietario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtIdProprietario.Location = new System.Drawing.Point(264, 54);
+            this.txtIdProprietario.Location = new System.Drawing.Point(199, 54);
             this.txtIdProprietario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtIdProprietario.Name = "txtIdProprietario";
             this.txtIdProprietario.PlaceholderText = "";
@@ -215,7 +202,7 @@
             this.txtNombre.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.Black;
             this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNombre.Location = new System.Drawing.Point(264, 169);
+            this.txtNombre.Location = new System.Drawing.Point(199, 173);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PlaceholderText = "";
@@ -223,24 +210,44 @@
             this.txtNombre.Size = new System.Drawing.Size(225, 31);
             this.txtNombre.TabIndex = 37;
             // 
+            // guna2Button1
+            // 
+            this.guna2Button1.Animated = true;
+            this.guna2Button1.AutoRoundedCorners = true;
+            this.guna2Button1.DefaultAutoSize = true;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.IndicateFocus = true;
+            this.guna2Button1.Location = new System.Drawing.Point(442, 56);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(65, 27);
+            this.guna2Button1.TabIndex = 38;
+            this.guna2Button1.Text = "Buscar";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
             // FrmMascotaAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(614, 469);
+            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.cmbRaza);
             this.Controls.Add(this.cmbEspecie);
             this.Controls.Add(this.txtIdProprietario);
-            this.Controls.Add(this.bttnBuscarProp);
             this.Controls.Add(this.nombre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblNombreProp);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmMascotaAgregar";
             this.Text = "FrmMascotaAgregar";
             this.Load += new System.EventHandler(this.FrmMascotaAgregar_Load);
@@ -250,7 +257,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button bttnBuscarProp;
         private System.Windows.Forms.Label lblNombreProp;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
@@ -262,5 +268,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox cmbEspecie;
         private Guna.UI2.WinForms.Guna2TextBox txtIdProprietario;
         private Guna.UI2.WinForms.Guna2TextBox txtNombre;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

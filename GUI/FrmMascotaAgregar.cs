@@ -19,19 +19,6 @@ namespace ProyectoP3
             logEspecie = new EspecieService();
             logRaza = new RazaService();
         }
-        private void bttnBuscarProp_Click(object sender, EventArgs e)
-        {
-            Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
-            if (propietario == null)
-            {
-                MessageBox.Show("Propietario no encontrado", "Buscar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtIdProprietario.Clear();
-                SetControlesEstado(false);
-                return;
-            }
-            lblNombreProp.Text = propietario.Nombres;
-            SetControlesEstado(true);
-        }
        
        
         private DialogResult dialogoPregunta(string accion)
@@ -148,6 +135,20 @@ namespace ProyectoP3
         {
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) salir();
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
+            if (propietario == null)
+            {
+                MessageBox.Show("Propietario no encontrado", "Buscar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtIdProprietario.Clear();
+                SetControlesEstado(false);
+                return;
+            }
+            lblNombreProp.Text = propietario.Nombres;
+            SetControlesEstado(true);
         }
     }
 }

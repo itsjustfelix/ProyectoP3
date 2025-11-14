@@ -38,26 +38,6 @@ namespace ProyectoP3
         {
             cargarCmbEspecializacion();
         }
-        private void btnBuscarMascota_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
-                if (mascota == null)
-                {
-                    MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    lblNombreMascota.Text = "";
-                    SetControlesEstado(false);
-                    return;
-                }
-                lblNombreMascota.Text = mascota.Nombre;
-                SetControlesEstado(true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
         
         private void cargarCmbVeterinario(int especializacion)
         {
@@ -187,6 +167,27 @@ namespace ProyectoP3
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) salir();
 
+        }
+
+        private void btnBuscarMascota_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+                if (mascota == null)
+                {
+                    MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblNombreMascota.Text = "";
+                    SetControlesEstado(false);
+                    return;
+                }
+                lblNombreMascota.Text = mascota.Nombre;
+                SetControlesEstado(true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

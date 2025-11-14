@@ -41,7 +41,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(52, 138);
+            this.label3.Location = new System.Drawing.Point(79, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 19);
             this.label3.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             this.nombre.AutoSize = true;
             this.nombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombre.Location = new System.Drawing.Point(52, 68);
+            this.nombre.Location = new System.Drawing.Point(79, 51);
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(73, 19);
             this.nombre.TabIndex = 0;
@@ -69,7 +69,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.Location = new System.Drawing.Point(253, 218);
+            this.btnCancelar.Location = new System.Drawing.Point(276, 225);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(143, 45);
             this.btnCancelar.TabIndex = 53;
@@ -90,12 +90,12 @@
             this.txtNombre.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.Black;
             this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNombre.Location = new System.Drawing.Point(194, 68);
+            this.txtNombre.Location = new System.Drawing.Point(83, 79);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PlaceholderText = "";
             this.txtNombre.SelectedText = "";
-            this.txtNombre.Size = new System.Drawing.Size(225, 31);
+            this.txtNombre.Size = new System.Drawing.Size(336, 31);
             this.txtNombre.TabIndex = 52;
             // 
             // cbxEspecie
@@ -109,9 +109,9 @@
             this.cbxEspecie.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbxEspecie.ForeColor = System.Drawing.Color.Black;
             this.cbxEspecie.ItemHeight = 30;
-            this.cbxEspecie.Location = new System.Drawing.Point(194, 138);
+            this.cbxEspecie.Location = new System.Drawing.Point(83, 147);
             this.cbxEspecie.Name = "cbxEspecie";
-            this.cbxEspecie.Size = new System.Drawing.Size(225, 36);
+            this.cbxEspecie.Size = new System.Drawing.Size(336, 36);
             this.cbxEspecie.TabIndex = 51;
             // 
             // btnEditar
@@ -126,7 +126,7 @@
             this.btnEditar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.Black;
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
-            this.btnEditar.Location = new System.Drawing.Point(72, 218);
+            this.btnEditar.Location = new System.Drawing.Point(83, 225);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(130, 45);
             this.btnEditar.TabIndex = 54;
@@ -137,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(502, 299);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnCancelar);
@@ -145,6 +145,7 @@
             this.Controls.Add(this.cbxEspecie);
             this.Controls.Add(this.nombre);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmRazaEditar";
             this.Text = "FrmRazaEditar";
             this.Load += new System.EventHandler(this.FrmRazaEditar_Load);

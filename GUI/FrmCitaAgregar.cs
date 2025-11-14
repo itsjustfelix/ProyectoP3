@@ -26,28 +26,7 @@ namespace ProyectoP3
             cargarCmbEspecializacion();
             SetControlesEstado(false);
         }
-        private void btnBuscarMascota_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));  
-                if (mascota == null)
-                {
-                    MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    lblNombreMascota.Text = string.Empty;
-                    SetControlesEstado(false);
-                    return;
-                }
-                lblNombreMascota.Text = mascota.Nombre;
-                SetControlesEstado(true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        
-        
+         
         private void cargarCmbVeterinario(int especialializacion)
         {
             cmbVeterianrio.DataSource = null;
@@ -158,6 +137,27 @@ namespace ProyectoP3
         {
             var respuesta = DialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) Salir();
+        }
+
+        private void btnBuscarMascota_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+                if (mascota == null)
+                {
+                    MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblNombreMascota.Text = string.Empty;
+                    SetControlesEstado(false);
+                    return;
+                }
+                lblNombreMascota.Text = mascota.Nombre;
+                SetControlesEstado(true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

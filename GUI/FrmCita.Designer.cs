@@ -41,6 +41,10 @@
             this.bttnActualizar = new Guna.UI2.WinForms.Guna2Button();
             this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
             this.bttnAtenderCita = new Guna.UI2.WinForms.Guna2Button();
+            this.txtBuscarPorCodigo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCita)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,11 +81,11 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DGVCita.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGVCita.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
-            this.DGVCita.Location = new System.Drawing.Point(12, 12);
+            this.DGVCita.Location = new System.Drawing.Point(12, 77);
             this.DGVCita.Name = "DGVCita";
             this.DGVCita.ReadOnly = true;
             this.DGVCita.RowHeadersVisible = false;
-            this.DGVCita.Size = new System.Drawing.Size(1078, 557);
+            this.DGVCita.Size = new System.Drawing.Size(1078, 492);
             this.DGVCita.TabIndex = 4;
             this.DGVCita.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVCita.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -148,7 +152,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.Black;
             this.btnEliminar.IndicateFocus = true;
-            this.btnEliminar.Location = new System.Drawing.Point(514, 575);
+            this.btnEliminar.Location = new System.Drawing.Point(514, 610);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(141, 45);
             this.btnEliminar.TabIndex = 19;
@@ -167,7 +171,7 @@
             this.bttnActualizar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnActualizar.ForeColor = System.Drawing.Color.Black;
             this.bttnActualizar.IndicateFocus = true;
-            this.bttnActualizar.Location = new System.Drawing.Point(367, 575);
+            this.bttnActualizar.Location = new System.Drawing.Point(367, 610);
             this.bttnActualizar.Name = "bttnActualizar";
             this.bttnActualizar.Size = new System.Drawing.Size(141, 45);
             this.bttnActualizar.TabIndex = 18;
@@ -186,7 +190,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.IndicateFocus = true;
-            this.btnGuardar.Location = new System.Drawing.Point(220, 575);
+            this.btnGuardar.Location = new System.Drawing.Point(220, 610);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(141, 45);
             this.btnGuardar.TabIndex = 17;
@@ -205,12 +209,88 @@
             this.bttnAtenderCita.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnAtenderCita.ForeColor = System.Drawing.Color.Black;
             this.bttnAtenderCita.IndicateFocus = true;
-            this.bttnAtenderCita.Location = new System.Drawing.Point(661, 575);
+            this.bttnAtenderCita.Location = new System.Drawing.Point(661, 610);
             this.bttnAtenderCita.Name = "bttnAtenderCita";
             this.bttnAtenderCita.Size = new System.Drawing.Size(141, 45);
             this.bttnAtenderCita.TabIndex = 20;
             this.bttnAtenderCita.Text = "Atender Cita";
             this.bttnAtenderCita.Click += new System.EventHandler(this.bttnAtenderCita_Click);
+            // 
+            // txtBuscarPorCodigo
+            // 
+            this.txtBuscarPorCodigo.Animated = true;
+            this.txtBuscarPorCodigo.AutoRoundedCorners = true;
+            this.txtBuscarPorCodigo.BorderColor = System.Drawing.Color.White;
+            this.txtBuscarPorCodigo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarPorCodigo.DefaultText = "";
+            this.txtBuscarPorCodigo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarPorCodigo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarPorCodigo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarPorCodigo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarPorCodigo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarPorCodigo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtBuscarPorCodigo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarPorCodigo.Location = new System.Drawing.Point(12, 21);
+            this.txtBuscarPorCodigo.Name = "txtBuscarPorCodigo";
+            this.txtBuscarPorCodigo.PlaceholderText = "Buscar por codigo";
+            this.txtBuscarPorCodigo.SelectedText = "";
+            this.txtBuscarPorCodigo.Size = new System.Drawing.Size(272, 38);
+            this.txtBuscarPorCodigo.TabIndex = 21;
+            // 
+            // guna2TextBox1
+            // 
+            this.guna2TextBox1.Animated = true;
+            this.guna2TextBox1.AutoRoundedCorners = true;
+            this.guna2TextBox1.BorderColor = System.Drawing.Color.White;
+            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox1.DefaultText = "";
+            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Location = new System.Drawing.Point(661, 21);
+            this.guna2TextBox1.Name = "guna2TextBox1";
+            this.guna2TextBox1.PlaceholderText = "Buscar por fecha";
+            this.guna2TextBox1.SelectedText = "";
+            this.guna2TextBox1.Size = new System.Drawing.Size(272, 38);
+            this.guna2TextBox1.TabIndex = 22;
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.Animated = true;
+            this.guna2Button1.AutoRoundedCorners = true;
+            this.guna2Button1.DefaultAutoSize = true;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Location = new System.Drawing.Point(305, 27);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(65, 27);
+            this.guna2Button1.TabIndex = 23;
+            this.guna2Button1.Text = "Buscar";
+            // 
+            // guna2Button2
+            // 
+            this.guna2Button2.Animated = true;
+            this.guna2Button2.AutoRoundedCorners = true;
+            this.guna2Button2.DefaultAutoSize = true;
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.Location = new System.Drawing.Point(957, 27);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(65, 27);
+            this.guna2Button2.TabIndex = 24;
+            this.guna2Button2.Text = "Buscar";
             // 
             // FrmCita
             // 
@@ -218,6 +298,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1102, 690);
+            this.Controls.Add(this.guna2Button2);
+            this.Controls.Add(this.guna2Button1);
+            this.Controls.Add(this.guna2TextBox1);
+            this.Controls.Add(this.txtBuscarPorCodigo);
             this.Controls.Add(this.bttnAtenderCita);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.bttnActualizar);
@@ -229,6 +313,7 @@
             this.Load += new System.EventHandler(this.FrmCita_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVCita)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -243,5 +328,9 @@
         private Guna.UI2.WinForms.Guna2Button bttnActualizar;
         private Guna.UI2.WinForms.Guna2Button btnGuardar;
         private Guna.UI2.WinForms.Guna2Button bttnAtenderCita;
+        private Guna.UI2.WinForms.Guna2TextBox txtBuscarPorCodigo;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
     }
 }

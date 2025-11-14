@@ -52,7 +52,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(60, 363);
+            this.label7.Location = new System.Drawing.Point(143, 408);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 19);
             this.label7.TabIndex = 20;
@@ -62,7 +62,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(60, 194);
+            this.label5.Location = new System.Drawing.Point(143, 217);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(143, 19);
             this.label5.TabIndex = 16;
@@ -72,7 +72,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(60, 129);
+            this.label4.Location = new System.Drawing.Point(143, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(138, 19);
             this.label4.TabIndex = 14;
@@ -82,7 +82,7 @@
             // 
             this.RBMasculino.AutoSize = true;
             this.RBMasculino.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RBMasculino.Location = new System.Drawing.Point(259, 250);
+            this.RBMasculino.Location = new System.Drawing.Point(147, 304);
             this.RBMasculino.Name = "RBMasculino";
             this.RBMasculino.Size = new System.Drawing.Size(102, 22);
             this.RBMasculino.TabIndex = 10;
@@ -95,7 +95,7 @@
             // 
             this.RBFemenino.AutoSize = true;
             this.RBFemenino.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RBFemenino.Location = new System.Drawing.Point(380, 250);
+            this.RBFemenino.Location = new System.Drawing.Point(270, 304);
             this.RBFemenino.Name = "RBFemenino";
             this.RBFemenino.Size = new System.Drawing.Size(99, 22);
             this.RBFemenino.TabIndex = 11;
@@ -108,7 +108,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(60, 302);
+            this.label3.Location = new System.Drawing.Point(143, 342);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(155, 19);
             this.label3.TabIndex = 3;
@@ -118,7 +118,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(60, 251);
+            this.label1.Location = new System.Drawing.Point(143, 282);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 19);
             this.label1.TabIndex = 4;
@@ -128,7 +128,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(60, 12);
+            this.label2.Location = new System.Drawing.Point(143, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 19);
             this.label2.TabIndex = 5;
@@ -138,7 +138,7 @@
             // 
             this.nombre.AutoSize = true;
             this.nombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombre.Location = new System.Drawing.Point(60, 72);
+            this.nombre.Location = new System.Drawing.Point(143, 88);
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(79, 19);
             this.nombre.TabIndex = 6;
@@ -156,9 +156,10 @@
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.Location = new System.Drawing.Point(285, 430);
+            this.btnCancelar.IndicateFocus = true;
+            this.btnCancelar.Location = new System.Drawing.Point(270, 479);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(143, 45);
+            this.btnCancelar.Size = new System.Drawing.Size(143, 43);
             this.btnCancelar.TabIndex = 48;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
@@ -176,11 +177,11 @@
             this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(259, 363);
+            this.txtEmail.Location = new System.Drawing.Point(147, 430);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PlaceholderText = "";
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(220, 36);
+            this.txtEmail.Size = new System.Drawing.Size(225, 36);
             this.txtEmail.TabIndex = 46;
             // 
             // txtApellidoMaterno
@@ -196,11 +197,11 @@
             this.txtApellidoMaterno.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApellidoMaterno.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtApellidoMaterno.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtApellidoMaterno.Location = new System.Drawing.Point(259, 194);
+            this.txtApellidoMaterno.Location = new System.Drawing.Point(147, 239);
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
             this.txtApellidoMaterno.PlaceholderText = "";
             this.txtApellidoMaterno.SelectedText = "";
-            this.txtApellidoMaterno.Size = new System.Drawing.Size(220, 40);
+            this.txtApellidoMaterno.Size = new System.Drawing.Size(225, 36);
             this.txtApellidoMaterno.TabIndex = 45;
             // 
             // txtNumeroTelefonoPrimario
@@ -216,11 +217,11 @@
             this.txtNumeroTelefonoPrimario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNumeroTelefonoPrimario.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtNumeroTelefonoPrimario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNumeroTelefonoPrimario.Location = new System.Drawing.Point(259, 302);
+            this.txtNumeroTelefonoPrimario.Location = new System.Drawing.Point(147, 364);
             this.txtNumeroTelefonoPrimario.Name = "txtNumeroTelefonoPrimario";
             this.txtNumeroTelefonoPrimario.PlaceholderText = "";
             this.txtNumeroTelefonoPrimario.SelectedText = "";
-            this.txtNumeroTelefonoPrimario.Size = new System.Drawing.Size(220, 41);
+            this.txtNumeroTelefonoPrimario.Size = new System.Drawing.Size(225, 36);
             this.txtNumeroTelefonoPrimario.TabIndex = 44;
             // 
             // txtApellidoPaterno
@@ -236,11 +237,11 @@
             this.txtApellidoPaterno.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApellidoPaterno.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtApellidoPaterno.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtApellidoPaterno.Location = new System.Drawing.Point(259, 129);
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(147, 171);
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
             this.txtApellidoPaterno.PlaceholderText = "";
             this.txtApellidoPaterno.SelectedText = "";
-            this.txtApellidoPaterno.Size = new System.Drawing.Size(220, 43);
+            this.txtApellidoPaterno.Size = new System.Drawing.Size(225, 36);
             this.txtApellidoPaterno.TabIndex = 43;
             // 
             // txtId
@@ -256,7 +257,7 @@
             this.txtId.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtId.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtId.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtId.Location = new System.Drawing.Point(254, 12);
+            this.txtId.Location = new System.Drawing.Point(147, 49);
             this.txtId.Name = "txtId";
             this.txtId.PlaceholderText = "";
             this.txtId.SelectedText = "";
@@ -276,7 +277,7 @@
             this.txtNombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNombre.Location = new System.Drawing.Point(254, 72);
+            this.txtNombre.Location = new System.Drawing.Point(147, 110);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PlaceholderText = "";
             this.txtNombre.SelectedText = "";
@@ -295,9 +296,10 @@
             this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnAgregar.ForeColor = System.Drawing.Color.Black;
             this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
-            this.btnAgregar.Location = new System.Drawing.Point(109, 430);
+            this.btnAgregar.IndicateFocus = true;
+            this.btnAgregar.Location = new System.Drawing.Point(94, 479);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(143, 45);
+            this.btnAgregar.Size = new System.Drawing.Size(143, 43);
             this.btnAgregar.TabIndex = 47;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click_1);
@@ -306,8 +308,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(529, 498);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.ClientSize = new System.Drawing.Size(518, 546);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtEmail);
@@ -326,6 +328,7 @@
             this.Controls.Add(this.RBMasculino);
             this.Controls.Add(this.RBFemenino);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmPropietarioAgregar";
             this.Text = "FrmAgregarPropietario";
             this.ResumeLayout(false);

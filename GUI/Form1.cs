@@ -91,5 +91,10 @@ namespace ProyectoP3
         {
             openChildForm(new FrmEstadistica());
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            openChildForm(new FrmEstadistica());
+        }
     }
 }

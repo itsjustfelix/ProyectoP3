@@ -46,7 +46,7 @@
             // 
             this.lblNombreProp.AutoSize = true;
             this.lblNombreProp.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreProp.Location = new System.Drawing.Point(61, 131);
+            this.lblNombreProp.Location = new System.Drawing.Point(195, 98);
             this.lblNombreProp.Name = "lblNombreProp";
             this.lblNombreProp.Size = new System.Drawing.Size(160, 19);
             this.lblNombreProp.TabIndex = 0;
@@ -56,17 +56,17 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(61, 42);
+            this.label3.Location = new System.Drawing.Point(195, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 19);
+            this.label3.Size = new System.Drawing.Size(154, 19);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Id Propietario";
+            this.label3.Text = "Cedula Propietario";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(61, 353);
+            this.label1.Location = new System.Drawing.Point(196, 283);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 19);
             this.label1.TabIndex = 0;
@@ -76,7 +76,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(61, 278);
+            this.label2.Location = new System.Drawing.Point(195, 212);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 19);
             this.label2.TabIndex = 0;
@@ -86,7 +86,7 @@
             // 
             this.nombre.AutoSize = true;
             this.nombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombre.Location = new System.Drawing.Point(61, 210);
+            this.nombre.Location = new System.Drawing.Point(195, 146);
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(73, 19);
             this.nombre.TabIndex = 0;
@@ -106,7 +106,7 @@
             this.txtNombre.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.Black;
             this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNombre.Location = new System.Drawing.Point(252, 210);
+            this.txtNombre.Location = new System.Drawing.Point(199, 173);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PlaceholderText = "";
@@ -125,7 +125,7 @@
             this.cmbRaza.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbRaza.ForeColor = System.Drawing.Color.Black;
             this.cmbRaza.ItemHeight = 30;
-            this.cmbRaza.Location = new System.Drawing.Point(252, 353);
+            this.cmbRaza.Location = new System.Drawing.Point(199, 310);
             this.cmbRaza.Name = "cmbRaza";
             this.cmbRaza.Size = new System.Drawing.Size(225, 36);
             this.cmbRaza.TabIndex = 40;
@@ -141,7 +141,7 @@
             this.cmbEspecie.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbEspecie.ForeColor = System.Drawing.Color.Black;
             this.cmbEspecie.ItemHeight = 30;
-            this.cmbEspecie.Location = new System.Drawing.Point(252, 278);
+            this.cmbEspecie.Location = new System.Drawing.Point(199, 239);
             this.cmbEspecie.Name = "cmbEspecie";
             this.cmbEspecie.Size = new System.Drawing.Size(225, 36);
             this.cmbEspecie.TabIndex = 39;
@@ -161,7 +161,7 @@
             this.txtIdProprietario.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdProprietario.ForeColor = System.Drawing.Color.Black;
             this.txtIdProprietario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtIdProprietario.Location = new System.Drawing.Point(252, 42);
+            this.txtIdProprietario.Location = new System.Drawing.Point(199, 54);
             this.txtIdProprietario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtIdProprietario.Name = "txtIdProprietario";
             this.txtIdProprietario.PlaceholderText = "";
@@ -181,7 +181,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.Location = new System.Drawing.Point(288, 423);
+            this.btnCancelar.Location = new System.Drawing.Point(334, 412);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(130, 45);
             this.btnCancelar.TabIndex = 49;
@@ -200,7 +200,7 @@
             this.btnEditar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.Black;
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
-            this.btnEditar.Location = new System.Drawing.Point(94, 423);
+            this.btnEditar.Location = new System.Drawing.Point(124, 412);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(130, 45);
             this.btnEditar.TabIndex = 48;
@@ -211,8 +211,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(539, 508);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.ClientSize = new System.Drawing.Size(614, 469);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.txtNombre);
@@ -224,6 +224,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblNombreProp);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmMascotaEditar";
             this.Text = "FrmMascotaEditar";
             this.Load += new System.EventHandler(this.FrmMascotaEditar_Load);
