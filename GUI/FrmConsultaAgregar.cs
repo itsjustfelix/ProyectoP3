@@ -96,7 +96,7 @@ namespace ProyectoP3
             Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
             Veterinario veterinario = buscarVeterinario(int.Parse(cbmVeterinario.SelectedValue.ToString()));
             Consulta consulta = new Consulta();
-            consulta.Fecha = DateTime.Now.Date;
+            consulta.Fecha = DateTime.Now.Date.ToString("dd/MM/yyyy");
             consulta.Descripcion = txtDescripcion.Text;
             consulta.Diagnostico = txtDiagnostico.Text;
             consulta.Tratamiento = txtTratamiento.Text;

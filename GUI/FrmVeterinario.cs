@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -8,7 +9,7 @@ namespace ProyectoP3
 {
     public partial class FrmVeterinario : Form
     {
-        IServiceVeterinario VeterinarioService;
+        VeterinarioService VeterinarioService;
         public FrmVeterinario()
         {
             InitializeComponent();
@@ -17,7 +18,7 @@ namespace ProyectoP3
 
         private void FrmVeterinario_Load(object sender, EventArgs e)
         {
-            cargarDGV();
+            cargarDGV(VeterinarioService.Consultar());
         }
 
         private Veterinario buscar(int codigo)
@@ -58,10 +59,10 @@ namespace ProyectoP3
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
-        private void cargarDGV()
+        private void cargarDGV(List<Veterinario> lista)
         {
             DGVeterinario.Rows.Clear();
-            foreach (var item in VeterinarioService.Consultar())
+            foreach (var item in lista)
             {
                 DGVeterinario.Rows.Add(
                     item.Cedula,
@@ -77,7 +78,7 @@ namespace ProyectoP3
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmVeterinarioAgregar());
-            cargarDGV();
+            cargarDGV(VeterinarioService.Consultar());
         }
 
         private void bttnActualizar_Click(object sender, EventArgs e)
@@ -92,7 +93,7 @@ namespace ProyectoP3
                     return;
                 }
                 mostrarFrm(new FrmVeterinarioEditar(veterinario));
-                cargarDGV();
+                cargarDGV(VeterinarioService.Consultar());
             }
             catch (Exception ex)
             {
@@ -116,13 +117,26 @@ namespace ProyectoP3
                 {
                     eliminar(id);
                     MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
+                    cargarDGV(VeterinarioService.Consultar());
                 }
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+        private void bttnFiltrarPorEspecialidad_Click(object sender, EventArgs e)
+        {
+            if(txtFiltrarEspecializacion.Text.Trim() == "")
+            {
+                cargarDGV(VeterinarioService.Consultar());
+            }
+            else
+            {
+                cargarDGV(VeterinarioService.bsucarPorEspecializacion(txtFiltrarEspecializacion.Text.Trim()));
             }
         }
     }

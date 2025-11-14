@@ -47,7 +47,7 @@ namespace GeneradorDeDocumento
                         {
                             c1.Item().Text($"Código consulta: {entidad.Codigo}").AlignLeft();
                             c1.Item().Text($"Fecha documento: {DateTime.Now:dd/MM/yyyy}").AlignLeft();
-                            c1.Item().Text($"Fecha consulta: {entidad.Fecha.ToString("dd/MM/yyyy")}").AlignLeft();
+                            c1.Item().Text($"Fecha consulta: {entidad.Fecha}").AlignLeft();
                         });
 
                         row.RelativeItem().Column(c2 =>
@@ -56,6 +56,7 @@ namespace GeneradorDeDocumento
                             c2.Item().Text($"Especie: {entidad.Mascota.Especie.Nombre}").AlignLeft();
                             c2.Item().Text($"Raza: {entidad.Mascota.Raza.Nombre}").AlignLeft();
                             c2.Item().Text($"Nombre Veterinario: {entidad.Veterinario.Nombres}").AlignLeft();
+                            c2.Item().Text($"Especializacion: {entidad.Veterinario.Especializacion.Nombre}").AlignLeft();
                         });
                     });
 

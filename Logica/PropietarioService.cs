@@ -84,5 +84,10 @@ namespace Logica
             return true;
         }
 
+        public List<Propietario> BuscarPorCedula(int cedula)
+        {
+            return datoPropietario.Consultar().Where(p => p.Cedula == cedula).ToList();
+        }
+
     }
 }

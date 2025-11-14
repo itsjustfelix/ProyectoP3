@@ -126,7 +126,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;// "Consulta eliminada correctamente.";
+                        return true;
                     }
                 }
             }
@@ -145,7 +145,7 @@ namespace Dato
                     using (OracleCommand cmd = new OracleCommand("PKG_CONSULTAS.PRC_guardar", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add("v_fecha", OracleDbType.Varchar2).Value = consulta.Fecha.ToString("dd/MM/yyyy");
+                        cmd.Parameters.Add("v_fecha", OracleDbType.Varchar2).Value = consulta.Fecha;
                         cmd.Parameters.Add("v_descripcion", OracleDbType.Varchar2).Value = consulta.Descripcion;
                         cmd.Parameters.Add("v_diagnostico", OracleDbType.Varchar2).Value = consulta.Diagnostico;
                         cmd.Parameters.Add("v_tratamiento", OracleDbType.Varchar2).Value = consulta.Tratamiento;
@@ -154,7 +154,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true; //;
+                        return true;
                     }
                 }
             }
@@ -168,7 +168,7 @@ namespace Dato
         {
             Consulta consulta = new Consulta();
             consulta.Codigo = int.Parse(linea["CODIGO"].ToString());
-            consulta.Fecha = DateTime.ParseExact(linea["FECHA"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            consulta.Fecha = linea["FECHA"].ToString();
             consulta.Descripcion = linea["DESCRIPCION"].ToString();
             consulta.Diagnostico = linea["DIAGNOSTICO"].ToString();
             consulta.Tratamiento = linea["TRATAMIENTO"].ToString();

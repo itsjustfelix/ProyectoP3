@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -7,7 +8,7 @@ namespace ProyectoP3
 {
     public partial class FrmEspecializacion : Form
     {
-        ICrud<Especializacion> logEspecializacion;
+        EspecializacionService logEspecializacion;
         public FrmEspecializacion()
         {
             InitializeComponent();
@@ -17,7 +18,7 @@ namespace ProyectoP3
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmEspecializacionAgregar());
-            cargarDGV();
+            cargarDGV(logEspecializacion.Consultar());
         }
 
         private void btnEliminar_Click_1(object sender, EventArgs e)
@@ -36,7 +37,7 @@ namespace ProyectoP3
                 {
                     eliminar(id);
                     MessageBox.Show("Eliminación cancelada", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
+                    cargarDGV(logEspecializacion.Consultar());
                     return;
                 }
                 else
@@ -63,7 +64,7 @@ namespace ProyectoP3
                     return;
                 }
                 mostrarFrm(new FrmEspecializacionEditar(especializacion));
-                cargarDGV();
+                cargarDGV(logEspecializacion.Consultar());
             }
             catch (Exception)
             {
@@ -71,10 +72,10 @@ namespace ProyectoP3
             }
         }
 
-        private void cargarDGV()
+        private void cargarDGV(List<Especializacion> lista)
         {
             DGVEspecializacion.Rows.Clear();
-            foreach (var item in logEspecializacion.Consultar())
+            foreach (var item in lista)
             {
                 DGVEspecializacion.Rows.Add(item.Codigo, item.Nombre);
             }
@@ -98,7 +99,7 @@ namespace ProyectoP3
 
         private void FrmEspecializacion_Load(object sender, EventArgs e)
         {
-            cargarDGV();
+            cargarDGV(logEspecializacion.Consultar());
         }
 
         
@@ -128,7 +129,17 @@ namespace ProyectoP3
             }
         }
 
-
-       
+        private void bttnFiltrarPorNombre_Click(object sender, EventArgs e)
+        {
+            if (txtFiltrarPorNombre.Text.Trim() == "")
+            {
+                cargarDGV(logEspecializacion.Consultar());
+                return;
+            }
+            else
+            {
+                cargarDGV(logEspecializacion.BuscarPorNombre(txtFiltrarPorNombre.Text.Trim()));
+            }
+        }
     }
 }

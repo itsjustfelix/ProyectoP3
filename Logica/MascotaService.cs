@@ -66,5 +66,17 @@ namespace Logica
             return true;
         }
 
+        public List<Mascota> BuscarPorPropietario(int propietarioId)
+        {
+            return datoMascota.Consultar().Where(m => m.Propietario.Cedula == propietarioId).ToList();
+        }
+        public List<Mascota> BuscarPorEspecie(string especie)
+        {
+            return datoMascota.Consultar().Where(m => m.Especie.Nombre.Equals(especie,StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+        public List<Mascota> BuscarPorRaza(string raza)
+        {
+           return datoMascota.Consultar().Where(m => m.Raza.Nombre.Equals(raza,StringComparison.OrdinalIgnoreCase)).ToList();
+        }
     }
 }

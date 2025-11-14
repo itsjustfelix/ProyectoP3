@@ -37,8 +37,8 @@
             this.bttnActualizar = new Guna.UI2.WinForms.Guna2Button();
             this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
             this.btnEliminar = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.bttnFiltrarPorNombre = new Guna.UI2.WinForms.Guna2Button();
+            this.txtFiltrarPorNombre = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVEspecializacion)).BeginInit();
             this.SuspendLayout();
             // 
@@ -170,50 +170,51 @@
             this.btnEliminar.Text = "Eliminar Especializacion";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click_1);
             // 
-            // guna2Button1
+            // bttnFiltrarPorNombre
             // 
-            this.guna2Button1.Animated = true;
-            this.guna2Button1.AutoRoundedCorners = true;
-            this.guna2Button1.DefaultAutoSize = true;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(262, 17);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(65, 27);
-            this.guna2Button1.TabIndex = 27;
-            this.guna2Button1.Text = "Buscar";
+            this.bttnFiltrarPorNombre.Animated = true;
+            this.bttnFiltrarPorNombre.AutoRoundedCorners = true;
+            this.bttnFiltrarPorNombre.DefaultAutoSize = true;
+            this.bttnFiltrarPorNombre.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.bttnFiltrarPorNombre.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.bttnFiltrarPorNombre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.bttnFiltrarPorNombre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.bttnFiltrarPorNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bttnFiltrarPorNombre.ForeColor = System.Drawing.Color.White;
+            this.bttnFiltrarPorNombre.Location = new System.Drawing.Point(262, 17);
+            this.bttnFiltrarPorNombre.Name = "bttnFiltrarPorNombre";
+            this.bttnFiltrarPorNombre.Size = new System.Drawing.Size(61, 27);
+            this.bttnFiltrarPorNombre.TabIndex = 27;
+            this.bttnFiltrarPorNombre.Text = "Filtrar";
+            this.bttnFiltrarPorNombre.Click += new System.EventHandler(this.bttnFiltrarPorNombre_Click);
             // 
-            // guna2TextBox1
+            // txtFiltrarPorNombre
             // 
-            this.guna2TextBox1.Animated = true;
-            this.guna2TextBox1.AutoRoundedCorners = true;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(37, 12);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PlaceholderText = "Filtar por Codigo";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(200, 36);
-            this.guna2TextBox1.TabIndex = 28;
+            this.txtFiltrarPorNombre.Animated = true;
+            this.txtFiltrarPorNombre.AutoRoundedCorners = true;
+            this.txtFiltrarPorNombre.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtFiltrarPorNombre.DefaultText = "";
+            this.txtFiltrarPorNombre.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtFiltrarPorNombre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtFiltrarPorNombre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFiltrarPorNombre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFiltrarPorNombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFiltrarPorNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtFiltrarPorNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFiltrarPorNombre.Location = new System.Drawing.Point(37, 12);
+            this.txtFiltrarPorNombre.Name = "txtFiltrarPorNombre";
+            this.txtFiltrarPorNombre.PlaceholderText = "Filtar por Nombre";
+            this.txtFiltrarPorNombre.SelectedText = "";
+            this.txtFiltrarPorNombre.Size = new System.Drawing.Size(200, 36);
+            this.txtFiltrarPorNombre.TabIndex = 28;
             // 
             // FrmEspecializacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 690);
-            this.Controls.Add(this.guna2TextBox1);
-            this.Controls.Add(this.guna2Button1);
+            this.Controls.Add(this.txtFiltrarPorNombre);
+            this.Controls.Add(this.bttnFiltrarPorNombre);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.bttnActualizar);
             this.Controls.Add(this.btnGuardar);
@@ -235,7 +236,7 @@
         private Guna.UI2.WinForms.Guna2Button bttnActualizar;
         private Guna.UI2.WinForms.Guna2Button btnGuardar;
         private Guna.UI2.WinForms.Guna2Button btnEliminar;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2Button bttnFiltrarPorNombre;
+        private Guna.UI2.WinForms.Guna2TextBox txtFiltrarPorNombre;
     }
 }

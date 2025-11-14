@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -8,20 +9,16 @@ namespace ProyectoP3
 {
     public partial class FrmMascota : Form
     {
-        ICrud<Mascota> logMascota;
+        MascotaService logMascota;
         public FrmMascota()
         {
             InitializeComponent();
             logMascota = new MascotaService();
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            
-        }
-        private void cargarDGV()
+        private void cargarDGV(List<Mascota> lista)
         {
             DGVMascota.Rows.Clear();
-            foreach (var item in logMascota.Consultar())
+            foreach (var item in lista)
             {
                 DGVMascota.Rows.Add(
                     item.Codigo,
@@ -32,14 +29,7 @@ namespace ProyectoP3
                     );
             }
         }
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            
-        }
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-           
-        }
+        
         private Mascota buscar(int id)
         {
             return logMascota.BuscarPorId(id);
@@ -76,13 +66,13 @@ namespace ProyectoP3
         }
         private void FrmMascota_Load(object sender, EventArgs e)
         {
-            cargarDGV();
+            cargarDGV(logMascota.Consultar());
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmMascotaAgregar());
-            cargarDGV();
+            cargarDGV(logMascota.Consultar());
         }
 
         private void bttnActualizar_Click(object sender, EventArgs e)
@@ -97,7 +87,7 @@ namespace ProyectoP3
                     return;
                 }
                 mostrarFrm(new FrmMascotaEditar(mascota));
-                cargarDGV();
+                cargarDGV(logMascota.Consultar());
             }
             catch (Exception ex)
             {
@@ -121,7 +111,7 @@ namespace ProyectoP3
                 {
                     borrar(id);
                     MessageBox.Show("Mascota eliminada correctamente.", "Eliminar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
+                    cargarDGV(logMascota.Consultar());
                     return;
                 }
                 else return;
@@ -129,6 +119,45 @@ namespace ProyectoP3
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void bttnFiltrarPorRaza_Click(object sender, EventArgs e)
+        {
+            if(txtFiltrarRaza.Text.Trim() == "")
+            {
+                cargarDGV(logMascota.Consultar());
+                return;
+            }
+            else
+            {
+                cargarDGV(logMascota.BuscarPorRaza(txtFiltrarRaza.Text.Trim()));
+            }
+        }
+
+        private void bttnFiltrarPorEspecie_Click(object sender, EventArgs e)
+        {
+            if (txtFiltrarEspecie.Text.Trim() == "")
+            {
+                cargarDGV(logMascota.Consultar());
+                return;
+            }
+            else
+            {
+                cargarDGV(logMascota.BuscarPorEspecie(txtFiltrarEspecie.Text.Trim()));
+            }
+        }
+
+        private void bttnFiltrarPorPropietario_Click(object sender, EventArgs e)
+        {
+            if (txtFiltrarPropietario.Text.Trim() == "")
+            {
+                cargarDGV(logMascota.Consultar());
+                return;
+            }
+            else
+            {
+                cargarDGV(logMascota.BuscarPorPropietario(int.Parse(txtFiltrarPropietario.Text.Trim())));
             }
         }
     }

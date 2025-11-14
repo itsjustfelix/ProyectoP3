@@ -61,5 +61,11 @@ namespace Logica
                    && e.Codigo != entidad.Codigo)) throw new Exception("El nombre de la especializacion ya existe.");
             return true;
         }
+        public List<Especializacion> BuscarPorNombre(string nombre)
+        {
+            return datoEspecializacion.Consultar()
+                .Where(e => e.Nombre.IndexOf(nombre, StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToList();
+        }
     }
 }

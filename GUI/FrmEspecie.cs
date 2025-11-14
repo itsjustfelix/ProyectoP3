@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -9,7 +10,7 @@ namespace ProyectoP3
 {
     public partial class FrmEspecie : Form
     {
-        ICrud<Especie> logEspecie;
+        EspecieService logEspecie;
         public FrmEspecie()
         {
             InitializeComponent();
@@ -18,11 +19,11 @@ namespace ProyectoP3
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmEspecieAgregar());
-            cargarDGV();
+            cargarDGV(logEspecie.Consultar());
         }
         private void FrmEspecie_Load(object sender, EventArgs e)
         {
-            cargarDGV();
+            cargarDGV(logEspecie.Consultar());
         }
         private void bttnActualizar_Click(object sender, EventArgs e)
         {
@@ -36,7 +37,7 @@ namespace ProyectoP3
                     return;
                 }
                 mostrarFrm(new FrmEspecieEditar(especie));
-                cargarDGV();
+                cargarDGV(logEspecie.Consultar());
             }
             catch (Exception ex)
             {
@@ -60,7 +61,7 @@ namespace ProyectoP3
                 {
                     borrar(id);
                     MessageBox.Show("Especie eliminada correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
+                    cargarDGV(logEspecie.Consultar());
                     return;
                 }
                 else return;
@@ -95,15 +96,26 @@ namespace ProyectoP3
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
-        private void cargarDGV()
+        private void cargarDGV(List<Especie> lista)
         {
             DGVEspecie.Rows.Clear();
-            foreach (var especie in logEspecie.Consultar())
+            foreach (var especie in lista)
             {
                 DGVEspecie.Rows.Add(especie.Codigo, especie.Nombre);
             }
         }
 
-
+        private void bttnFiltrarNombre_Click(object sender, EventArgs e)
+        {
+            if (txtFiltrarNombre.Text.Trim() == "")
+            {
+                cargarDGV(logEspecie.Consultar());
+                return;
+            }
+            else
+            {
+                cargarDGV(logEspecie.BuscarPorNombre(txtFiltrarNombre.Text.Trim()));
+            }
+        }
     }
 }

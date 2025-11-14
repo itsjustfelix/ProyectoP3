@@ -62,5 +62,12 @@ namespace Logica
                     && e.Codigo != entidad.Codigo)) throw new Exception("El nombre de la especie ya existe.");
             return true;
         }
+
+        public List<Especie> BuscarPorNombre(string nombre)
+        {
+            return datoEspecie.Consultar()
+                .Where(e => e.Nombre.IndexOf(nombre, StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToList();
+        }
     }
 }

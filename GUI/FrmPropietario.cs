@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -14,12 +15,12 @@ namespace ProyectoP3
             propietarioService = new PropietarioService();
         }
 
-        ICrud<Propietario> propietarioService;
+        PropietarioService propietarioService;
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmPropietarioAgregar());
-            cargarDGV();
+            cargarDGV(propietarioService.Consultar());
         }
         private void guna2Button1_Click(object sender, EventArgs e)
         {
@@ -33,7 +34,7 @@ namespace ProyectoP3
                     return;
                 }
                 mostrarFrm(new FrmEditarPropietatio(propietario));
-                cargarDGV();
+                cargarDGV(propietarioService.Consultar());
             }
             catch (Exception)
             {
@@ -42,7 +43,7 @@ namespace ProyectoP3
         }
         private void FrmPropietario_Load(object sender, EventArgs e)
         {
-            cargarDGV();
+            cargarDGV(propietarioService.Consultar());
         }
         private void btnEliminar_Click_1(object sender, EventArgs e)
         {
@@ -60,7 +61,7 @@ namespace ProyectoP3
                 {
                     eliminar(id);
                     MessageBox.Show("Propietario actualizado correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
+                    cargarDGV(propietarioService.Consultar());
                     return;
                 }
                 else return;
@@ -107,10 +108,10 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private void cargarDGV()
+        private void cargarDGV(List<Propietario> lista)
         {
             DGVPropietario.Rows.Clear();
-            foreach (var item in propietarioService.Consultar())
+            foreach (var item in lista)
             {
                 DGVPropietario.Rows.Add(
                     item.Cedula,
@@ -126,7 +127,14 @@ namespace ProyectoP3
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-
+            if(txtFiltrarPropietario.Text.Trim() == "")
+            {
+                cargarDGV(propietarioService.Consultar());
+            }
+            else
+            {
+                cargarDGV(propietarioService.BuscarPorCedula(int.Parse(txtFiltrarPropietario.Text.Trim())));
+            }
         }
     }
 }

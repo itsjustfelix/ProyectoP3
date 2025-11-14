@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -8,7 +9,7 @@ namespace ProyectoP3
 {
     public partial class FrmCita : Form
     {
-        ICrud<Cita> CitaService;
+        CitaService CitaService;
         public FrmCita()
         {
             InitializeComponent();
@@ -16,12 +17,12 @@ namespace ProyectoP3
         }
         private void FrmCita_Load(object sender, EventArgs e)
         {
-            cargarDGV();
+            cargarDGV(CitaService.Consultar());
         }
-        private void cargarDGV()
+        private void cargarDGV(List<Cita> lista)
         {
             DGVCita.Rows.Clear();
-            foreach (Cita item in CitaService.Consultar())
+            foreach (Cita item in lista)
             {
                 DGVCita.Rows.Add(
                     item.Codigo,
@@ -35,7 +36,7 @@ namespace ProyectoP3
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmCitaAgregar());
-            cargarDGV();
+            cargarDGV(CitaService.Consultar());
         }
         private Cita buscarCita(int id)
         {
@@ -53,7 +54,7 @@ namespace ProyectoP3
                     return;
                 }
                 mostrarFrm(new FrmcitaEditar(cita));
-                cargarDGV();
+                cargarDGV(CitaService.Consultar());
             }
             catch (Exception ex)
             {
@@ -75,7 +76,7 @@ namespace ProyectoP3
                 {
                     borrarCita(id);
                     MessageBox.Show("Cita eliminada correctamente.", "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
+                    cargarDGV(CitaService.Consultar());
                     return;
                 }
                 else
@@ -122,7 +123,7 @@ namespace ProyectoP3
                 if (frm.resultado == DialogResult.OK)
                 {
                     borrarCita(id);
-                    cargarDGV();
+                    cargarDGV(CitaService.Consultar());
                 }
             }
             catch (Exception ex)
@@ -134,6 +135,32 @@ namespace ProyectoP3
         {
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
+        }
+
+        private void bttnFiltrarPorVeterinario_Click(object sender, EventArgs e)
+        {
+            if (txtFiltrarPorVeterinario.Text.Trim() == "")
+            {
+                cargarDGV(CitaService.Consultar());
+                return;
+            }
+            else
+            {
+                cargarDGV(CitaService.buscarPorVeterinario(txtFiltrarPorVeterinario.Text));
+            }
+        }
+
+        private void bttnFiltrarPorFecha_Click(object sender, EventArgs e)
+        {
+            if(txtFiltrarPorFacha.Text.Trim() == "")
+            {
+                cargarDGV(CitaService.Consultar());
+                return;
+            }
+            else
+            {
+               cargarDGV(CitaService.buscarPorFecha(txtFiltrarPorFacha.Text.Trim()));
+            }
         }
     }
 }

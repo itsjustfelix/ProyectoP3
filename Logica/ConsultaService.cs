@@ -44,7 +44,7 @@ namespace Logica
             {
                 if (Validar(NuevaEntidad))
                     return datoConsulta.Actualizar(NuevaEntidad);
-                else 
+                else
                     return false;
             }
             catch (Exception ex)
@@ -99,6 +99,19 @@ namespace Logica
                 return ex.Message;
             }
 
+        }
+
+        public List<Consulta> buscarPorFecha(string fecha)
+        {
+            return Consultar().FindAll(c => c.Fecha.Equals(fecha, StringComparison.OrdinalIgnoreCase));
+        }
+        public List<Consulta> buscarPorVeterinario(string nombre)
+        {
+            return Consultar().FindAll(c => c.Veterinario.Nombres.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+        }
+        public List<Consulta> buscarPorMascota(string nombre)
+        {
+            return Consultar().FindAll(c => c.Mascota.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

@@ -86,5 +86,11 @@ namespace Logica
         {
             return Consultar().Where(r => r.Especializacion.Codigo.Equals(cualidad)).ToList();
         }
+        public List<Veterinario> bsucarPorEspecializacion(string nombreEspecializacion)
+        {
+            return datoVeterinario.Consultar()
+                .Where(v => v.Especializacion.Nombre.IndexOf(nombreEspecializacion, StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToList();
+        }
     }
 }

@@ -67,5 +67,13 @@ namespace Logica
             DatoCita datoCita = new DatoCita();
             return datoCita.obtenerCitasPorFechas();
         }
+        public List<Cita> buscarPorVeterinario(string nombre)
+        {
+            return Consultar().FindAll(c => c.Veterinario.Nombres.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+        }
+        public List<Cita> buscarPorFecha(string fecha)
+        {
+            return Consultar().FindAll(c => c.Fecha.Equals(fecha, StringComparison.OrdinalIgnoreCase));
+        }
     }
 }

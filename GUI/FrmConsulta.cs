@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -15,10 +16,10 @@ namespace ProyectoP3
             InitializeComponent();
             consultaService = new ConsultaService();
         }
-        
+
         private void FrmConsulta_Load(object sender, EventArgs e)
         {
-            cargarDGV();
+            cargarDGV(consultaService.Consultar());
         }
         private void btnEliminar_Click_1(object sender, EventArgs e)
         {
@@ -35,7 +36,7 @@ namespace ProyectoP3
                 {
                     borrar(id);
                     MessageBox.Show("Operación cancelada.", "Eliminar Consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
+                    cargarDGV(consultaService.Consultar());
                     return;
                 }
                 else return;
@@ -48,7 +49,7 @@ namespace ProyectoP3
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmConsultaAgregar());
-            cargarDGV();
+            cargarDGV(consultaService.Consultar());
         }
         private void bttnActualizar_Click(object sender, EventArgs e)
         {
@@ -62,7 +63,7 @@ namespace ProyectoP3
                     return;
                 }
                 mostrarFrm(new FrmConsultaEditar(consulta));
-                cargarDGV();
+                cargarDGV(consultaService.Consultar());
             }
             catch (Exception ex)
             {
@@ -140,15 +141,15 @@ namespace ProyectoP3
         {
             return consultaService.BuscarPorId(id);
         }
-        private void cargarDGV()
+        private void cargarDGV(List<Consulta> lista)
         {
             DGVConsulta.Rows.Clear();
-            foreach (var consulta in consultaService.Consultar())
+            foreach (var consulta in lista)
             {
                 DGVConsulta.Rows.Add(
                     consulta.Codigo,
                     consulta.Mascota.Nombre,
-                    consulta.Fecha.ToString("dd/MM/yyyy"),
+                    consulta.Fecha,
                     consulta.Veterinario.Nombres,
                     consulta.Descripcion,
                     consulta.Diagnostico,
@@ -169,12 +170,46 @@ namespace ProyectoP3
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-
+            if (txtFiltrarPorVeterinario.Text.Trim() == "")
+            {
+                cargarDGV(consultaService.Consultar());
+                return;
+            }
+            else
+            {
+                cargarDGV(consultaService.buscarPorVeterinario(txtFiltrarPorVeterinario.Text.Trim()));
+            }
         }
 
         private void guna2TextBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void bttnFiltrarPorFecha_Click(object sender, EventArgs e)
+        {
+            if (txtFiltrarPorFecha.Text.Trim() == "")
+            {
+                cargarDGV(consultaService.Consultar());
+                return;
+            }
+            else
+            {
+                cargarDGV(consultaService.buscarPorFecha(txtFiltrarPorFecha.Text.Trim()));
+            }
+        }
+
+        private void bttnFiltrarPorMascota_Click(object sender, EventArgs e)
+        {
+            if (txtFiltrarPorMascota.Text.Trim() == "")
+            {
+                cargarDGV(consultaService.Consultar());
+                return;
+            }
+            else
+            {
+                cargarDGV(consultaService.buscarPorMascota(txtFiltrarPorMascota.Text.Trim()));
+            }
         }
     }
 }
