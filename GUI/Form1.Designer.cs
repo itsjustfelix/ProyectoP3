@@ -43,6 +43,7 @@
             this.btnRaza = new Guna.UI2.WinForms.Guna2Button();
             this.btnEspecie = new Guna.UI2.WinForms.Guna2Button();
             this.btnPropietario = new Guna.UI2.WinForms.Guna2Button();
+            this.bttnSalir = new Guna.UI2.WinForms.Guna2Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -54,13 +55,14 @@
             this.panel2.Location = new System.Drawing.Point(182, 0);
             this.panel2.Name = "panel2";
             this.panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.panel2.Size = new System.Drawing.Size(1102, 749);
+            this.panel2.Size = new System.Drawing.Size(1102, 690);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.panel3.Controls.Add(this.bttnSalir);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.guna2Button1);
             this.panel3.Controls.Add(this.button4);
@@ -77,7 +79,7 @@
             this.panel3.ForeColor = System.Drawing.Color.Transparent;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(182, 749);
+            this.panel3.Size = new System.Drawing.Size(182, 690);
             this.panel3.TabIndex = 13;
             // 
             // label1
@@ -358,11 +360,37 @@
             this.btnPropietario.TextOffset = new System.Drawing.Point(10, 0);
             this.btnPropietario.Click += new System.EventHandler(this.btnPropietario_Click_1);
             // 
+            // bttnSalir
+            // 
+            this.bttnSalir.Animated = true;
+            this.bttnSalir.AutoRoundedCorners = true;
+            this.bttnSalir.BorderColor = System.Drawing.Color.Gray;
+            this.bttnSalir.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.bttnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnSalir.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.bttnSalir.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.bttnSalir.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.bttnSalir.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.bttnSalir.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.bttnSalir.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.bttnSalir.ForeColor = System.Drawing.Color.Black;
+            this.bttnSalir.Image = ((System.Drawing.Image)(resources.GetObject("bttnSalir.Image")));
+            this.bttnSalir.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bttnSalir.IndicateFocus = true;
+            this.bttnSalir.Location = new System.Drawing.Point(-1, 641);
+            this.bttnSalir.Name = "bttnSalir";
+            this.bttnSalir.Size = new System.Drawing.Size(182, 45);
+            this.bttnSalir.TabIndex = 24;
+            this.bttnSalir.Text = "Salir";
+            this.bttnSalir.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bttnSalir.TextOffset = new System.Drawing.Point(10, 0);
+            this.bttnSalir.Click += new System.EventHandler(this.bttnSalir_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 749);
+            this.ClientSize = new System.Drawing.Size(1284, 690);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Name = "Form1";
@@ -390,6 +418,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button bttnSalir;
     }
 }
 

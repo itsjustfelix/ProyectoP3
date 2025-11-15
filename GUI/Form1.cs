@@ -96,5 +96,10 @@ namespace ProyectoP3
         {
             openChildForm(new FrmEstadistica());
         }
+
+        private void bttnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
