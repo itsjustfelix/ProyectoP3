@@ -13,7 +13,7 @@ namespace Entidad
         public Especie() { }
         public override string ToString()
         {
-            return $"{Codigo};{Nombre}";
+            return $"{Codigo}";
         }
     }
 }

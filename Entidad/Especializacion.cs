@@ -14,7 +14,7 @@ namespace Entidad
         public Especializacion() { } 
         public override string ToString()
         {
-            return $"{Codigo};{Nombre}";
+            return $"{Codigo}";
         }
     }
 }

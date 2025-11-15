@@ -10,7 +10,7 @@ namespace ProyectoP3
     {
         ICrud<Mascota> logMascota;
         ICrud<Cita> logCita;
-        IServiceVeterinario logVeterinario;
+        IVeterinarioService logVeterinario;
         ICrud<Especializacion> logEspecializacion;
         public FrmCitaAgregar()
         {
@@ -26,60 +26,11 @@ namespace ProyectoP3
             cargarCmbEspecializacion();
             SetControlesEstado(false);
         }
-        private void btnBuscarMascota_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));  
-                if (mascota == null)
-                {
-                    MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    lblNombreMascota.Text = string.Empty;
-                    SetControlesEstado(false);
-                    return;
-                }
-                lblNombreMascota.Text = mascota.Nombre;
-                SetControlesEstado(true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Validar())
-                {
-                    var mensaje = Agregar(Mapeo());
-                    if (mensaje)
-                    {
-                        MessageBox.Show("Cita guardada correctamente.", "Agregar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Salir();
-                    }
-                    else MessageBox.Show("Hubo un error al momento de guardar la cita.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = DialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) Salir();
-        }
-        private void cmbEspecializacion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(cmbEspecializacion.SelectedIndex != -1) 
-                cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
-        }
+         
         private void cargarCmbVeterinario(int especialializacion)
         {
             cmbVeterianrio.DataSource = null;
-            cmbVeterianrio.DataSource = logVeterinario.BuscarPorCualidad(especialializacion);
+            cmbVeterianrio.DataSource = logVeterinario.buscarPorEspecializacion(especialializacion);
             cmbVeterianrio.DisplayMember = "Nombres";
             cmbVeterianrio.ValueMember = "Cedula";
             cmbVeterianrio.SelectedIndex = -1;
@@ -153,6 +104,60 @@ namespace ProyectoP3
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmbEspecializacion_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (cmbEspecializacion.SelectedIndex != -1)
+                cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
+        }
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Validar())
+                {
+                    var mensaje = Agregar(Mapeo());
+                    if (mensaje)
+                    {
+                        MessageBox.Show("Cita guardada correctamente.", "Agregar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Salir();
+                    }
+                    else MessageBox.Show("Hubo un error al momento de guardar la cita.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            var respuesta = DialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) Salir();
+        }
+
+        private void btnBuscarMascota_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+                if (mascota == null)
+                {
+                    MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblNombreMascota.Text = string.Empty;
+                    SetControlesEstado(false);
+                    return;
+                }
+                lblNombreMascota.Text = mascota.Nombre;
+                SetControlesEstado(true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

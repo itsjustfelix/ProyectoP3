@@ -8,7 +8,7 @@ namespace ProyectoP3
     public partial class FrmRazaEditar : Form
     {
         ICrud<Especie> logEspecie;
-        IServiceRaza logRaza;
+        IRazaService logRaza;
         Raza raza;
         int idRaza;
         public FrmRazaEditar(Raza raza)
@@ -35,32 +35,7 @@ namespace ProyectoP3
             cbxEspecie.DisplayMember = "nombre";
             cbxEspecie.ValueMember = "Codigo";
         }
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (validar())
-                {
-                    var message = editar(Mapeo());
-                    if (message)
-                    {
-                        MessageBox.Show("Raza actualizada correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        salir();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hubo un error al momento de actualizar la raza correctamente", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-
-        }
+        
         private bool validar()
         {
             if (string.IsNullOrEmpty(txtNombre.Text)) throw new ArgumentNullException("El campo Nombre es obligatorio.");
@@ -77,11 +52,7 @@ namespace ProyectoP3
                 throw new Exception(e.Message);
             }
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) salir();
-        }
+       
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -107,6 +78,37 @@ namespace ProyectoP3
             raza.Nombre = txtNombre.Text;
             raza.Especie = especie;
             return raza;
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) salir();
+        }
+
+        private void btnEditar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (validar())
+                {
+                    var message = editar(Mapeo());
+                    if (message)
+                    {
+                        MessageBox.Show("Raza actualizada correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al momento de actualizar la raza correctamente", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

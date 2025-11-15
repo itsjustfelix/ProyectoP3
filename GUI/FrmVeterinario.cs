@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -8,66 +9,16 @@ namespace ProyectoP3
 {
     public partial class FrmVeterinario : Form
     {
-        IServiceVeterinario VeterinarioService;
+        VeterinarioService VeterinarioService;
         public FrmVeterinario()
         {
             InitializeComponent();
             VeterinarioService = new VeterinarioService();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            mostrarFrm(new FrmVeterinarioAgregar());
-            cargarDGV();
-        }
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
-                Veterinario veterinario = buscar(id);
-                if (veterinario == null)
-                {
-                    MessageBox.Show("Veterinario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                mostrarFrm(new FrmVeterinarioEditar(veterinario));
-                cargarDGV();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-        }
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
-                Veterinario veterinario = buscar(id);
-                if (veterinario == null)
-                {
-                    MessageBox.Show("Propietario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                var respuesta = dialogoPregunta("eliminar");
-                if (respuesta == DialogResult.Yes)
-                {
-                    eliminar(id);
-                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
-                }
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
         private void FrmVeterinario_Load(object sender, EventArgs e)
         {
-            cargarDGV();
+            cargarDGV(VeterinarioService.Consultar());
         }
 
         private Veterinario buscar(int codigo)
@@ -108,10 +59,10 @@ namespace ProyectoP3
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
-        private void cargarDGV()
+        private void cargarDGV(List<Veterinario> lista)
         {
             DGVeterinario.Rows.Clear();
-            foreach (var item in VeterinarioService.Consultar())
+            foreach (var item in lista)
             {
                 DGVeterinario.Rows.Add(
                     item.Cedula,
@@ -121,6 +72,83 @@ namespace ProyectoP3
                     item.Sexo,
                     item.Telefono,
                     item.Especializacion.Nombre);
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            mostrarFrm(new FrmVeterinarioAgregar());
+            cargarDGV(VeterinarioService.Consultar());
+        }
+
+        private void bttnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string input = Interaction.InputBox("Digite el ID del veterinario a buscar", "Buscar Veterinario", "");
+                if (string.IsNullOrWhiteSpace(input))
+                    return;
+
+                if (!int.TryParse(input, out int id))
+                    throw new Exception("El ID debe ser solo números");
+
+                Veterinario veterinario = buscar(id);
+                if (veterinario == null)
+                {
+                    MessageBox.Show("Veterinario no encontrado", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                mostrarFrm(new FrmVeterinarioEditar(veterinario));
+                cargarDGV(VeterinarioService.Consultar());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnEliminar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                string input = Interaction.InputBox("Digite el ID del veterinario a eliminar", "Eliminar Veterinario", "");
+                if (string.IsNullOrWhiteSpace(input))
+                    return;
+
+                if (!int.TryParse(input, out int id))
+                    throw new Exception("El ID debe ser solo números");
+
+                Veterinario veterinario = buscar(id);
+                if (veterinario == null)
+                {
+                    MessageBox.Show("Veterinario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                var respuesta = dialogoPregunta("eliminar");
+                if (respuesta == DialogResult.Yes)
+                {
+                    eliminar(id);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(VeterinarioService.Consultar());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void bttnFiltrarPorEspecialidad_Click(object sender, EventArgs e)
+        {
+            if(txtFiltrarEspecializacion.Text.Trim() == "")
+            {
+                cargarDGV(VeterinarioService.Consultar());
+            }
+            else
+            {
+                cargarDGV(VeterinarioService.bsucarPorNombreEspecializacion(txtFiltrarEspecializacion.Text.Trim()));
             }
         }
     }

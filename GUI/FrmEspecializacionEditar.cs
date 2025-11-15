@@ -14,30 +14,7 @@ namespace ProyectoP3
             logEspecializacion = new EspecializacionService();
         }
         int codigo;
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (validar())
-                {
-                    var mensaje = editar(Mapeo());
-                    if (mensaje)
-                    {
-                        MessageBox.Show("Especializacion actualizada correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        salir();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hubo un error al momento de actualizar la especializacion.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        
         private void salir()
         {
             this.Close();
@@ -70,11 +47,7 @@ namespace ProyectoP3
             txtNombre.Text = especializacion.Nombre;
             codigo = especializacion.Codigo;
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) salir();
-        }
+        
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -83,6 +56,47 @@ namespace ProyectoP3
              MessageBoxButtons.YesNo,
              MessageBoxIcon.Question
              );
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nombre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (validar())
+                {
+                    var mensaje = editar(Mapeo());
+                    if (mensaje)
+                    {
+                        MessageBox.Show("Especializacion actualizada correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al momento de actualizar la especializacion.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) salir();
         }
     }
 }

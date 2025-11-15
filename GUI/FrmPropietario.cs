@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -14,55 +15,73 @@ namespace ProyectoP3
             propietarioService = new PropietarioService();
         }
 
-        ICrud<Propietario> propietarioService;
+        PropietarioService propietarioService;
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-
             mostrarFrm(new FrmPropietarioAgregar());
-            cargarDGV();
+            cargarDGV(propietarioService.Consultar());
         }
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void guna2Button1_Click(object sender, EventArgs e)
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Digite la cedula del propietario ha buscar", "Buscar Propietario", ""));
+                string input = Interaction.InputBox("Digite la cedula del propietario ha buscar", "Buscar Propietario", "");
+
+                if (string.IsNullOrWhiteSpace(input))
+                    return;
+
+                if (!int.TryParse(input, out int id))
+                    throw new Exception("La cedula debe ser solamente numeros");
+
                 Propietario propietario = buscar(id);
+
                 if (propietario == null)
                 {
                     MessageBox.Show("Propietario no encontrado", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+
                 mostrarFrm(new FrmEditarPropietatio(propietario));
-                cargarDGV();
+                cargarDGV(propietarioService.Consultar());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("La cedula debe ser solamente numeros", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         private void FrmPropietario_Load(object sender, EventArgs e)
         {
-            cargarDGV();
+            cargarDGV(propietarioService.Consultar());
         }
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
+                string input = Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", "");
+
+                if (string.IsNullOrWhiteSpace(input))
+                    return;
+
+                if (!int.TryParse(input, out int id))
+                    throw new Exception("El ID debe ser solamente numeros");
+
                 Propietario propietario = buscar(id);
+
                 if (propietario == null)
                 {
                     MessageBox.Show("Propietario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+
                 var respuesta = dialogoPregunta("eliminar");
+
                 if (respuesta == DialogResult.Yes)
                 {
                     eliminar(id);
-                    MessageBox.Show("Propietario actualizado correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
-                    return;
+                    MessageBox.Show("Propietario eliminado correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(propietarioService.Consultar());
                 }
                 else return;
             }
@@ -70,8 +89,8 @@ namespace ProyectoP3
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
+
         private void mostrarFrm(Form frm)
         {
             frm.StartPosition = FormStartPosition.CenterParent;
@@ -109,10 +128,10 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private void cargarDGV()
+        private void cargarDGV(List<Propietario> lista)
         {
             DGVPropietario.Rows.Clear();
-            foreach (var item in propietarioService.Consultar())
+            foreach (var item in lista)
             {
                 DGVPropietario.Rows.Add(
                     item.Cedula,
@@ -126,5 +145,16 @@ namespace ProyectoP3
             }
         }
 
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            if(txtFiltrarPropietario.Text.Trim() == "")
+            {
+                cargarDGV(propietarioService.Consultar());
+            }
+            else
+            {
+                cargarDGV(propietarioService.BuscarPorCedula(int.Parse(txtFiltrarPropietario.Text.Trim())));
+            }
+        }
     }
 }

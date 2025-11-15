@@ -14,7 +14,7 @@ namespace Entidad
         public Raza() { }
         public override string ToString()
         {
-            return $"{Codigo};{Nombre};{Especie.Codigo}";
+            return $"{Codigo}";
         }
     }
 }

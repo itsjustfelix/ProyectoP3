@@ -12,7 +12,7 @@ namespace Entidad
         public Veterinario() { }
         public override string ToString()
         {
-            return $"{Cedula};{Nombres};{ApellidoPaterno};{ApellidoMaterno};{Sexo};{Telefono};{Especializacion.Codigo}";
+            return $"{Cedula}";
         }
     }
 }

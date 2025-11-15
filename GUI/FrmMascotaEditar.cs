@@ -10,7 +10,7 @@ namespace ProyectoP3
         ICrud<Propietario> logPropietario;
         ICrud<Mascota> logMascota;
         ICrud<Especie> logEspecie;
-        IServiceRaza logRaza;
+        IRazaService logRaza;
         private Mascota mascota;
         int codigo;
         public FrmMascotaEditar(Mascota mascota)
@@ -24,30 +24,7 @@ namespace ProyectoP3
             logRaza = new RazaService();
         }
         
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (validar())
-                {
-                    var message = editar(Mapeo());
-                    if (message)
-                    {
-                        MessageBox.Show("Mascota actualizada correctamente.", "Editar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        salir();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hubo un error al momento de actualizar la mascota.", "Editar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        
         private void mostrarMascota(Mascota mascota)
         {
             txtIdProprietario.Text = mascota.Propietario.Cedula.ToString();
@@ -93,12 +70,7 @@ namespace ProyectoP3
         {
             this.Close();
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) salir();
-
-        }
+      
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -108,10 +80,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private void cmbEspecie_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cargarCmbRaza(int.Parse(cmbEspecie.SelectedValue.ToString()));
-        }
+      
         private void cargarCmbEspecie()
         {
             cmbEspecie.DataSource = logEspecie.Consultar();
@@ -119,10 +88,11 @@ namespace ProyectoP3
             cmbEspecie.ValueMember = "Codigo";
             
         }
-        private void cargarCmbRaza(int idEspecie)
+        private void cargarCmbRaza(string id)
         {
-            cmbRaza.DataSource = null;
-            cmbRaza.DataSource = logRaza.BuscarPorCualidad(idEspecie);
+            this.Text = id;
+            int idEspecie = int.Parse(id);
+            cmbRaza.DataSource = logRaza.BuscarPorEspecie(idEspecie);
             cmbRaza.DisplayMember = "Nombre";
             cmbRaza.ValueMember = "Codigo";
         }
@@ -143,6 +113,43 @@ namespace ProyectoP3
             mascota.Raza = raza;
             mascota.Propietario = propietario;
             return mascota;
+        }
+
+        private void cmbEspecie_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            this.Text = cmbEspecie.SelectedValue.ToString();
+            cargarCmbRaza(cmbEspecie.SelectedValue.ToString());
+        }
+
+        private void btnEditar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (validar())
+                {
+                    var message = editar(Mapeo());
+                    if (message)
+                    {
+                        MessageBox.Show("Mascota actualizada correctamente.", "Editar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al momento de actualizar la mascota.", "Editar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) salir();
         }
     }
 }

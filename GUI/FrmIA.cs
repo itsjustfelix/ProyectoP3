@@ -14,9 +14,44 @@ namespace ProyectoP3
         {
             InitializeComponent();
         }
+        
+        private Mensaje GetMensajeIA(string respuesta)
+        {
+            var mensaje = new Mensaje
+            {
+                Role = role.Model,
+                Content = respuesta
+            };
 
+            return mensaje;
+        }
 
-        private async void btnEnviar_Click(object sender, EventArgs e)
+        private Mensaje GetMensajeUsuario(string textoUsuario)
+        {
+            var mensaje = new Mensaje
+            {
+                Role = role.User,
+                Content = textoUsuario
+            };
+            return mensaje;
+        }
+
+        private void FrmIA_Load(object sender, EventArgs e)
+        {
+            txtPregunta.Focus();
+            lblEstado.Text = string.Empty;
+        }
+
+        private void txtPregunta_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Evita salto de línea
+                btnEnviar.PerformClick();
+            }
+        }
+
+        private async void btnEnviar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -55,43 +90,6 @@ namespace ProyectoP3
             {
                 lblEstado.Text = "Error: " + ex.Message;
             }
-
-        }
-        private Mensaje GetMensajeIA(string respuesta)
-        {
-            var mensaje = new Mensaje
-            {
-                Role = role.Model,
-                Content = respuesta
-            };
-
-            return mensaje;
-        }
-
-        private Mensaje GetMensajeUsuario(string textoUsuario)
-        {
-            var mensaje = new Mensaje
-            {
-                Role = role.User,
-                Content = textoUsuario
-            };
-            return mensaje;
-        }
-
-        private void txtPregunta_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true; // Evita salto de línea
-                btnEnviar.PerformClick();
-            }
-
-        }
-
-        private void FrmIA_Load(object sender, EventArgs e)
-        {
-            txtPregunta.Focus();
-            lblEstado.Text = string.Empty;
         }
     }
 }

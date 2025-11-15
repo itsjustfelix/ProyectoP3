@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -8,7 +9,7 @@ namespace ProyectoP3
 {
     public partial class FrmCita : Form
     {
-        ICrud<Cita> CitaService;
+        CitaService CitaService;
         public FrmCita()
         {
             InitializeComponent();
@@ -16,12 +17,12 @@ namespace ProyectoP3
         }
         private void FrmCita_Load(object sender, EventArgs e)
         {
-            cargarDGV();
+            cargarDGV(CitaService.Consultar());
         }
-        private void cargarDGV()
+        private void cargarDGV(List<Cita> lista)
         {
             DGVCita.Rows.Clear();
-            foreach (Cita item in CitaService.Consultar())
+            foreach (Cita item in lista)
             {
                 DGVCita.Rows.Add(
                     item.Codigo,
@@ -32,60 +33,82 @@ namespace ProyectoP3
                     );
             }
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmCitaAgregar());
-            cargarDGV();
+            cargarDGV(CitaService.Consultar());
         }
         private Cita buscarCita(int id)
         {
             return CitaService.BuscarPorId(id);
         }
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void bttnActualizar_Click(object sender, EventArgs e)
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la cita a buscar:", "Buscar cita", ""));
+                string input = Interaction.InputBox(
+                    "Ingrese el código de la cita a buscar:",
+                    "Buscar Cita", ""
+                );
+
+                if (string.IsNullOrWhiteSpace(input))
+                    return;
+
+                if (!int.TryParse(input, out int id))
+                {
+                    MessageBox.Show("Debe ingresar un número válido.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 Cita cita = buscarCita(id);
                 if (cita == null)
                 {
-                    MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cita no encontrada.", "Buscar Cita",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+
                 mostrarFrm(new FrmcitaEditar(cita));
-                cargarDGV();
+                cargarDGV(CitaService.Consultar());
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void btnEliminar_Click(object sender, EventArgs e)
+
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
-                int id =int.Parse(Interaction.InputBox("Ingrese el codigo de la cita a eliminar:", "Eliminar cita", ""));
+                string input = Interaction.InputBox("Ingrese el código de la cita a eliminar:", "Eliminar Cita", "");
+                if (string.IsNullOrWhiteSpace(input)) return;
+                if (!int.TryParse(input, out int id))
+                {
+                    MessageBox.Show("Debe ingresar un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (buscarCita(id) == null)
                 {
-                    MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cita no encontrada.", "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                DialogResult result = dialogoPregunta("eliminar la cita");
-                if (result == DialogResult.Yes)
-                {
-                    borrarCita(id);
-                    MessageBox.Show("Cita eliminada correctamente.", "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
-                    return;
-                }
-                else
-                    return;
+
+                if (dialogoPregunta("eliminar la cita") != DialogResult.Yes) return;
+
+                borrarCita(id);
+                MessageBox.Show("Cita eliminada correctamente.", "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cargarDGV(CitaService.Consultar());
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private bool borrarCita(int codigoCita)
         {
             try
@@ -106,34 +129,69 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void bttnAtenderCita_Click(object sender, EventArgs e)
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el ID de la cita a buscar:", "Buscar cita", ""));
+                string input = Interaction.InputBox("Ingrese el código de la cita a buscar:", "Buscar Cita", "");
+                if (string.IsNullOrWhiteSpace(input)) return;
+                if (!int.TryParse(input, out int id))
+                {
+                    MessageBox.Show("Debe ingresar un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 Cita cita = buscarCita(id);
                 if (cita == null)
                 {
                     MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                var frm = new FrmConsultaAgregar(cita.Mascota,cita.Veterinario);
+
+                var frm = new FrmConsultaAgregar(cita.Mascota, cita.Veterinario);
                 mostrarFrm(frm);
+
                 if (frm.resultado == DialogResult.OK)
                 {
                     borrarCita(id);
-                    cargarDGV();
+                    cargarDGV(CitaService.Consultar());
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void mostrarFrm(Form frm)
         {
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
+        }
+
+        private void bttnFiltrarPorVeterinario_Click(object sender, EventArgs e)
+        {
+            if (txtFiltrarPorVeterinario.Text.Trim() == "")
+            {
+                cargarDGV(CitaService.Consultar());
+                return;
+            }
+            else
+            {
+                cargarDGV(CitaService.buscarPorVeterinario(txtFiltrarPorVeterinario.Text));
+            }
+        }
+
+        private void bttnFiltrarPorFecha_Click(object sender, EventArgs e)
+        {
+            if(txtFiltrarPorFacha.Text.Trim() == "")
+            {
+                cargarDGV(CitaService.Consultar());
+                return;
+            }
+            else
+            {
+               cargarDGV(CitaService.buscarPorFecha(txtFiltrarPorFacha.Text.Trim()));
+            }
         }
     }
 }

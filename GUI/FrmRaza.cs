@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -12,24 +13,76 @@ namespace ProyectoP3
             InitializeComponent();
             logRaza = new RazaService();
         }
-        IServiceRaza logRaza;
+        RazaService logRaza;
         private void FrmRaza_Load(object sender, EventArgs e)
         {
-            cargarDGV();
+            cargarDGV(logRaza.Consultar());
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmRazaAgregar());
-            cargarDGV();
+            cargarDGV(logRaza.Consultar());
         }
-        private void cargarDGV()
+        private void bttnActualizar_Click(object sender, EventArgs e)
         {
-            DGVRaza.Rows.Clear();
-            foreach (var raza in logRaza.Consultar())
+            try
             {
-                DGVRaza.Rows.Add(raza.Codigo, raza.Nombre, raza.Especie.Nombre);
+                string input = Interaction.InputBox("Ingrese el ID de la raza a buscar:", "Buscar Raza", "");
+                if (string.IsNullOrWhiteSpace(input))
+                    return;
+
+                if (!int.TryParse(input, out int id))
+                    throw new Exception("El ID debe ser solo números");
+
+                Raza raza = buscarRaza(id);
+                if (raza == null)
+                {
+                    MessageBox.Show("Raza no encontrada.", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                mostrarFrm(new FrmRazaEditar(raza));
+                cargarDGV(logRaza.Consultar());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnEliminar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                string input = Interaction.InputBox("Ingrese el codigo de la raza a eliminar:", "Eliminar Raza", "");
+                if (string.IsNullOrWhiteSpace(input))
+                    return;
+
+                if (!int.TryParse(input, out int codigo))
+                    throw new Exception("El código debe ser solo números");
+
+                Raza raza = buscarRaza(codigo);
+                if (raza == null)
+                {
+                    MessageBox.Show("Raza no encontrada.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                var confirmacion = dialogoPregunta("Eliminar la raza");
+                if (confirmacion == DialogResult.Yes)
+                {
+                    borrar(codigo);
+                    MessageBox.Show("Raza eliminada correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(logRaza.Consultar());
+                }
+                else return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -39,52 +92,14 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private void tbnEditar_Click(object sender, EventArgs e)
+        private Raza buscarRaza(int id)
         {
-            try
-            {
-                int id = int.Parse(Interaction.InputBox("Ingrese el ID de la raza a buscar:", "Buscar Raza", ""));
-                Raza raza = buscarRaza(id);
-                if (raza == null)
-                {
-                    MessageBox.Show("Raza no encontrada.", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                mostrarFrm(new FrmRazaEditar(raza));
-                cargarDGV();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
+            return logRaza.BuscarPorId(id);
         }
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void mostrarFrm(Form frm)
         {
-            try
-            {
-                string message = "";
-                int codigo = int.Parse(Interaction.InputBox("Ingrese el codigo de la raza a eliminar:", "Eliminar Raza", ""));
-                Raza raza = buscarRaza(codigo);
-                if (raza == null)
-                {
-                    MessageBox.Show("Raza no encontrada.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                var confirmacion = dialogoPregunta("Eliminar la raza");
-                if (confirmacion == DialogResult.Yes)
-                {
-                    borrar(codigo);
-                    MessageBox.Show("Raza aliminada correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
-                    return;
-                }
-                else return;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.ShowDialog();
         }
         private bool borrar(int id)
         {
@@ -94,19 +109,43 @@ namespace ProyectoP3
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
 
         }
-        private Raza buscarRaza(int id)
+        private void cargarDGV(List<Raza> lista)
         {
-            return logRaza.BuscarPorId(id);
+            DGVRaza.Rows.Clear();
+            foreach (var raza in lista)
+            {
+                DGVRaza.Rows.Add(raza.Codigo, raza.Nombre, raza.Especie.Nombre);
+            }
         }
-        private void mostrarFrm(Form frm)
+
+        private void bttnFiltrarPorNombre_Click(object sender, EventArgs e)
         {
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.ShowDialog();
+            if (txtFiltrarNombre.Text.Trim() == "")
+            {
+                cargarDGV(logRaza.Consultar());
+                return;
+            }
+            else 
+            {
+                logRaza.BuscarPorNombre(txtFiltrarNombre.Text.Trim());
+            }
+        }
+
+        private void bttnFiltrarEspecie_Click(object sender, EventArgs e)
+        {
+            if (txtFiltrarEspecie.Text.Trim() == "")
+            {
+                cargarDGV(logRaza.Consultar());
+                return;
+            }
+            else
+            { 
+                logRaza.BuscarPorNombreEspecie(txtFiltrarEspecie.Text.Trim());
+            }
         }
     }
 }

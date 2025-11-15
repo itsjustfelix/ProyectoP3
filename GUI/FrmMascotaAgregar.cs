@@ -10,7 +10,7 @@ namespace ProyectoP3
         ICrud<Propietario> logPropietario;
         ICrud<Mascota> logMascota;
         ICrud<Especie> logEspecie;
-        IServiceRaza logRaza;
+        IRazaService logRaza;
         public FrmMascotaAgregar()
         {
             InitializeComponent();
@@ -19,50 +19,8 @@ namespace ProyectoP3
             logEspecie = new EspecieService();
             logRaza = new RazaService();
         }
-        private void bttnBuscarProp_Click(object sender, EventArgs e)
-        {
-            Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
-            if (propietario == null)
-            {
-                MessageBox.Show("Propietario no encontrado", "Buscar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtIdProprietario.Clear();
-                SetControlesEstado(false);
-                return;
-            }
-            lblNombreProp.Text = propietario.Nombres;
-            SetControlesEstado(true);
-        }
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (validar())
-                {
-                    var message = agregar(Mapeo());
-                    if (message)
-                    {
-                        MessageBox.Show("Mascota guardada correctamente.", "Agregar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        salir();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hubo un error al momento de guardar la mascota.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) salir();
-
-        }
+       
+       
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -78,10 +36,7 @@ namespace ProyectoP3
             SetControlesEstado(false);
             lblNombreProp.Text = string.Empty;
         }
-        private void cmbEspecie_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cargarCmbRaza(int.Parse(cmbEspecie.SelectedValue.ToString()));
-        }
+       
         private bool validar()
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentNullException("El nombre de la mascota es obligatorio.");
@@ -126,7 +81,7 @@ namespace ProyectoP3
         private void cargarCmbRaza(int idEspecie)
         {
             cmbRaza.DataSource = null;
-            cmbRaza.DataSource = logRaza.BuscarPorCualidad(idEspecie);
+            cmbRaza.DataSource = logRaza.BuscarPorEspecie(idEspecie);
             cmbRaza.DisplayMember = "Nombre";
             cmbRaza.ValueMember = "Codigo";
         }
@@ -145,6 +100,55 @@ namespace ProyectoP3
             mascota.Especie = especie;
             mascota.Raza = raza;
             return mascota;
+        }
+
+        private void cmbEspecie_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            cargarCmbRaza(int.Parse(cmbEspecie.SelectedValue.ToString()));
+        }
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (validar())
+                {
+                    var message = agregar(Mapeo());
+                    if (message)
+                    {
+                        MessageBox.Show("Mascota guardada correctamente.", "Agregar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al momento de guardar la mascota.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) salir();
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
+            if (propietario == null)
+            {
+                MessageBox.Show("Propietario no encontrado", "Buscar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtIdProprietario.Clear();
+                SetControlesEstado(false);
+                return;
+            }
+            lblNombreProp.Text = propietario.Nombres;
+            SetControlesEstado(true);
         }
     }
 }

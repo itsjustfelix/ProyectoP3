@@ -8,16 +8,15 @@ namespace Dato
 {
     public class DatoMascota : IRepository<Mascota>
     {
-        IRepository<Raza> datoRaza;
-        IRepository<Propietario> datoPropietario;
-        IRepository<Especie> datoEspecie;
+        IRepository<Raza> razaRepository;
+        IRepository<Propietario> propietarioRepository;
+        IRepository<Especie> especieRepository;
         public DatoMascota()
         {
-            datoRaza = new DatoRaza();
-            datoPropietario = new DatoPropietario();
-            datoEspecie = new DatoEspecie();
+            razaRepository = new DatoRaza();
+            propietarioRepository = new DatoPropietario();
+            especieRepository = new DatoEspecie();
         }
-
         public bool Actualizar(Mascota mascota)
         {
             try
@@ -44,7 +43,6 @@ namespace Dato
                 throw new Exception($"Error al actualizar mascota: {ex.Message}", ex);
             }
         }
-
         public Mascota BuscarPorId(int id)
         {
             try
@@ -77,7 +75,6 @@ namespace Dato
                 throw new Exception($"Error al buscar mascota: {ex.Message}", ex);
             }
         }
-
         public List<Mascota> Consultar()
         {
             List<Mascota> lista = new List<Mascota>();
@@ -111,7 +108,6 @@ namespace Dato
                 throw new Exception($"Error al obtener mascotas: {ex.Message}", ex);
             }
         }
-
         public bool Eliminar(int id)
         {
             try
@@ -134,7 +130,6 @@ namespace Dato
                 throw new Exception($"Error al eliminar mascota: {ex.Message}", ex);
             }
         }
-
         public bool Guardar(Mascota mascota)
         {
             try
@@ -160,17 +155,15 @@ namespace Dato
                 throw new Exception($"Error al insertar mascota: {ex.Message}", ex);
             }
         }
-
         public Mascota MappyingType(OracleDataReader line)
         {
             Mascota mascota = new Mascota();
             mascota.Codigo = int.Parse(line["CODIGO"].ToString());
             mascota.Nombre = line["NOMBRE"].ToString();
-            mascota.Especie = datoEspecie.BuscarPorId(int.Parse(line["CODIGO_ESPECIE"].ToString()));
-            mascota.Raza = datoRaza.BuscarPorId(int.Parse(line["CODIGO_RAZA"].ToString()));
-            mascota.Propietario = datoPropietario.BuscarPorId(int.Parse(line["CEDULA_PROPIETARIO"].ToString()));
+            mascota.Especie = especieRepository.BuscarPorId(int.Parse(line["CODIGO_ESPECIE"].ToString()));
+            mascota.Raza = razaRepository.BuscarPorId(int.Parse(line["CODIGO_RAZA"].ToString()));
+            mascota.Propietario = propietarioRepository.BuscarPorId(int.Parse(line["CEDULA_PROPIETARIO"].ToString()));
             return mascota;
         }
     }
-
 }

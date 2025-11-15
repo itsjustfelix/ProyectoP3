@@ -28,214 +28,404 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.DGVConsulta = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtCrearPDFEnviar = new System.Windows.Forms.Button();
-            this.btnCrearPDF = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1.SuspendLayout();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.DGVConsulta = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCrearPDF = new Guna.UI2.WinForms.Guna2Button();
+            this.btnEliminar = new Guna.UI2.WinForms.Guna2Button();
+            this.bttnActualizar = new Guna.UI2.WinForms.Guna2Button();
+            this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
+            this.bttnCrearPDFEnviar = new Guna.UI2.WinForms.Guna2Button();
+            this.bttnFiltrarPorFecha = new Guna.UI2.WinForms.Guna2Button();
+            this.txtFiltrarPorFecha = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtFiltrarPorVeterinario = new Guna.UI2.WinForms.Guna2TextBox();
+            this.bttnFiltrarPorVeterinario = new Guna.UI2.WinForms.Guna2Button();
+            this.txtFiltrarPorMascota = new Guna.UI2.WinForms.Guna2TextBox();
+            this.bttnFiltrarPorMascota = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVConsulta)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.DGVConsulta);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(801, 381);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // DGVConsulta
             // 
             this.DGVConsulta.AllowUserToAddRows = false;
             this.DGVConsulta.AllowUserToDeleteRows = false;
-            this.DGVConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
+            this.DGVConsulta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DGVConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DGVConsulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVConsulta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.DGVConsulta.ColumnHeadersHeight = 15;
+            this.DGVConsulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DGVConsulta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column3,
-            this.Column2,
-            this.Column4,
-            this.Column7,
-            this.Column5,
-            this.Column6});
-            this.DGVConsulta.Location = new System.Drawing.Point(6, 19);
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11,
+            this.Column12,
+            this.Column13,
+            this.Column14});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGVConsulta.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DGVConsulta.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
+            this.DGVConsulta.Location = new System.Drawing.Point(12, 65);
             this.DGVConsulta.Name = "DGVConsulta";
             this.DGVConsulta.ReadOnly = true;
-            this.DGVConsulta.Size = new System.Drawing.Size(789, 356);
-            this.DGVConsulta.TabIndex = 3;
+            this.DGVConsulta.RowHeadersVisible = false;
+            this.DGVConsulta.Size = new System.Drawing.Size(1078, 514);
+            this.DGVConsulta.TabIndex = 4;
+            this.DGVConsulta.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
+            this.DGVConsulta.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
+            this.DGVConsulta.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.DGVConsulta.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.DGVConsulta.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.DGVConsulta.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.DGVConsulta.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.DGVConsulta.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
+            this.DGVConsulta.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
+            this.DGVConsulta.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.DGVConsulta.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DGVConsulta.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.DGVConsulta.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.DGVConsulta.ThemeStyle.HeaderStyle.Height = 15;
+            this.DGVConsulta.ThemeStyle.ReadOnly = true;
+            this.DGVConsulta.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
+            this.DGVConsulta.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.DGVConsulta.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DGVConsulta.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.DGVConsulta.ThemeStyle.RowsStyle.Height = 22;
+            this.DGVConsulta.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
+            this.DGVConsulta.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.DGVConsulta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVConsulta_CellContentClick);
             // 
-            // groupBox2
+            // Column8
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.txtCrearPDFEnviar);
-            this.groupBox2.Controls.Add(this.btnCrearPDF);
-            this.groupBox2.Controls.Add(this.btnEliminar);
-            this.groupBox2.Controls.Add(this.btnEditar);
-            this.groupBox2.Controls.Add(this.btnAgregar);
-            this.groupBox2.Location = new System.Drawing.Point(12, 399);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(801, 79);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            this.Column8.HeaderText = "Codigo";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
             // 
-            // txtCrearPDFEnviar
+            // Column9
             // 
-            this.txtCrearPDFEnviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCrearPDFEnviar.Location = new System.Drawing.Point(604, 19);
-            this.txtCrearPDFEnviar.Name = "txtCrearPDFEnviar";
-            this.txtCrearPDFEnviar.Size = new System.Drawing.Size(131, 41);
-            this.txtCrearPDFEnviar.TabIndex = 2;
-            this.txtCrearPDFEnviar.Text = "CrearPDF y enviar por email";
-            this.txtCrearPDFEnviar.UseVisualStyleBackColor = true;
-            this.txtCrearPDFEnviar.Click += new System.EventHandler(this.txtCrearPDFEnviar_Click);
+            this.Column9.HeaderText = "Mascota";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Fecha";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Veterinario";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Descripcion";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Diagnostico";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Tratamiento";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
             // 
             // btnCrearPDF
             // 
-            this.btnCrearPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearPDF.Location = new System.Drawing.Point(467, 19);
+            this.btnCrearPDF.Animated = true;
+            this.btnCrearPDF.AutoRoundedCorners = true;
+            this.btnCrearPDF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCrearPDF.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCrearPDF.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCrearPDF.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCrearPDF.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCrearPDF.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.btnCrearPDF.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearPDF.ForeColor = System.Drawing.Color.Black;
+            this.btnCrearPDF.IndicateFocus = true;
+            this.btnCrearPDF.Location = new System.Drawing.Point(582, 585);
             this.btnCrearPDF.Name = "btnCrearPDF";
-            this.btnCrearPDF.Size = new System.Drawing.Size(131, 41);
-            this.btnCrearPDF.TabIndex = 1;
-            this.btnCrearPDF.Text = "CrearPDF";
-            this.btnCrearPDF.UseVisualStyleBackColor = true;
-            this.btnCrearPDF.Click += new System.EventHandler(this.btnCrearPDF_Click);
+            this.btnCrearPDF.Size = new System.Drawing.Size(141, 45);
+            this.btnCrearPDF.TabIndex = 24;
+            this.btnCrearPDF.Text = "Crear PDF";
+            this.btnCrearPDF.Click += new System.EventHandler(this.btnCrearPDF_Click_1);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(330, 19);
+            this.btnEliminar.Animated = true;
+            this.btnEliminar.AutoRoundedCorners = true;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEliminar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEliminar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEliminar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEliminar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminar.IndicateFocus = true;
+            this.btnEliminar.Location = new System.Drawing.Point(435, 585);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(131, 41);
-            this.btnEliminar.TabIndex = 0;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.btnEliminar.Size = new System.Drawing.Size(141, 45);
+            this.btnEliminar.TabIndex = 23;
+            this.btnEliminar.Text = "Eliminar Consulta";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click_1);
             // 
-            // btnEditar
+            // bttnActualizar
             // 
-            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(193, 19);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(131, 41);
-            this.btnEditar.TabIndex = 0;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            this.bttnActualizar.Animated = true;
+            this.bttnActualizar.AutoRoundedCorners = true;
+            this.bttnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnActualizar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.bttnActualizar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.bttnActualizar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.bttnActualizar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.bttnActualizar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.bttnActualizar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnActualizar.ForeColor = System.Drawing.Color.Black;
+            this.bttnActualizar.IndicateFocus = true;
+            this.bttnActualizar.Location = new System.Drawing.Point(288, 585);
+            this.bttnActualizar.Name = "bttnActualizar";
+            this.bttnActualizar.Size = new System.Drawing.Size(141, 45);
+            this.bttnActualizar.TabIndex = 22;
+            this.bttnActualizar.Text = "Actualizar Consulta";
+            this.bttnActualizar.Click += new System.EventHandler(this.bttnActualizar_Click);
             // 
-            // btnAgregar
+            // btnGuardar
             // 
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(56, 19);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(131, 41);
-            this.btnAgregar.TabIndex = 0;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnGuardar.Animated = true;
+            this.btnGuardar.AutoRoundedCorners = true;
+            this.btnGuardar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnGuardar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnGuardar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnGuardar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnGuardar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
+            this.btnGuardar.IndicateFocus = true;
+            this.btnGuardar.Location = new System.Drawing.Point(141, 585);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(141, 45);
+            this.btnGuardar.TabIndex = 21;
+            this.btnGuardar.Text = "Guardar Consulta";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // Column1
+            // bttnCrearPDFEnviar
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.bttnCrearPDFEnviar.Animated = true;
+            this.bttnCrearPDFEnviar.AutoRoundedCorners = true;
+            this.bttnCrearPDFEnviar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnCrearPDFEnviar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.bttnCrearPDFEnviar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.bttnCrearPDFEnviar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.bttnCrearPDFEnviar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.bttnCrearPDFEnviar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.bttnCrearPDFEnviar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnCrearPDFEnviar.ForeColor = System.Drawing.Color.Black;
+            this.bttnCrearPDFEnviar.IndicateFocus = true;
+            this.bttnCrearPDFEnviar.Location = new System.Drawing.Point(729, 585);
+            this.bttnCrearPDFEnviar.Name = "bttnCrearPDFEnviar";
+            this.bttnCrearPDFEnviar.Size = new System.Drawing.Size(168, 45);
+            this.bttnCrearPDFEnviar.TabIndex = 25;
+            this.bttnCrearPDFEnviar.Text = "Crear PDF y enviar por email";
+            this.bttnCrearPDFEnviar.Click += new System.EventHandler(this.bttnCrearPDFEnviar_Click);
             // 
-            // Column3
+            // bttnFiltrarPorFecha
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Mascota";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.bttnFiltrarPorFecha.Animated = true;
+            this.bttnFiltrarPorFecha.AutoRoundedCorners = true;
+            this.bttnFiltrarPorFecha.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnFiltrarPorFecha.DefaultAutoSize = true;
+            this.bttnFiltrarPorFecha.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.bttnFiltrarPorFecha.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.bttnFiltrarPorFecha.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.bttnFiltrarPorFecha.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.bttnFiltrarPorFecha.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bttnFiltrarPorFecha.ForeColor = System.Drawing.Color.White;
+            this.bttnFiltrarPorFecha.Location = new System.Drawing.Point(237, 19);
+            this.bttnFiltrarPorFecha.Name = "bttnFiltrarPorFecha";
+            this.bttnFiltrarPorFecha.Size = new System.Drawing.Size(61, 27);
+            this.bttnFiltrarPorFecha.TabIndex = 26;
+            this.bttnFiltrarPorFecha.Text = "Filtrar";
+            this.bttnFiltrarPorFecha.Click += new System.EventHandler(this.bttnFiltrarPorFecha_Click);
             // 
-            // Column2
+            // txtFiltrarPorFecha
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Fecha";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.txtFiltrarPorFecha.Animated = true;
+            this.txtFiltrarPorFecha.AutoRoundedCorners = true;
+            this.txtFiltrarPorFecha.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtFiltrarPorFecha.DefaultText = "";
+            this.txtFiltrarPorFecha.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtFiltrarPorFecha.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtFiltrarPorFecha.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFiltrarPorFecha.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFiltrarPorFecha.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFiltrarPorFecha.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtFiltrarPorFecha.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFiltrarPorFecha.Location = new System.Drawing.Point(21, 14);
+            this.txtFiltrarPorFecha.Name = "txtFiltrarPorFecha";
+            this.txtFiltrarPorFecha.PlaceholderText = "Filtrar por fecha";
+            this.txtFiltrarPorFecha.SelectedText = "";
+            this.txtFiltrarPorFecha.Size = new System.Drawing.Size(200, 36);
+            this.txtFiltrarPorFecha.TabIndex = 27;
             // 
-            // Column4
+            // txtFiltrarPorVeterinario
             // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.HeaderText = "Veterinario";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.txtFiltrarPorVeterinario.Animated = true;
+            this.txtFiltrarPorVeterinario.AutoRoundedCorners = true;
+            this.txtFiltrarPorVeterinario.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtFiltrarPorVeterinario.DefaultText = "";
+            this.txtFiltrarPorVeterinario.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtFiltrarPorVeterinario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtFiltrarPorVeterinario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFiltrarPorVeterinario.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFiltrarPorVeterinario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFiltrarPorVeterinario.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtFiltrarPorVeterinario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFiltrarPorVeterinario.Location = new System.Drawing.Point(405, 14);
+            this.txtFiltrarPorVeterinario.Name = "txtFiltrarPorVeterinario";
+            this.txtFiltrarPorVeterinario.PlaceholderText = "Filtrar por veterinario";
+            this.txtFiltrarPorVeterinario.SelectedText = "";
+            this.txtFiltrarPorVeterinario.Size = new System.Drawing.Size(200, 36);
+            this.txtFiltrarPorVeterinario.TabIndex = 29;
+            this.txtFiltrarPorVeterinario.TextChanged += new System.EventHandler(this.guna2TextBox2_TextChanged);
             // 
-            // Column7
+            // bttnFiltrarPorVeterinario
             // 
-            this.Column7.HeaderText = "Descripcion";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
+            this.bttnFiltrarPorVeterinario.Animated = true;
+            this.bttnFiltrarPorVeterinario.AutoRoundedCorners = true;
+            this.bttnFiltrarPorVeterinario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnFiltrarPorVeterinario.DefaultAutoSize = true;
+            this.bttnFiltrarPorVeterinario.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.bttnFiltrarPorVeterinario.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.bttnFiltrarPorVeterinario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.bttnFiltrarPorVeterinario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.bttnFiltrarPorVeterinario.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bttnFiltrarPorVeterinario.ForeColor = System.Drawing.Color.White;
+            this.bttnFiltrarPorVeterinario.Location = new System.Drawing.Point(621, 19);
+            this.bttnFiltrarPorVeterinario.Name = "bttnFiltrarPorVeterinario";
+            this.bttnFiltrarPorVeterinario.Size = new System.Drawing.Size(61, 27);
+            this.bttnFiltrarPorVeterinario.TabIndex = 28;
+            this.bttnFiltrarPorVeterinario.Text = "Filtrar";
+            this.bttnFiltrarPorVeterinario.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
-            // Column5
+            // txtFiltrarPorMascota
             // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column5.HeaderText = "Diagnostico";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
+            this.txtFiltrarPorMascota.Animated = true;
+            this.txtFiltrarPorMascota.AutoRoundedCorners = true;
+            this.txtFiltrarPorMascota.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtFiltrarPorMascota.DefaultText = "";
+            this.txtFiltrarPorMascota.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtFiltrarPorMascota.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtFiltrarPorMascota.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFiltrarPorMascota.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFiltrarPorMascota.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFiltrarPorMascota.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtFiltrarPorMascota.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFiltrarPorMascota.Location = new System.Drawing.Point(778, 14);
+            this.txtFiltrarPorMascota.Name = "txtFiltrarPorMascota";
+            this.txtFiltrarPorMascota.PlaceholderText = "Filtrar por mascota";
+            this.txtFiltrarPorMascota.SelectedText = "";
+            this.txtFiltrarPorMascota.Size = new System.Drawing.Size(200, 36);
+            this.txtFiltrarPorMascota.TabIndex = 31;
+            this.txtFiltrarPorMascota.TextChanged += new System.EventHandler(this.guna2TextBox3_TextChanged);
             // 
-            // Column6
+            // bttnFiltrarPorMascota
             // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.HeaderText = "Tratamiento";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
+            this.bttnFiltrarPorMascota.Animated = true;
+            this.bttnFiltrarPorMascota.AutoRoundedCorners = true;
+            this.bttnFiltrarPorMascota.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnFiltrarPorMascota.DefaultAutoSize = true;
+            this.bttnFiltrarPorMascota.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.bttnFiltrarPorMascota.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.bttnFiltrarPorMascota.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.bttnFiltrarPorMascota.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.bttnFiltrarPorMascota.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bttnFiltrarPorMascota.ForeColor = System.Drawing.Color.White;
+            this.bttnFiltrarPorMascota.Location = new System.Drawing.Point(994, 19);
+            this.bttnFiltrarPorMascota.Name = "bttnFiltrarPorMascota";
+            this.bttnFiltrarPorMascota.Size = new System.Drawing.Size(61, 27);
+            this.bttnFiltrarPorMascota.TabIndex = 30;
+            this.bttnFiltrarPorMascota.Text = "Filtrar";
+            this.bttnFiltrarPorMascota.Click += new System.EventHandler(this.bttnFiltrarPorMascota_Click);
             // 
             // FrmConsulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 490);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(1102, 690);
+            this.Controls.Add(this.txtFiltrarPorMascota);
+            this.Controls.Add(this.bttnFiltrarPorMascota);
+            this.Controls.Add(this.txtFiltrarPorVeterinario);
+            this.Controls.Add(this.bttnFiltrarPorVeterinario);
+            this.Controls.Add(this.txtFiltrarPorFecha);
+            this.Controls.Add(this.bttnFiltrarPorFecha);
+            this.Controls.Add(this.bttnCrearPDFEnviar);
+            this.Controls.Add(this.btnCrearPDF);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.bttnActualizar);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.DGVConsulta);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmConsulta";
             this.Text = "Form7";
             this.Load += new System.EventHandler(this.FrmConsulta_Load);
-            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVConsulta)).EndInit();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.DataGridView DGVConsulta;
-        private System.Windows.Forms.Button btnCrearPDF;
-        private System.Windows.Forms.Button txtCrearPDFEnviar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private Guna.UI2.WinForms.Guna2DataGridView DGVConsulta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private Guna.UI2.WinForms.Guna2Button btnCrearPDF;
+        private Guna.UI2.WinForms.Guna2Button btnEliminar;
+        private Guna.UI2.WinForms.Guna2Button bttnActualizar;
+        private Guna.UI2.WinForms.Guna2Button btnGuardar;
+        private Guna.UI2.WinForms.Guna2Button bttnCrearPDFEnviar;
+        private Guna.UI2.WinForms.Guna2Button bttnFiltrarPorFecha;
+        private Guna.UI2.WinForms.Guna2TextBox txtFiltrarPorFecha;
+        private Guna.UI2.WinForms.Guna2TextBox txtFiltrarPorVeterinario;
+        private Guna.UI2.WinForms.Guna2Button bttnFiltrarPorVeterinario;
+        private Guna.UI2.WinForms.Guna2TextBox txtFiltrarPorMascota;
+        private Guna.UI2.WinForms.Guna2Button bttnFiltrarPorMascota;
     }
 }

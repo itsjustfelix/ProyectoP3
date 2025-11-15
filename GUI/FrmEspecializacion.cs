@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -7,23 +8,83 @@ namespace ProyectoP3
 {
     public partial class FrmEspecializacion : Form
     {
-        ICrud<Especializacion> logEspecializacion;
+        EspecializacionService logEspecializacion;
         public FrmEspecializacion()
         {
             InitializeComponent();
             logEspecializacion = new EspecializacionService();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmEspecializacionAgregar());
-            cargarDGV();
+            cargarDGV(logEspecializacion.Consultar());
         }
 
-        private void cargarDGV()
+        private void btnEliminar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                string input = Interaction.InputBox("Digite el código de la especialización a eliminar", "Eliminar Especialización", "");
+                if (string.IsNullOrWhiteSpace(input)) return;
+                if (!int.TryParse(input, out int id))
+                {
+                    MessageBox.Show("Debe ingresar un número válido.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var especializacion = buscar(id);
+                if (especializacion == null)
+                {
+                    MessageBox.Show("Especialización no encontrada", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                if (dialogoPregunta("eliminar la especialización") != DialogResult.Yes) return;
+
+                eliminar(id);
+                MessageBox.Show("Especialización eliminada correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cargarDGV(logEspecializacion.Consultar());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void bttnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string input = Interaction.InputBox("Digite el código de la especialización a buscar", "Buscar Especialización", "");
+                if (string.IsNullOrWhiteSpace(input)) return;
+                if (!int.TryParse(input, out int id))
+                {
+                    MessageBox.Show("Debe ingresar un número válido.", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var especializacion = buscar(id);
+                if (especializacion == null)
+                {
+                    MessageBox.Show("Especialización no encontrada", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                mostrarFrm(new FrmEspecializacionEditar(especializacion));
+                cargarDGV(logEspecializacion.Consultar());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cargarDGV(List<Especializacion> lista)
         {
             DGVEspecializacion.Rows.Clear();
-            foreach (var item in logEspecializacion.Consultar())
+            foreach (var item in lista)
             {
                 DGVEspecializacion.Rows.Add(item.Codigo, item.Nombre);
             }
@@ -47,39 +108,10 @@ namespace ProyectoP3
 
         private void FrmEspecializacion_Load(object sender, EventArgs e)
         {
-            cargarDGV();
+            cargarDGV(logEspecializacion.Consultar());
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int id = int.Parse(Interaction.InputBox("Digite el codigo de la especializacion ha eliminar", "Eliminar especilizacion", ""));
-                Especializacion especializacion = buscar(id);
-                if (especializacion == null)
-                {
-                    MessageBox.Show("Propietario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                var respuesta = dialogoPregunta("eliminar");
-                if (respuesta == DialogResult.Yes)
-                {
-                    eliminar(id);
-                    MessageBox.Show("Eliminación cancelada", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV();
-                    return;
-                }
-                else
-                {
-                    return;
-                }
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        
 
         private bool eliminar(int id)
         {
@@ -106,23 +138,16 @@ namespace ProyectoP3
             }
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void bttnFiltrarPorNombre_Click(object sender, EventArgs e)
         {
-            try
+            if (txtFiltrarPorNombre.Text.Trim() == "")
             {
-                int id = int.Parse(Interaction.InputBox("Digite el codigo de la especializacion ha buscar", "Buscar especializacion", ""));
-                Especializacion especializacion = buscar(id);
-                if (especializacion == null)
-                {
-                    MessageBox.Show("Especializacion no encontrada", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                mostrarFrm(new FrmEspecializacionEditar(especializacion));
-                cargarDGV();
+                cargarDGV(logEspecializacion.Consultar());
+                return;
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("el codigo debe ser solamente numeros", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cargarDGV(logEspecializacion.BuscarPorNombre(txtFiltrarPorNombre.Text.Trim()));
             }
         }
     }

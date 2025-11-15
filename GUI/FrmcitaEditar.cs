@@ -10,7 +10,7 @@ namespace ProyectoP3
     {
         ICrud<Cita> logCita;
         ICrud<Mascota> logMascota;
-        IServiceVeterinario logVeterinario;
+        IVeterinarioService logVeterinario;
         ICrud<Especializacion> logEspecializacion;
         Cita Cita;
         public FrmcitaEditar(Cita cita)
@@ -28,39 +28,9 @@ namespace ProyectoP3
             mostrarCita(Cita);
             SetEstadoControles(false);
         }
-        private void cmbEspecializacion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
-        }
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Validar())
-                {
-                    var message = Editar(Mapeo());
-                    if (message)
-                    {
-                        MessageBox.Show("Cita actualizada correctamente.", "Editar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Salir();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hubo un error a la hora de editar la cita.", "Editar Cita", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) Salir();
-        }
+        
+     
+        
         private void mostrarCita(Cita cita)
         {
             txtIdMascota.Text = cita.Mascota.Codigo.ToString();
@@ -72,18 +42,16 @@ namespace ProyectoP3
         }
         private void cargarCmbEspecializacion()
         {
-            cmbEspecializacion.DataSource = null;
             cmbEspecializacion.DataSource = logEspecializacion.Consultar();
             cmbEspecializacion.DisplayMember = "Nombre";
             cmbEspecializacion.ValueMember = "Codigo";
         }
         private void cargarCmbVeterinario(int especialializacion)
         {
-            cmbVeterinario.DataSource = null;
-            cmbVeterinario.DataSource = logVeterinario.BuscarPorCualidad(especialializacion);
+
+            cmbVeterinario.DataSource = logVeterinario.buscarPorEspecializacion(especialializacion);
             cmbVeterinario.DisplayMember = "Nombres";
             cmbVeterinario.ValueMember = "Cedula";
-            cmbEspecializacion.SelectedIndex = -1;
         }
         private bool Editar(Cita cita)
         {
@@ -139,6 +107,47 @@ namespace ProyectoP3
             cita.Hora = DTPHora.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture);
             cita.Veterinario = buscarVeterinario(int.Parse(cmbVeterinario.SelectedValue.ToString()));
             return cita;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbEspecializacion_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
+        }
+
+        private void btnEditar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Validar())
+                {
+                    var message = Editar(Mapeo());
+                    if (message)
+                    {
+                        MessageBox.Show("Cita actualizada correctamente.", "Editar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error a la hora de editar la cita.", "Editar Cita", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) Salir();
         }
     }
 }

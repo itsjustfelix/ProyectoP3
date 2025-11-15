@@ -30,7 +30,6 @@ namespace Dato
                 throw new Exception($"Error al insertar especialización: {ex.Message}", ex);
             }
         }
-
         public List<Especializacion> Consultar()
         {
             List<Especializacion> lista = new List<Especializacion>();
@@ -64,7 +63,6 @@ namespace Dato
                 throw new Exception($"Error al obtener especializaciones: {ex.Message}", ex);
             }
         }
-
         public bool Actualizar(Especializacion especializacion)
         {
             try
@@ -88,7 +86,6 @@ namespace Dato
                 throw new Exception($"Error al actualizar especialización: {ex.Message}", ex);
             }
         }
-
         public bool Eliminar(int id)
         {
             try
@@ -143,7 +140,6 @@ namespace Dato
                 throw new Exception($"Error al buscar especialización: {ex.Message}", ex);
             }
         }
-
         public Especializacion MappyingType(OracleDataReader linea)
         {
             Especializacion especializacion = new Especializacion();

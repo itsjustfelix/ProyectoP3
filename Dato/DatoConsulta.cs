@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using Entidad;
 using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
@@ -8,13 +7,12 @@ namespace Dato
 {
     public class DatoConsulta : IRepository<Consulta>
     {
-
-        IRepository<Mascota> datoMascota;
-        IRepository<Veterinario> datoVeterinario;
+        IRepository<Mascota> mascotaRepository;
+        IRepository<Veterinario> veterinarioRepository;
         public DatoConsulta()
         {
-            datoMascota = new DatoMascota();
-            datoVeterinario = new DatoVeterinario();
+            mascotaRepository = new DatoMascota();
+            veterinarioRepository = new DatoVeterinario();
         }
         public bool Actualizar(Consulta consulta)
         {
@@ -44,7 +42,6 @@ namespace Dato
                 throw new Exception($"Error al actualizar consulta: {ex.Message}", ex);
             }
         }
-
         public Consulta BuscarPorId(int id)
         {
             try
@@ -77,7 +74,6 @@ namespace Dato
                 throw new Exception($"Error al buscar consulta: {ex.Message}", ex);
             }
         }
-
         public List<Consulta> Consultar()
         {
             List<Consulta> lista = new List<Consulta>();
@@ -112,7 +108,6 @@ namespace Dato
                 throw new Exception($"Error al obtener consultas: {ex.Message}", ex);
             }
         }
-
         public bool Eliminar(int id)
         {
             try
@@ -126,7 +121,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true;// "Consulta eliminada correctamente.";
+                        return true;
                     }
                 }
             }
@@ -135,7 +130,6 @@ namespace Dato
                 throw new Exception($"Error al eliminar consulta: {ex.Message}", ex);
             }
         }
-
         public bool Guardar(Consulta consulta)
         {
             try
@@ -145,7 +139,7 @@ namespace Dato
                     using (OracleCommand cmd = new OracleCommand("PKG_CONSULTAS.PRC_guardar", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add("v_fecha", OracleDbType.Varchar2).Value = consulta.Fecha.ToString("dd/MM/yyyy");
+                        cmd.Parameters.Add("v_fecha", OracleDbType.Varchar2).Value = consulta.Fecha;
                         cmd.Parameters.Add("v_descripcion", OracleDbType.Varchar2).Value = consulta.Descripcion;
                         cmd.Parameters.Add("v_diagnostico", OracleDbType.Varchar2).Value = consulta.Diagnostico;
                         cmd.Parameters.Add("v_tratamiento", OracleDbType.Varchar2).Value = consulta.Tratamiento;
@@ -154,7 +148,7 @@ namespace Dato
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true; //;
+                        return true;
                     }
                 }
             }
@@ -163,17 +157,16 @@ namespace Dato
                 throw new Exception($"Error al insertar consulta: {ex.Message}", ex);
             }
         }
-
         public Consulta MappyingType(OracleDataReader linea)
         {
             Consulta consulta = new Consulta();
             consulta.Codigo = int.Parse(linea["CODIGO"].ToString());
-            consulta.Fecha = DateTime.ParseExact(linea["FECHA"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            consulta.Fecha = linea["FECHA"].ToString();
             consulta.Descripcion = linea["DESCRIPCION"].ToString();
             consulta.Diagnostico = linea["DIAGNOSTICO"].ToString();
             consulta.Tratamiento = linea["TRATAMIENTO"].ToString();
-            consulta.Mascota = datoMascota.BuscarPorId(int.Parse(linea["CODIGO_MASCOTA"].ToString()));
-            consulta.Veterinario = datoVeterinario.BuscarPorId(int.Parse(linea["CEDULA_VETERINARIO"].ToString()));
+            consulta.Mascota = mascotaRepository.BuscarPorId(int.Parse(linea["CODIGO_MASCOTA"].ToString()));
+            consulta.Veterinario = veterinarioRepository.BuscarPorId(int.Parse(linea["CEDULA_VETERINARIO"].ToString()));
             return consulta;
         }
     }

@@ -15,31 +15,7 @@ namespace ProyectoP3
             InitializeComponent();
             mostrarEspecie(especie);
         }
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (validar())
-                {
-                    var mensaje = editar(Mapeo());
-                    if (mensaje)
-                    {
-                        MessageBox.Show("Especie actualizada correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        salir();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hubo ub error al momento de actualizar la especie.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            
-
-        }
+       
         private bool editar(Especie especie)
         {
             try
@@ -61,11 +37,7 @@ namespace ProyectoP3
             txtNombre.Text = especie.Nombre;
             codigo = especie.Codigo;
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) salir();  
-        }
+       
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -87,5 +59,34 @@ namespace ProyectoP3
             return especie;
         }
 
+        private void btnEditar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (validar())
+                {
+                    var mensaje = editar(Mapeo());
+                    if (mensaje)
+                    {
+                        MessageBox.Show("Especie actualizada correctamente.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo ub error al momento de actualizar la especie.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) salir();
+        }
     }
 }

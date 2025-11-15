@@ -13,37 +13,8 @@ namespace ProyectoP3
             InitializeComponent();
             especieService = new EspecieService();
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                if (validar())
-                {
-                    var message = agregar(Mappeo());
-                    if (message)
-                    {
-                        MessageBox.Show("Especie guardada correctamente.", "Agregar Especie", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        salir();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hubo un error al momento de guardar la especie.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes) salir();
-        }
+        
+       
         private void salir()
         {
             this.Close();
@@ -82,5 +53,36 @@ namespace ProyectoP3
             return especie;
         }
 
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (validar())
+                {
+                    var message = agregar(Mappeo());
+                    if (message)
+                    {
+                        MessageBox.Show("Especie guardada correctamente.", "Agregar Especie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al momento de guardar la especie.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes) salir();
+        }
     }
 }

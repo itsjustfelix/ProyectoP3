@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using Entidad;
@@ -10,10 +11,10 @@ namespace Dato
 {
     public class DatoVeterinario : IRepository<Veterinario>
     {
-        public IRepository<Especializacion> DatoEspecializacion;
+        public IRepository<Especializacion> especializacionRepository;
         public DatoVeterinario()
         {
-            DatoEspecializacion = new DatoEspecializacion();
+            especializacionRepository = new DatoEspecializacion();
         }
         public bool Guardar(Veterinario veterinario)
         {
@@ -167,9 +168,10 @@ namespace Dato
             veterinario.ApellidoMaterno = linea["APELLIDO_MATERNO"].ToString();
             veterinario.Sexo = linea["SEXO"].ToString();
             veterinario.Telefono = linea["TELEFONO"].ToString();
-            veterinario.Especializacion = DatoEspecializacion.BuscarPorId(int.Parse(linea["CODIGO_ESPECIALIZACION"].ToString()));
+            veterinario.Especializacion = especializacionRepository.BuscarPorId(int.Parse(linea["CODIGO_ESPECIALIZACION"].ToString()));
             return veterinario;
         }
+
     }
 }
 

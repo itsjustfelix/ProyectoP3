@@ -8,7 +8,6 @@ namespace Dato
 {
     public class DatoPropietario : IRepository<Propietario>
     {
-
         public bool Guardar(Propietario propietario)
         {
             try
@@ -71,7 +70,6 @@ namespace Dato
                 throw new Exception($"Error al obtener propietarios: {ex.Message}", ex);
             }
         }
-
         public bool Actualizar(Propietario propietario)
         {
             try
@@ -101,7 +99,6 @@ namespace Dato
                 throw new Exception($"Error al actualizar propietario: {ex.Message}", ex);
             }
         }
-
         public Propietario MappyingType(OracleDataReader linea)
         {
             Propietario propietario = new Propietario();
@@ -114,7 +111,6 @@ namespace Dato
             propietario.Email = linea["EMAIL"].ToString();
             return propietario;
         }
-
         public Propietario BuscarPorId(int id)
         {
             try
@@ -149,7 +145,6 @@ namespace Dato
                 throw new Exception($"Error al buscar propietario: {ex.Message}", ex);
             }
         }
-
         public bool Eliminar(int id)
         {
             try

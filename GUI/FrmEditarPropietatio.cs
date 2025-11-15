@@ -20,39 +20,7 @@ namespace ProyectoP3
             mostrarPropietario(propietario);
             txtCedula.Enabled = false;
         }
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (validar())
-                {
-                    var message = editar(Mapeo());
-                    if (message)
-                    {
-                        MessageBox.Show("Propietario editado con exito.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        salir();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hubo un error al momento de editar el propietario. ", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var respuesta = dialogoPregunta("cancelar");
-            if (respuesta == DialogResult.Yes)
-            {
-                salir();
-            }
-        }
+       
 
         private void mostrarPropietario(Propietario propietario)
         {
@@ -111,6 +79,45 @@ namespace ProyectoP3
         private void salir()
         {
             this.Close();
+        }
+
+        private void btnEditar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (validar())
+                {
+                    var message = editar(Mapeo());
+                    if (message)
+                    {
+                        MessageBox.Show("Propietario editado con exito.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        salir();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al momento de editar el propietario. ", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            var respuesta = dialogoPregunta("cancelar");
+            if (respuesta == DialogResult.Yes)
+            {
+                salir();
+            }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

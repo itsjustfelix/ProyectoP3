@@ -31,49 +31,75 @@ namespace ProyectoP3
 
         }
 
-        private void btnPropietario_Click(object sender, EventArgs e)
+
+        private void btnPropietario_Click_1(object sender, EventArgs e)
         {
             openChildForm(new FrmPropietario());
         }
 
-        private void btnEspecie_Click(object sender, EventArgs e)
+        private void btnEspecie_Click_1(object sender, EventArgs e)
         {
             openChildForm(new FrmEspecie());
         }
 
-        private void btnRaza_Click(object sender, EventArgs e)
+        private void btnRaza_Click_1(object sender, EventArgs e)
         {
             openChildForm(new FrmRaza());
         }
 
-        private void btnMascota_Click(object sender, EventArgs e)
+        private void btnMascota_Click_1(object sender, EventArgs e)
         {
             openChildForm(new FrmMascota());
         }
 
-        private void btnConsulta_Click(object sender, EventArgs e)
+        private void btnConsulta_Click_1(object sender, EventArgs e)
         {
             openChildForm(new FrmConsulta());
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             openChildForm(new FrmVeterinario());
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click_1(object sender, EventArgs e)
         {
             openChildForm(new FrmCita());
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click_1(object sender, EventArgs e)
         {
             openChildForm(new FrmEspecializacion());
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click_1(object sender, EventArgs e)
         {
             openChildForm(new FrmIA());
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FrmEstadistica());
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            openChildForm(new FrmEstadistica());
+        }
+
+        private void bttnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

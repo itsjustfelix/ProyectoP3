@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logica
+namespace Entidad
 {
-    public interface IGenerarIdUnico
+    public class citasPorFechas
     {
-        string GenerarIdUnico();
+        public string fecha { get; set; }
+        public int cantidad { get; set; }
     }
 }

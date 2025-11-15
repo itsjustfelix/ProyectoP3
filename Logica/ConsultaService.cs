@@ -8,14 +8,14 @@ using QuestPDF.Infrastructure;
 
 namespace Logica
 {
-    public class ConsultaService : ICrud<Consulta>
+    public class ConsultaService : IConsultaService
     {
-        private readonly IRepository<Consulta> datoConsulta;
+        private readonly IRepository<Consulta> ConsultaRepository;
         private GeneradorDePDF<Consulta> generadorPDF;
         private ServicioEmail servicioEmail;
         public ConsultaService()
         {
-            datoConsulta = new DatoConsulta();
+            ConsultaRepository = new DatoConsulta();
             servicioEmail = new ServicioEmail("vet.vida03@gmail.com", "wyjv vikl acif boti");
             QuestPDF.Settings.License = LicenseType.Community;
         }
@@ -25,7 +25,7 @@ namespace Logica
             try
             {
                 if (Validar(entidad))
-                    return datoConsulta.Guardar(entidad);
+                    return ConsultaRepository.Guardar(entidad);
                 else
                     return false;
             }
@@ -36,15 +36,15 @@ namespace Logica
         }
         public List<Consulta> Consultar()
         {
-            return datoConsulta.Consultar();
+            return ConsultaRepository.Consultar();
         }
         public bool Actualizar(Consulta NuevaEntidad)
         {
             try
             {
                 if (Validar(NuevaEntidad))
-                    return datoConsulta.Actualizar(NuevaEntidad);
-                else 
+                    return ConsultaRepository.Actualizar(NuevaEntidad);
+                else
                     return false;
             }
             catch (Exception ex)
@@ -54,11 +54,11 @@ namespace Logica
         }
         public bool Borrar(int codigo)
         {
-            return datoConsulta.Eliminar(codigo);
+            return ConsultaRepository.Eliminar(codigo);
         }
         public Consulta BuscarPorId(int codigo)
         {
-            return datoConsulta.BuscarPorId(codigo);
+            return ConsultaRepository.BuscarPorId(codigo);
         }
         public bool Validar(Consulta entidad)
         {
@@ -99,6 +99,22 @@ namespace Logica
                 return ex.Message;
             }
 
+        }
+        public List<Consulta> buscarPorFecha(string fecha)
+        {
+            return Consultar().FindAll(c => c.Fecha.Equals(fecha, StringComparison.OrdinalIgnoreCase));
+        }
+        public List<Consulta> buscarPorVeterinario(string nombre)
+        {
+            return Consultar().FindAll(c => c.Veterinario.Nombres.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+        }
+        public List<Consulta> buscarPorMascota(string nombre)
+        {
+            return Consultar().FindAll(c => c.Mascota.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+        }
+        public int totalConsultasAsistdas(string fecha)
+        {
+            return buscarPorFecha(fecha).Count;
         }
     }
 }
