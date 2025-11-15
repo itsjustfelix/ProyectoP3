@@ -26,21 +26,31 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Digite la cedula del propietario ha buscar", "Buscar Propietario", ""));
+                string input = Interaction.InputBox("Digite la cedula del propietario ha buscar", "Buscar Propietario", "");
+
+                if (string.IsNullOrWhiteSpace(input))
+                    return;
+
+                if (!int.TryParse(input, out int id))
+                    throw new Exception("La cedula debe ser solamente numeros");
+
                 Propietario propietario = buscar(id);
+
                 if (propietario == null)
                 {
                     MessageBox.Show("Propietario no encontrado", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+
                 mostrarFrm(new FrmEditarPropietatio(propietario));
                 cargarDGV(propietarioService.Consultar());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("La cedula debe ser solamente numeros", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         private void FrmPropietario_Load(object sender, EventArgs e)
         {
             cargarDGV(propietarioService.Consultar());
@@ -49,20 +59,29 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", ""));
+                string input = Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", "");
+
+                if (string.IsNullOrWhiteSpace(input))
+                    return;
+
+                if (!int.TryParse(input, out int id))
+                    throw new Exception("El ID debe ser solamente numeros");
+
                 Propietario propietario = buscar(id);
+
                 if (propietario == null)
                 {
                     MessageBox.Show("Propietario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+
                 var respuesta = dialogoPregunta("eliminar");
+
                 if (respuesta == DialogResult.Yes)
                 {
                     eliminar(id);
-                    MessageBox.Show("Propietario actualizado correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Propietario eliminado correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cargarDGV(propietarioService.Consultar());
-                    return;
                 }
                 else return;
             }
@@ -71,6 +90,7 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         private void mostrarFrm(Form frm)
         {
             frm.StartPosition = FormStartPosition.CenterParent;

@@ -46,47 +46,69 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la cita a buscar:", "Buscar cita", ""));
+                string input = Interaction.InputBox(
+                    "Ingrese el código de la cita a buscar:",
+                    "Buscar Cita", ""
+                );
+
+                if (string.IsNullOrWhiteSpace(input))
+                    return;
+
+                if (!int.TryParse(input, out int id))
+                {
+                    MessageBox.Show("Debe ingresar un número válido.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 Cita cita = buscarCita(id);
                 if (cita == null)
                 {
-                    MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cita no encontrada.", "Buscar Cita",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+
                 mostrarFrm(new FrmcitaEditar(cita));
                 cargarDGV(CitaService.Consultar());
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la cita a eliminar:", "Eliminar cita", ""));
+                string input = Interaction.InputBox("Ingrese el código de la cita a eliminar:", "Eliminar Cita", "");
+                if (string.IsNullOrWhiteSpace(input)) return;
+                if (!int.TryParse(input, out int id))
+                {
+                    MessageBox.Show("Debe ingresar un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (buscarCita(id) == null)
                 {
-                    MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cita no encontrada.", "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                DialogResult result = dialogoPregunta("eliminar la cita");
-                if (result == DialogResult.Yes)
-                {
-                    borrarCita(id);
-                    MessageBox.Show("Cita eliminada correctamente.", "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV(CitaService.Consultar());
-                    return;
-                }
-                else
-                    return;
+
+                if (dialogoPregunta("eliminar la cita") != DialogResult.Yes) return;
+
+                borrarCita(id);
+                MessageBox.Show("Cita eliminada correctamente.", "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cargarDGV(CitaService.Consultar());
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private bool borrarCita(int codigoCita)
         {
             try
@@ -111,15 +133,24 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Ingrese el codigo de la cita a buscar:", "Buscar cita", ""));
+                string input = Interaction.InputBox("Ingrese el código de la cita a buscar:", "Buscar Cita", "");
+                if (string.IsNullOrWhiteSpace(input)) return;
+                if (!int.TryParse(input, out int id))
+                {
+                    MessageBox.Show("Debe ingresar un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 Cita cita = buscarCita(id);
                 if (cita == null)
                 {
                     MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+
                 var frm = new FrmConsultaAgregar(cita.Mascota, cita.Veterinario);
                 mostrarFrm(frm);
+
                 if (frm.resultado == DialogResult.OK)
                 {
                     borrarCita(id);
@@ -128,7 +159,7 @@ namespace ProyectoP3
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void mostrarFrm(Form frm)

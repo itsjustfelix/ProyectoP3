@@ -79,48 +79,83 @@ namespace ProyectoP3
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Digite el codigo de la mascota a buscar", "Buscar Mascota", ""));
+                string input = Interaction.InputBox(
+                    "Digite el codigo de la mascota a buscar",
+                    "Buscar Mascota",
+                    ""
+                );
+
+                if (string.IsNullOrWhiteSpace(input)) return;
+                 
+                if (!int.TryParse(input, out int id))
+                {
+                    MessageBox.Show("Debe digitar un número válido.");
+                    return;
+                }
+
                 Mascota mascota = buscarMascota(id);
                 if (mascota == null)
                 {
-                    MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Mascota no encontrada", "Buscar Mascota",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+
                 mostrarFrm(new FrmMascotaEditar(mascota));
                 cargarDGV(logMascota.Consultar());
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
         private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
-                int id = int.Parse(Interaction.InputBox("Digite el codigo de la mascota ha eliminar", "Eliminar mascota", ""));
+                string input = Interaction.InputBox(
+                    "Digite el codigo de la mascota a eliminar",
+                    "Eliminar Mascota",
+                    ""
+                );
+                if (string.IsNullOrWhiteSpace(input)) return;
+                
+                if (!int.TryParse(input, out int id))
+                {
+                    MessageBox.Show("Debe digitar un número válido.");
+                    return;
+                }
+
                 Mascota mascota = buscar(id);
                 if (mascota == null)
                 {
-                    MessageBox.Show("Mascota no encontrada", "Eliminar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Mascota no encontrada", "Eliminar Mascota",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+
                 DialogResult result = dialogoPregunta("eliminar la mascota");
-                if (result == DialogResult.Yes)
+                if (result == DialogResult.No)return;
+                if (borrar(id))
                 {
-                    borrar(id);
-                    MessageBox.Show("Mascota eliminada correctamente.", "Eliminar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Mascota eliminada correctamente.", "Eliminar Mascota",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cargarDGV(logMascota.Consultar());
-                    return;
                 }
-                else return;
+                else
+                    MessageBox.Show("No se pudo  eliminada la Mascota correctamente.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
         private void bttnFiltrarPorRaza_Click(object sender, EventArgs e)
         {

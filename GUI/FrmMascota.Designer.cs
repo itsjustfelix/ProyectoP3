@@ -213,7 +213,7 @@
             this.bttnFiltrarPorEspecie.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.bttnFiltrarPorEspecie.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bttnFiltrarPorEspecie.ForeColor = System.Drawing.Color.White;
-            this.bttnFiltrarPorEspecie.Location = new System.Drawing.Point(218, 17);
+            this.bttnFiltrarPorEspecie.Location = new System.Drawing.Point(270, 17);
             this.bttnFiltrarPorEspecie.Name = "bttnFiltrarPorEspecie";
             this.bttnFiltrarPorEspecie.Size = new System.Drawing.Size(61, 27);
             this.bttnFiltrarPorEspecie.TabIndex = 20;
@@ -233,7 +233,7 @@
             this.txtFiltrarEspecie.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFiltrarEspecie.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFiltrarEspecie.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFiltrarEspecie.Location = new System.Drawing.Point(12, 12);
+            this.txtFiltrarEspecie.Location = new System.Drawing.Point(57, 12);
             this.txtFiltrarEspecie.Name = "txtFiltrarEspecie";
             this.txtFiltrarEspecie.PlaceholderText = "Filtrar Por Especie";
             this.txtFiltrarEspecie.SelectedText = "";
@@ -253,7 +253,7 @@
             this.txtFiltrarRaza.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFiltrarRaza.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFiltrarRaza.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFiltrarRaza.Location = new System.Drawing.Point(416, 12);
+            this.txtFiltrarRaza.Location = new System.Drawing.Point(434, 12);
             this.txtFiltrarRaza.Name = "txtFiltrarRaza";
             this.txtFiltrarRaza.PlaceholderText = "Filtrar Por Raza";
             this.txtFiltrarRaza.SelectedText = "";
@@ -272,7 +272,7 @@
             this.bttnFiltrarPorRaza.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.bttnFiltrarPorRaza.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bttnFiltrarPorRaza.ForeColor = System.Drawing.Color.White;
-            this.bttnFiltrarPorRaza.Location = new System.Drawing.Point(622, 17);
+            this.bttnFiltrarPorRaza.Location = new System.Drawing.Point(647, 17);
             this.bttnFiltrarPorRaza.Name = "bttnFiltrarPorRaza";
             this.bttnFiltrarPorRaza.Size = new System.Drawing.Size(61, 27);
             this.bttnFiltrarPorRaza.TabIndex = 22;
@@ -292,9 +292,9 @@
             this.txtFiltrarPropietario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFiltrarPropietario.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFiltrarPropietario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFiltrarPropietario.Location = new System.Drawing.Point(821, 12);
+            this.txtFiltrarPropietario.Location = new System.Drawing.Point(811, 12);
             this.txtFiltrarPropietario.Name = "txtFiltrarPropietario";
-            this.txtFiltrarPropietario.PlaceholderText = "Filtrar Por Propietario";
+            this.txtFiltrarPropietario.PlaceholderText = "Filtrar por cedula del Propietario";
             this.txtFiltrarPropietario.SelectedText = "";
             this.txtFiltrarPropietario.Size = new System.Drawing.Size(200, 36);
             this.txtFiltrarPropietario.TabIndex = 25;
@@ -311,7 +311,7 @@
             this.bttnFiltrarPorPropietario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.bttnFiltrarPorPropietario.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bttnFiltrarPorPropietario.ForeColor = System.Drawing.Color.White;
-            this.bttnFiltrarPorPropietario.Location = new System.Drawing.Point(1027, 17);
+            this.bttnFiltrarPorPropietario.Location = new System.Drawing.Point(1024, 17);
             this.bttnFiltrarPorPropietario.Name = "bttnFiltrarPorPropietario";
             this.bttnFiltrarPorPropietario.Size = new System.Drawing.Size(61, 27);
             this.bttnFiltrarPorPropietario.TabIndex = 24;
