@@ -108,7 +108,7 @@
             this.bttnSalir.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.bttnSalir.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.bttnSalir.ForeColor = System.Drawing.Color.Black;
-            this.bttnSalir.Image = ((System.Drawing.Image)(resources.GetObject("bttnSalir.Image")));
+            this.bttnSalir.Image = global::ProyectoP3.Properties.Resources.BxsLogOut;
             this.bttnSalir.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.bttnSalir.IndicateFocus = true;
             this.bttnSalir.Location = new System.Drawing.Point(-1, 641);
