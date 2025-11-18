@@ -11,17 +11,17 @@ namespace ProyectoP3
         public FrmRaza()
         {
             InitializeComponent();
-            logRaza = new RazaService();
+            razaService = new RazaService();
         }
-        RazaService logRaza;
+        RazaService razaService;
         private void FrmRaza_Load(object sender, EventArgs e)
         {
-            cargarDGV(logRaza.Consultar());
+            cargarDGV(razaService.Consultar());
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmRazaAgregar());
-            cargarDGV(logRaza.Consultar());
+            cargarDGV(razaService.Consultar());
         }
         private void bttnActualizar_Click(object sender, EventArgs e)
         {
@@ -34,7 +34,7 @@ namespace ProyectoP3
                 if (!int.TryParse(input, out int id))
                     throw new Exception("El ID debe ser solo números");
 
-                Raza raza = buscarRaza(id);
+                Raza raza = buscar(id);
                 if (raza == null)
                 {
                     MessageBox.Show("Raza no encontrada.", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -42,7 +42,7 @@ namespace ProyectoP3
                 }
 
                 mostrarFrm(new FrmRazaEditar(raza));
-                cargarDGV(logRaza.Consultar());
+                cargarDGV(razaService.Consultar());
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace ProyectoP3
                 if (!int.TryParse(input, out int codigo))
                     throw new Exception("El código debe ser solo números");
 
-                Raza raza = buscarRaza(codigo);
+                Raza raza = buscar(codigo);
                 if (raza == null)
                 {
                     MessageBox.Show("Raza no encontrada.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -73,7 +73,7 @@ namespace ProyectoP3
                 {
                     borrar(codigo);
                     MessageBox.Show("Raza eliminada correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV(logRaza.Consultar());
+                    cargarDGV(razaService.Consultar());
                 }
                 else return;
             }
@@ -92,9 +92,9 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private Raza buscarRaza(int id)
+        private Raza buscar(int id)
         {
-            return logRaza.BuscarPorId(id);
+            return razaService.buscar(id);
         }
         private void mostrarFrm(Form frm)
         {
@@ -105,7 +105,7 @@ namespace ProyectoP3
         {
             try
             {
-                return logRaza.Borrar(id);
+                return razaService.Borrar(id);
             }
             catch (Exception ex)
             {
@@ -126,12 +126,12 @@ namespace ProyectoP3
         {
             if (txtFiltrarNombre.Text.Trim() == "")
             {
-                cargarDGV(logRaza.Consultar());
+                cargarDGV(razaService.Consultar());
                 return;
             }
             else 
             {
-                logRaza.BuscarPorNombre(txtFiltrarNombre.Text.Trim());
+                razaService.BuscarPorNombre(txtFiltrarNombre.Text.Trim());
             }
         }
 
@@ -139,12 +139,33 @@ namespace ProyectoP3
         {
             if (txtFiltrarEspecie.Text.Trim() == "")
             {
-                cargarDGV(logRaza.Consultar());
+                cargarDGV(razaService.Consultar());
                 return;
             }
             else
             { 
-                logRaza.BuscarPorNombreEspecie(txtFiltrarEspecie.Text.Trim());
+                razaService.BuscarPorNombreEspecie(txtFiltrarEspecie.Text.Trim());
+            }
+        }
+
+        private void DGVRaza_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int codigo = int.Parse(DGVRaza.CurrentRow.Cells["Codigo"].Value.ToString());
+            if (DGVRaza.Columns[e.ColumnIndex].Name == "Editar")
+            {
+                Raza raza = buscar(codigo);
+                mostrarFrm(new FrmRazaEditar(raza));
+                cargarDGV(razaService.Consultar());
+            }
+            else if (DGVRaza.Columns[e.ColumnIndex].Name == "elimina")
+            {
+                var respuesta = dialogoPregunta("eliminar");
+                if (respuesta == DialogResult.Yes)
+                {
+                    borrar(codigo);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(razaService.Consultar());
+                }
             }
         }
     }

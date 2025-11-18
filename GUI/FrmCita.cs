@@ -38,9 +38,9 @@ namespace ProyectoP3
             mostrarFrm(new FrmCitaAgregar());
             cargarDGV(CitaService.Consultar());
         }
-        private Cita buscarCita(int id)
+        private Cita buscar(int id)
         {
-            return CitaService.BuscarPorId(id);
+            return CitaService.buscar(id);
         }
         private void bttnActualizar_Click(object sender, EventArgs e)
         {
@@ -61,7 +61,7 @@ namespace ProyectoP3
                     return;
                 }
 
-                Cita cita = buscarCita(id);
+                Cita cita = buscar(id);
                 if (cita == null)
                 {
                     MessageBox.Show("Cita no encontrada.", "Buscar Cita",
@@ -91,7 +91,7 @@ namespace ProyectoP3
                     return;
                 }
 
-                if (buscarCita(id) == null)
+                if (buscar(id) == null)
                 {
                     MessageBox.Show("Cita no encontrada.", "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -99,7 +99,7 @@ namespace ProyectoP3
 
                 if (dialogoPregunta("eliminar la cita") != DialogResult.Yes) return;
 
-                borrarCita(id);
+                eliminar(id);
                 MessageBox.Show("Cita eliminada correctamente.", "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cargarDGV(CitaService.Consultar());
             }
@@ -109,7 +109,7 @@ namespace ProyectoP3
             }
         }
 
-        private bool borrarCita(int codigoCita)
+        private bool eliminar(int codigoCita)
         {
             try
             {
@@ -141,21 +141,14 @@ namespace ProyectoP3
                     return;
                 }
 
-                Cita cita = buscarCita(id);
+                Cita cita = buscar(id);
                 if (cita == null)
                 {
                     MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                var frm = new FrmConsultaAgregar(cita.Mascota, cita.Veterinario);
-                mostrarFrm(frm);
-
-                if (frm.resultado == DialogResult.OK)
-                {
-                    borrarCita(id);
-                    cargarDGV(CitaService.Consultar());
-                }
+               
             }
             catch (Exception ex)
             {
@@ -191,6 +184,44 @@ namespace ProyectoP3
             else
             {
                cargarDGV(CitaService.buscarPorFecha(txtFiltrarPorFacha.Text.Trim()));
+            }
+        }
+
+        private void DGVCita_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int codigo = int.Parse(DGVCita.CurrentRow.Cells["Codigo"].Value.ToString());
+            if (DGVCita.Columns[e.ColumnIndex].Name == "Editar")
+            {
+                Cita cita = buscar(codigo);
+                mostrarFrm(new FrmcitaEditar(cita));
+                cargarDGV(CitaService.Consultar());
+            }
+            else if (DGVCita.Columns[e.ColumnIndex].Name == "elimina")
+            {
+                var respuesta = dialogoPregunta("eliminar");
+                if (respuesta == DialogResult.Yes)
+                {
+                    eliminar(codigo);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(CitaService.Consultar());
+                }
+            }
+            else if(DGVCita.Columns[e.ColumnIndex].Name == "AtenderCita")
+            {
+                Cita cita = buscar(codigo);
+                if (cita.Fecha.Equals(DateTime.Now.ToString("dd/MM/yyyy")))
+                {
+                    var frm = new FrmConsultaAgregar(cita.Mascota, cita.Veterinario);
+                    mostrarFrm(frm);
+
+                    if (frm.resultado == DialogResult.OK)
+                    {
+                        eliminar(codigo);
+                        cargarDGV(CitaService.Consultar());
+                    }
+                }
+                else
+                    MessageBox.Show("La fecha de la cita no esta para hoy.", "Atender cita.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

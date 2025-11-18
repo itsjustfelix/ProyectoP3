@@ -56,7 +56,7 @@ namespace Logica
         {
             return ConsultaRepository.Eliminar(codigo);
         }
-        public Consulta BuscarPorId(int codigo)
+        public Consulta buscar(int codigo)
         {
             return ConsultaRepository.BuscarPorId(codigo);
         }

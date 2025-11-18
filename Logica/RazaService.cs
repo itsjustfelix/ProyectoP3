@@ -49,7 +49,7 @@ namespace Logica
         {
             return razaRepository.Eliminar(codigo);
         }
-        public Raza BuscarPorId(int codigo)
+        public Raza buscar(int codigo)
         {
             return razaRepository.BuscarPorId(codigo);
         }

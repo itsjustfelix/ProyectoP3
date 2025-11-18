@@ -50,7 +50,7 @@ namespace Logica
         {
             return especieRepository.Eliminar(codigo);
         }
-        public Especie BuscarPorId(int codigo)
+        public Especie buscar(int codigo)
         {
             return especieRepository.BuscarPorId(codigo);
         }

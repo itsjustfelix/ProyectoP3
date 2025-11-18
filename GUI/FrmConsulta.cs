@@ -36,7 +36,7 @@ namespace ProyectoP3
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                    var consulta = buscarConsulta(id);
+                    var consulta = buscar(id);
                     if (consulta == null)
                     {
                         MessageBox.Show("Consulta no encontrada.", "Eliminar Consulta",
@@ -44,7 +44,7 @@ namespace ProyectoP3
                         return;
                     }
                     if (dialogoPregunta("eliminar la consulta") == DialogResult.No) return;
-                    if (borrar(id))
+                    if (eliminar(id))
                     {
                         MessageBox.Show("Consulta eliminada correctamente.", "Eliminar Consulta",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -70,7 +70,7 @@ namespace ProyectoP3
             try
             {
                 int id = int.Parse(Interaction.InputBox("Ingrese el ID de la consulta a buscar:", "Buscar Consulta", ""));
-                Consulta consulta = buscarConsulta(id);
+                Consulta consulta = buscar(id);
                 if (consulta == null)
                 {
                     MessageBox.Show("Consulta no encontrada.", "Buscar Consulta",
@@ -102,15 +102,14 @@ namespace ProyectoP3
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                var consulta = buscarConsulta(id);
+                var consulta = buscar(id);
                 if (consulta == null)
                 {
                     MessageBox.Show("Consulta no encontrada.", "Generar PDF",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                string ruta = consultaService.GenerarDocumento(consulta);
-                abrirDocumento(ruta);
+                
             }
             catch (Exception ex)
             {
@@ -137,18 +136,14 @@ namespace ProyectoP3
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                var consulta = buscarConsulta(codigo);
+                var consulta = buscar(codigo);
                 if (consulta == null)
                 {
                     MessageBox.Show("Consulta no encontrada.", "Buscar Consulta",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                string email = consulta.Mascota.Propietario.Email;
-                string ruta = consultaService.GenerarDocumento(consulta);
-                string mensaje = consultaService.enviarEmail(email, ruta);
-                MessageBox.Show(mensaje, "Enviar Email",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
             catch (Exception ex)
             {
@@ -165,7 +160,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private bool borrar(int codigo)
+        private bool eliminar(int codigo)
         {
             try
             {
@@ -181,9 +176,9 @@ namespace ProyectoP3
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
-        private Consulta buscarConsulta(int id)
+        private Consulta buscar(int id)
         {
-            return consultaService.BuscarPorId(id);
+            return consultaService.buscar(id);
         }
         private void cargarDGV(List<Consulta> lista)
         {
@@ -203,7 +198,38 @@ namespace ProyectoP3
         }
         private void DGVConsulta_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            int codigo = int.Parse(DGVConsulta.CurrentRow.Cells["Codigo"].Value.ToString());
+            if (DGVConsulta.Columns[e.ColumnIndex].Name == "Editar")
+            {
+                Consulta consulta = buscar(codigo);
+                mostrarFrm(new FrmConsultaEditar(consulta));
+                cargarDGV(consultaService.Consultar());
+            }
+            else if (DGVConsulta.Columns[e.ColumnIndex].Name == "elimina")
+            {
+                var respuesta = dialogoPregunta("eliminar");
+                if (respuesta == DialogResult.Yes)
+                {
+                    eliminar(codigo);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(consultaService.Consultar());
+                }
+            }
+            else if(DGVConsulta.Columns[e.ColumnIndex].Name == "GenerarPDF")
+            {
+                Consulta consulta = buscar(codigo);
+                string ruta = consultaService.GenerarDocumento(consulta);
+                abrirDocumento(ruta);
+            }
+            else if(DGVConsulta.Columns[e.ColumnIndex].Name == "EnviarEmail")
+            {
+                Consulta consulta = buscar(codigo);
+                string email = consulta.Mascota.Propietario.Email;
+                string ruta = consultaService.GenerarDocumento(consulta);
+                string mensaje = consultaService.enviarEmail(email, ruta);
+                MessageBox.Show(mensaje, "Enviar Email",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         private void guna2TextBox2_TextChanged(object sender, EventArgs e)
         {

@@ -9,6 +9,6 @@ namespace Logica
         bool Actualizar(T NuevaEntidad);
         bool Borrar(int Id);
         bool Validar(T entidad);
-        T BuscarPorId(int id);
+        T buscar(int id);
     }
 }

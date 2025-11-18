@@ -9,11 +9,11 @@ namespace ProyectoP3
 {
     public partial class FrmMascota : Form
     {
-        MascotaService logMascota;
+        MascotaService mascotaService;
         public FrmMascota()
         {
             InitializeComponent();
-            logMascota = new MascotaService();
+            mascotaService = new MascotaService();
         }
         private void cargarDGV(List<Mascota> lista)
         {
@@ -32,13 +32,13 @@ namespace ProyectoP3
         
         private Mascota buscar(int id)
         {
-            return logMascota.BuscarPorId(id);
+            return mascotaService.buscar(id);
         }
         private bool borrar(int id)
         {
             try
             {
-                return logMascota.Borrar(id);
+                return mascotaService.Borrar(id);
             }
             catch (Exception ex)
             {
@@ -57,7 +57,7 @@ namespace ProyectoP3
         }
         private Mascota buscarMascota(int id)
         {
-            return logMascota.BuscarPorId(id);
+            return mascotaService.buscar(id);
         }
         private void mostrarFrm(Form frm)
         {
@@ -66,13 +66,13 @@ namespace ProyectoP3
         }
         private void FrmMascota_Load(object sender, EventArgs e)
         {
-            cargarDGV(logMascota.Consultar());
+            cargarDGV(mascotaService.Consultar());
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmMascotaAgregar());
-            cargarDGV(logMascota.Consultar());
+            cargarDGV(mascotaService.Consultar());
         }
 
         private void bttnActualizar_Click(object sender, EventArgs e)
@@ -102,7 +102,7 @@ namespace ProyectoP3
                 }
 
                 mostrarFrm(new FrmMascotaEditar(mascota));
-                cargarDGV(logMascota.Consultar());
+                cargarDGV(mascotaService.Consultar());
             }
             catch (Exception ex)
             {
@@ -143,7 +143,7 @@ namespace ProyectoP3
                 {
                     MessageBox.Show("Mascota eliminada correctamente.", "Eliminar Mascota",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV(logMascota.Consultar());
+                    cargarDGV(mascotaService.Consultar());
                 }
                 else
                     MessageBox.Show("No se pudo  eliminada la Mascota correctamente.", "Error",
@@ -161,12 +161,12 @@ namespace ProyectoP3
         {
             if(txtFiltrarRaza.Text.Trim() == "")
             {
-                cargarDGV(logMascota.Consultar());
+                cargarDGV(mascotaService.Consultar());
                 return;
             }
             else
             {
-                cargarDGV(logMascota.BuscarPorRaza(txtFiltrarRaza.Text.Trim()));
+                cargarDGV(mascotaService.BuscarPorRaza(txtFiltrarRaza.Text.Trim()));
             }
         }
 
@@ -174,12 +174,12 @@ namespace ProyectoP3
         {
             if (txtFiltrarEspecie.Text.Trim() == "")
             {
-                cargarDGV(logMascota.Consultar());
+                cargarDGV(mascotaService.Consultar());
                 return;
             }
             else
             {
-                cargarDGV(logMascota.BuscarPorEspecie(txtFiltrarEspecie.Text.Trim()));
+                cargarDGV(mascotaService.BuscarPorEspecie(txtFiltrarEspecie.Text.Trim()));
             }
         }
 
@@ -187,12 +187,33 @@ namespace ProyectoP3
         {
             if (txtFiltrarPropietario.Text.Trim() == "")
             {
-                cargarDGV(logMascota.Consultar());
+                cargarDGV(mascotaService.Consultar());
                 return;
             }
             else
             {
-                cargarDGV(logMascota.BuscarPorPropietario(int.Parse(txtFiltrarPropietario.Text.Trim())));
+                cargarDGV(mascotaService.BuscarPorPropietario(int.Parse(txtFiltrarPropietario.Text.Trim())));
+            }
+        }
+
+        private void DGVMascota_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int codigo = int.Parse(DGVMascota.CurrentRow.Cells["Codigo"].Value.ToString());
+            if (DGVMascota.Columns[e.ColumnIndex].Name == "Editar")
+            {
+                Mascota mascota = buscar(codigo);
+                mostrarFrm(new FrmMascotaEditar(mascota));
+                cargarDGV(mascotaService.Consultar());
+            }
+            else if (DGVMascota.Columns[e.ColumnIndex].Name == "elimina")
+            {
+                var respuesta = dialogoPregunta("eliminar");
+                if (respuesta == DialogResult.Yes)
+                {
+                    borrar(codigo);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(mascotaService.Consultar());
+                }
             }
         }
     }

@@ -8,17 +8,17 @@ namespace ProyectoP3
 {
     public partial class FrmEspecializacion : Form
     {
-        EspecializacionService logEspecializacion;
+        EspecializacionService especializacionService;
         public FrmEspecializacion()
         {
             InitializeComponent();
-            logEspecializacion = new EspecializacionService();
+            especializacionService = new EspecializacionService();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmEspecializacionAgregar());
-            cargarDGV(logEspecializacion.Consultar());
+            cargarDGV(especializacionService.Consultar());
         }
 
         private void btnEliminar_Click_1(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace ProyectoP3
 
                 eliminar(id);
                 MessageBox.Show("Especialización eliminada correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV(logEspecializacion.Consultar());
+                cargarDGV(especializacionService.Consultar());
             }
             catch (Exception ex)
             {
@@ -73,7 +73,7 @@ namespace ProyectoP3
                 }
 
                 mostrarFrm(new FrmEspecializacionEditar(especializacion));
-                cargarDGV(logEspecializacion.Consultar());
+                cargarDGV(especializacionService.Consultar());
             }
             catch (Exception ex)
             {
@@ -108,7 +108,7 @@ namespace ProyectoP3
 
         private void FrmEspecializacion_Load(object sender, EventArgs e)
         {
-            cargarDGV(logEspecializacion.Consultar());
+            cargarDGV(especializacionService.Consultar());
         }
 
         
@@ -117,7 +117,7 @@ namespace ProyectoP3
         {
             try
             {
-                return logEspecializacion.Borrar(id);
+                return especializacionService.Borrar(id);
             }
             catch (Exception e)
             {
@@ -129,7 +129,7 @@ namespace ProyectoP3
         {
             try
             {
-                return logEspecializacion.BuscarPorId(id);
+                return especializacionService.buscar(id);
             }
             catch (Exception ex)
             {
@@ -142,12 +142,33 @@ namespace ProyectoP3
         {
             if (txtFiltrarPorNombre.Text.Trim() == "")
             {
-                cargarDGV(logEspecializacion.Consultar());
+                cargarDGV(especializacionService.Consultar());
                 return;
             }
             else
             {
-                cargarDGV(logEspecializacion.BuscarPorNombre(txtFiltrarPorNombre.Text.Trim()));
+                cargarDGV(especializacionService.BuscarPorNombre(txtFiltrarPorNombre.Text.Trim()));
+            }
+        }
+
+        private void DGVEspecializacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int codigo = int.Parse(DGVEspecializacion.CurrentRow.Cells["Codigo"].Value.ToString());
+            if (DGVEspecializacion.Columns[e.ColumnIndex].Name == "Editar")
+            {
+                Especializacion especializacion = buscar(codigo);
+                mostrarFrm(new FrmEspecializacionEditar(especializacion));
+                cargarDGV(especializacionService.Consultar());
+            }
+            else if (DGVEspecializacion.Columns[e.ColumnIndex].Name == "elimina")
+            {
+                var respuesta = dialogoPregunta("eliminar");
+                if (respuesta == DialogResult.Yes)
+                {
+                    eliminar(codigo);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(especializacionService.Consultar());
+                }
             }
         }
     }

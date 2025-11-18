@@ -49,7 +49,7 @@ namespace Logica
         {
             return mascotaRepository.Eliminar(codigo);
         }
-        public Mascota BuscarPorId(int id)
+        public Mascota buscar(int id)
         {
             return mascotaRepository.BuscarPorId(id);
         }

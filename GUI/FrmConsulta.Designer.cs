@@ -32,24 +32,28 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DGVConsulta = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCrearPDF = new Guna.UI2.WinForms.Guna2Button();
-            this.btnEliminar = new Guna.UI2.WinForms.Guna2Button();
-            this.bttnActualizar = new Guna.UI2.WinForms.Guna2Button();
             this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
-            this.bttnCrearPDFEnviar = new Guna.UI2.WinForms.Guna2Button();
             this.bttnFiltrarPorFecha = new Guna.UI2.WinForms.Guna2Button();
             this.txtFiltrarPorFecha = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtFiltrarPorVeterinario = new Guna.UI2.WinForms.Guna2TextBox();
             this.bttnFiltrarPorVeterinario = new Guna.UI2.WinForms.Guna2Button();
             this.txtFiltrarPorMascota = new Guna.UI2.WinForms.Guna2TextBox();
             this.bttnFiltrarPorMascota = new Guna.UI2.WinForms.Guna2Button();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.elimina = new System.Windows.Forms.DataGridViewImageColumn();
+            this.GenerarPDF = new System.Windows.Forms.DataGridViewImageColumn();
+            this.EnviarEmail = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DGVConsulta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,13 +76,17 @@
             this.DGVConsulta.ColumnHeadersHeight = 15;
             this.DGVConsulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DGVConsulta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column8,
+            this.Codigo,
             this.Column9,
             this.Column10,
             this.Column11,
             this.Column12,
             this.Column13,
-            this.Column14});
+            this.Column14,
+            this.Editar,
+            this.elimina,
+            this.GenerarPDF,
+            this.EnviarEmail});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -118,108 +126,6 @@
             this.DGVConsulta.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.DGVConsulta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVConsulta_CellContentClick);
             // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Codigo";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Mascota";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Fecha";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Veterinario";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Descripcion";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Diagnostico";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "Tratamiento";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            // 
-            // btnCrearPDF
-            // 
-            this.btnCrearPDF.Animated = true;
-            this.btnCrearPDF.AutoRoundedCorners = true;
-            this.btnCrearPDF.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCrearPDF.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCrearPDF.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCrearPDF.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCrearPDF.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCrearPDF.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.btnCrearPDF.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearPDF.ForeColor = System.Drawing.Color.Black;
-            this.btnCrearPDF.IndicateFocus = true;
-            this.btnCrearPDF.Location = new System.Drawing.Point(582, 585);
-            this.btnCrearPDF.Name = "btnCrearPDF";
-            this.btnCrearPDF.Size = new System.Drawing.Size(141, 45);
-            this.btnCrearPDF.TabIndex = 24;
-            this.btnCrearPDF.Text = "Crear PDF";
-            this.btnCrearPDF.Click += new System.EventHandler(this.btnCrearPDF_Click_1);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Animated = true;
-            this.btnEliminar.AutoRoundedCorners = true;
-            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnEliminar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnEliminar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnEliminar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnEliminar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminar.IndicateFocus = true;
-            this.btnEliminar.Location = new System.Drawing.Point(435, 585);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(141, 45);
-            this.btnEliminar.TabIndex = 23;
-            this.btnEliminar.Text = "Eliminar Consulta";
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click_1);
-            // 
-            // bttnActualizar
-            // 
-            this.bttnActualizar.Animated = true;
-            this.bttnActualizar.AutoRoundedCorners = true;
-            this.bttnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnActualizar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bttnActualizar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bttnActualizar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bttnActualizar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bttnActualizar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.bttnActualizar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnActualizar.ForeColor = System.Drawing.Color.Black;
-            this.bttnActualizar.IndicateFocus = true;
-            this.bttnActualizar.Location = new System.Drawing.Point(288, 585);
-            this.bttnActualizar.Name = "bttnActualizar";
-            this.bttnActualizar.Size = new System.Drawing.Size(141, 45);
-            this.bttnActualizar.TabIndex = 22;
-            this.bttnActualizar.Text = "Actualizar Consulta";
-            this.bttnActualizar.Click += new System.EventHandler(this.bttnActualizar_Click);
-            // 
             // btnGuardar
             // 
             this.btnGuardar.Animated = true;
@@ -234,32 +140,12 @@
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.IndicateFocus = true;
-            this.btnGuardar.Location = new System.Drawing.Point(141, 585);
+            this.btnGuardar.Location = new System.Drawing.Point(515, 585);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(141, 45);
             this.btnGuardar.TabIndex = 21;
             this.btnGuardar.Text = "Guardar Consulta";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // bttnCrearPDFEnviar
-            // 
-            this.bttnCrearPDFEnviar.Animated = true;
-            this.bttnCrearPDFEnviar.AutoRoundedCorners = true;
-            this.bttnCrearPDFEnviar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnCrearPDFEnviar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bttnCrearPDFEnviar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bttnCrearPDFEnviar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bttnCrearPDFEnviar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bttnCrearPDFEnviar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.bttnCrearPDFEnviar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnCrearPDFEnviar.ForeColor = System.Drawing.Color.Black;
-            this.bttnCrearPDFEnviar.IndicateFocus = true;
-            this.bttnCrearPDFEnviar.Location = new System.Drawing.Point(729, 585);
-            this.bttnCrearPDFEnviar.Name = "bttnCrearPDFEnviar";
-            this.bttnCrearPDFEnviar.Size = new System.Drawing.Size(168, 45);
-            this.bttnCrearPDFEnviar.TabIndex = 25;
-            this.bttnCrearPDFEnviar.Text = "Crear PDF y enviar por email";
-            this.bttnCrearPDFEnviar.Click += new System.EventHandler(this.bttnCrearPDFEnviar_Click);
             // 
             // bttnFiltrarPorFecha
             // 
@@ -380,6 +266,108 @@
             this.bttnFiltrarPorMascota.Text = "Filtrar";
             this.bttnFiltrarPorMascota.Click += new System.EventHandler(this.bttnFiltrarPorMascota_Click);
             // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Mascota";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Fecha";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Veterinario";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Descripcion";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Diagnostico";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Tratamiento";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "Editar";
+            this.dataGridViewImageColumn1.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsEdit__4_;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 98;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "Eliminar";
+            this.dataGridViewImageColumn2.Image = global::ProyectoP3.Properties.Resources.LetsIconsDelAltFill__1_;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.Width = 98;
+            // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.HeaderText = "Generar PDF";
+            this.dataGridViewImageColumn3.Image = global::ProyectoP3.Properties.Resources.SolarDocumentBold;
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewImageColumn3.Width = 98;
+            // 
+            // dataGridViewImageColumn4
+            // 
+            this.dataGridViewImageColumn4.HeaderText = "Enviar Email";
+            this.dataGridViewImageColumn4.Image = global::ProyectoP3.Properties.Resources.MdiEmail;
+            this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
+            this.dataGridViewImageColumn4.Width = 98;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsEdit__4_;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            // 
+            // elimina
+            // 
+            this.elimina.HeaderText = "Eliminar";
+            this.elimina.Image = global::ProyectoP3.Properties.Resources.LetsIconsDelAltFill__1_;
+            this.elimina.Name = "elimina";
+            this.elimina.ReadOnly = true;
+            // 
+            // GenerarPDF
+            // 
+            this.GenerarPDF.HeaderText = "Generar PDF";
+            this.GenerarPDF.Image = global::ProyectoP3.Properties.Resources.SolarDocumentBold;
+            this.GenerarPDF.Name = "GenerarPDF";
+            this.GenerarPDF.ReadOnly = true;
+            this.GenerarPDF.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.GenerarPDF.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // EnviarEmail
+            // 
+            this.EnviarEmail.HeaderText = "Enviar Email";
+            this.EnviarEmail.Image = global::ProyectoP3.Properties.Resources.MdiEmail;
+            this.EnviarEmail.Name = "EnviarEmail";
+            this.EnviarEmail.ReadOnly = true;
+            // 
             // FrmConsulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,10 +379,6 @@
             this.Controls.Add(this.bttnFiltrarPorVeterinario);
             this.Controls.Add(this.txtFiltrarPorFecha);
             this.Controls.Add(this.bttnFiltrarPorFecha);
-            this.Controls.Add(this.bttnCrearPDFEnviar);
-            this.Controls.Add(this.btnCrearPDF);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.bttnActualizar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.DGVConsulta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -409,23 +393,27 @@
 
         #endregion
         private Guna.UI2.WinForms.Guna2DataGridView DGVConsulta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private Guna.UI2.WinForms.Guna2Button btnCrearPDF;
-        private Guna.UI2.WinForms.Guna2Button btnEliminar;
-        private Guna.UI2.WinForms.Guna2Button bttnActualizar;
         private Guna.UI2.WinForms.Guna2Button btnGuardar;
-        private Guna.UI2.WinForms.Guna2Button bttnCrearPDFEnviar;
         private Guna.UI2.WinForms.Guna2Button bttnFiltrarPorFecha;
         private Guna.UI2.WinForms.Guna2TextBox txtFiltrarPorFecha;
         private Guna.UI2.WinForms.Guna2TextBox txtFiltrarPorVeterinario;
         private Guna.UI2.WinForms.Guna2Button bttnFiltrarPorVeterinario;
         private Guna.UI2.WinForms.Guna2TextBox txtFiltrarPorMascota;
         private Guna.UI2.WinForms.Guna2Button bttnFiltrarPorMascota;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn elimina;
+        private System.Windows.Forms.DataGridViewImageColumn GenerarPDF;
+        private System.Windows.Forms.DataGridViewImageColumn EnviarEmail;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
     }
 }

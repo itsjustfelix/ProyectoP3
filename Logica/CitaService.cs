@@ -56,7 +56,7 @@ namespace Logica
             if (entidad.Hora == default) throw new Exception("La hora no puede ser nula.");
             return true;
         }
-        public Cita BuscarPorId(int id)
+        public Cita buscar(int id)
         {
             return citaRepository.BuscarPorId(id);
         }

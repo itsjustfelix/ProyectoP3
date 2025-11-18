@@ -60,7 +60,7 @@ namespace Logica
             }
            
         }
-        public Propietario BuscarPorId(int id)
+        public Propietario buscar(int id)
         {
             return propietarioRepository.BuscarPorId(id);
         }
@@ -80,7 +80,7 @@ namespace Logica
         }
         public bool IdUnico(int id)
         {
-            if (BuscarPorId(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
+            if (buscar(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
             return true;
         }
         public List<Propietario> BuscarPorCedula(int cedula)

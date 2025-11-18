@@ -10,20 +10,20 @@ namespace ProyectoP3
 {
     public partial class FrmEspecie : Form
     {
-        EspecieService logEspecie;
+        EspecieService especieService;
         public FrmEspecie()
         {
             InitializeComponent();
-            logEspecie = new EspecieService();
+            especieService = new EspecieService();
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmEspecieAgregar());
-            cargarDGV(logEspecie.Consultar());
+            cargarDGV(especieService.Consultar());
         }
         private void FrmEspecie_Load(object sender, EventArgs e)
         {
-            cargarDGV(logEspecie.Consultar());
+            cargarDGV(especieService.Consultar());
         }
         private void bttnActualizar_Click(object sender, EventArgs e)
         {
@@ -37,7 +37,7 @@ namespace ProyectoP3
                     return;
                 }
 
-                var especie = logEspecie.BuscarPorId(id);
+                var especie = especieService.buscar(id);
                 if (especie == null)
                 {
                     MessageBox.Show("Especie no encontrada", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -45,7 +45,7 @@ namespace ProyectoP3
                 }
 
                 mostrarFrm(new FrmEspecieEditar(especie));
-                cargarDGV(logEspecie.Consultar());
+                cargarDGV(especieService.Consultar());
             }
             catch (Exception ex)
             {
@@ -53,6 +53,11 @@ namespace ProyectoP3
             }
         }
 
+
+        private Especie buscar(int codigo)
+        {
+            return especieService.buscar(codigo);
+        }
         private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
@@ -65,7 +70,7 @@ namespace ProyectoP3
                     return;
                 }
 
-                var especie = logEspecie.BuscarPorId(id);
+                var especie = especieService.buscar(id);
                 if (especie == null)
                 {
                     MessageBox.Show("Especie no encontrada", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -74,9 +79,9 @@ namespace ProyectoP3
 
                 if (dialogoPregunta("eliminar la especie") != DialogResult.Yes) return;
 
-                borrar(id);
+                eliminar(id);
                 MessageBox.Show("Especie eliminada correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV(logEspecie.Consultar());
+                cargarDGV(especieService.Consultar());
             }
             catch (Exception ex)
             {
@@ -93,11 +98,11 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private bool borrar(int id)
+        private bool eliminar(int id)
         {
             try
             {
-                return logEspecie.Borrar(id);
+                return especieService.Borrar(id);
             }
             catch (Exception e)
             {
@@ -121,12 +126,33 @@ namespace ProyectoP3
         {
             if (txtFiltrarNombre.Text.Trim() == "")
             {
-                cargarDGV(logEspecie.Consultar());
+                cargarDGV(especieService.Consultar());
                 return;
             }
             else
             {
-                cargarDGV(logEspecie.BuscarPorNombre(txtFiltrarNombre.Text.Trim()));
+                cargarDGV(especieService.BuscarPorNombre(txtFiltrarNombre.Text.Trim()));
+            }
+        }
+
+        private void DGVEspecie_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int codigo = int.Parse(DGVEspecie.CurrentRow.Cells["Codigo"].Value.ToString());
+            if (DGVEspecie.Columns[e.ColumnIndex].Name == "Editar")
+            {
+                Especie especie = buscar(codigo);
+                mostrarFrm(new FrmEspecieEditar(especie));
+                cargarDGV(especieService.Consultar());
+            }
+            else if (DGVEspecie.Columns[e.ColumnIndex].Name == "elimina")
+            {
+                var respuesta = dialogoPregunta("eliminar");
+                if (respuesta == DialogResult.Yes)
+                {
+                    eliminar(codigo);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(especieService.Consultar());
+                }
             }
         }
     }

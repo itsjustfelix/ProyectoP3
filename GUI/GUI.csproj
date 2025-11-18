@@ -320,6 +320,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Logica.IServiceRaza.datasource" />
@@ -358,7 +359,33 @@
       <Name>Modelo IA</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LetsIconsDelAltFill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsEdit %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsEdit %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsEdit %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LetsIconsDelAltFill %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MdiEmail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SolarDocumentBold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HugeiconsAppointment02.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\QuestPDF.2025.7.2\build\net4\QuestPDF.targets" Condition="Exists('..\packages\QuestPDF.2025.7.2\build\net4\QuestPDF.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

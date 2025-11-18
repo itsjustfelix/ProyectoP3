@@ -57,7 +57,7 @@ namespace ProyectoP3
         }
         private Mascota buscarMascota(int id)
         {
-            return logMascota.BuscarPorId(id);
+            return logMascota.buscar(id);
         }
         private void SetControlesEstado(bool estado)
         {
@@ -68,7 +68,7 @@ namespace ProyectoP3
         }
         private Veterinario buscarVeterinario(int id)
         {
-            return logVeterinario.BuscarPorId(id);
+            return logVeterinario.buscar(id);
         }
         private void cargarCmbEspecializacion()
         {

@@ -51,7 +51,7 @@ namespace ProyectoP3
         }
         private Especializacion buscarEspecializacion(int codigo)
         {
-            return logEspecializacion.BuscarPorId(codigo);
+            return logEspecializacion.buscar(codigo);
         }
         private void salir()
         {

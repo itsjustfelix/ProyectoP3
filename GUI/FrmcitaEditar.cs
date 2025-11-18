@@ -66,11 +66,11 @@ namespace ProyectoP3
         }
         private Mascota buscarMascota(int id)
         {
-            return logMascota.BuscarPorId(id);
+            return logMascota.buscar(id);
         }
         private Veterinario buscarVeterinario(int cedula)
         {
-            return logVeterinario.BuscarPorId(cedula);
+            return logVeterinario.buscar(cedula);
         }
         private DialogResult dialogoPregunta(string accion)
         {

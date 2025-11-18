@@ -55,15 +55,15 @@ namespace ProyectoP3
         }
         private Especie buscarEspecie(int id)
         {
-            return logEspecie.BuscarPorId(id);
+            return logEspecie.buscar(id);
         }
         private Raza buscarRaza(int id)
         {
-            return logRaza.BuscarPorId(id);
+            return logRaza.buscar(id);
         }
         private Propietario buscarPropietario(int id)
         {
-            return logPropietario.BuscarPorId(id);
+            return logPropietario.buscar(id);
         }
         private void SetControlesEstado(bool estado)
         {

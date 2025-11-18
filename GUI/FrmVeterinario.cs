@@ -25,7 +25,7 @@ namespace ProyectoP3
         {
             try
             {
-                return VeterinarioService.BuscarPorId(codigo);
+                return VeterinarioService.buscar(codigo);
             }
             catch (Exception ex)
             {
@@ -81,65 +81,6 @@ namespace ProyectoP3
             cargarDGV(VeterinarioService.Consultar());
         }
 
-        private void bttnActualizar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Digite el ID del veterinario a buscar", "Buscar Veterinario", "");
-                if (string.IsNullOrWhiteSpace(input))
-                    return;
-
-                if (!int.TryParse(input, out int id))
-                    throw new Exception("El ID debe ser solo números");
-
-                Veterinario veterinario = buscar(id);
-                if (veterinario == null)
-                {
-                    MessageBox.Show("Veterinario no encontrado", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                mostrarFrm(new FrmVeterinarioEditar(veterinario));
-                cargarDGV(VeterinarioService.Consultar());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void btnEliminar_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Digite el ID del veterinario a eliminar", "Eliminar Veterinario", "");
-                if (string.IsNullOrWhiteSpace(input))
-                    return;
-
-                if (!int.TryParse(input, out int id))
-                    throw new Exception("El ID debe ser solo números");
-
-                Veterinario veterinario = buscar(id);
-                if (veterinario == null)
-                {
-                    MessageBox.Show("Veterinario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                var respuesta = dialogoPregunta("eliminar");
-                if (respuesta == DialogResult.Yes)
-                {
-                    eliminar(id);
-                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV(VeterinarioService.Consultar());
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void bttnFiltrarPorEspecialidad_Click(object sender, EventArgs e)
         {
             if(txtFiltrarEspecializacion.Text.Trim() == "")
@@ -149,6 +90,26 @@ namespace ProyectoP3
             else
             {
                 cargarDGV(VeterinarioService.bsucarPorNombreEspecializacion(txtFiltrarEspecializacion.Text.Trim()));
+            }
+        }
+
+        private void DGVeterinario_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int cedula = int.Parse(DGVeterinario.CurrentRow.Cells["Cedula"].Value.ToString());
+            if (DGVeterinario.Columns[e.ColumnIndex].Name == "Editar")
+            {
+                Veterinario veterinario = buscar(cedula);
+                mostrarFrm(new FrmVeterinarioEditar(veterinario));
+                cargarDGV(VeterinarioService.Consultar());
+            }else if(DGVeterinario.Columns[e.ColumnIndex].Name == "elimina")
+            {
+                var respuesta = dialogoPregunta("eliminar");
+                if (respuesta == DialogResult.Yes)
+                {
+                    eliminar(cedula);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(VeterinarioService.Consultar());
+                }
             }
         }
     }

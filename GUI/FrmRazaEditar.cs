@@ -68,7 +68,7 @@ namespace ProyectoP3
         }
         private Especie buscarEspecie(int id)
         {
-            return logEspecie.BuscarPorId(id);
+            return logEspecie.buscar(id);
         }
         private Raza Mapeo()
         {

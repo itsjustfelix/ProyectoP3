@@ -49,7 +49,7 @@ namespace Logica
         {
             return especializacionRepository.Eliminar(codigo);
         }
-        public Especializacion BuscarPorId(int codigo)
+        public Especializacion buscar(int codigo)
         {
             return especializacionRepository.BuscarPorId(codigo);
         }
