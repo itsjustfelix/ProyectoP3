@@ -130,11 +130,20 @@
   <data name="SolarDocumentBold" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SolarDocumentBold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="HugeiconsAppointment02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HugeiconsAppointment02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsBarChart4Bars" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsBarChart4Bars.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="MaterialSymbolsEdit (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MaterialSymbolsEdit (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MaterialSymbolsEdit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MaterialSymbolsEdit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsBarChart4Bars (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsBarChart4Bars (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MaterialSymbolsEdit (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MaterialSymbolsEdit (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,7 +151,7 @@
   <data name="LetsIconsDelAltFill" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LetsIconsDelAltFill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="HugeiconsAppointment02" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\HugeiconsAppointment02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SolarUserBold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SolarUserBold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

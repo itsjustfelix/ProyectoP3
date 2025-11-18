@@ -32,6 +32,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.bttnSalir = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.button4 = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -43,7 +44,6 @@
             this.btnRaza = new Guna.UI2.WinForms.Guna2Button();
             this.btnEspecie = new Guna.UI2.WinForms.Guna2Button();
             this.btnPropietario = new Guna.UI2.WinForms.Guna2Button();
-            this.bttnSalir = new Guna.UI2.WinForms.Guna2Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -94,6 +94,32 @@
             this.label1.Text = "My Vet";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // bttnSalir
+            // 
+            this.bttnSalir.Animated = true;
+            this.bttnSalir.AutoRoundedCorners = true;
+            this.bttnSalir.BorderColor = System.Drawing.Color.Gray;
+            this.bttnSalir.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.bttnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnSalir.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.bttnSalir.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.bttnSalir.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.bttnSalir.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.bttnSalir.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.bttnSalir.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.bttnSalir.ForeColor = System.Drawing.Color.Black;
+            this.bttnSalir.Image = ((System.Drawing.Image)(resources.GetObject("bttnSalir.Image")));
+            this.bttnSalir.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bttnSalir.IndicateFocus = true;
+            this.bttnSalir.Location = new System.Drawing.Point(-1, 641);
+            this.bttnSalir.Name = "bttnSalir";
+            this.bttnSalir.Size = new System.Drawing.Size(182, 45);
+            this.bttnSalir.TabIndex = 24;
+            this.bttnSalir.Text = "Salir";
+            this.bttnSalir.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bttnSalir.TextOffset = new System.Drawing.Point(10, 0);
+            this.bttnSalir.Click += new System.EventHandler(this.bttnSalir_Click);
+            // 
             // guna2Button1
             // 
             this.guna2Button1.Animated = true;
@@ -108,7 +134,7 @@
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.guna2Button1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.guna2Button1.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
+            this.guna2Button1.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsBarChart4Bars__1_;
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button1.IndicateFocus = true;
             this.guna2Button1.Location = new System.Drawing.Point(-1, 533);
@@ -348,7 +374,7 @@
             this.btnPropietario.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.btnPropietario.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnPropietario.ForeColor = System.Drawing.Color.Black;
-            this.btnPropietario.Image = ((System.Drawing.Image)(resources.GetObject("btnPropietario.Image")));
+            this.btnPropietario.Image = global::ProyectoP3.Properties.Resources.SolarUserBold;
             this.btnPropietario.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnPropietario.IndicateFocus = true;
             this.btnPropietario.Location = new System.Drawing.Point(-1, 74);
@@ -359,32 +385,6 @@
             this.btnPropietario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnPropietario.TextOffset = new System.Drawing.Point(10, 0);
             this.btnPropietario.Click += new System.EventHandler(this.btnPropietario_Click_1);
-            // 
-            // bttnSalir
-            // 
-            this.bttnSalir.Animated = true;
-            this.bttnSalir.AutoRoundedCorners = true;
-            this.bttnSalir.BorderColor = System.Drawing.Color.Gray;
-            this.bttnSalir.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
-            this.bttnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnSalir.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bttnSalir.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bttnSalir.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bttnSalir.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bttnSalir.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.bttnSalir.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
-            this.bttnSalir.ForeColor = System.Drawing.Color.Black;
-            this.bttnSalir.Image = ((System.Drawing.Image)(resources.GetObject("bttnSalir.Image")));
-            this.bttnSalir.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.bttnSalir.IndicateFocus = true;
-            this.bttnSalir.Location = new System.Drawing.Point(-1, 641);
-            this.bttnSalir.Name = "bttnSalir";
-            this.bttnSalir.Size = new System.Drawing.Size(182, 45);
-            this.bttnSalir.TabIndex = 24;
-            this.bttnSalir.Text = "Salir";
-            this.bttnSalir.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.bttnSalir.TextOffset = new System.Drawing.Point(10, 0);
-            this.bttnSalir.Click += new System.EventHandler(this.bttnSalir_Click);
             // 
             // Form1
             // 

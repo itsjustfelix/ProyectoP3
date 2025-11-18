@@ -93,6 +93,26 @@ namespace ProyectoP3.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MaterialSymbolsBarChart4Bars {
+            get {
+                object obj = ResourceManager.GetObject("MaterialSymbolsBarChart4Bars", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MaterialSymbolsBarChart4Bars__1_ {
+            get {
+                object obj = ResourceManager.GetObject("MaterialSymbolsBarChart4Bars (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MaterialSymbolsEdit {
             get {
                 object obj = ResourceManager.GetObject("MaterialSymbolsEdit", resourceCulture);
@@ -146,6 +166,16 @@ namespace ProyectoP3.Properties {
         internal static System.Drawing.Bitmap SolarDocumentBold {
             get {
                 object obj = ResourceManager.GetObject("SolarDocumentBold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SolarUserBold {
+            get {
+                object obj = ResourceManager.GetObject("SolarUserBold", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

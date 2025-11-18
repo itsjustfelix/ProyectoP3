@@ -386,6 +386,15 @@
   <ItemGroup>
     <None Include="Resources\HugeiconsAppointment02.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsBarChart4Bars.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsBarChart4Bars %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SolarUserBold.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\QuestPDF.2025.7.2\build\net4\QuestPDF.targets" Condition="Exists('..\packages\QuestPDF.2025.7.2\build\net4\QuestPDF.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
