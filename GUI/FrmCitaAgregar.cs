@@ -68,6 +68,7 @@ namespace ProyectoP3
             DTPFecha.Enabled = estado;
             cmbEspecializacion.Enabled = estado;
             cmbVeterianrio.Enabled = estado;
+            cmbMascotas.Enabled = estado; 
         }
         private Veterinario buscarVeterinario(int id)
         {
