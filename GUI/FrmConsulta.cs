@@ -230,6 +230,11 @@ namespace ProyectoP3
                 MessageBox.Show(mensaje, "Enviar Email",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else if(DGVConsulta.Columns[e.ColumnIndex].Name == "VerConsulta")
+            {
+                Consulta consulta = buscar(codigo);
+                mostrarFrm(new FrmConsultaMostrar(consulta));
+            }
         }
         private void guna2TextBox2_TextChanged(object sender, EventArgs e)
         {
