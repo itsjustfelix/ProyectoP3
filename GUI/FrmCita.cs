@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
-using Microsoft.VisualBasic;
 
 namespace ProyectoP3
 {
@@ -42,72 +41,6 @@ namespace ProyectoP3
         {
             return CitaService.buscar(id);
         }
-        private void bttnActualizar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox(
-                    "Ingrese el código de la cita a buscar:",
-                    "Buscar Cita", ""
-                );
-
-                if (string.IsNullOrWhiteSpace(input))
-                    return;
-
-                if (!int.TryParse(input, out int id))
-                {
-                    MessageBox.Show("Debe ingresar un número válido.", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                Cita cita = buscar(id);
-                if (cita == null)
-                {
-                    MessageBox.Show("Cita no encontrada.", "Buscar Cita",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                mostrarFrm(new FrmcitaEditar(cita));
-                cargarDGV(CitaService.Consultar());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnEliminar_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Ingrese el código de la cita a eliminar:", "Eliminar Cita", "");
-                if (string.IsNullOrWhiteSpace(input)) return;
-                if (!int.TryParse(input, out int id))
-                {
-                    MessageBox.Show("Debe ingresar un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (buscar(id) == null)
-                {
-                    MessageBox.Show("Cita no encontrada.", "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                if (dialogoPregunta("eliminar la cita") != DialogResult.Yes) return;
-
-                eliminar(id);
-                MessageBox.Show("Cita eliminada correctamente.", "Eliminar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV(CitaService.Consultar());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private bool eliminar(int codigoCita)
         {
@@ -129,32 +62,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private void bttnAtenderCita_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Ingrese el código de la cita a buscar:", "Buscar Cita", "");
-                if (string.IsNullOrWhiteSpace(input)) return;
-                if (!int.TryParse(input, out int id))
-                {
-                    MessageBox.Show("Debe ingresar un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
-                Cita cita = buscar(id);
-                if (cita == null)
-                {
-                    MessageBox.Show("Cita no encontrada.", "Buscar Cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void mostrarFrm(Form frm)
         {
             frm.StartPosition = FormStartPosition.CenterParent;
@@ -176,14 +84,14 @@ namespace ProyectoP3
 
         private void bttnFiltrarPorFecha_Click(object sender, EventArgs e)
         {
-            if(txtFiltrarPorFacha.Text.Trim() == "")
+            if (txtFiltrarPorFacha.Text.Trim() == "")
             {
                 cargarDGV(CitaService.Consultar());
                 return;
             }
             else
             {
-               cargarDGV(CitaService.buscarPorFecha(txtFiltrarPorFacha.Text.Trim()));
+                cargarDGV(CitaService.buscarPorFecha(txtFiltrarPorFacha.Text.Trim()));
             }
         }
 
@@ -206,7 +114,7 @@ namespace ProyectoP3
                     cargarDGV(CitaService.Consultar());
                 }
             }
-            else if(DGVCita.Columns[e.ColumnIndex].Name == "AtenderCita")
+            else if (DGVCita.Columns[e.ColumnIndex].Name == "AtenderCita")
             {
                 Cita cita = buscar(codigo);
                 if (cita.Fecha.Equals(DateTime.Now.ToString("dd/MM/yyyy")))

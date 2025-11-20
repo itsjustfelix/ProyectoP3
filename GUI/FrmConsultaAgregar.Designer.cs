@@ -37,14 +37,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtIdMascota = new Guna.UI2.WinForms.Guna2TextBox();
-            this.cmbEspecializacion = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.cbmVeterinario = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtDiagnostico = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtTratamiento = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnAgregar = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancelar = new Guna.UI2.WinForms.Guna2Button();
-            this.btnBuscarMascota = new Guna.UI2.WinForms.Guna2Button();
+            this.txtVeterinario = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtEspecializacion = new Guna.UI2.WinForms.Guna2TextBox();
             this.SuspendLayout();
             // 
             // nombre
@@ -71,7 +70,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(123, 203);
+            this.label4.Location = new System.Drawing.Point(123, 208);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 19);
             this.label4.TabIndex = 0;
@@ -81,7 +80,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(123, 338);
+            this.label1.Location = new System.Drawing.Point(123, 344);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 19);
             this.label1.TabIndex = 0;
@@ -91,7 +90,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(123, 410);
+            this.label3.Location = new System.Drawing.Point(123, 412);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 19);
             this.label3.TabIndex = 0;
@@ -101,7 +100,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(123, 266);
+            this.label2.Location = new System.Drawing.Point(123, 276);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 19);
             this.label2.TabIndex = 16;
@@ -139,41 +138,6 @@
             this.txtIdMascota.Size = new System.Drawing.Size(286, 31);
             this.txtIdMascota.TabIndex = 23;
             // 
-            // cmbEspecializacion
-            // 
-            this.cmbEspecializacion.AutoRoundedCorners = true;
-            this.cmbEspecializacion.BackColor = System.Drawing.Color.Transparent;
-            this.cmbEspecializacion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmbEspecializacion.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbEspecializacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEspecializacion.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbEspecializacion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbEspecializacion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbEspecializacion.ForeColor = System.Drawing.Color.Black;
-            this.cmbEspecializacion.ItemHeight = 30;
-            this.cmbEspecializacion.Location = new System.Drawing.Point(127, 163);
-            this.cmbEspecializacion.Name = "cmbEspecializacion";
-            this.cmbEspecializacion.Size = new System.Drawing.Size(286, 36);
-            this.cmbEspecializacion.TabIndex = 24;
-            this.cmbEspecializacion.SelectedIndexChanged += new System.EventHandler(this.cmbEspecializacion_SelectedIndexChanged_1);
-            // 
-            // cbmVeterinario
-            // 
-            this.cbmVeterinario.AutoRoundedCorners = true;
-            this.cbmVeterinario.BackColor = System.Drawing.Color.Transparent;
-            this.cbmVeterinario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbmVeterinario.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbmVeterinario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbmVeterinario.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbmVeterinario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbmVeterinario.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbmVeterinario.ForeColor = System.Drawing.Color.Black;
-            this.cbmVeterinario.ItemHeight = 30;
-            this.cbmVeterinario.Location = new System.Drawing.Point(127, 226);
-            this.cbmVeterinario.Name = "cbmVeterinario";
-            this.cbmVeterinario.Size = new System.Drawing.Size(286, 36);
-            this.cbmVeterinario.TabIndex = 25;
-            // 
             // txtDescripcion
             // 
             this.txtDescripcion.Animated = true;
@@ -188,7 +152,7 @@
             this.txtDescripcion.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.ForeColor = System.Drawing.Color.Black;
             this.txtDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDescripcion.Location = new System.Drawing.Point(127, 289);
+            this.txtDescripcion.Location = new System.Drawing.Point(127, 297);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.PlaceholderText = "";
@@ -210,7 +174,7 @@
             this.txtDiagnostico.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiagnostico.ForeColor = System.Drawing.Color.Black;
             this.txtDiagnostico.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDiagnostico.Location = new System.Drawing.Point(125, 361);
+            this.txtDiagnostico.Location = new System.Drawing.Point(125, 365);
             this.txtDiagnostico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDiagnostico.Name = "txtDiagnostico";
             this.txtDiagnostico.PlaceholderText = "";
@@ -282,24 +246,52 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
             // 
-            // btnBuscarMascota
+            // txtVeterinario
             // 
-            this.btnBuscarMascota.Animated = true;
-            this.btnBuscarMascota.AutoRoundedCorners = true;
-            this.btnBuscarMascota.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscarMascota.DefaultAutoSize = true;
-            this.btnBuscarMascota.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarMascota.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarMascota.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBuscarMascota.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBuscarMascota.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnBuscarMascota.ForeColor = System.Drawing.Color.White;
-            this.btnBuscarMascota.Location = new System.Drawing.Point(440, 53);
-            this.btnBuscarMascota.Name = "btnBuscarMascota";
-            this.btnBuscarMascota.Size = new System.Drawing.Size(65, 27);
-            this.btnBuscarMascota.TabIndex = 32;
-            this.btnBuscarMascota.Text = "Buscar";
-            this.btnBuscarMascota.Click += new System.EventHandler(this.btnBuscarMascota_Click_1);
+            this.txtVeterinario.Animated = true;
+            this.txtVeterinario.AutoRoundedCorners = true;
+            this.txtVeterinario.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtVeterinario.DefaultText = "";
+            this.txtVeterinario.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtVeterinario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtVeterinario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtVeterinario.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtVeterinario.Enabled = false;
+            this.txtVeterinario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtVeterinario.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVeterinario.ForeColor = System.Drawing.Color.Black;
+            this.txtVeterinario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtVeterinario.Location = new System.Drawing.Point(127, 229);
+            this.txtVeterinario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtVeterinario.Name = "txtVeterinario";
+            this.txtVeterinario.PlaceholderText = "";
+            this.txtVeterinario.SelectedText = "";
+            this.txtVeterinario.Size = new System.Drawing.Size(286, 45);
+            this.txtVeterinario.TabIndex = 31;
+            this.txtVeterinario.TextChanged += new System.EventHandler(this.txtVeterinario_TextChanged);
+            // 
+            // txtEspecializacion
+            // 
+            this.txtEspecializacion.Animated = true;
+            this.txtEspecializacion.AutoRoundedCorners = true;
+            this.txtEspecializacion.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtEspecializacion.DefaultText = "";
+            this.txtEspecializacion.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtEspecializacion.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtEspecializacion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtEspecializacion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtEspecializacion.Enabled = false;
+            this.txtEspecializacion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtEspecializacion.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEspecializacion.ForeColor = System.Drawing.Color.Black;
+            this.txtEspecializacion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtEspecializacion.Location = new System.Drawing.Point(127, 161);
+            this.txtEspecializacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEspecializacion.Name = "txtEspecializacion";
+            this.txtEspecializacion.PlaceholderText = "";
+            this.txtEspecializacion.SelectedText = "";
+            this.txtEspecializacion.Size = new System.Drawing.Size(286, 45);
+            this.txtEspecializacion.TabIndex = 32;
             // 
             // FrmConsultaAgregar
             // 
@@ -307,14 +299,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(539, 562);
-            this.Controls.Add(this.btnBuscarMascota);
+            this.Controls.Add(this.txtEspecializacion);
+            this.Controls.Add(this.txtVeterinario);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtTratamiento);
             this.Controls.Add(this.txtDiagnostico);
             this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.cbmVeterinario);
-            this.Controls.Add(this.cmbEspecializacion);
             this.Controls.Add(this.txtIdMascota);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.nombre);
@@ -342,13 +333,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2TextBox txtIdMascota;
-        private Guna.UI2.WinForms.Guna2ComboBox cmbEspecializacion;
-        private Guna.UI2.WinForms.Guna2ComboBox cbmVeterinario;
         private Guna.UI2.WinForms.Guna2TextBox txtDescripcion;
         private Guna.UI2.WinForms.Guna2TextBox txtDiagnostico;
         private Guna.UI2.WinForms.Guna2TextBox txtTratamiento;
         private Guna.UI2.WinForms.Guna2Button btnAgregar;
         private Guna.UI2.WinForms.Guna2Button btnCancelar;
-        private Guna.UI2.WinForms.Guna2Button btnBuscarMascota;
+        private Guna.UI2.WinForms.Guna2TextBox txtVeterinario;
+        private Guna.UI2.WinForms.Guna2TextBox txtEspecializacion;
     }
 }

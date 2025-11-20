@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
-using Microsoft.VisualBasic;
 
 namespace ProyectoP3
 {
@@ -83,7 +82,7 @@ namespace ProyectoP3
 
         private void bttnFiltrarPorEspecialidad_Click(object sender, EventArgs e)
         {
-            if(txtFiltrarEspecializacion.Text.Trim() == "")
+            if (txtFiltrarEspecializacion.Text.Trim() == "")
             {
                 cargarDGV(VeterinarioService.Consultar());
             }
@@ -101,7 +100,8 @@ namespace ProyectoP3
                 Veterinario veterinario = buscar(cedula);
                 mostrarFrm(new FrmVeterinarioEditar(veterinario));
                 cargarDGV(VeterinarioService.Consultar());
-            }else if(DGVeterinario.Columns[e.ColumnIndex].Name == "elimina")
+            }
+            else if (DGVeterinario.Columns[e.ColumnIndex].Name == "elimina")
             {
                 var respuesta = dialogoPregunta("eliminar");
                 if (respuesta == DialogResult.Yes)

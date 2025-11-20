@@ -23,66 +23,6 @@ namespace ProyectoP3
             mostrarFrm(new FrmRazaAgregar());
             cargarDGV(razaService.Consultar());
         }
-        private void bttnActualizar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Ingrese el ID de la raza a buscar:", "Buscar Raza", "");
-                if (string.IsNullOrWhiteSpace(input))
-                    return;
-
-                if (!int.TryParse(input, out int id))
-                    throw new Exception("El ID debe ser solo números");
-
-                Raza raza = buscar(id);
-                if (raza == null)
-                {
-                    MessageBox.Show("Raza no encontrada.", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                mostrarFrm(new FrmRazaEditar(raza));
-                cargarDGV(razaService.Consultar());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void btnEliminar_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Ingrese el codigo de la raza a eliminar:", "Eliminar Raza", "");
-                if (string.IsNullOrWhiteSpace(input))
-                    return;
-
-                if (!int.TryParse(input, out int codigo))
-                    throw new Exception("El código debe ser solo números");
-
-                Raza raza = buscar(codigo);
-                if (raza == null)
-                {
-                    MessageBox.Show("Raza no encontrada.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                var confirmacion = dialogoPregunta("Eliminar la raza");
-                if (confirmacion == DialogResult.Yes)
-                {
-                    borrar(codigo);
-                    MessageBox.Show("Raza eliminada correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV(razaService.Consultar());
-                }
-                else return;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(

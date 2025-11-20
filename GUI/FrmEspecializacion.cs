@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
-using Microsoft.VisualBasic;
 namespace ProyectoP3
 {
     public partial class FrmEspecializacion : Form
@@ -21,65 +20,6 @@ namespace ProyectoP3
             cargarDGV(especializacionService.Consultar());
         }
 
-        private void btnEliminar_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Digite el código de la especialización a eliminar", "Eliminar Especialización", "");
-                if (string.IsNullOrWhiteSpace(input)) return;
-                if (!int.TryParse(input, out int id))
-                {
-                    MessageBox.Show("Debe ingresar un número válido.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                var especializacion = buscar(id);
-                if (especializacion == null)
-                {
-                    MessageBox.Show("Especialización no encontrada", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                if (dialogoPregunta("eliminar la especialización") != DialogResult.Yes) return;
-
-                eliminar(id);
-                MessageBox.Show("Especialización eliminada correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV(especializacionService.Consultar());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-        private void bttnActualizar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Digite el código de la especialización a buscar", "Buscar Especialización", "");
-                if (string.IsNullOrWhiteSpace(input)) return;
-                if (!int.TryParse(input, out int id))
-                {
-                    MessageBox.Show("Debe ingresar un número válido.", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                var especializacion = buscar(id);
-                if (especializacion == null)
-                {
-                    MessageBox.Show("Especialización no encontrada", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                mostrarFrm(new FrmEspecializacionEditar(especializacion));
-                cargarDGV(especializacionService.Consultar());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void cargarDGV(List<Especializacion> lista)
         {
@@ -111,7 +51,7 @@ namespace ProyectoP3
             cargarDGV(especializacionService.Consultar());
         }
 
-        
+
 
         private bool eliminar(int id)
         {
