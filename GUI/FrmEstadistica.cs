@@ -10,7 +10,6 @@ namespace ProyectoP3
 {
     public partial class FrmEstadistica : Form
     {
-        // Tus servicios (ya los tenías)
         CitaService citaService = new CitaService();
         VeterinarioService veterinarioService = new VeterinarioService();
         MascotaService mascotaService = new MascotaService();
@@ -19,34 +18,7 @@ namespace ProyectoP3
         public FrmEstadistica()
         {
             InitializeComponent();
-            // Conectar evento del calendario
             this.monthCalendar1.DateSelected += MonthCalendar1_DateSelected;
-        }
-
-        private void FrmEstadistica_Load(object sender, EventArgs e)
-        {
-            RefrescarTodo();
-        }
-
-        private void RefrescarTodo()
-        {
-            try
-            {
-                // Cargar gráfico
-                var lista = citaService.ObtenerCitasPorFechas();
-                if (lista != null)
-                    cargarDiagrama(lista);
-
-                // Labels
-                cargarLabels();
-
-                // Citas del dia actual
-                CargarCitasDelDia(DateTime.Now.Date);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al inicializar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void MonthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
@@ -57,32 +29,21 @@ namespace ProyectoP3
         private void CargarCitasDelDia(DateTime fecha)
         {
             listBoxCitasDia.Items.Clear();
-            listBoxAgenda.Items.Clear();
-
-            // Intenta obtener citas del servicio (ajusta nombres según tu implementación)
-            try
+            var citas = citaService.buscarPorFecha(fecha.ToString("dd/MM/yyyy"));
+            if (citas != null && citas.Count > 0)
             {
-                var citas = citaService.buscarPorFecha(fecha.ToString("dd/MM/yyyy")); // adapta si tu método tiene otro nombre
-                if (citas != null && citas.Count > 0)
+                foreach (var c in citas)
                 {
-                    foreach (var c in citas)
-                    {
-                        // Ajusta las propiedades según tu entidad
-                        string hora = c.Hora;
-                        string mascota = c.Mascota.Nombre;
-                        string vet = c.Veterinario.Nombres;
-                        string esp = c.Veterinario.Especializacion.Nombre;
-                        listBoxCitasDia.Items.Add($"{hora} - {mascota} - Dr. {vet}- {esp}");
-                    }
-                }
-                else
-                {
-                    listBoxCitasDia.Items.Add("No hay citas para esta fecha.");
+                    listBoxCitasDia.Items.Add($"Hora: {c.Hora}");
+                    listBoxCitasDia.Items.Add($"Mascota: {c.Mascota.Nombre}");
+                    listBoxCitasDia.Items.Add($"Veterinario: {c.Veterinario.Nombres}");
+                    listBoxCitasDia.Items.Add($"Especialiazcion:{c.Veterinario.Especializacion.Nombre}");
+                    listBoxCitasDia.Items.Add("--------------------------------------------------");
                 }
             }
-            catch
+            else
             {
-                listBoxCitasDia.Items.Add("No se pudieron cargar las citas (método no disponible).");
+                listBoxCitasDia.Items.Add("No hay citas para esta fecha.");
             }
         }
 
@@ -104,7 +65,7 @@ namespace ProyectoP3
                 {
                     barDataset.DataPoints.Add(new Guna.Charts.WinForms.LPoint
                     {
-                        Label = Convert.ToDateTime(item.fecha).ToString("dd/MM/yyyy"),
+                        Label = item.fecha,
                         Y = item.cantidad
                     });
                 }
@@ -130,19 +91,22 @@ namespace ProyectoP3
 
         private void cargarLabels()
         {
-            try
-            {
-                // Asegúrate que tus servicios implementan estos métodos
                 cardCitasAtendidas.Text = citaService.totalCitas().ToString();
-                lblCitasHoy.Text = citaService.totalCitasHoy(DateTime.Now.Date.ToString("dd/MM/yyyy")).ToString();
-                lblVeterinarios.Text = veterinarioService.totalVeterinarios().ToString();
-                lblMascotas.Text = mascotaService.totalMascotas().ToString();
+                lblContadorCitasHoy.Text = citaService.totalCitasHoy(DateTime.Now.Date.ToString("dd/MM/yyyy")).ToString();
+                lblContadorVeterinarios.Text = veterinarioService.totalVeterinarios().ToString();
+            lblContadorMascotas.Text = mascotaService.totalMascotas().ToString();
                 lblCitasAtendidas.Text = consultaService.totalConsultasAsistdas(DateTime.Now.Date.ToString("dd/MM/yyyy")).ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar contadores: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+        }
+
+        private void FrmEstadistica_Load_1(object sender, EventArgs e)
+        {
+            cargarDiagrama(citaService.ObtenerCitasPorFechas());
+            cargarLabels();
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+
         }
     }
 }
