@@ -95,5 +95,6 @@ namespace Logica
         {
             return Consultar().Count;
         }
+
     }
 }

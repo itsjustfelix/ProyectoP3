@@ -2,15 +2,8 @@
 {
     partial class FrmEstadistica
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             Guna.Charts.WinForms.ChartFont chartFont1 = new Guna.Charts.WinForms.ChartFont();
@@ -44,38 +33,46 @@
             Guna.Charts.WinForms.Tick tick3 = new Guna.Charts.WinForms.Tick();
             Guna.Charts.WinForms.ChartFont chartFont8 = new Guna.Charts.WinForms.ChartFont();
             this.gunaChart1 = new Guna.Charts.WinForms.GunaChart();
-            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.panelTopButtons = new System.Windows.Forms.Panel();
+            this.btnTopConsulta = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTopCita = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTopIA = new Guna.UI2.WinForms.Guna2Button();
+            this.panelCards = new System.Windows.Forms.Panel();
+            this.cardMascotas = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.labelMascotasTitle = new System.Windows.Forms.Label();
             this.lblMascotas = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.cardVeterinarios = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.labelVeterinariosTitle = new System.Windows.Forms.Label();
             this.lblVeterinarios = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.guna2GradientPanel4 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.lblTotalCitas = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblCitasAtendidas = new System.Windows.Forms.Label();
-            this.guna2GradientPanel3 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2GradientPanel5 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.cardCitasHoy = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.labelCitasHoyTitle = new System.Windows.Forms.Label();
             this.lblCitasHoy = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.guna2GradientPanel1.SuspendLayout();
-            this.guna2GradientPanel2.SuspendLayout();
-            this.guna2GradientPanel4.SuspendLayout();
-            this.guna2GradientPanel3.SuspendLayout();
-            this.guna2GradientPanel5.SuspendLayout();
+            this.cardCitasAtendidas = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.labelCitasAtendidasTitle = new System.Windows.Forms.Label();
+            this.lblCitasAtendidas = new System.Windows.Forms.Label();
+            this.panelChart = new System.Windows.Forms.Panel();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.panelRight = new System.Windows.Forms.Panel();
+            this.groupBoxCitasDia = new System.Windows.Forms.GroupBox();
+            this.listBoxCitasDia = new System.Windows.Forms.ListBox();
+            this.panelTopButtons.SuspendLayout();
+            this.panelCards.SuspendLayout();
+            this.cardMascotas.SuspendLayout();
+            this.cardVeterinarios.SuspendLayout();
+            this.cardCitasHoy.SuspendLayout();
+            this.cardCitasAtendidas.SuspendLayout();
+            this.panelChart.SuspendLayout();
+            this.panelRight.SuspendLayout();
+            this.groupBoxCitasDia.SuspendLayout();
             this.SuspendLayout();
             // 
             // gunaChart1
             // 
-            this.gunaChart1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             chartFont1.FontName = "Arial";
             this.gunaChart1.Legend.LabelFont = chartFont1;
-            this.gunaChart1.Location = new System.Drawing.Point(12, 304);
+            this.gunaChart1.Location = new System.Drawing.Point(10, 10);
             this.gunaChart1.Name = "gunaChart1";
-            this.gunaChart1.Size = new System.Drawing.Size(1075, 380);
+            this.gunaChart1.Size = new System.Drawing.Size(670, 260);
             this.gunaChart1.TabIndex = 0;
             chartFont2.FontName = "Arial";
             chartFont2.Size = 12;
@@ -103,246 +100,282 @@
             tick3.Font = chartFont8;
             this.gunaChart1.ZAxes.Ticks = tick3;
             // 
-            // guna2GradientPanel1
+            // panelTopButtons
             // 
-            this.guna2GradientPanel1.BorderRadius = 20;
-            this.guna2GradientPanel1.Controls.Add(this.lblMascotas);
-            this.guna2GradientPanel1.Controls.Add(this.label1);
-            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.guna2GradientPanel1.Location = new System.Drawing.Point(10, 59);
-            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(200, 100);
-            this.guna2GradientPanel1.TabIndex = 1;
+            this.panelTopButtons.Controls.Add(this.btnTopConsulta);
+            this.panelTopButtons.Controls.Add(this.btnTopCita);
+            this.panelTopButtons.Controls.Add(this.btnTopIA);
+            this.panelTopButtons.Location = new System.Drawing.Point(15, 15);
+            this.panelTopButtons.Name = "panelTopButtons";
+            this.panelTopButtons.Size = new System.Drawing.Size(700, 56);
+            this.panelTopButtons.TabIndex = 0;
+            // 
+            // btnTopConsulta
+            // 
+            this.btnTopConsulta.AutoRoundedCorners = true;
+            this.btnTopConsulta.BorderRadius = 16;
+            this.btnTopConsulta.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
+            this.btnTopConsulta.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnTopConsulta.ForeColor = System.Drawing.Color.White;
+            this.btnTopConsulta.Location = new System.Drawing.Point(10, 10);
+            this.btnTopConsulta.Name = "btnTopConsulta";
+            this.btnTopConsulta.Size = new System.Drawing.Size(140, 35);
+            this.btnTopConsulta.TabIndex = 0;
+            this.btnTopConsulta.Text = "Consulta";
+            // 
+            // btnTopCita
+            // 
+            this.btnTopCita.AutoRoundedCorners = true;
+            this.btnTopCita.BorderRadius = 16;
+            this.btnTopCita.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
+            this.btnTopCita.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnTopCita.ForeColor = System.Drawing.Color.White;
+            this.btnTopCita.Location = new System.Drawing.Point(160, 10);
+            this.btnTopCita.Name = "btnTopCita";
+            this.btnTopCita.Size = new System.Drawing.Size(140, 35);
+            this.btnTopCita.TabIndex = 1;
+            this.btnTopCita.Text = "Cita";
+            // 
+            // btnTopIA
+            // 
+            this.btnTopIA.AutoRoundedCorners = true;
+            this.btnTopIA.BorderRadius = 16;
+            this.btnTopIA.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
+            this.btnTopIA.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnTopIA.ForeColor = System.Drawing.Color.White;
+            this.btnTopIA.Location = new System.Drawing.Point(310, 10);
+            this.btnTopIA.Name = "btnTopIA";
+            this.btnTopIA.Size = new System.Drawing.Size(140, 35);
+            this.btnTopIA.TabIndex = 2;
+            this.btnTopIA.Text = "IA";
+            // 
+            // panelCards
+            // 
+            this.panelCards.Controls.Add(this.cardMascotas);
+            this.panelCards.Controls.Add(this.cardVeterinarios);
+            this.panelCards.Controls.Add(this.cardCitasHoy);
+            this.panelCards.Controls.Add(this.cardCitasAtendidas);
+            this.panelCards.Location = new System.Drawing.Point(15, 85);
+            this.panelCards.Name = "panelCards";
+            this.panelCards.Size = new System.Drawing.Size(700, 120);
+            this.panelCards.TabIndex = 1;
+            // 
+            // cardMascotas
+            // 
+            this.cardMascotas.BorderRadius = 12;
+            this.cardMascotas.Controls.Add(this.labelMascotasTitle);
+            this.cardMascotas.Controls.Add(this.lblMascotas);
+            this.cardMascotas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.cardMascotas.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
+            this.cardMascotas.Location = new System.Drawing.Point(5, 5);
+            this.cardMascotas.Name = "cardMascotas";
+            this.cardMascotas.Size = new System.Drawing.Size(160, 90);
+            this.cardMascotas.TabIndex = 0;
+            // 
+            // labelMascotasTitle
+            // 
+            this.labelMascotasTitle.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
+            this.labelMascotasTitle.Location = new System.Drawing.Point(10, 10);
+            this.labelMascotasTitle.Name = "labelMascotasTitle";
+            this.labelMascotasTitle.Size = new System.Drawing.Size(100, 23);
+            this.labelMascotasTitle.TabIndex = 0;
+            this.labelMascotasTitle.Text = "Mascotas registradas";
             // 
             // lblMascotas
             // 
-            this.lblMascotas.AutoSize = true;
-            this.lblMascotas.BackColor = System.Drawing.Color.Transparent;
-            this.lblMascotas.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMascotas.Location = new System.Drawing.Point(85, 48);
+            this.lblMascotas.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.lblMascotas.Location = new System.Drawing.Point(110, 50);
             this.lblMascotas.Name = "lblMascotas";
-            this.lblMascotas.Size = new System.Drawing.Size(17, 20);
+            this.lblMascotas.Size = new System.Drawing.Size(100, 23);
             this.lblMascotas.TabIndex = 1;
             this.lblMascotas.Text = "0";
             // 
-            // label1
+            // cardVeterinarios
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 19);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mascotas registradas";
+            this.cardVeterinarios.BorderRadius = 12;
+            this.cardVeterinarios.Controls.Add(this.labelVeterinariosTitle);
+            this.cardVeterinarios.Controls.Add(this.lblVeterinarios);
+            this.cardVeterinarios.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            this.cardVeterinarios.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
+            this.cardVeterinarios.Location = new System.Drawing.Point(180, 5);
+            this.cardVeterinarios.Name = "cardVeterinarios";
+            this.cardVeterinarios.Size = new System.Drawing.Size(160, 90);
+            this.cardVeterinarios.TabIndex = 1;
             // 
-            // guna2GradientPanel2
+            // labelVeterinariosTitle
             // 
-            this.guna2GradientPanel2.BorderRadius = 20;
-            this.guna2GradientPanel2.Controls.Add(this.lblVeterinarios);
-            this.guna2GradientPanel2.Controls.Add(this.label3);
-            this.guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.guna2GradientPanel2.Location = new System.Drawing.Point(229, 59);
-            this.guna2GradientPanel2.Name = "guna2GradientPanel2";
-            this.guna2GradientPanel2.Size = new System.Drawing.Size(200, 100);
-            this.guna2GradientPanel2.TabIndex = 2;
+            this.labelVeterinariosTitle.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
+            this.labelVeterinariosTitle.Location = new System.Drawing.Point(10, 10);
+            this.labelVeterinariosTitle.Name = "labelVeterinariosTitle";
+            this.labelVeterinariosTitle.Size = new System.Drawing.Size(100, 23);
+            this.labelVeterinariosTitle.TabIndex = 0;
+            this.labelVeterinariosTitle.Text = "Veterinarios";
             // 
             // lblVeterinarios
             // 
-            this.lblVeterinarios.AutoSize = true;
-            this.lblVeterinarios.BackColor = System.Drawing.Color.Transparent;
-            this.lblVeterinarios.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVeterinarios.Location = new System.Drawing.Point(85, 48);
+            this.lblVeterinarios.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.lblVeterinarios.Location = new System.Drawing.Point(110, 50);
             this.lblVeterinarios.Name = "lblVeterinarios";
-            this.lblVeterinarios.Size = new System.Drawing.Size(17, 20);
-            this.lblVeterinarios.TabIndex = 3;
+            this.lblVeterinarios.Size = new System.Drawing.Size(100, 23);
+            this.lblVeterinarios.TabIndex = 1;
             this.lblVeterinarios.Text = "0";
             // 
-            // label3
+            // cardCitasHoy
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(7, 13);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(186, 19);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Veterinarios registrados";
+            this.cardCitasHoy.BorderRadius = 12;
+            this.cardCitasHoy.Controls.Add(this.labelCitasHoyTitle);
+            this.cardCitasHoy.Controls.Add(this.lblCitasHoy);
+            this.cardCitasHoy.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.cardCitasHoy.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
+            this.cardCitasHoy.Location = new System.Drawing.Point(355, 5);
+            this.cardCitasHoy.Name = "cardCitasHoy";
+            this.cardCitasHoy.Size = new System.Drawing.Size(160, 90);
+            this.cardCitasHoy.TabIndex = 2;
             // 
-            // guna2GradientPanel4
+            // labelCitasHoyTitle
             // 
-            this.guna2GradientPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2GradientPanel4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2GradientPanel4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.guna2GradientPanel4.BorderRadius = 20;
-            this.guna2GradientPanel4.Controls.Add(this.lblTotalCitas);
-            this.guna2GradientPanel4.Controls.Add(this.label8);
-            this.guna2GradientPanel4.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.guna2GradientPanel4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.guna2GradientPanel4.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.guna2GradientPanel4.Location = new System.Drawing.Point(886, 59);
-            this.guna2GradientPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.guna2GradientPanel4.Name = "guna2GradientPanel4";
-            this.guna2GradientPanel4.Size = new System.Drawing.Size(200, 100);
-            this.guna2GradientPanel4.TabIndex = 6;
-            // 
-            // lblTotalCitas
-            // 
-            this.lblTotalCitas.AutoSize = true;
-            this.lblTotalCitas.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotalCitas.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCitas.Location = new System.Drawing.Point(92, 48);
-            this.lblTotalCitas.Name = "lblTotalCitas";
-            this.lblTotalCitas.Size = new System.Drawing.Size(17, 20);
-            this.lblTotalCitas.TabIndex = 5;
-            this.lblTotalCitas.Text = "0";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(46, 13);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(107, 19);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Citas en total";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(8, 268);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(194, 19);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Total de citas por fechas";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(35, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(132, 19);
-            this.label5.TabIndex = 4;
-            this.label5.Text = " Citas atendidas";
-            // 
-            // lblCitasAtendidas
-            // 
-            this.lblCitasAtendidas.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblCitasAtendidas.AutoSize = true;
-            this.lblCitasAtendidas.BackColor = System.Drawing.Color.Transparent;
-            this.lblCitasAtendidas.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCitasAtendidas.Location = new System.Drawing.Point(92, 49);
-            this.lblCitasAtendidas.Name = "lblCitasAtendidas";
-            this.lblCitasAtendidas.Size = new System.Drawing.Size(17, 20);
-            this.lblCitasAtendidas.TabIndex = 5;
-            this.lblCitasAtendidas.Text = "0";
-            // 
-            // guna2GradientPanel3
-            // 
-            this.guna2GradientPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2GradientPanel3.BorderRadius = 20;
-            this.guna2GradientPanel3.Controls.Add(this.lblCitasAtendidas);
-            this.guna2GradientPanel3.Controls.Add(this.label5);
-            this.guna2GradientPanel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.guna2GradientPanel3.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.guna2GradientPanel3.Location = new System.Drawing.Point(667, 59);
-            this.guna2GradientPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.guna2GradientPanel3.Name = "guna2GradientPanel3";
-            this.guna2GradientPanel3.Size = new System.Drawing.Size(200, 100);
-            this.guna2GradientPanel3.TabIndex = 2;
-            // 
-            // guna2GradientPanel5
-            // 
-            this.guna2GradientPanel5.BorderRadius = 20;
-            this.guna2GradientPanel5.Controls.Add(this.lblCitasHoy);
-            this.guna2GradientPanel5.Controls.Add(this.label10);
-            this.guna2GradientPanel5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.guna2GradientPanel5.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.guna2GradientPanel5.Location = new System.Drawing.Point(448, 59);
-            this.guna2GradientPanel5.Margin = new System.Windows.Forms.Padding(0);
-            this.guna2GradientPanel5.Name = "guna2GradientPanel5";
-            this.guna2GradientPanel5.Size = new System.Drawing.Size(200, 100);
-            this.guna2GradientPanel5.TabIndex = 6;
+            this.labelCitasHoyTitle.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
+            this.labelCitasHoyTitle.Location = new System.Drawing.Point(10, 10);
+            this.labelCitasHoyTitle.Name = "labelCitasHoyTitle";
+            this.labelCitasHoyTitle.Size = new System.Drawing.Size(100, 23);
+            this.labelCitasHoyTitle.TabIndex = 0;
+            this.labelCitasHoyTitle.Text = "Citas hoy";
             // 
             // lblCitasHoy
             // 
-            this.lblCitasHoy.AutoSize = true;
-            this.lblCitasHoy.BackColor = System.Drawing.Color.Transparent;
-            this.lblCitasHoy.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCitasHoy.Location = new System.Drawing.Point(92, 49);
+            this.lblCitasHoy.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.lblCitasHoy.Location = new System.Drawing.Point(110, 50);
             this.lblCitasHoy.Name = "lblCitasHoy";
-            this.lblCitasHoy.Size = new System.Drawing.Size(17, 20);
-            this.lblCitasHoy.TabIndex = 5;
+            this.lblCitasHoy.Size = new System.Drawing.Size(100, 23);
+            this.lblCitasHoy.TabIndex = 1;
             this.lblCitasHoy.Text = "0";
             // 
-            // label10
+            // cardCitasAtendidas
             // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(35, 13);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(121, 19);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "Citas para hoy";
+            this.cardCitasAtendidas.BorderRadius = 12;
+            this.cardCitasAtendidas.Controls.Add(this.labelCitasAtendidasTitle);
+            this.cardCitasAtendidas.Controls.Add(this.lblCitasAtendidas);
+            this.cardCitasAtendidas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.cardCitasAtendidas.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
+            this.cardCitasAtendidas.Location = new System.Drawing.Point(530, 5);
+            this.cardCitasAtendidas.Name = "cardCitasAtendidas";
+            this.cardCitasAtendidas.Size = new System.Drawing.Size(160, 90);
+            this.cardCitasAtendidas.TabIndex = 3;
+            // 
+            // labelCitasAtendidasTitle
+            // 
+            this.labelCitasAtendidasTitle.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
+            this.labelCitasAtendidasTitle.Location = new System.Drawing.Point(10, 10);
+            this.labelCitasAtendidasTitle.Name = "labelCitasAtendidasTitle";
+            this.labelCitasAtendidasTitle.Size = new System.Drawing.Size(100, 23);
+            this.labelCitasAtendidasTitle.TabIndex = 0;
+            this.labelCitasAtendidasTitle.Text = "Citas atendidas";
+            // 
+            // lblCitasAtendidas
+            // 
+            this.lblCitasAtendidas.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.lblCitasAtendidas.Location = new System.Drawing.Point(110, 50);
+            this.lblCitasAtendidas.Name = "lblCitasAtendidas";
+            this.lblCitasAtendidas.Size = new System.Drawing.Size(100, 23);
+            this.lblCitasAtendidas.TabIndex = 1;
+            this.lblCitasAtendidas.Text = "0";
+            // 
+            // panelChart
+            // 
+            this.panelChart.Controls.Add(this.gunaChart1);
+            this.panelChart.Location = new System.Drawing.Point(15, 220);
+            this.panelChart.Name = "panelChart";
+            this.panelChart.Size = new System.Drawing.Size(700, 500);
+            this.panelChart.TabIndex = 2;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(31, 172);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 1;
+            // 
+            // panelRight
+            // 
+            this.panelRight.Controls.Add(this.groupBoxCitasDia);
+            this.panelRight.Controls.Add(this.monthCalendar1);
+            this.panelRight.Location = new System.Drawing.Point(730, 85);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Size = new System.Drawing.Size(350, 635);
+            this.panelRight.TabIndex = 3;
+            // 
+            // groupBoxCitasDia
+            // 
+            this.groupBoxCitasDia.Controls.Add(this.listBoxCitasDia);
+            this.groupBoxCitasDia.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.groupBoxCitasDia.Location = new System.Drawing.Point(10, 10);
+            this.groupBoxCitasDia.Name = "groupBoxCitasDia";
+            this.groupBoxCitasDia.Size = new System.Drawing.Size(330, 150);
+            this.groupBoxCitasDia.TabIndex = 0;
+            this.groupBoxCitasDia.TabStop = false;
+            this.groupBoxCitasDia.Text = "Citas del día";
+            // 
+            // listBoxCitasDia
+            // 
+            this.listBoxCitasDia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxCitasDia.ItemHeight = 21;
+            this.listBoxCitasDia.Location = new System.Drawing.Point(3, 24);
+            this.listBoxCitasDia.Name = "listBoxCitasDia";
+            this.listBoxCitasDia.Size = new System.Drawing.Size(324, 123);
+            this.listBoxCitasDia.TabIndex = 0;
             // 
             // FrmEstadistica
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1102, 749);
-            this.Controls.Add(this.guna2GradientPanel5);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.guna2GradientPanel4);
-            this.Controls.Add(this.guna2GradientPanel3);
-            this.Controls.Add(this.guna2GradientPanel2);
-            this.Controls.Add(this.guna2GradientPanel1);
-            this.Controls.Add(this.gunaChart1);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(1100, 750);
+            this.Controls.Add(this.panelTopButtons);
+            this.Controls.Add(this.panelCards);
+            this.Controls.Add(this.panelChart);
+            this.Controls.Add(this.panelRight);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmEstadistica";
-            this.Text = "FrmEstadistica";
-            this.Load += new System.EventHandler(this.FrmEstadistica_Load);
-            this.guna2GradientPanel1.ResumeLayout(false);
-            this.guna2GradientPanel1.PerformLayout();
-            this.guna2GradientPanel2.ResumeLayout(false);
-            this.guna2GradientPanel2.PerformLayout();
-            this.guna2GradientPanel4.ResumeLayout(false);
-            this.guna2GradientPanel4.PerformLayout();
-            this.guna2GradientPanel3.ResumeLayout(false);
-            this.guna2GradientPanel3.PerformLayout();
-            this.guna2GradientPanel5.ResumeLayout(false);
-            this.guna2GradientPanel5.PerformLayout();
+            this.panelTopButtons.ResumeLayout(false);
+            this.panelCards.ResumeLayout(false);
+            this.cardMascotas.ResumeLayout(false);
+            this.cardVeterinarios.ResumeLayout(false);
+            this.cardCitasHoy.ResumeLayout(false);
+            this.cardCitasAtendidas.ResumeLayout(false);
+            this.panelChart.ResumeLayout(false);
+            this.panelRight.ResumeLayout(false);
+            this.groupBoxCitasDia.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        // Campos
         private Guna.Charts.WinForms.GunaChart gunaChart1;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
+
+        private System.Windows.Forms.Panel panelTopButtons;
+        private Guna.UI2.WinForms.Guna2Button btnTopConsulta;
+        private Guna.UI2.WinForms.Guna2Button btnTopCita;
+        private Guna.UI2.WinForms.Guna2Button btnTopIA;
+
+        private System.Windows.Forms.Panel panelCards;
+        private Guna.UI2.WinForms.Guna2GradientPanel cardMascotas;
+        private Guna.UI2.WinForms.Guna2GradientPanel cardVeterinarios;
+        private Guna.UI2.WinForms.Guna2GradientPanel cardCitasHoy;
+        private Guna.UI2.WinForms.Guna2GradientPanel cardCitasAtendidas;
+
+        private System.Windows.Forms.Label labelMascotasTitle;
         private System.Windows.Forms.Label lblMascotas;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelVeterinariosTitle;
         private System.Windows.Forms.Label lblVeterinarios;
-        private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel4;
-        private System.Windows.Forms.Label lblTotalCitas;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblCitasAtendidas;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel3;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel5;
+        private System.Windows.Forms.Label labelCitasHoyTitle;
         private System.Windows.Forms.Label lblCitasHoy;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelCitasAtendidasTitle;
+        private System.Windows.Forms.Label lblCitasAtendidas;
+
+        private System.Windows.Forms.Panel panelChart;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+
+        private System.Windows.Forms.Panel panelRight;
+        private System.Windows.Forms.GroupBox groupBoxCitasDia;
+        private System.Windows.Forms.ListBox listBoxCitasDia;
     }
 }
