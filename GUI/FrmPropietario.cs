@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -22,12 +23,12 @@ namespace ProyectoP3
             mostrarFrm(new FrmPropietarioAgregar());
             cargarDGV(propietarioService.Consultar());
         }
-        
+
         private void FrmPropietario_Load(object sender, EventArgs e)
         {
             cargarDGV(propietarioService.Consultar());
         }
-        
+
         private void mostrarFrm(Form frm)
         {
             frm.StartPosition = FormStartPosition.CenterParent;
@@ -84,13 +85,21 @@ namespace ProyectoP3
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            if(txtFiltrarPropietario.Text.Trim() == "")
+            var texto = txtFiltrarPropietario.Text.Trim();
+            if (texto == "")
             {
                 cargarDGV(propietarioService.Consultar());
+                return;
             }
-            else
+            else if (texto.All(char.IsNumber))
             {
                 cargarDGV(propietarioService.BuscarPorCedula(int.Parse(txtFiltrarPropietario.Text.Trim())));
+                return;
+            }
+            else if (texto.All(char.IsLetter))
+            {
+                cargarDGV(propietarioService.BuscarPorNombreApellido(txtFiltrarPropietario.Text.Trim()));
+                return;
             }
         }
 
@@ -115,6 +124,11 @@ namespace ProyectoP3
                 }
                 else return;
             }
+        }
+
+        private void txtFiltrarPropietario_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

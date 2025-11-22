@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
-using Microsoft.VisualBasic;
 
 namespace ProyectoP3
 {
@@ -29,7 +28,7 @@ namespace ProyectoP3
                     );
             }
         }
-        
+
         private Mascota buscar(int id)
         {
             return mascotaService.buscar(id);
@@ -55,10 +54,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private Mascota buscarMascota(int id)
-        {
-            return mascotaService.buscar(id);
-        }
+
         private void mostrarFrm(Form frm)
         {
             frm.StartPosition = FormStartPosition.CenterParent;
@@ -74,42 +70,18 @@ namespace ProyectoP3
             mostrarFrm(new FrmMascotaAgregar());
             cargarDGV(mascotaService.Consultar());
         }
-        private void bttnFiltrarPorRaza_Click(object sender, EventArgs e)
-        {
-            if(txtFiltrarRaza.Text.Trim() == "")
-            {
-                cargarDGV(mascotaService.Consultar());
-                return;
-            }
-            else
-            {
-                cargarDGV(mascotaService.BuscarPorRaza(txtFiltrarRaza.Text.Trim()));
-            }
-        }
 
         private void bttnFiltrarPorEspecie_Click(object sender, EventArgs e)
         {
-            if (txtFiltrarEspecie.Text.Trim() == "")
+            var texto = txtFiltrarEspecie.Text.Trim().ToLower();
+            if (texto == "")
             {
                 cargarDGV(mascotaService.Consultar());
                 return;
             }
             else
             {
-                cargarDGV(mascotaService.BuscarPorEspecie(txtFiltrarEspecie.Text.Trim()));
-            }
-        }
-
-        private void bttnFiltrarPorPropietario_Click(object sender, EventArgs e)
-        {
-            if (txtFiltrarPropietario.Text.Trim() == "")
-            {
-                cargarDGV(mascotaService.Consultar());
-                return;
-            }
-            else
-            {
-                cargarDGV(mascotaService.BuscarPorPropietario(int.Parse(txtFiltrarPropietario.Text.Trim())));
+                cargarDGV(mascotaService.buscarPorRazaEspeciePropietario(texto));
             }
         }
 
@@ -132,6 +104,11 @@ namespace ProyectoP3
                     cargarDGV(mascotaService.Consultar());
                 }
             }
+        }
+
+        private void txtFiltrarEspecie_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -66,13 +66,12 @@ namespace Logica
         {
             return mascotaRepository.Consultar().Where(m => m.Propietario.Cedula == propietarioId).ToList();
         }
-        public List<Mascota> BuscarPorEspecie(string especie)
+        public List<Mascota> buscarPorRazaEspeciePropietario(string texto)
         {
-            return mascotaRepository.Consultar().Where(m => m.Especie.Nombre.Equals(especie,StringComparison.OrdinalIgnoreCase)).ToList();
-        }
-        public List<Mascota> BuscarPorRaza(string raza)
-        {
-           return mascotaRepository.Consultar().Where(m => m.Raza.Nombre.Equals(raza,StringComparison.OrdinalIgnoreCase)).ToList();
+            return Consultar().Where(m => m.Raza.Nombre.Trim().ToLower().Contains(texto) ||
+                                                   m.Especie.Nombre.Trim().ToLower().Contains(texto) ||
+                                                   m.Propietario.Nombres.Trim().ToLower().Contains(texto)||
+                                                   m.Nombre.ToLower().Trim().Contains(texto)).ToList();
         }
         public int totalMascotas()
         {

@@ -85,10 +85,13 @@ namespace Logica
         {
             return Consultar().Where(r => r.Especializacion.Codigo.Equals(cualidad)).ToList();
         }
-        public List<Veterinario> bsucarPorNombreEspecializacion(string nombreEspecializacion)
+        public List<Veterinario> bsucarPorNombreEspecializacion(string texto)
         {
-            return veterinarioRepository.Consultar()
-                .Where(v => v.Especializacion.Nombre.IndexOf(nombreEspecializacion, StringComparison.OrdinalIgnoreCase) >= 0)
+            return Consultar()
+                .Where(v => v.Especializacion.Nombre.Trim().ToLower().Contains(texto)||
+                v.Nombres.Trim().ToLower().Contains(texto)||
+                v.ApellidoMaterno.Trim().ToLower().Contains(texto)||
+                v.ApellidoPaterno.Trim().ToLower().Contains(texto))
                 .ToList();
         }
         public int totalVeterinarios()

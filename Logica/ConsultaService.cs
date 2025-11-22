@@ -104,13 +104,9 @@ namespace Logica
         {
             return Consultar().FindAll(c => c.Fecha.Equals(fecha, StringComparison.OrdinalIgnoreCase));
         }
-        public List<Consulta> buscarPorVeterinario(string nombre)
+        public List<Consulta> buscarPorVeterinarioMascota(string texto)
         {
-            return Consultar().FindAll(c => c.Veterinario.Nombres.Equals(nombre, StringComparison.OrdinalIgnoreCase));
-        }
-        public List<Consulta> buscarPorMascota(string nombre)
-        {
-            return Consultar().FindAll(c => c.Mascota.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+            return Consultar().FindAll(c => c.Veterinario.Nombres.Trim().ToLower().Contains(texto) || c.Mascota.Nombre.Trim().ToLower().Contains(texto));
         }
         public int totalConsultasAsistdas(string fecha)
         {

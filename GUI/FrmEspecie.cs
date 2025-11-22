@@ -64,14 +64,16 @@ namespace ProyectoP3
         }
         private void bttnFiltrarNombre_Click(object sender, EventArgs e)
         {
-            if (txtFiltrarNombre.Text.Trim() == "")
+            var txt = txtFiltrarNombre.Text.Trim().ToLower();
+            if (txt == "")
             {
                 cargarDGV(especieService.Consultar());
                 return;
             }
             else
             {
-                cargarDGV(especieService.BuscarPorNombre(txtFiltrarNombre.Text.Trim()));
+                cargarDGV(especieService.BuscarPorNombre(txt));
+                return;
             }
         }
 
@@ -94,6 +96,11 @@ namespace ProyectoP3
                     cargarDGV(especieService.Consultar());
                 }
             }
+        }
+
+        private void txtFiltrarNombre_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

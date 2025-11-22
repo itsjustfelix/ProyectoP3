@@ -75,9 +75,9 @@ namespace Logica
         {
             return citaRepository.obtenerCitasPorFechas();
         }
-        public List<Cita> buscarPorVeterinario(string nombre)
+        public List<Cita> buscarPorVeterinarioMascota(string texto)
         {
-            return Consultar().FindAll(c => c.Veterinario.Nombres.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+            return Consultar().FindAll(c => c.Veterinario.Nombres.Trim().ToLower().Contains(texto) || c.Mascota.Nombre.Trim().ToLower().Contains(texto));
         }
         public List<Cita> buscarPorFecha(string fecha)
         {

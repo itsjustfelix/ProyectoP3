@@ -184,7 +184,7 @@
             this.txtFiltrarPorNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFiltrarPorNombre.Location = new System.Drawing.Point(37, 12);
             this.txtFiltrarPorNombre.Name = "txtFiltrarPorNombre";
-            this.txtFiltrarPorNombre.PlaceholderText = "Filtar por Nombre";
+            this.txtFiltrarPorNombre.PlaceholderText = "Filtar";
             this.txtFiltrarPorNombre.SelectedText = "";
             this.txtFiltrarPorNombre.Size = new System.Drawing.Size(200, 36);
             this.txtFiltrarPorNombre.TabIndex = 28;

@@ -64,7 +64,7 @@ namespace Logica
         public List<Especializacion> BuscarPorNombre(string nombre)
         {
             return especializacionRepository.Consultar()
-                .Where(e => e.Nombre.IndexOf(nombre, StringComparison.OrdinalIgnoreCase) >= 0)
+                .Where(e => e.Nombre.Trim().ToLower().Contains(nombre))
                 .ToList();
         }
     }

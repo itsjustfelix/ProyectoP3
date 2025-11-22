@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -71,27 +72,21 @@ namespace ProyectoP3
 
         private void bttnFiltrarPorVeterinario_Click(object sender, EventArgs e)
         {
-            if (txtFiltrarPorVeterinario.Text.Trim() == "")
+            var textoFiltro = txtFiltrarPorVeterinario.Text.Trim().ToLower();
+            if (textoFiltro == "")
             {
                 cargarDGV(CitaService.Consultar());
                 return;
             }
-            else
+            else if (esFecha(textoFiltro))
             {
-                cargarDGV(CitaService.buscarPorVeterinario(txtFiltrarPorVeterinario.Text));
-            }
-        }
-
-        private void bttnFiltrarPorFecha_Click(object sender, EventArgs e)
-        {
-            if (txtFiltrarPorFacha.Text.Trim() == "")
-            {
-                cargarDGV(CitaService.Consultar());
+                cargarDGV(CitaService.buscarPorFecha(textoFiltro));
                 return;
             }
-            else
+            else if (textoFiltro.All(char.IsLetter))
             {
-                cargarDGV(CitaService.buscarPorFecha(txtFiltrarPorFacha.Text.Trim()));
+                cargarDGV(CitaService.buscarPorVeterinarioMascota(textoFiltro));
+                return;
             }
         }
 
@@ -131,6 +126,23 @@ namespace ProyectoP3
                 else
                     MessageBox.Show("La fecha de la cita no esta para hoy.", "Atender cita.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private bool esFecha(string texto)
+        {
+            DateTime fecha;
+            return DateTime.TryParseExact(
+                texto,
+                "dd/MM/yyyy",
+                System.Globalization.CultureInfo.InvariantCulture,
+                System.Globalization.DateTimeStyles.None,
+                out fecha
+            );
+        }
+
+        private void txtFiltrarPorVeterinario_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

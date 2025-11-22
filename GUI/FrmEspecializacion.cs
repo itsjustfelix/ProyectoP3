@@ -80,14 +80,16 @@ namespace ProyectoP3
 
         private void bttnFiltrarPorNombre_Click(object sender, EventArgs e)
         {
-            if (txtFiltrarPorNombre.Text.Trim() == "")
+            var texto = txtFiltrarPorNombre.Text.Trim().ToLower();
+            if (texto == "")
             {
                 cargarDGV(especializacionService.Consultar());
                 return;
             }
             else
             {
-                cargarDGV(especializacionService.BuscarPorNombre(txtFiltrarPorNombre.Text.Trim()));
+                cargarDGV(especializacionService.BuscarPorNombre(texto));
+                return;
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -89,13 +90,13 @@ namespace ProyectoP3
                     cargarDGV(consultaService.Consultar());
                 }
             }
-            else if(DGVConsulta.Columns[e.ColumnIndex].Name == "GenerarPDF")
+            else if (DGVConsulta.Columns[e.ColumnIndex].Name == "GenerarPDF")
             {
                 Consulta consulta = buscar(codigo);
                 string ruta = consultaService.GenerarDocumento(consulta);
                 abrirDocumento(ruta);
             }
-            else if(DGVConsulta.Columns[e.ColumnIndex].Name == "EnviarEmail")
+            else if (DGVConsulta.Columns[e.ColumnIndex].Name == "EnviarEmail")
             {
                 Consulta consulta = buscar(codigo);
                 string email = consulta.Mascota.Propietario.Email;
@@ -104,55 +105,46 @@ namespace ProyectoP3
                 MessageBox.Show(mensaje, "Enviar Email",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if(DGVConsulta.Columns[e.ColumnIndex].Name == "VerConsulta")
+            else if (DGVConsulta.Columns[e.ColumnIndex].Name == "VerConsulta")
             {
                 Consulta consulta = buscar(codigo);
                 mostrarFrm(new FrmConsultaMostrar(consulta));
             }
         }
-        private void guna2TextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            if (txtFiltrarPorVeterinario.Text.Trim() == "")
-            {
-                cargarDGV(consultaService.Consultar());
-                return;
-            }
-            else
-            {
-                cargarDGV(consultaService.buscarPorVeterinario(txtFiltrarPorVeterinario.Text.Trim()));
-            }
-        }
-        private void guna2TextBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         private void bttnFiltrarPorFecha_Click(object sender, EventArgs e)
         {
-            if (txtFiltrarPorFecha.Text.Trim() == "")
+            var texto = txtFiltrarPorFecha.Text.Trim().ToLower();
+            if (texto == "")
             {
                 cargarDGV(consultaService.Consultar());
                 return;
             }
-            else
+            else if (esFecha(texto))
             {
-                cargarDGV(consultaService.buscarPorFecha(txtFiltrarPorFecha.Text.Trim()));
+                cargarDGV(consultaService.buscarPorFecha(texto));
+                return;
+            }
+            else if (texto.All(char.IsLetter))
+            {
+                cargarDGV(consultaService.buscarPorVeterinarioMascota(texto));
+                return;
             }
         }
-        private void bttnFiltrarPorMascota_Click(object sender, EventArgs e)
+        private bool esFecha(string texto)
         {
-            if (txtFiltrarPorMascota.Text.Trim() == "")
-            {
-                cargarDGV(consultaService.Consultar());
-                return;
-            }
-            else
-            {
-                cargarDGV(consultaService.buscarPorMascota(txtFiltrarPorMascota.Text.Trim()));
-            }
+            DateTime fecha;
+            return DateTime.TryParseExact(
+                texto,
+                "dd/MM/yyyy",
+                System.Globalization.CultureInfo.InvariantCulture,
+                System.Globalization.DateTimeStyles.None,
+                out fecha
+            );
+        }
+
+        private void txtFiltrarPorFecha_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

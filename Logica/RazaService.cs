@@ -68,11 +68,12 @@ namespace Logica
         }
         public List<Raza> BuscarPorNombre(string nombre)
         {
-            return Consultar().Where(r => r.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase)).ToList();
+            return Consultar().Where(r => r.Nombre.ToLower().Trim().Contains(nombre)).ToList();
         }
-        public List<Raza> BuscarPorNombreEspecie(string nombre)
+        public List<Raza> BuscarPorNombreEspecie(string texto)
         {
-            return Consultar().Where(r => r.Especie.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase)).ToList();
+            return Consultar().Where(r => r.Especie.Nombre.ToLower().Trim().Contains(texto) 
+            || r.Nombre.Trim().ToLower().Contains(texto)).ToList();
         }
     }
 }

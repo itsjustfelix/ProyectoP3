@@ -8,9 +8,8 @@ namespace Logica
 {
     public interface IMascotaService :ICrud<Mascota>
     {
+        List<Mascota> buscarPorRazaEspeciePropietario(string texto);
         List<Mascota> BuscarPorPropietario(int propietarioId);
-        List<Mascota> BuscarPorEspecie(string especie);
-        List<Mascota> BuscarPorRaza(string raza);
         int totalMascotas();
     }
 }

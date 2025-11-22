@@ -82,13 +82,14 @@ namespace ProyectoP3
 
         private void bttnFiltrarPorEspecialidad_Click(object sender, EventArgs e)
         {
-            if (txtFiltrarEspecializacion.Text.Trim() == "")
+            var texto = txtFiltrarEspecializacion.Text.Trim().ToLower();
+            if (texto == "")
             {
                 cargarDGV(VeterinarioService.Consultar());
             }
             else
             {
-                cargarDGV(VeterinarioService.bsucarPorNombreEspecializacion(txtFiltrarEspecializacion.Text.Trim()));
+                cargarDGV(VeterinarioService.bsucarPorNombreEspecializacion(texto));
             }
         }
 

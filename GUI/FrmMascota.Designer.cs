@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DGVMascota = new Guna.UI2.WinForms.Guna2DataGridView();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,10 +42,6 @@
             this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
             this.bttnFiltrarPorEspecie = new Guna.UI2.WinForms.Guna2Button();
             this.txtFiltrarEspecie = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtFiltrarRaza = new Guna.UI2.WinForms.Guna2TextBox();
-            this.bttnFiltrarPorRaza = new Guna.UI2.WinForms.Guna2Button();
-            this.txtFiltrarPropietario = new Guna.UI2.WinForms.Guna2TextBox();
-            this.bttnFiltrarPorPropietario = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVMascota)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,18 +49,18 @@
             // 
             this.DGVMascota.AllowUserToAddRows = false;
             this.DGVMascota.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
-            this.DGVMascota.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
+            this.DGVMascota.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.DGVMascota.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVMascota.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVMascota.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.DGVMascota.ColumnHeadersHeight = 15;
             this.DGVMascota.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DGVMascota.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -75,14 +71,14 @@
             this.Column10,
             this.Editar,
             this.elimina});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGVMascota.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGVMascota.DefaultCellStyle = dataGridViewCellStyle9;
             this.DGVMascota.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
             this.DGVMascota.Location = new System.Drawing.Point(12, 55);
             this.DGVMascota.Name = "DGVMascota";
@@ -212,98 +208,17 @@
             this.txtFiltrarEspecie.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFiltrarEspecie.Location = new System.Drawing.Point(57, 12);
             this.txtFiltrarEspecie.Name = "txtFiltrarEspecie";
-            this.txtFiltrarEspecie.PlaceholderText = "Filtrar Por Especie";
+            this.txtFiltrarEspecie.PlaceholderText = "Filtrar";
             this.txtFiltrarEspecie.SelectedText = "";
             this.txtFiltrarEspecie.Size = new System.Drawing.Size(200, 36);
             this.txtFiltrarEspecie.TabIndex = 21;
-            // 
-            // txtFiltrarRaza
-            // 
-            this.txtFiltrarRaza.Animated = true;
-            this.txtFiltrarRaza.AutoRoundedCorners = true;
-            this.txtFiltrarRaza.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFiltrarRaza.DefaultText = "";
-            this.txtFiltrarRaza.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtFiltrarRaza.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtFiltrarRaza.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtFiltrarRaza.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtFiltrarRaza.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFiltrarRaza.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtFiltrarRaza.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFiltrarRaza.Location = new System.Drawing.Point(434, 12);
-            this.txtFiltrarRaza.Name = "txtFiltrarRaza";
-            this.txtFiltrarRaza.PlaceholderText = "Filtrar Por Raza";
-            this.txtFiltrarRaza.SelectedText = "";
-            this.txtFiltrarRaza.Size = new System.Drawing.Size(200, 36);
-            this.txtFiltrarRaza.TabIndex = 23;
-            // 
-            // bttnFiltrarPorRaza
-            // 
-            this.bttnFiltrarPorRaza.Animated = true;
-            this.bttnFiltrarPorRaza.AutoRoundedCorners = true;
-            this.bttnFiltrarPorRaza.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnFiltrarPorRaza.DefaultAutoSize = true;
-            this.bttnFiltrarPorRaza.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarPorRaza.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarPorRaza.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bttnFiltrarPorRaza.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bttnFiltrarPorRaza.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bttnFiltrarPorRaza.ForeColor = System.Drawing.Color.White;
-            this.bttnFiltrarPorRaza.Location = new System.Drawing.Point(647, 17);
-            this.bttnFiltrarPorRaza.Name = "bttnFiltrarPorRaza";
-            this.bttnFiltrarPorRaza.Size = new System.Drawing.Size(61, 27);
-            this.bttnFiltrarPorRaza.TabIndex = 22;
-            this.bttnFiltrarPorRaza.Text = "Filtrar";
-            this.bttnFiltrarPorRaza.Click += new System.EventHandler(this.bttnFiltrarPorRaza_Click);
-            // 
-            // txtFiltrarPropietario
-            // 
-            this.txtFiltrarPropietario.Animated = true;
-            this.txtFiltrarPropietario.AutoRoundedCorners = true;
-            this.txtFiltrarPropietario.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFiltrarPropietario.DefaultText = "";
-            this.txtFiltrarPropietario.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtFiltrarPropietario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtFiltrarPropietario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtFiltrarPropietario.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtFiltrarPropietario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFiltrarPropietario.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtFiltrarPropietario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFiltrarPropietario.Location = new System.Drawing.Point(811, 12);
-            this.txtFiltrarPropietario.Name = "txtFiltrarPropietario";
-            this.txtFiltrarPropietario.PlaceholderText = "Filtrar por cedula del Propietario";
-            this.txtFiltrarPropietario.SelectedText = "";
-            this.txtFiltrarPropietario.Size = new System.Drawing.Size(200, 36);
-            this.txtFiltrarPropietario.TabIndex = 25;
-            // 
-            // bttnFiltrarPorPropietario
-            // 
-            this.bttnFiltrarPorPropietario.Animated = true;
-            this.bttnFiltrarPorPropietario.AutoRoundedCorners = true;
-            this.bttnFiltrarPorPropietario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnFiltrarPorPropietario.DefaultAutoSize = true;
-            this.bttnFiltrarPorPropietario.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarPorPropietario.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarPorPropietario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bttnFiltrarPorPropietario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bttnFiltrarPorPropietario.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bttnFiltrarPorPropietario.ForeColor = System.Drawing.Color.White;
-            this.bttnFiltrarPorPropietario.Location = new System.Drawing.Point(1024, 17);
-            this.bttnFiltrarPorPropietario.Name = "bttnFiltrarPorPropietario";
-            this.bttnFiltrarPorPropietario.Size = new System.Drawing.Size(61, 27);
-            this.bttnFiltrarPorPropietario.TabIndex = 24;
-            this.bttnFiltrarPorPropietario.Text = "Filtrar";
-            this.bttnFiltrarPorPropietario.Click += new System.EventHandler(this.bttnFiltrarPorPropietario_Click);
+            this.txtFiltrarEspecie.TextChanged += new System.EventHandler(this.txtFiltrarEspecie_TextChanged);
             // 
             // FrmMascota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 690);
-            this.Controls.Add(this.txtFiltrarPropietario);
-            this.Controls.Add(this.bttnFiltrarPorPropietario);
-            this.Controls.Add(this.txtFiltrarRaza);
-            this.Controls.Add(this.bttnFiltrarPorRaza);
             this.Controls.Add(this.txtFiltrarEspecie);
             this.Controls.Add(this.bttnFiltrarPorEspecie);
             this.Controls.Add(this.btnGuardar);
@@ -323,10 +238,6 @@
         private Guna.UI2.WinForms.Guna2Button btnGuardar;
         private Guna.UI2.WinForms.Guna2Button bttnFiltrarPorEspecie;
         private Guna.UI2.WinForms.Guna2TextBox txtFiltrarEspecie;
-        private Guna.UI2.WinForms.Guna2TextBox txtFiltrarRaza;
-        private Guna.UI2.WinForms.Guna2Button bttnFiltrarPorRaza;
-        private Guna.UI2.WinForms.Guna2TextBox txtFiltrarPropietario;
-        private Guna.UI2.WinForms.Guna2Button bttnFiltrarPorPropietario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
