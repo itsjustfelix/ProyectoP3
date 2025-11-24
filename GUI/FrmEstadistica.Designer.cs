@@ -34,20 +34,27 @@
             Guna.Charts.WinForms.ChartFont chartFont8 = new Guna.Charts.WinForms.ChartFont();
             this.gunaChart1 = new Guna.Charts.WinForms.GunaChart();
             this.panelTopButtons = new System.Windows.Forms.Panel();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.btnTopConsulta = new Guna.UI2.WinForms.Guna2Button();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.btnTopCita = new Guna.UI2.WinForms.Guna2Button();
             this.btnTopIA = new Guna.UI2.WinForms.Guna2Button();
             this.panelCards = new System.Windows.Forms.Panel();
             this.cardMascotas = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.labelMascotasTitle = new System.Windows.Forms.Label();
             this.lblContadorMascotas = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cardVeterinarios = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.labelVeterinariosTitle = new System.Windows.Forms.Label();
             this.lblContadorVeterinarios = new System.Windows.Forms.Label();
             this.cardCitasHoy = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.labelCitasHoyTitle = new System.Windows.Forms.Label();
             this.lblContadorCitasHoy = new System.Windows.Forms.Label();
             this.cardCitasAtendidas = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelCitasAtendidasTitle = new System.Windows.Forms.Label();
             this.lblCitasAtendidas = new System.Windows.Forms.Label();
             this.panelChart = new System.Windows.Forms.Panel();
@@ -56,31 +63,24 @@
             this.groupBoxCitasDia = new System.Windows.Forms.GroupBox();
             this.listBoxCitasDia = new System.Windows.Forms.ListBox();
             this.gunaPolarAreaDataset1 = new Guna.Charts.WinForms.GunaPolarAreaDataset();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panelTopButtons.SuspendLayout();
-            this.panelCards.SuspendLayout();
-            this.cardMascotas.SuspendLayout();
-            this.cardVeterinarios.SuspendLayout();
-            this.cardCitasHoy.SuspendLayout();
-            this.cardCitasAtendidas.SuspendLayout();
-            this.panelChart.SuspendLayout();
-            this.panelRight.SuspendLayout();
-            this.groupBoxCitasDia.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.panelCards.SuspendLayout();
+            this.cardMascotas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.cardVeterinarios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.cardCitasHoy.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.cardCitasAtendidas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panelChart.SuspendLayout();
+            this.panelRight.SuspendLayout();
+            this.groupBoxCitasDia.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaChart1
@@ -128,14 +128,34 @@
             this.panelTopButtons.Controls.Add(this.btnTopIA);
             this.panelTopButtons.Location = new System.Drawing.Point(12, 3);
             this.panelTopButtons.Name = "panelTopButtons";
-            this.panelTopButtons.Size = new System.Drawing.Size(605, 56);
+            this.panelTopButtons.Size = new System.Drawing.Size(703, 56);
             this.panelTopButtons.TabIndex = 0;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox8.Image = global::ProyectoP3.Properties.Resources.icons8_veterinary_64__4_;
+            this.pictureBox8.Location = new System.Drawing.Point(20, 9);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(41, 33);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 6;
+            this.pictureBox8.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox7.Location = new System.Drawing.Point(412, 9);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(41, 33);
+            this.pictureBox7.TabIndex = 5;
+            this.pictureBox7.TabStop = false;
             // 
             // btnTopConsulta
             // 
             this.btnTopConsulta.AutoRoundedCorners = true;
             this.btnTopConsulta.BorderRadius = 20;
-            this.btnTopConsulta.FillColor = System.Drawing.Color.Blue;
+            this.btnTopConsulta.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.btnTopConsulta.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnTopConsulta.ForeColor = System.Drawing.Color.White;
             this.btnTopConsulta.Location = new System.Drawing.Point(8, 3);
@@ -144,11 +164,20 @@
             this.btnTopConsulta.TabIndex = 0;
             this.btnTopConsulta.Text = "Consulta";
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.Location = new System.Drawing.Point(209, 9);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(41, 33);
+            this.pictureBox6.TabIndex = 4;
+            this.pictureBox6.TabStop = false;
+            // 
             // btnTopCita
             // 
             this.btnTopCita.AutoRoundedCorners = true;
             this.btnTopCita.BorderRadius = 20;
-            this.btnTopCita.FillColor = System.Drawing.Color.Blue;
+            this.btnTopCita.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.btnTopCita.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnTopCita.ForeColor = System.Drawing.Color.White;
             this.btnTopCita.Location = new System.Drawing.Point(197, 3);
@@ -161,7 +190,7 @@
             // 
             this.btnTopIA.AutoRoundedCorners = true;
             this.btnTopIA.BorderRadius = 21;
-            this.btnTopIA.FillColor = System.Drawing.Color.Blue;
+            this.btnTopIA.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.btnTopIA.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnTopIA.ForeColor = System.Drawing.Color.White;
             this.btnTopIA.Location = new System.Drawing.Point(391, 2);
@@ -179,7 +208,7 @@
             this.panelCards.Controls.Add(this.cardCitasAtendidas);
             this.panelCards.Location = new System.Drawing.Point(12, 65);
             this.panelCards.Name = "panelCards";
-            this.panelCards.Size = new System.Drawing.Size(650, 268);
+            this.panelCards.Size = new System.Drawing.Size(703, 268);
             this.panelCards.TabIndex = 1;
             // 
             // cardMascotas
@@ -215,6 +244,18 @@
             this.lblContadorMascotas.TabIndex = 1;
             this.lblContadorMascotas.Text = "0";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::ProyectoP3.Properties.Resources.icons8_veterinary_64_Photoroom;
+            this.pictureBox1.Location = new System.Drawing.Point(15, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(49, 45);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // cardVeterinarios
             // 
             this.cardVeterinarios.BorderRadius = 12;
@@ -228,6 +269,17 @@
             this.cardVeterinarios.Size = new System.Drawing.Size(250, 120);
             this.cardVeterinarios.TabIndex = 1;
             this.cardVeterinarios.Paint += new System.Windows.Forms.PaintEventHandler(this.cardVeterinarios_Paint);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox5.Image = global::ProyectoP3.Properties.Resources.icons8_veterinary_64__2_;
+            this.pictureBox5.Location = new System.Drawing.Point(25, 10);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(43, 38);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 5;
+            this.pictureBox5.TabStop = false;
             // 
             // labelVeterinariosTitle
             // 
@@ -263,6 +315,17 @@
             this.cardCitasHoy.TabIndex = 2;
             this.cardCitasHoy.Paint += new System.Windows.Forms.PaintEventHandler(this.cardCitasHoy_Paint);
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = global::ProyectoP3.Properties.Resources.icons8_veterinary_64__1_;
+            this.pictureBox3.Location = new System.Drawing.Point(15, 13);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(50, 40);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 3;
+            this.pictureBox3.TabStop = false;
+            // 
             // labelCitasHoyTitle
             // 
             this.labelCitasHoyTitle.BackColor = System.Drawing.Color.Transparent;
@@ -285,7 +348,7 @@
             // 
             // cardCitasAtendidas
             // 
-            this.cardCitasAtendidas.BackColor = System.Drawing.Color.Gainsboro;
+            this.cardCitasAtendidas.BackColor = System.Drawing.Color.Transparent;
             this.cardCitasAtendidas.BorderRadius = 12;
             this.cardCitasAtendidas.Controls.Add(this.pictureBox4);
             this.cardCitasAtendidas.Controls.Add(this.labelCitasAtendidasTitle);
@@ -298,6 +361,17 @@
             this.cardCitasAtendidas.ShadowDecoration.BorderRadius = 20;
             this.cardCitasAtendidas.Size = new System.Drawing.Size(250, 120);
             this.cardCitasAtendidas.TabIndex = 3;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = global::ProyectoP3.Properties.Resources.icons8_veterinary_64__3_;
+            this.pictureBox4.Location = new System.Drawing.Point(27, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(41, 33);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 4;
+            this.pictureBox4.TabStop = false;
             // 
             // labelCitasAtendidasTitle
             // 
@@ -361,60 +435,15 @@
             // listBoxCitasDia
             // 
             this.listBoxCitasDia.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxCitasDia.ItemHeight = 21;
-            this.listBoxCitasDia.Location = new System.Drawing.Point(3, 24);
+            this.listBoxCitasDia.ItemHeight = 17;
+            this.listBoxCitasDia.Location = new System.Drawing.Point(3, 20);
             this.listBoxCitasDia.Name = "listBoxCitasDia";
-            this.listBoxCitasDia.Size = new System.Drawing.Size(350, 123);
+            this.listBoxCitasDia.Size = new System.Drawing.Size(350, 127);
             this.listBoxCitasDia.TabIndex = 0;
             // 
             // gunaPolarAreaDataset1
             // 
             this.gunaPolarAreaDataset1.Label = "PolarArea1";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::ProyectoP3.Properties.Resources.icons8_veterinary_64_Photoroom;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(49, 45);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.Image = global::ProyectoP3.Properties.Resources.icons8_veterinary_64__2_;
-            this.pictureBox5.Location = new System.Drawing.Point(25, 10);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(43, 38);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 5;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = global::ProyectoP3.Properties.Resources.icons8_veterinary_64__1_;
-            this.pictureBox3.Location = new System.Drawing.Point(15, 13);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(50, 40);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 3;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::ProyectoP3.Properties.Resources.icons8_veterinary_64__3_;
-            this.pictureBox4.Location = new System.Drawing.Point(27, 3);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(41, 33);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 4;
-            this.pictureBox4.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -427,33 +456,6 @@
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox8.Image = global::ProyectoP3.Properties.Resources.icons8_veterinary_64__4_;
-            this.pictureBox8.Location = new System.Drawing.Point(20, 9);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(41, 33);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 6;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Location = new System.Drawing.Point(412, 9);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(41, 33);
-            this.pictureBox7.TabIndex = 5;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Location = new System.Drawing.Point(209, 9);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(41, 33);
-            this.pictureBox6.TabIndex = 4;
-            this.pictureBox6.TabStop = false;
             // 
             // FrmEstadistica
             // 
@@ -469,22 +471,22 @@
             this.Text = "re";
             this.Load += new System.EventHandler(this.FrmEstadistica_Load_1);
             this.panelTopButtons.ResumeLayout(false);
-            this.panelCards.ResumeLayout(false);
-            this.cardMascotas.ResumeLayout(false);
-            this.cardVeterinarios.ResumeLayout(false);
-            this.cardCitasHoy.ResumeLayout(false);
-            this.cardCitasAtendidas.ResumeLayout(false);
-            this.panelChart.ResumeLayout(false);
-            this.panelRight.ResumeLayout(false);
-            this.groupBoxCitasDia.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.panelCards.ResumeLayout(false);
+            this.cardMascotas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.cardVeterinarios.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.cardCitasHoy.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.cardCitasAtendidas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panelChart.ResumeLayout(false);
+            this.panelRight.ResumeLayout(false);
+            this.groupBoxCitasDia.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
