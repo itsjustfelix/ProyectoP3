@@ -57,14 +57,14 @@ namespace Logica
             if (entidad.Hora == null) throw new Exception("La hora no puede ser nula.");
             if (entidad.Veterinario == null) throw new Exception("El veterinario no puede ser nulo");
             DateTime horaDeseada = DateTime.Parse(entidad.Hora);
-            bool hayConflicto = Consultar().Any(c =>
+            if (Consultar().Any(c =>
                 c.Veterinario.Cedula.Equals(entidad.Veterinario.Cedula) &&
                 c.Fecha.Equals(entidad.Fecha) &&
-                DateTime.Parse(c.Hora) >= horaDeseada.AddMinutes(-15) && 
-                DateTime.Parse(c.Hora) <= horaDeseada.AddMinutes(15)
-            );
-            if (hayConflicto)throw new Exception("Ya existe una cita con ese veterinario en ese rango de horario (±15 minutos).");
-            
+                DateTime.Parse(c.Hora) >= horaDeseada.AddMinutes(-15) &&
+                DateTime.Parse(c.Hora) <= horaDeseada.AddMinutes(15))) throw new Exception("Ya existe una cita con ese veterinario en ese rango de horario (±15 minutos).");
+            if (Consultar().Any(c => c.Mascota.Codigo.Equals(entidad.Mascota.Codigo) &&
+            DateTime.Parse(c.Hora) >= horaDeseada.AddMinutes(-15) &&
+                DateTime.Parse(c.Hora) <= horaDeseada.AddMinutes(15))) throw new Exception("La mascota ya tiene una cita en ese rango de horario (±15 minutos).");
             return true;
         }
         public Cita buscar(int id)
