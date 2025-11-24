@@ -91,11 +91,11 @@ namespace ProyectoP3
 
         private void cargarLabels()
         {
-                cardCitasAtendidas.Text = citaService.totalCitas().ToString();
-                lblContadorCitasHoy.Text = citaService.totalCitasHoy(DateTime.Now.Date.ToString("dd/MM/yyyy")).ToString();
-                lblContadorVeterinarios.Text = veterinarioService.totalVeterinarios().ToString();
+            cardCitasAtendidas.Text = citaService.totalCitas().ToString();
+            lblContadorCitasHoy.Text = citaService.totalCitasHoy(DateTime.Now.Date.ToString("dd/MM/yyyy")).ToString();
+            lblContadorVeterinarios.Text = veterinarioService.totalVeterinarios().ToString();
             lblContadorMascotas.Text = mascotaService.totalMascotas().ToString();
-                lblCitasAtendidas.Text = consultaService.totalConsultasAsistdas(DateTime.Now.Date.ToString("dd/MM/yyyy")).ToString();
+            lblCitasAtendidas.Text = consultaService.totalConsultasAsistdas(DateTime.Now.Date.ToString("dd/MM/yyyy")).ToString();
         }
 
         private void FrmEstadistica_Load_1(object sender, EventArgs e)
@@ -138,5 +138,6 @@ namespace ProyectoP3
         {
 
         }
+
     }
 }
