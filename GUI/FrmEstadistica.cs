@@ -108,5 +108,35 @@ namespace ProyectoP3
         {
 
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gunaChart1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cardCitasHoy_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cardVeterinarios_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTopIA_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

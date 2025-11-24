@@ -410,6 +410,30 @@
   <ItemGroup>
     <None Include="Resources\MdiEye.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2025-11-24 110720.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\my vet-Photoroom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-veterinary-64-Photoroom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-veterinary-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-veterinary-64 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-veterinary-64 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-veterinary-64 %284%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\QuestPDF.2025.7.2\build\net4\QuestPDF.targets" Condition="Exists('..\packages\QuestPDF.2025.7.2\build\net4\QuestPDF.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

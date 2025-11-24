@@ -73,9 +73,69 @@ namespace ProyectoP3.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_pantalla_2025_11_24_110720 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de pantalla 2025-11-24 110720", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap HugeiconsAppointment02 {
             get {
                 object obj = ResourceManager.GetObject("HugeiconsAppointment02", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_veterinary_64__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-veterinary-64 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_veterinary_64__2_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-veterinary-64 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_veterinary_64__3_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-veterinary-64 (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_veterinary_64__4_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-veterinary-64 (4)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_veterinary_64_Photoroom {
+            get {
+                object obj = ResourceManager.GetObject("icons8-veterinary-64-Photoroom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,6 +243,16 @@ namespace ProyectoP3.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap my_vet_Photoroom {
+            get {
+                object obj = ResourceManager.GetObject("my vet-Photoroom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SolarDocumentBold {
             get {
                 object obj = ResourceManager.GetObject("SolarDocumentBold", resourceCulture);
@@ -196,6 +266,16 @@ namespace ProyectoP3.Properties {
         internal static System.Drawing.Bitmap SolarUserBold {
             get {
                 object obj = ResourceManager.GetObject("SolarUserBold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vet {
+            get {
+                object obj = ResourceManager.GetObject("vet", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
