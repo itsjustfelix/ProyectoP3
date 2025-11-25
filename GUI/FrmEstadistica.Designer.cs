@@ -337,7 +337,7 @@
             this.groupBoxCitasDia.Controls.Add(this.listBoxCitasDia);
             this.groupBoxCitasDia.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCitasDia.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.groupBoxCitasDia.Location = new System.Drawing.Point(8, 234);
+            this.groupBoxCitasDia.Location = new System.Drawing.Point(8, 212);
             this.groupBoxCitasDia.Name = "groupBoxCitasDia";
             this.groupBoxCitasDia.Size = new System.Drawing.Size(356, 150);
             this.groupBoxCitasDia.TabIndex = 0;
@@ -348,10 +348,10 @@
             // 
             this.listBoxCitasDia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxCitasDia.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxCitasDia.ItemHeight = 21;
-            this.listBoxCitasDia.Location = new System.Drawing.Point(3, 32);
+            this.listBoxCitasDia.ItemHeight = 19;
+            this.listBoxCitasDia.Location = new System.Drawing.Point(3, 26);
             this.listBoxCitasDia.Name = "listBoxCitasDia";
-            this.listBoxCitasDia.Size = new System.Drawing.Size(350, 115);
+            this.listBoxCitasDia.Size = new System.Drawing.Size(350, 121);
             this.listBoxCitasDia.TabIndex = 0;
             // 
             // gunaPolarAreaDataset1
