@@ -139,5 +139,14 @@ namespace ProyectoP3
 
         }
 
+        private void labelCitasAtendidasTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
