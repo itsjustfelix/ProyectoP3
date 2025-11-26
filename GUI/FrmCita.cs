@@ -42,7 +42,6 @@ namespace ProyectoP3
         {
             return CitaService.buscar(id);
         }
-
         private bool eliminar(int codigoCita)
         {
             try
@@ -63,33 +62,11 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-
         private void mostrarFrm(Form frm)
         {
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
-
-        private void bttnFiltrarPorVeterinario_Click(object sender, EventArgs e)
-        {
-            var textoFiltro = txtFiltrarPorVeterinario.Text.Trim().ToLower();
-            if (textoFiltro == "")
-            {
-                cargarDGV(CitaService.Consultar());
-                return;
-            }
-            else if (esFecha(textoFiltro))
-            {
-                cargarDGV(CitaService.buscarPorFecha(textoFiltro));
-                return;
-            }
-            else if (textoFiltro.All(char.IsLetter))
-            {
-                cargarDGV(CitaService.buscarPorVeterinarioMascota(textoFiltro));
-                return;
-            }
-        }
-
         private void DGVCita_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int codigo = int.Parse(DGVCita.CurrentRow.Cells["Codigo"].Value.ToString());
@@ -127,7 +104,6 @@ namespace ProyectoP3
                     MessageBox.Show("La fecha de la cita no esta para hoy.", "Atender cita.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private bool esFecha(string texto)
         {
             DateTime fecha;
@@ -139,10 +115,22 @@ namespace ProyectoP3
                 out fecha
             );
         }
-
         private void txtFiltrarPorVeterinario_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        private void txtFiltrarPorVeterinario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var textoFiltro = txtFiltrarPorVeterinario.Text.Trim().ToLower();
+                if (textoFiltro == "") cargarDGV(CitaService.Consultar());
+                else if (esFecha(textoFiltro)) cargarDGV(CitaService.buscarPorFecha(textoFiltro));
+                else if (textoFiltro.All(char.IsLetter) )cargarDGV(CitaService.buscarPorVeterinarioMascota(textoFiltro));
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
+            }
         }
     }
 }

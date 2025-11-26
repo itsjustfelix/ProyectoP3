@@ -14,12 +14,10 @@ namespace ProyectoP3
             InitializeComponent();
             VeterinarioService = new VeterinarioService();
         }
-
         private void FrmVeterinario_Load(object sender, EventArgs e)
         {
             cargarDGV(VeterinarioService.Consultar());
         }
-
         private Veterinario buscar(int codigo)
         {
             try
@@ -73,24 +71,10 @@ namespace ProyectoP3
                     item.Especializacion.Nombre);
             }
         }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmVeterinarioAgregar());
             cargarDGV(VeterinarioService.Consultar());
-        }
-
-        private void bttnFiltrarPorEspecialidad_Click(object sender, EventArgs e)
-        {
-            var texto = txtFiltrarEspecializacion.Text.Trim().ToLower();
-            if (texto == "")
-            {
-                cargarDGV(VeterinarioService.Consultar());
-            }
-            else
-            {
-                cargarDGV(VeterinarioService.bsucarPorNombreEspecializacion(texto));
-            }
         }
 
         private void DGVeterinario_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -111,6 +95,18 @@ namespace ProyectoP3
                     MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cargarDGV(VeterinarioService.Consultar());
                 }
+            }
+        }
+
+        private void txtFiltrarEspecializacion_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var texto = txtFiltrarEspecializacion.Text.Trim().ToLower();
+                if (texto == "")cargarDGV(VeterinarioService.Consultar());
+                else cargarDGV(VeterinarioService.bsucarPorNombreEspecializacion(texto));
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
     }

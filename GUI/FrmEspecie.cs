@@ -62,21 +62,6 @@ namespace ProyectoP3
                 DGVEspecie.Rows.Add(especie.Codigo, especie.Nombre);
             }
         }
-        private void bttnFiltrarNombre_Click(object sender, EventArgs e)
-        {
-            var txt = txtFiltrarNombre.Text.Trim().ToLower();
-            if (txt == "")
-            {
-                cargarDGV(especieService.Consultar());
-                return;
-            }
-            else
-            {
-                cargarDGV(especieService.BuscarPorNombre(txt));
-                return;
-            }
-        }
-
         private void DGVEspecie_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int codigo = int.Parse(DGVEspecie.CurrentRow.Cells["Codigo"].Value.ToString());
@@ -97,10 +82,17 @@ namespace ProyectoP3
                 }
             }
         }
-
-        private void txtFiltrarNombre_TextChanged(object sender, EventArgs e)
+        private void txtFiltrarNombre_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var txt = txtFiltrarNombre.Text.Trim().ToLower();
+                if (txt == "") cargarDGV(especieService.Consultar());
+                else cargarDGV(especieService.BuscarPorNombre(txt));
+                e.Handled = true;
+                e.SuppressKeyPress = true;
 
+            }
         }
     }
 }

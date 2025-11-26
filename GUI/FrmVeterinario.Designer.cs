@@ -43,7 +43,6 @@
             this.elimina = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
             this.txtFiltrarEspecializacion = new Guna.UI2.WinForms.Guna2TextBox();
-            this.bttnFiltrarPorEspecialidad = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVeterinario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,11 +83,11 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DGVeterinario.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGVeterinario.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
-            this.DGVeterinario.Location = new System.Drawing.Point(12, 64);
+            this.DGVeterinario.Location = new System.Drawing.Point(12, 57);
             this.DGVeterinario.Name = "DGVeterinario";
             this.DGVeterinario.ReadOnly = true;
             this.DGVeterinario.RowHeadersVisible = false;
-            this.DGVeterinario.Size = new System.Drawing.Size(1078, 486);
+            this.DGVeterinario.Size = new System.Drawing.Size(1074, 492);
             this.DGVeterinario.TabIndex = 4;
             this.DGVeterinario.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVeterinario.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -211,27 +210,9 @@
             this.txtFiltrarEspecializacion.Name = "txtFiltrarEspecializacion";
             this.txtFiltrarEspecializacion.PlaceholderText = "Filtrar";
             this.txtFiltrarEspecializacion.SelectedText = "";
-            this.txtFiltrarEspecializacion.Size = new System.Drawing.Size(188, 35);
+            this.txtFiltrarEspecializacion.Size = new System.Drawing.Size(231, 36);
             this.txtFiltrarEspecializacion.TabIndex = 14;
-            // 
-            // bttnFiltrarPorEspecialidad
-            // 
-            this.bttnFiltrarPorEspecialidad.Animated = true;
-            this.bttnFiltrarPorEspecialidad.AutoRoundedCorners = true;
-            this.bttnFiltrarPorEspecialidad.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnFiltrarPorEspecialidad.DefaultAutoSize = true;
-            this.bttnFiltrarPorEspecialidad.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarPorEspecialidad.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarPorEspecialidad.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bttnFiltrarPorEspecialidad.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bttnFiltrarPorEspecialidad.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bttnFiltrarPorEspecialidad.ForeColor = System.Drawing.Color.White;
-            this.bttnFiltrarPorEspecialidad.Location = new System.Drawing.Point(224, 16);
-            this.bttnFiltrarPorEspecialidad.Name = "bttnFiltrarPorEspecialidad";
-            this.bttnFiltrarPorEspecialidad.Size = new System.Drawing.Size(61, 27);
-            this.bttnFiltrarPorEspecialidad.TabIndex = 13;
-            this.bttnFiltrarPorEspecialidad.Text = "Filtrar";
-            this.bttnFiltrarPorEspecialidad.Click += new System.EventHandler(this.bttnFiltrarPorEspecialidad_Click);
+            this.txtFiltrarEspecializacion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFiltrarEspecializacion_KeyDown_1);
             // 
             // FrmVeterinario
             // 
@@ -239,7 +220,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 690);
             this.Controls.Add(this.txtFiltrarEspecializacion);
-            this.Controls.Add(this.bttnFiltrarPorEspecialidad);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.DGVeterinario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -248,7 +228,6 @@
             this.Load += new System.EventHandler(this.FrmVeterinario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVeterinario)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -256,7 +235,6 @@
         private Guna.UI2.WinForms.Guna2DataGridView DGVeterinario;
         private Guna.UI2.WinForms.Guna2Button btnGuardar;
         private Guna.UI2.WinForms.Guna2TextBox txtFiltrarEspecializacion;
-        private Guna.UI2.WinForms.Guna2Button bttnFiltrarPorEspecialidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;

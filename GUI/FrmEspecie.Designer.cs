@@ -37,7 +37,6 @@
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.elimina = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
-            this.bttnFiltrarNombre = new Guna.UI2.WinForms.Guna2Button();
             this.txtFiltrarNombre = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVEspecie)).BeginInit();
             this.SuspendLayout();
@@ -74,11 +73,11 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DGVEspecie.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGVEspecie.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
-            this.DGVEspecie.Location = new System.Drawing.Point(12, 55);
+            this.DGVEspecie.Location = new System.Drawing.Point(12, 57);
             this.DGVEspecie.Name = "DGVEspecie";
             this.DGVEspecie.ReadOnly = true;
             this.DGVEspecie.RowHeadersVisible = false;
-            this.DGVEspecie.Size = new System.Drawing.Size(1078, 513);
+            this.DGVEspecie.Size = new System.Drawing.Size(1074, 492);
             this.DGVEspecie.TabIndex = 4;
             this.DGVEspecie.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVEspecie.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -152,25 +151,6 @@
             this.btnGuardar.Text = "Agregar Especie";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // bttnFiltrarNombre
-            // 
-            this.bttnFiltrarNombre.Animated = true;
-            this.bttnFiltrarNombre.AutoRoundedCorners = true;
-            this.bttnFiltrarNombre.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnFiltrarNombre.DefaultAutoSize = true;
-            this.bttnFiltrarNombre.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarNombre.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarNombre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bttnFiltrarNombre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bttnFiltrarNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bttnFiltrarNombre.ForeColor = System.Drawing.Color.White;
-            this.bttnFiltrarNombre.Location = new System.Drawing.Point(253, 17);
-            this.bttnFiltrarNombre.Name = "bttnFiltrarNombre";
-            this.bttnFiltrarNombre.Size = new System.Drawing.Size(61, 27);
-            this.bttnFiltrarNombre.TabIndex = 14;
-            this.bttnFiltrarNombre.Text = "Filtrar";
-            this.bttnFiltrarNombre.Click += new System.EventHandler(this.bttnFiltrarNombre_Click);
-            // 
             // txtFiltrarNombre
             // 
             this.txtFiltrarNombre.Animated = true;
@@ -184,13 +164,13 @@
             this.txtFiltrarNombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFiltrarNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFiltrarNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFiltrarNombre.Location = new System.Drawing.Point(45, 12);
+            this.txtFiltrarNombre.Location = new System.Drawing.Point(12, 12);
             this.txtFiltrarNombre.Name = "txtFiltrarNombre";
             this.txtFiltrarNombre.PlaceholderText = "Filtrar";
             this.txtFiltrarNombre.SelectedText = "";
-            this.txtFiltrarNombre.Size = new System.Drawing.Size(189, 37);
+            this.txtFiltrarNombre.Size = new System.Drawing.Size(231, 36);
             this.txtFiltrarNombre.TabIndex = 15;
-            this.txtFiltrarNombre.TextChanged += new System.EventHandler(this.txtFiltrarNombre_TextChanged);
+            this.txtFiltrarNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFiltrarNombre_KeyDown);
             // 
             // FrmEspecie
             // 
@@ -198,7 +178,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 690);
             this.Controls.Add(this.txtFiltrarNombre);
-            this.Controls.Add(this.bttnFiltrarNombre);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.DGVEspecie);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -207,14 +186,12 @@
             this.Load += new System.EventHandler(this.FrmEspecie_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVEspecie)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private Guna.UI2.WinForms.Guna2DataGridView DGVEspecie;
         private Guna.UI2.WinForms.Guna2Button btnGuardar;
-        private Guna.UI2.WinForms.Guna2Button bttnFiltrarNombre;
         private Guna.UI2.WinForms.Guna2TextBox txtFiltrarNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;

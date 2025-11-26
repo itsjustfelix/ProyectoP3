@@ -111,25 +111,6 @@ namespace ProyectoP3
                 mostrarFrm(new FrmConsultaMostrar(consulta));
             }
         }
-        private void bttnFiltrarPorFecha_Click(object sender, EventArgs e)
-        {
-            var texto = txtFiltrarPorFecha.Text.Trim().ToLower();
-            if (texto == "")
-            {
-                cargarDGV(consultaService.Consultar());
-                return;
-            }
-            else if (esFecha(texto))
-            {
-                cargarDGV(consultaService.buscarPorFecha(texto));
-                return;
-            }
-            else if (texto.All(char.IsLetter))
-            {
-                cargarDGV(consultaService.buscarPorVeterinarioMascota(texto));
-                return;
-            }
-        }
         private bool esFecha(string texto)
         {
             DateTime fecha;
@@ -141,10 +122,21 @@ namespace ProyectoP3
                 out fecha
             );
         }
-
         private void txtFiltrarPorFecha_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        private void txtFiltrarPorFecha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var texto = txtFiltrarPorFecha.Text.Trim().ToLower();
+                if (texto == "") cargarDGV(consultaService.Consultar());
+                else if (esFecha(texto)) cargarDGV(consultaService.buscarPorFecha(texto));
+                else if (texto.All(char.IsLetter)) cargarDGV(consultaService.buscarPorVeterinarioMascota(texto));
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

@@ -38,7 +38,6 @@
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.elimina = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
-            this.bttnFiltrarEspecie = new Guna.UI2.WinForms.Guna2Button();
             this.txtFiltrar = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVRaza)).BeginInit();
             this.SuspendLayout();
@@ -80,7 +79,7 @@
             this.DGVRaza.Name = "DGVRaza";
             this.DGVRaza.ReadOnly = true;
             this.DGVRaza.RowHeadersVisible = false;
-            this.DGVRaza.Size = new System.Drawing.Size(1078, 501);
+            this.DGVRaza.Size = new System.Drawing.Size(1074, 492);
             this.DGVRaza.TabIndex = 4;
             this.DGVRaza.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVRaza.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -160,25 +159,6 @@
             this.btnGuardar.Text = "Agregar Raza";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // bttnFiltrarEspecie
-            // 
-            this.bttnFiltrarEspecie.Animated = true;
-            this.bttnFiltrarEspecie.AutoRoundedCorners = true;
-            this.bttnFiltrarEspecie.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnFiltrarEspecie.DefaultAutoSize = true;
-            this.bttnFiltrarEspecie.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarEspecie.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarEspecie.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bttnFiltrarEspecie.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bttnFiltrarEspecie.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bttnFiltrarEspecie.ForeColor = System.Drawing.Color.White;
-            this.bttnFiltrarEspecie.Location = new System.Drawing.Point(258, 21);
-            this.bttnFiltrarEspecie.Name = "bttnFiltrarEspecie";
-            this.bttnFiltrarEspecie.Size = new System.Drawing.Size(61, 27);
-            this.bttnFiltrarEspecie.TabIndex = 21;
-            this.bttnFiltrarEspecie.Text = "Filtrar";
-            this.bttnFiltrarEspecie.Click += new System.EventHandler(this.bttnFiltrarEspecie_Click_1);
-            // 
             // txtFiltrar
             // 
             this.txtFiltrar.Animated = true;
@@ -198,6 +178,7 @@
             this.txtFiltrar.SelectedText = "";
             this.txtFiltrar.Size = new System.Drawing.Size(231, 36);
             this.txtFiltrar.TabIndex = 22;
+            this.txtFiltrar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFiltrar_KeyDown);
             // 
             // FrmRaza
             // 
@@ -205,7 +186,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 690);
             this.Controls.Add(this.txtFiltrar);
-            this.Controls.Add(this.bttnFiltrarEspecie);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.DGVRaza);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -214,7 +194,6 @@
             this.Load += new System.EventHandler(this.FrmRaza_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVRaza)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -226,7 +205,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn elimina;
-        private Guna.UI2.WinForms.Guna2Button bttnFiltrarEspecie;
         private Guna.UI2.WinForms.Guna2TextBox txtFiltrar;
     }
 }

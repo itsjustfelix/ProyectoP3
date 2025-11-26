@@ -1,25 +1,27 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
-using static QuestPDF.Helpers.Colors;
 
 namespace ProyectoP3
 {
     public partial class FrmEstadistica : Form
     {
-        CitaService citaService = new CitaService();
-        VeterinarioService veterinarioService = new VeterinarioService();
-        MascotaService mascotaService = new MascotaService();
-        ConsultaService consultaService = new ConsultaService();
+        CitaService citaService;
+        VeterinarioService veterinarioService;
+        MascotaService mascotaService;
+        ConsultaService consultaService;
 
         public FrmEstadistica()
         {
             InitializeComponent();
             this.monthCalendar1.DateSelected += MonthCalendar1_DateSelected;
+            citaService = new CitaService();
+            veterinarioService = new VeterinarioService();
+            mascotaService = new MascotaService();
+            consultaService = new ConsultaService();
         }
 
         private void MonthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
@@ -98,38 +100,6 @@ namespace ProyectoP3
             cargarLabels();
             CargarCitasDelDia(DateTime.Now);
         }
-
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gunaChart1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cardCitasHoy_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void cardVeterinarios_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
 
         private void labelCitasAtendidasTitle_Click(object sender, EventArgs e)
         {

@@ -71,20 +71,6 @@ namespace ProyectoP3
             cargarDGV(mascotaService.Consultar());
         }
 
-        private void bttnFiltrarPorEspecie_Click(object sender, EventArgs e)
-        {
-            var texto = txtFiltrarEspecie.Text.Trim().ToLower();
-            if (texto == "")
-            {
-                cargarDGV(mascotaService.Consultar());
-                return;
-            }
-            else
-            {
-                cargarDGV(mascotaService.buscarPorRazaEspeciePropietario(texto));
-            }
-        }
-
         private void DGVMascota_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int codigo = int.Parse(DGVMascota.CurrentRow.Cells["Codigo"].Value.ToString());
@@ -106,9 +92,16 @@ namespace ProyectoP3
             }
         }
 
-        private void txtFiltrarEspecie_TextChanged(object sender, EventArgs e)
+        private void txtFiltrarEspecie_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                var texto = txtFiltrarEspecie.Text.Trim().ToLower();
+                if (texto == "") cargarDGV(mascotaService.Consultar());
+                else cargarDGV(mascotaService.buscarPorRazaEspeciePropietario(texto));
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

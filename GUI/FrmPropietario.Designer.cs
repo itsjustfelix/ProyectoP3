@@ -44,7 +44,6 @@ namespace ProyectoP3
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.elimina = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
-            this.bttnFiltrar = new Guna.UI2.WinForms.Guna2Button();
             this.txtFiltrarPropietario = new Guna.UI2.WinForms.Guna2TextBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -194,25 +193,6 @@ namespace ProyectoP3
             this.btnGuardar.Text = "Agregar Propietario";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // bttnFiltrar
-            // 
-            this.bttnFiltrar.Animated = true;
-            this.bttnFiltrar.AutoRoundedCorners = true;
-            this.bttnFiltrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnFiltrar.DefaultAutoSize = true;
-            this.bttnFiltrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bttnFiltrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bttnFiltrar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bttnFiltrar.ForeColor = System.Drawing.Color.White;
-            this.bttnFiltrar.Location = new System.Drawing.Point(218, 17);
-            this.bttnFiltrar.Name = "bttnFiltrar";
-            this.bttnFiltrar.Size = new System.Drawing.Size(61, 27);
-            this.bttnFiltrar.TabIndex = 8;
-            this.bttnFiltrar.Text = "Filtrar";
-            this.bttnFiltrar.Click += new System.EventHandler(this.guna2Button2_Click);
-            // 
             // txtFiltrarPropietario
             // 
             this.txtFiltrarPropietario.Animated = true;
@@ -230,9 +210,10 @@ namespace ProyectoP3
             this.txtFiltrarPropietario.Name = "txtFiltrarPropietario";
             this.txtFiltrarPropietario.PlaceholderText = "Filtrar";
             this.txtFiltrarPropietario.SelectedText = "";
-            this.txtFiltrarPropietario.Size = new System.Drawing.Size(200, 36);
+            this.txtFiltrarPropietario.Size = new System.Drawing.Size(231, 36);
             this.txtFiltrarPropietario.TabIndex = 9;
             this.txtFiltrarPropietario.TextChanged += new System.EventHandler(this.txtFiltrarPropietario_TextChanged);
+            this.txtFiltrarPropietario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFiltrarPropietario_KeyDown);
             // 
             // dataGridViewImageColumn1
             // 
@@ -256,7 +237,6 @@ namespace ProyectoP3
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 690);
             this.Controls.Add(this.txtFiltrarPropietario);
-            this.Controls.Add(this.bttnFiltrar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.DGVPropietario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -265,7 +245,6 @@ namespace ProyectoP3
             this.Load += new System.EventHandler(this.FrmPropietario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVPropietario)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -277,7 +256,6 @@ namespace ProyectoP3
         #endregion
         private Guna.UI2.WinForms.Guna2DataGridView DGVPropietario;
         private Guna.UI2.WinForms.Guna2Button btnGuardar;
-        private Guna.UI2.WinForms.Guna2Button bttnFiltrar;
         private Guna.UI2.WinForms.Guna2TextBox txtFiltrarPropietario;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;

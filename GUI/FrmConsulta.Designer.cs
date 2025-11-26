@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DGVConsulta = new Guna.UI2.WinForms.Guna2DataGridView();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,7 +44,6 @@
             this.GenerarPDF = new System.Windows.Forms.DataGridViewImageColumn();
             this.EnviarEmail = new System.Windows.Forms.DataGridViewImageColumn();
             this.VerConsulta = new System.Windows.Forms.DataGridViewImageColumn();
-            this.bttnFiltrarPorFecha = new Guna.UI2.WinForms.Guna2Button();
             this.txtFiltrarPorFecha = new Guna.UI2.WinForms.Guna2TextBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -57,18 +56,18 @@
             // 
             this.DGVConsulta.AllowUserToAddRows = false;
             this.DGVConsulta.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
-            this.DGVConsulta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
+            this.DGVConsulta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DGVConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVConsulta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVConsulta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DGVConsulta.ColumnHeadersHeight = 15;
             this.DGVConsulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DGVConsulta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -84,20 +83,20 @@
             this.GenerarPDF,
             this.EnviarEmail,
             this.VerConsulta});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGVConsulta.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGVConsulta.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGVConsulta.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
-            this.DGVConsulta.Location = new System.Drawing.Point(12, 65);
+            this.DGVConsulta.Location = new System.Drawing.Point(12, 57);
             this.DGVConsulta.Name = "DGVConsulta";
             this.DGVConsulta.ReadOnly = true;
             this.DGVConsulta.RowHeadersVisible = false;
-            this.DGVConsulta.Size = new System.Drawing.Size(1078, 514);
+            this.DGVConsulta.Size = new System.Drawing.Size(1074, 492);
             this.DGVConsulta.TabIndex = 4;
             this.DGVConsulta.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVConsulta.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -202,25 +201,6 @@
             this.VerConsulta.Name = "VerConsulta";
             this.VerConsulta.ReadOnly = true;
             // 
-            // bttnFiltrarPorFecha
-            // 
-            this.bttnFiltrarPorFecha.Animated = true;
-            this.bttnFiltrarPorFecha.AutoRoundedCorners = true;
-            this.bttnFiltrarPorFecha.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnFiltrarPorFecha.DefaultAutoSize = true;
-            this.bttnFiltrarPorFecha.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarPorFecha.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarPorFecha.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bttnFiltrarPorFecha.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bttnFiltrarPorFecha.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bttnFiltrarPorFecha.ForeColor = System.Drawing.Color.White;
-            this.bttnFiltrarPorFecha.Location = new System.Drawing.Point(237, 19);
-            this.bttnFiltrarPorFecha.Name = "bttnFiltrarPorFecha";
-            this.bttnFiltrarPorFecha.Size = new System.Drawing.Size(61, 27);
-            this.bttnFiltrarPorFecha.TabIndex = 26;
-            this.bttnFiltrarPorFecha.Text = "Filtrar";
-            this.bttnFiltrarPorFecha.Click += new System.EventHandler(this.bttnFiltrarPorFecha_Click);
-            // 
             // txtFiltrarPorFecha
             // 
             this.txtFiltrarPorFecha.Animated = true;
@@ -234,13 +214,14 @@
             this.txtFiltrarPorFecha.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFiltrarPorFecha.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFiltrarPorFecha.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFiltrarPorFecha.Location = new System.Drawing.Point(21, 14);
+            this.txtFiltrarPorFecha.Location = new System.Drawing.Point(12, 12);
             this.txtFiltrarPorFecha.Name = "txtFiltrarPorFecha";
             this.txtFiltrarPorFecha.PlaceholderText = "Filtrar";
             this.txtFiltrarPorFecha.SelectedText = "";
-            this.txtFiltrarPorFecha.Size = new System.Drawing.Size(200, 36);
+            this.txtFiltrarPorFecha.Size = new System.Drawing.Size(231, 36);
             this.txtFiltrarPorFecha.TabIndex = 27;
             this.txtFiltrarPorFecha.TextChanged += new System.EventHandler(this.txtFiltrarPorFecha_TextChanged);
+            this.txtFiltrarPorFecha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFiltrarPorFecha_KeyDown);
             // 
             // dataGridViewImageColumn1
             // 
@@ -278,7 +259,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 690);
             this.Controls.Add(this.txtFiltrarPorFecha);
-            this.Controls.Add(this.bttnFiltrarPorFecha);
             this.Controls.Add(this.DGVConsulta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmConsulta";
@@ -286,13 +266,11 @@
             this.Load += new System.EventHandler(this.FrmConsulta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVConsulta)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private Guna.UI2.WinForms.Guna2DataGridView DGVConsulta;
-        private Guna.UI2.WinForms.Guna2Button bttnFiltrarPorFecha;
         private Guna.UI2.WinForms.Guna2TextBox txtFiltrarPorFecha;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;

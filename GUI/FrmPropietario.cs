@@ -83,26 +83,6 @@ namespace ProyectoP3
             }
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            var texto = txtFiltrarPropietario.Text.Trim();
-            if (texto == "")
-            {
-                cargarDGV(propietarioService.Consultar());
-                return;
-            }
-            else if (texto.All(char.IsNumber))
-            {
-                cargarDGV(propietarioService.BuscarPorCedula(int.Parse(txtFiltrarPropietario.Text.Trim())));
-                return;
-            }
-            else if (texto.All(char.IsLetter))
-            {
-                cargarDGV(propietarioService.BuscarPorNombreApellido(txtFiltrarPropietario.Text.Trim()));
-                return;
-            }
-        }
-
         private void DGVPropietario_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int cedula = int.Parse(DGVPropietario.CurrentRow.Cells["Cedula"].Value.ToString());
@@ -129,6 +109,31 @@ namespace ProyectoP3
         private void txtFiltrarPropietario_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtFiltrarPropietario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                var texto = txtFiltrarPropietario.Text.Trim();
+                if (texto == "")
+                {
+                    cargarDGV(propietarioService.Consultar());
+                    return;
+                }
+                else if (texto.All(char.IsNumber))
+                {
+                    cargarDGV(propietarioService.BuscarPorCedula(int.Parse(txtFiltrarPropietario.Text.Trim())));
+                    return;
+                }
+                else if (texto.All(char.IsLetter))
+                {
+                    cargarDGV(propietarioService.BuscarPorNombreApellido(txtFiltrarPropietario.Text.Trim()));
+                    return;
+                }
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

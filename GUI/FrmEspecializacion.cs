@@ -19,8 +19,6 @@ namespace ProyectoP3
             mostrarFrm(new FrmEspecializacionAgregar());
             cargarDGV(especializacionService.Consultar());
         }
-
-
         private void cargarDGV(List<Especializacion> lista)
         {
             DGVEspecializacion.Rows.Clear();
@@ -51,8 +49,6 @@ namespace ProyectoP3
             cargarDGV(especializacionService.Consultar());
         }
 
-
-
         private bool eliminar(int id)
         {
             try
@@ -77,22 +73,6 @@ namespace ProyectoP3
                 return null;
             }
         }
-
-        private void bttnFiltrarPorNombre_Click(object sender, EventArgs e)
-        {
-            var texto = txtFiltrarPorNombre.Text.Trim().ToLower();
-            if (texto == "")
-            {
-                cargarDGV(especializacionService.Consultar());
-                return;
-            }
-            else
-            {
-                cargarDGV(especializacionService.BuscarPorNombre(texto));
-                return;
-            }
-        }
-
         private void DGVEspecializacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int codigo = int.Parse(DGVEspecializacion.CurrentRow.Cells["Codigo"].Value.ToString());
@@ -111,6 +91,18 @@ namespace ProyectoP3
                     MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cargarDGV(especializacionService.Consultar());
                 }
+            }
+        }
+
+        private void txtFiltrarPorNombre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var texto = txtFiltrarPorNombre.Text.Trim().ToLower();
+                if (texto == "") cargarDGV(especializacionService.Consultar());
+                else cargarDGV(especializacionService.BuscarPorNombre(texto));
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
     }
