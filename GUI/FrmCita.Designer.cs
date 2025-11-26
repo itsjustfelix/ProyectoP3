@@ -88,7 +88,7 @@
             this.DGVCita.Name = "DGVCita";
             this.DGVCita.ReadOnly = true;
             this.DGVCita.RowHeadersVisible = false;
-            this.DGVCita.Size = new System.Drawing.Size(1074, 492);
+            this.DGVCita.Size = new System.Drawing.Size(1074, 556);
             this.DGVCita.TabIndex = 4;
             this.DGVCita.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVCita.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -178,7 +178,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.IndicateFocus = true;
-            this.btnGuardar.Location = new System.Drawing.Point(445, 575);
+            this.btnGuardar.Location = new System.Drawing.Point(512, 633);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(141, 45);
             this.btnGuardar.TabIndex = 17;

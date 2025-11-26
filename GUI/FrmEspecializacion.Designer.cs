@@ -77,7 +77,7 @@
             this.DGVEspecializacion.Name = "DGVEspecializacion";
             this.DGVEspecializacion.ReadOnly = true;
             this.DGVEspecializacion.RowHeadersVisible = false;
-            this.DGVEspecializacion.Size = new System.Drawing.Size(1074, 492);
+            this.DGVEspecializacion.Size = new System.Drawing.Size(1074, 556);
             this.DGVEspecializacion.TabIndex = 4;
             this.DGVEspecializacion.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVEspecializacion.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -142,7 +142,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.IndicateFocus = true;
-            this.btnGuardar.Location = new System.Drawing.Point(446, 584);
+            this.btnGuardar.Location = new System.Drawing.Point(512, 633);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(161, 45);
             this.btnGuardar.TabIndex = 24;

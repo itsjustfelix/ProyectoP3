@@ -29,58 +29,126 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnEspecie = new Guna.UI2.WinForms.Guna2Button();
+            this.btnPropietario = new Guna.UI2.WinForms.Guna2Button();
+            this.button2 = new Guna.UI2.WinForms.Guna2Button();
             this.bttnSalir = new Guna.UI2.WinForms.Guna2Button();
+            this.button4 = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.button4 = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.button2 = new Guna.UI2.WinForms.Guna2Button();
             this.button1 = new Guna.UI2.WinForms.Guna2Button();
             this.btnConsulta = new Guna.UI2.WinForms.Guna2Button();
             this.btnMascota = new Guna.UI2.WinForms.Guna2Button();
             this.btnRaza = new Guna.UI2.WinForms.Guna2Button();
-            this.btnEspecie = new Guna.UI2.WinForms.Guna2Button();
-            this.btnPropietario = new Guna.UI2.WinForms.Guna2Button();
-            this.panel3.SuspendLayout();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel2
+            // button3
             // 
-            this.panel2.BackColor = System.Drawing.Color.LightCyan;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(182, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.panel2.Size = new System.Drawing.Size(846, 685);
-            this.panel2.TabIndex = 1;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.button3.Animated = true;
+            this.button3.AutoRoundedCorners = true;
+            this.button3.BorderColor = System.Drawing.Color.Gray;
+            this.button3.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.button3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.button3.IndicateFocus = true;
+            this.button3.Location = new System.Drawing.Point(0, 578);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(182, 45);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "Especializacion";
+            this.button3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.button3.TextOffset = new System.Drawing.Point(10, 0);
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
-            // panel3
+            // btnEspecie
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.panel3.Controls.Add(this.button3);
-            this.panel3.Controls.Add(this.btnEspecie);
-            this.panel3.Controls.Add(this.btnPropietario);
-            this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.bttnSalir);
-            this.panel3.Controls.Add(this.button4);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.guna2Button1);
-            this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.btnConsulta);
-            this.panel3.Controls.Add(this.btnMascota);
-            this.panel3.Controls.Add(this.btnRaza);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.ForeColor = System.Drawing.Color.Transparent;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(182, 685);
-            this.panel3.TabIndex = 13;
+            this.btnEspecie.Animated = true;
+            this.btnEspecie.AutoRoundedCorners = true;
+            this.btnEspecie.BorderColor = System.Drawing.Color.Gray;
+            this.btnEspecie.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEspecie.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEspecie.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEspecie.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEspecie.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEspecie.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.btnEspecie.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnEspecie.ForeColor = System.Drawing.Color.Black;
+            this.btnEspecie.Image = ((System.Drawing.Image)(resources.GetObject("btnEspecie.Image")));
+            this.btnEspecie.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnEspecie.IndicateFocus = true;
+            this.btnEspecie.Location = new System.Drawing.Point(0, 410);
+            this.btnEspecie.Name = "btnEspecie";
+            this.btnEspecie.Size = new System.Drawing.Size(182, 45);
+            this.btnEspecie.TabIndex = 15;
+            this.btnEspecie.Text = "Especie";
+            this.btnEspecie.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnEspecie.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnEspecie.Click += new System.EventHandler(this.btnEspecie_Click_1);
+            // 
+            // btnPropietario
+            // 
+            this.btnPropietario.Animated = true;
+            this.btnPropietario.AutoRoundedCorners = true;
+            this.btnPropietario.BorderColor = System.Drawing.Color.Gray;
+            this.btnPropietario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPropietario.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPropietario.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPropietario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPropietario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPropietario.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.btnPropietario.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnPropietario.ForeColor = System.Drawing.Color.Black;
+            this.btnPropietario.Image = global::ProyectoP3.Properties.Resources.SolarUserBold;
+            this.btnPropietario.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnPropietario.IndicateFocus = true;
+            this.btnPropietario.Location = new System.Drawing.Point(0, 298);
+            this.btnPropietario.Name = "btnPropietario";
+            this.btnPropietario.Size = new System.Drawing.Size(182, 45);
+            this.btnPropietario.TabIndex = 14;
+            this.btnPropietario.Text = "Propietario";
+            this.btnPropietario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnPropietario.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnPropietario.Click += new System.EventHandler(this.btnPropietario_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Animated = true;
+            this.button2.AutoRoundedCorners = true;
+            this.button2.BorderColor = System.Drawing.Color.Gray;
+            this.button2.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.button2.IndicateFocus = true;
+            this.button2.Location = new System.Drawing.Point(0, 74);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(182, 45);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Cita";
+            this.button2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.button2.TextOffset = new System.Drawing.Point(10, 0);
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // bttnSalir
             // 
@@ -107,6 +175,32 @@
             this.bttnSalir.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.bttnSalir.TextOffset = new System.Drawing.Point(10, 0);
             this.bttnSalir.Click += new System.EventHandler(this.bttnSalir_Click);
+            // 
+            // button4
+            // 
+            this.button4.Animated = true;
+            this.button4.AutoRoundedCorners = true;
+            this.button4.BorderColor = System.Drawing.Color.Gray;
+            this.button4.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.button4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.button4.ForeColor = System.Drawing.Color.Black;
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.button4.IndicateFocus = true;
+            this.button4.Location = new System.Drawing.Point(0, 186);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(182, 45);
+            this.button4.TabIndex = 22;
+            this.button4.Text = "IA";
+            this.button4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.button4.TextOffset = new System.Drawing.Point(10, 0);
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
             // 
             // label1
             // 
@@ -146,32 +240,6 @@
             this.guna2Button1.TextOffset = new System.Drawing.Point(10, 0);
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
-            // button4
-            // 
-            this.button4.Animated = true;
-            this.button4.AutoRoundedCorners = true;
-            this.button4.BorderColor = System.Drawing.Color.Gray;
-            this.button4.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.button4.IndicateFocus = true;
-            this.button4.Location = new System.Drawing.Point(0, 186);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(182, 45);
-            this.button4.TabIndex = 22;
-            this.button4.Text = "IA";
-            this.button4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.button4.TextOffset = new System.Drawing.Point(10, 0);
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -180,58 +248,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(61, 48);
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
-            // 
-            // button3
-            // 
-            this.button3.Animated = true;
-            this.button3.AutoRoundedCorners = true;
-            this.button3.BorderColor = System.Drawing.Color.Gray;
-            this.button3.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.button3.IndicateFocus = true;
-            this.button3.Location = new System.Drawing.Point(0, 578);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(182, 45);
-            this.button3.TabIndex = 21;
-            this.button3.Text = "Especializacion";
-            this.button3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.button3.TextOffset = new System.Drawing.Point(10, 0);
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
-            // 
-            // button2
-            // 
-            this.button2.Animated = true;
-            this.button2.AutoRoundedCorners = true;
-            this.button2.BorderColor = System.Drawing.Color.Gray;
-            this.button2.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.button2.IndicateFocus = true;
-            this.button2.Location = new System.Drawing.Point(0, 74);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(182, 45);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Cita";
-            this.button2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.button2.TextOffset = new System.Drawing.Point(10, 0);
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
             // 
@@ -336,76 +352,58 @@
             this.btnRaza.TextOffset = new System.Drawing.Point(10, 0);
             this.btnRaza.Click += new System.EventHandler(this.btnRaza_Click_1);
             // 
-            // btnEspecie
+            // panel2
             // 
-            this.btnEspecie.Animated = true;
-            this.btnEspecie.AutoRoundedCorners = true;
-            this.btnEspecie.BorderColor = System.Drawing.Color.Gray;
-            this.btnEspecie.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEspecie.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnEspecie.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnEspecie.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnEspecie.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnEspecie.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.btnEspecie.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnEspecie.ForeColor = System.Drawing.Color.Black;
-            this.btnEspecie.Image = ((System.Drawing.Image)(resources.GetObject("btnEspecie.Image")));
-            this.btnEspecie.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnEspecie.IndicateFocus = true;
-            this.btnEspecie.Location = new System.Drawing.Point(0, 410);
-            this.btnEspecie.Name = "btnEspecie";
-            this.btnEspecie.Size = new System.Drawing.Size(182, 45);
-            this.btnEspecie.TabIndex = 15;
-            this.btnEspecie.Text = "Especie";
-            this.btnEspecie.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnEspecie.TextOffset = new System.Drawing.Point(10, 0);
-            this.btnEspecie.Click += new System.EventHandler(this.btnEspecie_Click_1);
+            this.panel2.BackColor = System.Drawing.Color.LightCyan;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(182, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.panel2.Size = new System.Drawing.Size(1107, 685);
+            this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // btnPropietario
+            // panel3
             // 
-            this.btnPropietario.Animated = true;
-            this.btnPropietario.AutoRoundedCorners = true;
-            this.btnPropietario.BorderColor = System.Drawing.Color.Gray;
-            this.btnPropietario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPropietario.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPropietario.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPropietario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPropietario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPropietario.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.btnPropietario.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnPropietario.ForeColor = System.Drawing.Color.Black;
-            this.btnPropietario.Image = global::ProyectoP3.Properties.Resources.SolarUserBold;
-            this.btnPropietario.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnPropietario.IndicateFocus = true;
-            this.btnPropietario.Location = new System.Drawing.Point(0, 298);
-            this.btnPropietario.Name = "btnPropietario";
-            this.btnPropietario.Size = new System.Drawing.Size(182, 45);
-            this.btnPropietario.TabIndex = 14;
-            this.btnPropietario.Text = "Propietario";
-            this.btnPropietario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnPropietario.TextOffset = new System.Drawing.Point(10, 0);
-            this.btnPropietario.Click += new System.EventHandler(this.btnPropietario_Click_1);
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.panel3.Controls.Add(this.button3);
+            this.panel3.Controls.Add(this.btnEspecie);
+            this.panel3.Controls.Add(this.btnPropietario);
+            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.bttnSalir);
+            this.panel3.Controls.Add(this.button4);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.guna2Button1);
+            this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.btnConsulta);
+            this.panel3.Controls.Add(this.btnMascota);
+            this.panel3.Controls.Add(this.btnRaza);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.ForeColor = System.Drawing.Color.Transparent;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(182, 685);
+            this.panel3.TabIndex = 13;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 685);
+            this.ClientSize = new System.Drawing.Size(1289, 685);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Name = "Form1";
             this.Text = "My vet";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         private Guna.UI2.WinForms.Guna2Button btnPropietario;
         private Guna.UI2.WinForms.Guna2Button btnEspecie;
         private Guna.UI2.WinForms.Guna2Button btnRaza;
@@ -419,6 +417,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button bttnSalir;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 

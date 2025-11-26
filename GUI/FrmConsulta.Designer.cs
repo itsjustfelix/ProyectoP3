@@ -96,7 +96,7 @@
             this.DGVConsulta.Name = "DGVConsulta";
             this.DGVConsulta.ReadOnly = true;
             this.DGVConsulta.RowHeadersVisible = false;
-            this.DGVConsulta.Size = new System.Drawing.Size(1074, 492);
+            this.DGVConsulta.Size = new System.Drawing.Size(1074, 556);
             this.DGVConsulta.TabIndex = 4;
             this.DGVConsulta.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVConsulta.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
