@@ -32,6 +32,9 @@
             Guna.Charts.WinForms.ChartFont chartFont7 = new Guna.Charts.WinForms.ChartFont();
             Guna.Charts.WinForms.Tick tick3 = new Guna.Charts.WinForms.Tick();
             Guna.Charts.WinForms.ChartFont chartFont8 = new Guna.Charts.WinForms.ChartFont();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gunaChart1 = new Guna.Charts.WinForms.GunaChart();
             this.panelCards = new System.Windows.Forms.Panel();
             this.cardMascotas = new Guna.UI2.WinForms.Guna2GradientPanel();
@@ -53,10 +56,17 @@
             this.panelChart = new System.Windows.Forms.Panel();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.panelRight = new System.Windows.Forms.Panel();
-            this.groupBoxCitasDia = new System.Windows.Forms.GroupBox();
-            this.listBoxCitasDia = new System.Windows.Forms.ListBox();
             this.gunaPolarAreaDataset1 = new Guna.Charts.WinForms.GunaPolarAreaDataset();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.dgvCitasHoy = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AtenderCita = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelCards.SuspendLayout();
             this.cardMascotas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -68,8 +78,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panelChart.SuspendLayout();
             this.panelRight.SuspendLayout();
-            this.groupBoxCitasDia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCitasHoy)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaChart1
@@ -78,7 +88,7 @@
             this.gunaChart1.Legend.LabelFont = chartFont1;
             this.gunaChart1.Location = new System.Drawing.Point(5, 34);
             this.gunaChart1.Name = "gunaChart1";
-            this.gunaChart1.Size = new System.Drawing.Size(670, 296);
+            this.gunaChart1.Size = new System.Drawing.Size(572, 296);
             this.gunaChart1.TabIndex = 0;
             chartFont2.FontName = "Arial";
             chartFont2.Size = 12;
@@ -134,7 +144,7 @@
             // labelMascotasTitle
             // 
             this.labelMascotasTitle.BackColor = System.Drawing.Color.Transparent;
-            this.labelMascotasTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMascotasTitle.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.labelMascotasTitle.Location = new System.Drawing.Point(70, 10);
             this.labelMascotasTitle.Name = "labelMascotasTitle";
             this.labelMascotasTitle.Size = new System.Drawing.Size(100, 23);
@@ -144,7 +154,7 @@
             // lblContadorMascotas
             // 
             this.lblContadorMascotas.BackColor = System.Drawing.Color.Transparent;
-            this.lblContadorMascotas.Font = new System.Drawing.Font("Segoe UI Semibold", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContadorMascotas.Font = new System.Drawing.Font("Century Gothic", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContadorMascotas.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblContadorMascotas.Location = new System.Drawing.Point(88, 50);
             this.lblContadorMascotas.Name = "lblContadorMascotas";
@@ -192,7 +202,7 @@
             // labelVeterinariosTitle
             // 
             this.labelVeterinariosTitle.BackColor = System.Drawing.Color.Transparent;
-            this.labelVeterinariosTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVeterinariosTitle.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.labelVeterinariosTitle.Location = new System.Drawing.Point(74, 10);
             this.labelVeterinariosTitle.Name = "labelVeterinariosTitle";
             this.labelVeterinariosTitle.Size = new System.Drawing.Size(116, 23);
@@ -202,7 +212,7 @@
             // lblContadorVeterinarios
             // 
             this.lblContadorVeterinarios.BackColor = System.Drawing.Color.Transparent;
-            this.lblContadorVeterinarios.Font = new System.Drawing.Font("Segoe UI Semibold", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContadorVeterinarios.Font = new System.Drawing.Font("Century Gothic", 30F, System.Drawing.FontStyle.Bold);
             this.lblContadorVeterinarios.Location = new System.Drawing.Point(110, 50);
             this.lblContadorVeterinarios.Name = "lblContadorVeterinarios";
             this.lblContadorVeterinarios.Size = new System.Drawing.Size(100, 70);
@@ -237,7 +247,7 @@
             // labelCitasHoyTitle
             // 
             this.labelCitasHoyTitle.BackColor = System.Drawing.Color.Transparent;
-            this.labelCitasHoyTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCitasHoyTitle.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.labelCitasHoyTitle.Location = new System.Drawing.Point(79, 13);
             this.labelCitasHoyTitle.Name = "labelCitasHoyTitle";
             this.labelCitasHoyTitle.Size = new System.Drawing.Size(100, 23);
@@ -247,7 +257,7 @@
             // lblContadorCitasHoy
             // 
             this.lblContadorCitasHoy.BackColor = System.Drawing.Color.Transparent;
-            this.lblContadorCitasHoy.Font = new System.Drawing.Font("Segoe UI Semibold", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContadorCitasHoy.Font = new System.Drawing.Font("Century Gothic", 30F, System.Drawing.FontStyle.Bold);
             this.lblContadorCitasHoy.Location = new System.Drawing.Point(88, 49);
             this.lblContadorCitasHoy.Name = "lblContadorCitasHoy";
             this.lblContadorCitasHoy.Size = new System.Drawing.Size(100, 59);
@@ -285,8 +295,8 @@
             // labelCitasAtendidasTitle
             // 
             this.labelCitasAtendidasTitle.BackColor = System.Drawing.Color.Transparent;
-            this.labelCitasAtendidasTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCitasAtendidasTitle.Location = new System.Drawing.Point(94, 13);
+            this.labelCitasAtendidasTitle.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.labelCitasAtendidasTitle.Location = new System.Drawing.Point(74, 13);
             this.labelCitasAtendidasTitle.Name = "labelCitasAtendidasTitle";
             this.labelCitasAtendidasTitle.Size = new System.Drawing.Size(116, 23);
             this.labelCitasAtendidasTitle.TabIndex = 0;
@@ -296,7 +306,7 @@
             // lblCitasAtendidas
             // 
             this.lblCitasAtendidas.BackColor = System.Drawing.Color.Transparent;
-            this.lblCitasAtendidas.Font = new System.Drawing.Font("Segoe UI Semibold", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCitasAtendidas.Font = new System.Drawing.Font("Century Gothic", 30F, System.Drawing.FontStyle.Bold);
             this.lblCitasAtendidas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.lblCitasAtendidas.Location = new System.Drawing.Point(110, 50);
             this.lblCitasAtendidas.Name = "lblCitasAtendidas";
@@ -309,14 +319,14 @@
             this.panelChart.Controls.Add(this.gunaChart1);
             this.panelChart.Location = new System.Drawing.Point(12, 336);
             this.panelChart.Name = "panelChart";
-            this.panelChart.Size = new System.Drawing.Size(700, 353);
+            this.panelChart.Size = new System.Drawing.Size(597, 402);
             this.panelChart.TabIndex = 2;
             // 
             // monthCalendar1
             // 
             this.monthCalendar1.BackColor = System.Drawing.SystemColors.WindowText;
             this.monthCalendar1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.monthCalendar1.Location = new System.Drawing.Point(68, 15);
+            this.monthCalendar1.Location = new System.Drawing.Point(132, 9);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 1;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
@@ -325,34 +335,12 @@
             // 
             this.panelRight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelRight.Controls.Add(this.groupBoxCitasDia);
+            this.panelRight.Controls.Add(this.dgvCitasHoy);
             this.panelRight.Controls.Add(this.monthCalendar1);
-            this.panelRight.Location = new System.Drawing.Point(724, 327);
+            this.panelRight.Location = new System.Drawing.Point(615, 336);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(1199, 394);
+            this.panelRight.Size = new System.Drawing.Size(473, 402);
             this.panelRight.TabIndex = 3;
-            // 
-            // groupBoxCitasDia
-            // 
-            this.groupBoxCitasDia.Controls.Add(this.listBoxCitasDia);
-            this.groupBoxCitasDia.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxCitasDia.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.groupBoxCitasDia.Location = new System.Drawing.Point(8, 212);
-            this.groupBoxCitasDia.Name = "groupBoxCitasDia";
-            this.groupBoxCitasDia.Size = new System.Drawing.Size(356, 150);
-            this.groupBoxCitasDia.TabIndex = 0;
-            this.groupBoxCitasDia.TabStop = false;
-            this.groupBoxCitasDia.Text = "Citas del día";
-            // 
-            // listBoxCitasDia
-            // 
-            this.listBoxCitasDia.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxCitasDia.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxCitasDia.ItemHeight = 19;
-            this.listBoxCitasDia.Location = new System.Drawing.Point(3, 26);
-            this.listBoxCitasDia.Name = "listBoxCitasDia";
-            this.listBoxCitasDia.Size = new System.Drawing.Size(350, 121);
-            this.listBoxCitasDia.TabIndex = 0;
             // 
             // gunaPolarAreaDataset1
             // 
@@ -370,14 +358,136 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // dgvCitasHoy
+            // 
+            this.dgvCitasHoy.AllowUserToAddRows = false;
+            this.dgvCitasHoy.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(223)))), ((int)(((byte)(251)))));
+            this.dgvCitasHoy.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCitasHoy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCitasHoy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Codigo,
+            this.Column1,
+            this.Column2,
+            this.Column4,
+            this.Column3,
+            this.AtenderCita});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(233)))), ((int)(((byte)(252)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(185)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCitasHoy.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvCitasHoy.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(222)))), ((int)(((byte)(251)))));
+            this.dgvCitasHoy.Location = new System.Drawing.Point(14, 189);
+            this.dgvCitasHoy.Name = "dgvCitasHoy";
+            this.dgvCitasHoy.ReadOnly = true;
+            this.dgvCitasHoy.RowHeadersVisible = false;
+            this.dgvCitasHoy.Size = new System.Drawing.Size(453, 210);
+            this.dgvCitasHoy.TabIndex = 0;
+            this.dgvCitasHoy.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Blue;
+            this.dgvCitasHoy.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(223)))), ((int)(((byte)(251)))));
+            this.dgvCitasHoy.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvCitasHoy.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvCitasHoy.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvCitasHoy.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvCitasHoy.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvCitasHoy.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(222)))), ((int)(((byte)(251)))));
+            this.dgvCitasHoy.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(242)))));
+            this.dgvCitasHoy.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvCitasHoy.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvCitasHoy.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvCitasHoy.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCitasHoy.ThemeStyle.HeaderStyle.Height = 15;
+            this.dgvCitasHoy.ThemeStyle.ReadOnly = true;
+            this.dgvCitasHoy.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(233)))), ((int)(((byte)(252)))));
+            this.dgvCitasHoy.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvCitasHoy.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvCitasHoy.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgvCitasHoy.ThemeStyle.RowsStyle.Height = 22;
+            this.dgvCitasHoy.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(185)))), ((int)(((byte)(246)))));
+            this.dgvCitasHoy.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvCitasHoy.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCitasHoy_CellContentClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.label1.Location = new System.Drawing.Point(626, 320);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 19);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Citas Del Dia";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.label2.Location = new System.Drawing.Point(15, 320);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(192, 19);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Total De Citas Por Fecha";
+            // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Mascota";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Veterinario";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Fecha";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Hora";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // AtenderCita
+            // 
+            this.AtenderCita.HeaderText = "Atender Cita";
+            this.AtenderCita.Image = global::ProyectoP3.Properties.Resources.HugeiconsAppointment02;
+            this.AtenderCita.Name = "AtenderCita";
+            this.AtenderCita.ReadOnly = true;
+            // 
             // FrmEstadistica
             // 
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1100, 750);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panelCards);
+            this.Controls.Add(this.panelRight);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panelChart);
-            this.Controls.Add(this.panelRight);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmEstadistica";
             this.Text = "re";
@@ -393,9 +503,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panelChart.ResumeLayout(false);
             this.panelRight.ResumeLayout(false);
-            this.groupBoxCitasDia.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCitasHoy)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -423,13 +534,20 @@
         private System.Windows.Forms.MonthCalendar monthCalendar1;
 
         private System.Windows.Forms.Panel panelRight;
-        private System.Windows.Forms.GroupBox groupBoxCitasDia;
-        private System.Windows.Forms.ListBox listBoxCitasDia;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Guna.Charts.WinForms.GunaPolarAreaDataset gunaPolarAreaDataset1;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvCitasHoy;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewImageColumn AtenderCita;
     }
 }

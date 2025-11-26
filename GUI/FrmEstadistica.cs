@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
+using static QuestPDF.Helpers.Colors;
 
 namespace ProyectoP3
 {
@@ -28,23 +29,16 @@ namespace ProyectoP3
 
         private void CargarCitasDelDia(DateTime fecha)
         {
-            listBoxCitasDia.Items.Clear();
+            dgvCitasHoy.Rows.Clear();
             var citas = citaService.buscarPorFecha(fecha.ToString("dd/MM/yyyy"));
             if (citas != null && citas.Count > 0)
             {
                 foreach (var c in citas)
                 {
-                    listBoxCitasDia.Items.Add($"Hora: {c.Hora}");
-                    listBoxCitasDia.Items.Add($"Mascota: {c.Mascota.Nombre}");
-                    listBoxCitasDia.Items.Add($"Veterinario: {c.Veterinario.Nombres}");
-                    listBoxCitasDia.Items.Add($"Especialiazcion:{c.Veterinario.Especializacion.Nombre}");
-                    listBoxCitasDia.Items.Add("--------------------------------------------------");
+                   dgvCitasHoy.Rows.Add(c.Codigo, c.Mascota.Nombre, c.Veterinario.Nombres, c.Fecha, c.Hora);
                 }
             }
-            else
-            {
-                listBoxCitasDia.Items.Add("No hay citas para esta fecha.");
-            }
+               
         }
 
         private void cargarDiagrama(List<citasPorFechas> lista)
@@ -102,6 +96,7 @@ namespace ProyectoP3
         {
             cargarDiagrama(citaService.ObtenerCitasPorFechas());
             cargarLabels();
+            CargarCitasDelDia(DateTime.Now);
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -134,10 +129,7 @@ namespace ProyectoP3
 
         }
 
-        private void btnTopIA_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void labelCitasAtendidasTitle_Click(object sender, EventArgs e)
         {
@@ -147,6 +139,51 @@ namespace ProyectoP3
         private void pictureBox4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvCitasHoy_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int codigo = int.Parse(dgvCitasHoy.CurrentRow.Cells["Codigo"].Value.ToString());
+            if (dgvCitasHoy.Columns[e.ColumnIndex].Name == "AtenderCita")
+            {
+                Cita cita = buscar(codigo);
+                if (cita.Fecha.Equals(DateTime.Now.ToString("dd/MM/yyyy")))
+                {
+                    var frm = new FrmConsultaAgregar(cita.Mascota, cita.Veterinario);
+                    mostrarFrm(frm);
+
+                    if (frm.resultado == DialogResult.OK)
+                    {
+                        eliminar(codigo);
+                        CargarCitasDelDia(DateTime.Now);
+                    }
+                }
+                else
+                    MessageBox.Show("La fecha de la cita no esta para hoy.", "Atender cita.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private bool eliminar(int codigo)
+        {
+            try
+            {
+                return citaService.Borrar(codigo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al eliminar cita: {ex.Message}", ex);
+            }
+        }
+
+        private void mostrarFrm(Form frm)
+        {
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.ShowDialog();
+        }
+
+        private Cita buscar(int codigo)
+        {
+            return citaService.buscar(codigo);
         }
     }
 }

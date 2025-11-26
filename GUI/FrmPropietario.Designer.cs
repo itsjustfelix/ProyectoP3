@@ -191,7 +191,7 @@ namespace ProyectoP3
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(141, 45);
             this.btnGuardar.TabIndex = 5;
-            this.btnGuardar.Text = "Guardar Propietario";
+            this.btnGuardar.Text = "Agregar Propietario";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // bttnFiltrar

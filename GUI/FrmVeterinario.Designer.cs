@@ -191,7 +191,7 @@
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(141, 45);
             this.btnGuardar.TabIndex = 8;
-            this.btnGuardar.Text = "Guardar Veterinario";
+            this.btnGuardar.Text = "Agregar Veterinario";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtFiltrarEspecializacion

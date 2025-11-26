@@ -99,7 +99,7 @@ namespace ProyectoP3
             }
             else if(texto.All(char.IsLetter))
             {
-                cargarDGV(razaService.BuscarPorNombre(texto));
+                cargarDGV(razaService.BuscarPorNombreEspecie(texto));
                 return;
             }
         }

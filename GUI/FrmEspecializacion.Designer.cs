@@ -147,7 +147,7 @@
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(161, 45);
             this.btnGuardar.TabIndex = 24;
-            this.btnGuardar.Text = "Guardar Especializacion";
+            this.btnGuardar.Text = "Agregar Especializacion";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // bttnFiltrarPorNombre
