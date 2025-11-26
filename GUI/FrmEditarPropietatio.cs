@@ -20,8 +20,6 @@ namespace ProyectoP3
             mostrarPropietario(propietario);
             txtCedula.Enabled = false;
         }
-       
-
         private void mostrarPropietario(Propietario propietario)
         {
             txtCedula.Text = propietario.Cedula.ToString();
@@ -80,7 +78,6 @@ namespace ProyectoP3
         {
             this.Close();
         }
-
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
             try
@@ -105,7 +102,6 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
@@ -118,6 +114,43 @@ namespace ProyectoP3
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtNombre_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApellidoPaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApellidoMaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNumeroTelefonicoPrimario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            if (txtNumeroTelefonicoPrimario.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

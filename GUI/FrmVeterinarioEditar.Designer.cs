@@ -180,6 +180,7 @@
             this.txtApellidoMaterno.SelectedText = "";
             this.txtApellidoMaterno.Size = new System.Drawing.Size(225, 36);
             this.txtApellidoMaterno.TabIndex = 61;
+            this.txtApellidoMaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoMaterno_KeyPress);
             // 
             // txtNumeroTelefonicoPrimario
             // 
@@ -200,6 +201,7 @@
             this.txtNumeroTelefonicoPrimario.SelectedText = "";
             this.txtNumeroTelefonicoPrimario.Size = new System.Drawing.Size(225, 36);
             this.txtNumeroTelefonicoPrimario.TabIndex = 60;
+            this.txtNumeroTelefonicoPrimario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroTelefonicoPrimario_KeyPress);
             // 
             // txtApellidoPaterno
             // 
@@ -220,6 +222,7 @@
             this.txtApellidoPaterno.SelectedText = "";
             this.txtApellidoPaterno.Size = new System.Drawing.Size(225, 36);
             this.txtApellidoPaterno.TabIndex = 59;
+            this.txtApellidoPaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoPaterno_KeyPress);
             // 
             // txtNombre
             // 
@@ -240,6 +243,7 @@
             this.txtNombre.SelectedText = "";
             this.txtNombre.Size = new System.Drawing.Size(225, 36);
             this.txtNombre.TabIndex = 58;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // txtCedula
             // 

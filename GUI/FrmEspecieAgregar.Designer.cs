@@ -106,6 +106,7 @@
             this.txtNombre.SelectedText = "";
             this.txtNombre.Size = new System.Drawing.Size(322, 40);
             this.txtNombre.TabIndex = 31;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // FrmEspecieAgregar
             // 

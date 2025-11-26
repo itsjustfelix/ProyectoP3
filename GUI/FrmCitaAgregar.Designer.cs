@@ -45,7 +45,6 @@
             this.lblNombrePropietario = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbMascotas = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btnBuscarMascota = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,6 +119,8 @@
             this.txtCedulaPropietario.SelectedText = "";
             this.txtCedulaPropietario.Size = new System.Drawing.Size(269, 31);
             this.txtCedulaPropietario.TabIndex = 24;
+            this.txtCedulaPropietario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCedulaPropietario_KeyDown);
+            this.txtCedulaPropietario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedulaPropietario_KeyPress);
             // 
             // cmbEspecializacion
             // 
@@ -237,7 +238,6 @@
             this.guna2Panel1.Controls.Add(this.lblNombrePropietario);
             this.guna2Panel1.Controls.Add(this.label5);
             this.guna2Panel1.Controls.Add(this.cmbMascotas);
-            this.guna2Panel1.Controls.Add(this.btnBuscarMascota);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.label3);
             this.guna2Panel1.Controls.Add(this.label2);
@@ -293,25 +293,6 @@
             this.cmbMascotas.Size = new System.Drawing.Size(269, 36);
             this.cmbMascotas.TabIndex = 32;
             // 
-            // btnBuscarMascota
-            // 
-            this.btnBuscarMascota.Animated = true;
-            this.btnBuscarMascota.AutoRoundedCorners = true;
-            this.btnBuscarMascota.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscarMascota.DefaultAutoSize = true;
-            this.btnBuscarMascota.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarMascota.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarMascota.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBuscarMascota.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBuscarMascota.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnBuscarMascota.ForeColor = System.Drawing.Color.White;
-            this.btnBuscarMascota.Location = new System.Drawing.Point(415, 42);
-            this.btnBuscarMascota.Name = "btnBuscarMascota";
-            this.btnBuscarMascota.Size = new System.Drawing.Size(65, 27);
-            this.btnBuscarMascota.TabIndex = 31;
-            this.btnBuscarMascota.Text = "Buscar";
-            this.btnBuscarMascota.Click += new System.EventHandler(this.btnBuscarMascota_Click_1);
-            // 
             // FrmCitaAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,7 +324,6 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker DTPFecha;
         private Guna.UI2.WinForms.Guna2DateTimePicker DTPHora;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2Button btnBuscarMascota;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2ComboBox cmbMascotas;
         private System.Windows.Forms.Label lblNombrePropietario;

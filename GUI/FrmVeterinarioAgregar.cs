@@ -15,7 +15,7 @@ namespace ProyectoP3
             logVeterinario = new VeterinarioService();
             logEspecializacion = new EspecializacionService();
         }
-       
+
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -25,12 +25,11 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        
+
         private void FrmVeterinarioAgregar_Load(object sender, EventArgs e)
         {
             cargarCmbEspecializacion();
         }
-
         private void cargarCmbEspecializacion()
         {
             cmbEspecilizacion.DataSource = logEspecializacion.Consultar();
@@ -79,12 +78,6 @@ namespace ProyectoP3
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentNullException("El campo Sexo es obligatorio.");
             return true;
         }
-
-        private void txtNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAgregar_Click_1(object sender, EventArgs e)
         {
             try
@@ -101,7 +94,6 @@ namespace ProyectoP3
                     {
                         MessageBox.Show("Hubo un error al momento de guardar el veterinario.", "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                 }
 
             }
@@ -110,12 +102,56 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes)
                 salir();
+        }
+        private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            if (txtNombre.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+        private void txtApellidoPaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+        private void txtApellidoMaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+        private void txtNumeroTelefonicoPrimario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            if (txtNombre.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

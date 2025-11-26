@@ -29,7 +29,7 @@ namespace ProyectoP3
             cargarCmbEspecializacion();
             SetControlesEstado(false);
         }
-         
+
         private void cargarCmbVeterinario(int especialializacion)
         {
             cmbVeterianrio.DataSource = null;
@@ -68,7 +68,7 @@ namespace ProyectoP3
             DTPFecha.Enabled = estado;
             cmbEspecializacion.Enabled = estado;
             cmbVeterianrio.Enabled = estado;
-            cmbMascotas.Enabled = estado; 
+            cmbMascotas.Enabled = estado;
         }
         private Veterinario buscarVeterinario(int id)
         {
@@ -103,11 +103,6 @@ namespace ProyectoP3
         private void Salir()
         {
             this.Close();
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void cmbEspecializacion_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -153,31 +148,44 @@ namespace ProyectoP3
             cmbMascotas.ValueMember = "Codigo";
             cmbMascotas.SelectedIndex = -1;
         }
-        private void btnBuscarMascota_Click_1(object sender, EventArgs e)
+
+        private void txtCedulaPropietario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                if(txtCedulaPropietario.Text == "")
-                {
-                    MessageBox.Show("Debe introducir una cedula", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-                var propietario = buscarPropietario(int.Parse(txtCedulaPropietario.Text));
-                if(propietario == null)
-                {
-                    MessageBox.Show("No se encontro ningun propietario con esa cedula", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-                lblNombrePropietario.Text = $"{propietario.Nombres} {propietario.ApellidoPaterno}";
-                cargarCmbMascotas(mascotaService.BuscarPorPropietario(propietario.Cedula));
-                SetControlesEstado(true);
+                e.Handled = true;
             }
-            catch (Exception ex)
+        }
+
+        private void txtCedulaPropietario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                try
+                {
+                    if (txtCedulaPropietario.Text == "")
+                    {
+                        MessageBox.Show("Debe introducir una cedula", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                    var propietario = buscarPropietario(int.Parse(txtCedulaPropietario.Text));
+                    if (propietario == null)
+                    {
+                        MessageBox.Show("No se encontro ningun propietario con esa cedula", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                    lblNombrePropietario.Text = $"{propietario.Nombres} {propietario.ApellidoPaterno}";
+                    cargarCmbMascotas(mascotaService.BuscarPorPropietario(propietario.Cedula));
+                    SetControlesEstado(true);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
+            
         }
     }
 }
