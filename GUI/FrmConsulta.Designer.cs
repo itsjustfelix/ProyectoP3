@@ -205,6 +205,7 @@
             // 
             this.txtFiltrarPorFecha.Animated = true;
             this.txtFiltrarPorFecha.AutoRoundedCorners = true;
+            this.txtFiltrarPorFecha.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.txtFiltrarPorFecha.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFiltrarPorFecha.DefaultText = "";
             this.txtFiltrarPorFecha.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -257,6 +258,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1102, 690);
             this.Controls.Add(this.txtFiltrarPorFecha);
             this.Controls.Add(this.DGVConsulta);
