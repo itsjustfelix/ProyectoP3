@@ -7,11 +7,13 @@ namespace ProyectoP3
 {
     public partial class FrmIA : Form
     {
-        private readonly ServicioIA _gemini = new ServicioIA();
-        private readonly List<Mensaje> prompt = new List<Mensaje>();
+        private readonly ServicioIA _gemini;
+        private readonly List<Mensaje> prompt;
 
         public FrmIA()
         {
+            _gemini = new ServicioIA();
+            prompt = new List<Mensaje>();
             InitializeComponent();
         }
         
@@ -40,13 +42,16 @@ namespace ProyectoP3
         {
             txtPregunta.Focus();
             lblEstado.Text = string.Empty;
+            txtHistorial.SelectionColor = System.Drawing.Color.DimGray;
+            txtHistorial.AppendText("IA: Hola en que te puedo ayudar.\r\n\r\n");
+
         }
 
         private void txtPregunta_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Evita salto de línea
+                e.SuppressKeyPress = true;
                 btnEnviar.PerformClick();
             }
         }
