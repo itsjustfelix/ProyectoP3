@@ -94,7 +94,7 @@ namespace ProyectoP3
         private bool Validar()
         {
             if (string.IsNullOrWhiteSpace(txtCedulaPropietario.Text)) throw new ArgumentNullException("Debe ingresar el codigo de la mascota.");
-            if (DTPFecha.Value < DateTime.Now) throw new ArgumentException("La fecha de la cita no puede ser en el pasado.");
+            if (DTPFecha.Value.Date < DateTime.Now.Date) throw new ArgumentException("La fecha de la cita no puede ser en el pasado.");
             if (DTPHora.Value.TimeOfDay < DateTime.Now.TimeOfDay && DTPFecha.Value.Date == DateTime.Now.Date) throw new ArgumentException("La hora de la cita no puede ser en el pasado.");
             if (cmbEspecializacion.SelectedIndex == -1) throw new ArgumentException("Debe seleccionar una especializacion.");
             if (cmbVeterianrio.SelectedIndex == -1) throw new ArgumentException("Debe seleccionar un veterinario.");
