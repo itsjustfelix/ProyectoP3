@@ -104,7 +104,6 @@ namespace ProyectoP3
         {
             this.Close();
         }
-
         private void cmbEspecializacion_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (cmbEspecializacion.SelectedIndex != -1)
@@ -131,7 +130,6 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             var respuesta = DialogoPregunta("cancelar");
