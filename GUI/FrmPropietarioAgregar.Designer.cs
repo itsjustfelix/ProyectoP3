@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPropietarioAgregar));
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,6 +47,7 @@
             this.txtId = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnAgregar = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.SuspendLayout();
             // 
             // label7
@@ -90,7 +92,6 @@
             this.RBMasculino.TabStop = true;
             this.RBMasculino.Text = "Masculino";
             this.RBMasculino.UseVisualStyleBackColor = true;
-            this.RBMasculino.CheckedChanged += new System.EventHandler(this.RBMasculino_CheckedChanged);
             // 
             // RBFemenino
             // 
@@ -104,7 +105,6 @@
             this.RBFemenino.TabStop = true;
             this.RBFemenino.Text = "Femenino";
             this.RBFemenino.UseVisualStyleBackColor = true;
-            this.RBFemenino.CheckedChanged += new System.EventHandler(this.RBFemenino_CheckedChanged);
             // 
             // label3
             // 
@@ -206,6 +206,7 @@
             this.txtApellidoMaterno.SelectedText = "";
             this.txtApellidoMaterno.Size = new System.Drawing.Size(225, 36);
             this.txtApellidoMaterno.TabIndex = 45;
+            this.txtApellidoMaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoMaterno_KeyPress);
             // 
             // txtNumeroTelefonoPrimario
             // 
@@ -226,6 +227,7 @@
             this.txtNumeroTelefonoPrimario.SelectedText = "";
             this.txtNumeroTelefonoPrimario.Size = new System.Drawing.Size(225, 36);
             this.txtNumeroTelefonoPrimario.TabIndex = 44;
+            this.txtNumeroTelefonoPrimario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroTelefonoPrimario_KeyPress);
             // 
             // txtApellidoPaterno
             // 
@@ -246,6 +248,7 @@
             this.txtApellidoPaterno.SelectedText = "";
             this.txtApellidoPaterno.Size = new System.Drawing.Size(225, 36);
             this.txtApellidoPaterno.TabIndex = 43;
+            this.txtApellidoPaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoPaterno_KeyPress);
             // 
             // txtId
             // 
@@ -266,6 +269,7 @@
             this.txtId.SelectedText = "";
             this.txtId.Size = new System.Drawing.Size(225, 36);
             this.txtId.TabIndex = 42;
+            this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // txtNombre
             // 
@@ -286,6 +290,7 @@
             this.txtNombre.SelectedText = "";
             this.txtNombre.Size = new System.Drawing.Size(225, 36);
             this.txtNombre.TabIndex = 41;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // btnAgregar
             // 
@@ -307,6 +312,13 @@
             this.btnAgregar.TabIndex = 47;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click_1);
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 20;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // FrmPropietarioAgregar
             // 
@@ -359,5 +371,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtId;
         private Guna.UI2.WinForms.Guna2TextBox txtNombre;
         private Guna.UI2.WinForms.Guna2Button btnAgregar;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

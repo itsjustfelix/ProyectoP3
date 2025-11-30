@@ -38,6 +38,7 @@
             // 
             this.txtHistorial.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHistorial.BackColor = System.Drawing.Color.White;
             this.txtHistorial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtHistorial.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHistorial.Location = new System.Drawing.Point(9, 10);
@@ -63,6 +64,7 @@
             // 
             this.txtPregunta.Animated = true;
             this.txtPregunta.AutoRoundedCorners = true;
+            this.txtPregunta.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.txtPregunta.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPregunta.DefaultText = "";
             this.txtPregunta.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -70,13 +72,13 @@
             this.txtPregunta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPregunta.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPregunta.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPregunta.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtPregunta.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPregunta.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPregunta.Location = new System.Drawing.Point(9, 571);
             this.txtPregunta.Name = "txtPregunta";
             this.txtPregunta.PlaceholderText = "Digite tu pregunta";
             this.txtPregunta.SelectedText = "";
-            this.txtPregunta.Size = new System.Drawing.Size(1001, 59);
+            this.txtPregunta.Size = new System.Drawing.Size(1001, 63);
             this.txtPregunta.TabIndex = 5;
             this.txtPregunta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPregunta_KeyDown_1);
             // 
@@ -90,6 +92,7 @@
             this.btnEnviar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnEnviar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnEnviar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEnviar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.btnEnviar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnEnviar.ForeColor = System.Drawing.Color.Black;
             this.btnEnviar.Location = new System.Drawing.Point(1016, 588);
@@ -103,6 +106,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1102, 690);
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.txtPregunta);

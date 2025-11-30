@@ -6,8 +6,8 @@ namespace Logica
     internal interface ICitaService : ICrud<Cita>
     {
         List<citasPorFechas> ObtenerCitasPorFechas();
-        List<Cita> buscarPorVeterinario(string nombre);
         List<Cita> buscarPorFecha(string fecha);
+        List<Cita> buscarPorVeterinarioMascota(string texto);
         int totalCitasHoy(string fecha);
         int totalCitas();
     }

@@ -34,18 +34,19 @@ namespace ProyectoP3
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DGVPropietario = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.elimina = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.btnEliminar = new Guna.UI2.WinForms.Guna2Button();
-            this.bttnFiltrarPorCedula = new Guna.UI2.WinForms.Guna2Button();
             this.txtFiltrarPropietario = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DGVPropietario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,13 +69,15 @@ namespace ProyectoP3
             this.DGVPropietario.ColumnHeadersHeight = 15;
             this.DGVPropietario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DGVPropietario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column7,
+            this.Cedula,
             this.Column9,
             this.Column10,
             this.Column11,
             this.Column12,
             this.Column13,
-            this.Column14});
+            this.Column14,
+            this.Editar,
+            this.elimina});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -88,7 +91,7 @@ namespace ProyectoP3
             this.DGVPropietario.Name = "DGVPropietario";
             this.DGVPropietario.ReadOnly = true;
             this.DGVPropietario.RowHeadersVisible = false;
-            this.DGVPropietario.Size = new System.Drawing.Size(1074, 492);
+            this.DGVPropietario.Size = new System.Drawing.Size(1074, 556);
             this.DGVPropietario.TabIndex = 4;
             this.DGVPropietario.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVPropietario.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -112,12 +115,13 @@ namespace ProyectoP3
             this.DGVPropietario.ThemeStyle.RowsStyle.Height = 22;
             this.DGVPropietario.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
             this.DGVPropietario.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.DGVPropietario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVPropietario_CellContentClick);
             // 
-            // Column7
+            // Cedula
             // 
-            this.Column7.HeaderText = "Cedula";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
+            this.Cedula.HeaderText = "Cedula";
+            this.Cedula.Name = "Cedula";
+            this.Cedula.ReadOnly = true;
             // 
             // Column9
             // 
@@ -155,6 +159,20 @@ namespace ProyectoP3
             this.Column14.Name = "Column14";
             this.Column14.ReadOnly = true;
             // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsEdit__4_;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            // 
+            // elimina
+            // 
+            this.elimina.HeaderText = "Eliminar";
+            this.elimina.Image = global::ProyectoP3.Properties.Resources.LetsIconsDelAltFill__1_;
+            this.elimina.Name = "elimina";
+            this.elimina.ReadOnly = true;
+            // 
             // btnGuardar
             // 
             this.btnGuardar.Animated = true;
@@ -168,76 +186,18 @@ namespace ProyectoP3
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.IndicateFocus = true;
-            this.btnGuardar.Location = new System.Drawing.Point(341, 576);
+            this.btnGuardar.Location = new System.Drawing.Point(512, 633);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(141, 45);
             this.btnGuardar.TabIndex = 5;
-            this.btnGuardar.Text = "Guardar Propietario";
+            this.btnGuardar.Text = "Agregar Propietario";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.Animated = true;
-            this.guna2Button1.AutoRoundedCorners = true;
-            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button1.IndicateFocus = true;
-            this.guna2Button1.Location = new System.Drawing.Point(488, 576);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(141, 45);
-            this.guna2Button1.TabIndex = 6;
-            this.guna2Button1.Text = "Editar Propietario";
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Animated = true;
-            this.btnEliminar.AutoRoundedCorners = true;
-            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnEliminar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnEliminar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnEliminar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnEliminar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminar.IndicateFocus = true;
-            this.btnEliminar.Location = new System.Drawing.Point(635, 576);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(141, 45);
-            this.btnEliminar.TabIndex = 7;
-            this.btnEliminar.Text = "Eliminar Propietario";
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click_1);
-            // 
-            // bttnFiltrarPorCedula
-            // 
-            this.bttnFiltrarPorCedula.Animated = true;
-            this.bttnFiltrarPorCedula.AutoRoundedCorners = true;
-            this.bttnFiltrarPorCedula.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnFiltrarPorCedula.DefaultAutoSize = true;
-            this.bttnFiltrarPorCedula.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarPorCedula.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarPorCedula.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bttnFiltrarPorCedula.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bttnFiltrarPorCedula.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bttnFiltrarPorCedula.ForeColor = System.Drawing.Color.White;
-            this.bttnFiltrarPorCedula.Location = new System.Drawing.Point(218, 17);
-            this.bttnFiltrarPorCedula.Name = "bttnFiltrarPorCedula";
-            this.bttnFiltrarPorCedula.Size = new System.Drawing.Size(61, 27);
-            this.bttnFiltrarPorCedula.TabIndex = 8;
-            this.bttnFiltrarPorCedula.Text = "Filtrar";
-            this.bttnFiltrarPorCedula.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // txtFiltrarPropietario
             // 
             this.txtFiltrarPropietario.Animated = true;
             this.txtFiltrarPropietario.AutoRoundedCorners = true;
+            this.txtFiltrarPropietario.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.txtFiltrarPropietario.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFiltrarPropietario.DefaultText = "";
             this.txtFiltrarPropietario.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -249,20 +209,36 @@ namespace ProyectoP3
             this.txtFiltrarPropietario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFiltrarPropietario.Location = new System.Drawing.Point(12, 12);
             this.txtFiltrarPropietario.Name = "txtFiltrarPropietario";
-            this.txtFiltrarPropietario.PlaceholderText = "Filtrar por Cedula";
+            this.txtFiltrarPropietario.PlaceholderText = "Filtrar";
             this.txtFiltrarPropietario.SelectedText = "";
-            this.txtFiltrarPropietario.Size = new System.Drawing.Size(200, 36);
+            this.txtFiltrarPropietario.Size = new System.Drawing.Size(231, 36);
             this.txtFiltrarPropietario.TabIndex = 9;
+            this.txtFiltrarPropietario.TextChanged += new System.EventHandler(this.txtFiltrarPropietario_TextChanged);
+            this.txtFiltrarPropietario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFiltrarPropietario_KeyDown);
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "Editar";
+            this.dataGridViewImageColumn1.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsEdit;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Width = 120;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "Eliminar";
+            this.dataGridViewImageColumn2.Image = global::ProyectoP3.Properties.Resources.LetsIconsDelAltFill;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
+            this.dataGridViewImageColumn2.Width = 119;
             // 
             // FrmPropietario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1102, 690);
             this.Controls.Add(this.txtFiltrarPropietario);
-            this.Controls.Add(this.bttnFiltrarPorCedula);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.DGVPropietario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -271,7 +247,6 @@ namespace ProyectoP3
             this.Load += new System.EventHandler(this.FrmPropietario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVPropietario)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -283,16 +258,17 @@ namespace ProyectoP3
         #endregion
         private Guna.UI2.WinForms.Guna2DataGridView DGVPropietario;
         private Guna.UI2.WinForms.Guna2Button btnGuardar;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Button btnEliminar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private Guna.UI2.WinForms.Guna2TextBox txtFiltrarPropietario;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private Guna.UI2.WinForms.Guna2Button bttnFiltrarPorCedula;
-        private Guna.UI2.WinForms.Guna2TextBox txtFiltrarPropietario;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn elimina;
     }
 }

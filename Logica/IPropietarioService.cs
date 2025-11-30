@@ -7,5 +7,6 @@ namespace Logica
     {
         List<Propietario> BuscarPorCedula(int cedula);
         bool IdUnico(int id);
+        List<Propietario> BuscarPorNombreApellido(string nombre);
     }
 }

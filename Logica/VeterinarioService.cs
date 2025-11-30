@@ -51,7 +51,7 @@ namespace Logica
         {
             return veterinarioRepository.Eliminar(id);
         }
-        public Veterinario BuscarPorId(int id)
+        public Veterinario buscar(int id)
         {
             return veterinarioRepository.BuscarPorId(id);
         }
@@ -78,22 +78,26 @@ namespace Logica
         }
         public bool IdUnico(int id)
         {
-            if (BuscarPorId(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
+            if (buscar(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
             return true;
         }
         public List<Veterinario> buscarPorEspecializacion(int cualidad)
         {
             return Consultar().Where(r => r.Especializacion.Codigo.Equals(cualidad)).ToList();
         }
-        public List<Veterinario> bsucarPorNombreEspecializacion(string nombreEspecializacion)
+        public List<Veterinario> bsucarPorNombreEspecializacion(string texto)
         {
-            return veterinarioRepository.Consultar()
-                .Where(v => v.Especializacion.Nombre.IndexOf(nombreEspecializacion, StringComparison.OrdinalIgnoreCase) >= 0)
+            return Consultar()
+                .Where(v => v.Especializacion.Nombre.Trim().ToLower().Contains(texto)||
+                v.Nombres.Trim().ToLower().Contains(texto)||
+                v.ApellidoMaterno.Trim().ToLower().Contains(texto)||
+                v.ApellidoPaterno.Trim().ToLower().Contains(texto))
                 .ToList();
         }
         public int totalVeterinarios()
         {
             return Consultar().Count;
         }
+
     }
 }

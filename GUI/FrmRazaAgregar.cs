@@ -44,7 +44,7 @@ namespace ProyectoP3
         }
         private Especie buscarEspecie(int id)
         {
-            return logEspecie.BuscarPorId(id);
+            return logEspecie.buscar(id);
         }
         
         private DialogResult dialogoPregunta(string accion)
@@ -98,6 +98,14 @@ namespace ProyectoP3
         {
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) salir();
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

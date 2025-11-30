@@ -50,7 +50,7 @@ namespace Logica
         {
             return especieRepository.Eliminar(codigo);
         }
-        public Especie BuscarPorId(int codigo)
+        public Especie buscar(int codigo)
         {
             return especieRepository.BuscarPorId(codigo);
         }
@@ -65,7 +65,7 @@ namespace Logica
         public List<Especie> BuscarPorNombre(string nombre)
         {
             return especieRepository.Consultar()
-                .Where(e => e.Nombre.IndexOf(nombre, StringComparison.OrdinalIgnoreCase) >= 0)
+                .Where(e => e.Nombre.Trim().ToLower().Contains(nombre))
                 .ToList();
         }
     }

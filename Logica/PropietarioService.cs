@@ -38,7 +38,7 @@ namespace Logica
             {
                 if (Validar(NuevaEntidad))
                     return propietarioRepository.Actualizar(NuevaEntidad);
-                else 
+                else
                     return false;
             }
             catch (Exception e)
@@ -48,7 +48,7 @@ namespace Logica
 
 
         }
-        public bool Borrar(int Id) 
+        public bool Borrar(int Id)
         {
             try
             {
@@ -56,11 +56,11 @@ namespace Logica
             }
             catch (Exception ex)
             {
-               throw new Exception(ex.Message);
+                throw new Exception(ex.Message);
             }
-           
+
         }
-        public Propietario BuscarPorId(int id)
+        public Propietario buscar(int id)
         {
             return propietarioRepository.BuscarPorId(id);
         }
@@ -71,22 +71,27 @@ namespace Logica
             if (entidad.ApellidoPaterno.Any(char.IsDigit)) throw new Exception("El apellido paterno no puede contener numeros");
             if (entidad.ApellidoMaterno.Any(char.IsDigit)) throw new Exception("El apellido materno no puede contener numeros");
             if (entidad.Cedula.ToString().Length < 8 || entidad.Cedula.ToString().Length > 10) throw new Exception("La cedula debe tener entre 8 y 10 digitos");
-            if (entidad.Cedula.ToString().Any(char.IsLetter))throw new Exception("La cedula no puede contener letras");
+            if (entidad.Cedula.ToString().Any(char.IsLetter)) throw new Exception("La cedula no puede contener letras");
             if (entidad.Telefono.Any(char.IsLetter)) throw new Exception("El telefono no puede contener letras");
             if (entidad.Telefono.Length != 10) throw new Exception("El telefono debe tener 10 digitos");
-            if(entidad.Email.AsParallel().Count(c => c == '@') != 1 || entidad.Email.StartsWith("@") || entidad.Email.EndsWith("@"))
+            if (entidad.Email.AsParallel().Count(c => c == '@') != 1 || entidad.Email.StartsWith("@") || entidad.Email.EndsWith("@"))
                 throw new Exception("El correo electronico debe contener un solo @ y no puede estar al inicio o al final");
             return true;
         }
         public bool IdUnico(int id)
         {
-            if (BuscarPorId(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
+            if (buscar(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
             return true;
         }
         public List<Propietario> BuscarPorCedula(int cedula)
         {
             return propietarioRepository.Consultar().Where(p => p.Cedula == cedula).ToList();
         }
-
+        public List<Propietario> BuscarPorNombreApellido(string texto)
+        {
+            return propietarioRepository.Consultar().Where(p => p.Nombres.Trim().ToLower().Contains(texto)||
+            p.ApellidoPaterno.ToLower().Trim().Contains(texto)||
+            p.ApellidoMaterno.Trim().ToLower().Contains(texto)).ToList();
+        }
     }
 }

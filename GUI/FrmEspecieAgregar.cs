@@ -13,7 +13,6 @@ namespace ProyectoP3
             InitializeComponent();
             especieService = new EspecieService();
         }
-        
        
         private void salir()
         {
@@ -83,6 +82,14 @@ namespace ProyectoP3
         {
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) salir();
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

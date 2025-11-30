@@ -55,15 +55,15 @@ namespace ProyectoP3
         }
         private Especie buscarEspecie(int id)
         {
-            return logEspecie.BuscarPorId(id);
+            return logEspecie.buscar(id);
         }
         private Raza buscarRaza(int id)
         {
-            return logRaza.BuscarPorId(id);
+            return logRaza.buscar(id);
         }
         private Propietario buscarPropietario(int id)
         {
-            return logPropietario.BuscarPorId(id);
+            return logPropietario.buscar(id);
         }
         private void SetControlesEstado(bool estado)
         {
@@ -137,18 +137,42 @@ namespace ProyectoP3
             if (respuesta == DialogResult.Yes) salir();
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
-            if (propietario == null)
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
             {
-                MessageBox.Show("Propietario no encontrado", "Buscar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtIdProprietario.Clear();
-                SetControlesEstado(false);
-                return;
+                e.Handled = true;
             }
-            lblNombreProp.Text = propietario.Nombres;
-            SetControlesEstado(true);
+        }
+
+        private void txtIdProprietario_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
+                if (propietario == null)
+                {
+                    MessageBox.Show("Propietario no encontrado", "Buscar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtIdProprietario.Clear();
+                    SetControlesEstado(false);
+                    return;
+                }
+                lblNombreProp.Text = propietario.Nombres;
+                SetControlesEstado(true);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ingrese un ID de propietario válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void txtIdProprietario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

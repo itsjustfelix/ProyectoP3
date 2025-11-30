@@ -17,9 +17,6 @@ namespace ProyectoP3
             logEspecializacion = new EspecializacionService();
             this.veterinario = veterinario;
         }
-        
-        
-       
         private void FrmVeterinarioEditar_Load(object sender, EventArgs e)
         {
             cargarCmbEspecializacion();
@@ -28,7 +25,7 @@ namespace ProyectoP3
 
         private Especializacion buscarEspecializacion(int codigo)
         {
-            return logEspecializacion.BuscarPorId(codigo);
+            return logEspecializacion.buscar(codigo);
         }
         private void mostrarVeterinario(Veterinario veterinario)
         {
@@ -127,6 +124,43 @@ namespace ProyectoP3
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApellidoPaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApellidoMaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNumeroTelefonicoPrimario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            if (txtNombre.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

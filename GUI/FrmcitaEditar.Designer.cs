@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmcitaEditar));
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@
             this.cmbVeterinario = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmbEspecializacion = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtIdMascota = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.SuspendLayout();
             // 
             // label4
@@ -236,6 +238,13 @@
             this.txtIdMascota.Size = new System.Drawing.Size(269, 31);
             this.txtIdMascota.TabIndex = 38;
             // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 20;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // FrmcitaEditar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,5 +287,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox cmbVeterinario;
         private Guna.UI2.WinForms.Guna2ComboBox cmbEspecializacion;
         private Guna.UI2.WinForms.Guna2TextBox txtIdMascota;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

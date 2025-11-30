@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
-using Microsoft.VisualBasic;
 
 namespace ProyectoP3
 {
     public partial class FrmMascota : Form
     {
-        MascotaService logMascota;
+        MascotaService mascotaService;
         public FrmMascota()
         {
             InitializeComponent();
-            logMascota = new MascotaService();
+            mascotaService = new MascotaService();
         }
         private void cargarDGV(List<Mascota> lista)
         {
@@ -29,16 +28,16 @@ namespace ProyectoP3
                     );
             }
         }
-        
+
         private Mascota buscar(int id)
         {
-            return logMascota.BuscarPorId(id);
+            return mascotaService.buscar(id);
         }
         private bool borrar(int id)
         {
             try
             {
-                return logMascota.Borrar(id);
+                return mascotaService.Borrar(id);
             }
             catch (Exception ex)
             {
@@ -55,10 +54,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private Mascota buscarMascota(int id)
-        {
-            return logMascota.BuscarPorId(id);
-        }
+
         private void mostrarFrm(Form frm)
         {
             frm.StartPosition = FormStartPosition.CenterParent;
@@ -66,133 +62,45 @@ namespace ProyectoP3
         }
         private void FrmMascota_Load(object sender, EventArgs e)
         {
-            cargarDGV(logMascota.Consultar());
+            cargarDGV(mascotaService.Consultar());
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmMascotaAgregar());
-            cargarDGV(logMascota.Consultar());
+            cargarDGV(mascotaService.Consultar());
         }
 
-        private void bttnActualizar_Click(object sender, EventArgs e)
+        private void DGVMascota_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            int codigo = int.Parse(DGVMascota.CurrentRow.Cells["Codigo"].Value.ToString());
+            if (DGVMascota.Columns[e.ColumnIndex].Name == "Editar")
             {
-                string input = Interaction.InputBox(
-                    "Digite el codigo de la mascota a buscar",
-                    "Buscar Mascota",
-                    ""
-                );
-
-                if (string.IsNullOrWhiteSpace(input)) return;
-                 
-                if (!int.TryParse(input, out int id))
-                {
-                    MessageBox.Show("Debe digitar un número válido.");
-                    return;
-                }
-
-                Mascota mascota = buscarMascota(id);
-                if (mascota == null)
-                {
-                    MessageBox.Show("Mascota no encontrada", "Buscar Mascota",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
+                Mascota mascota = buscar(codigo);
                 mostrarFrm(new FrmMascotaEditar(mascota));
-                cargarDGV(logMascota.Consultar());
+                cargarDGV(mascotaService.Consultar());
             }
-            catch (Exception ex)
+            else if (DGVMascota.Columns[e.ColumnIndex].Name == "elimina")
             {
-                MessageBox.Show(ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-
-        private void btnEliminar_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox(
-                    "Digite el codigo de la mascota a eliminar",
-                    "Eliminar Mascota",
-                    ""
-                );
-                if (string.IsNullOrWhiteSpace(input)) return;
-                
-                if (!int.TryParse(input, out int id))
+                var respuesta = dialogoPregunta("eliminar");
+                if (respuesta == DialogResult.Yes)
                 {
-                    MessageBox.Show("Debe digitar un número válido.");
-                    return;
+                    borrar(codigo);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(mascotaService.Consultar());
                 }
-
-                Mascota mascota = buscar(id);
-                if (mascota == null)
-                {
-                    MessageBox.Show("Mascota no encontrada", "Eliminar Mascota",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                DialogResult result = dialogoPregunta("eliminar la mascota");
-                if (result == DialogResult.No)return;
-                if (borrar(id))
-                {
-                    MessageBox.Show("Mascota eliminada correctamente.", "Eliminar Mascota",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV(logMascota.Consultar());
-                }
-                else
-                    MessageBox.Show("No se pudo  eliminada la Mascota correctamente.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-
-        private void bttnFiltrarPorRaza_Click(object sender, EventArgs e)
+        private void txtFiltrarEspecie_KeyDown(object sender, KeyEventArgs e)
         {
-            if(txtFiltrarRaza.Text.Trim() == "")
+            if (e.KeyCode == Keys.Enter)
             {
-                cargarDGV(logMascota.Consultar());
-                return;
-            }
-            else
-            {
-                cargarDGV(logMascota.BuscarPorRaza(txtFiltrarRaza.Text.Trim()));
-            }
-        }
-
-        private void bttnFiltrarPorEspecie_Click(object sender, EventArgs e)
-        {
-            if (txtFiltrarEspecie.Text.Trim() == "")
-            {
-                cargarDGV(logMascota.Consultar());
-                return;
-            }
-            else
-            {
-                cargarDGV(logMascota.BuscarPorEspecie(txtFiltrarEspecie.Text.Trim()));
-            }
-        }
-
-        private void bttnFiltrarPorPropietario_Click(object sender, EventArgs e)
-        {
-            if (txtFiltrarPropietario.Text.Trim() == "")
-            {
-                cargarDGV(logMascota.Consultar());
-                return;
-            }
-            else
-            {
-                cargarDGV(logMascota.BuscarPorPropietario(int.Parse(txtFiltrarPropietario.Text.Trim())));
+                var texto = txtFiltrarEspecie.Text.Trim().ToLower();
+                if (texto == "") cargarDGV(mascotaService.Consultar());
+                else cargarDGV(mascotaService.buscarPorRazaEspeciePropietario(texto));
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
     }

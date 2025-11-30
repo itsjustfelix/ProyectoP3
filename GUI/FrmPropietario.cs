@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
@@ -22,73 +23,10 @@ namespace ProyectoP3
             mostrarFrm(new FrmPropietarioAgregar());
             cargarDGV(propietarioService.Consultar());
         }
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Digite la cedula del propietario ha buscar", "Buscar Propietario", "");
-
-                if (string.IsNullOrWhiteSpace(input))
-                    return;
-
-                if (!int.TryParse(input, out int id))
-                    throw new Exception("La cedula debe ser solamente numeros");
-
-                Propietario propietario = buscar(id);
-
-                if (propietario == null)
-                {
-                    MessageBox.Show("Propietario no encontrado", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                mostrarFrm(new FrmEditarPropietatio(propietario));
-                cargarDGV(propietarioService.Consultar());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
 
         private void FrmPropietario_Load(object sender, EventArgs e)
         {
             cargarDGV(propietarioService.Consultar());
-        }
-        private void btnEliminar_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Digite el ID de la persona ha eliminar", "Eliminar Propietario", "");
-
-                if (string.IsNullOrWhiteSpace(input))
-                    return;
-
-                if (!int.TryParse(input, out int id))
-                    throw new Exception("El ID debe ser solamente numeros");
-
-                Propietario propietario = buscar(id);
-
-                if (propietario == null)
-                {
-                    MessageBox.Show("Propietario no encontrado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                var respuesta = dialogoPregunta("eliminar");
-
-                if (respuesta == DialogResult.Yes)
-                {
-                    eliminar(id);
-                    MessageBox.Show("Propietario eliminado correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cargarDGV(propietarioService.Consultar());
-                }
-                else return;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         private void mostrarFrm(Form frm)
@@ -111,7 +49,7 @@ namespace ProyectoP3
         {
             try
             {
-                return propietarioService.BuscarPorId(id);
+                return propietarioService.buscar(id);
             }
             catch (Exception ex)
             {
@@ -145,15 +83,56 @@ namespace ProyectoP3
             }
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+        private void DGVPropietario_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(txtFiltrarPropietario.Text.Trim() == "")
+            int cedula = int.Parse(DGVPropietario.CurrentRow.Cells["Cedula"].Value.ToString());
+            if (DGVPropietario.Columns[e.ColumnIndex].Name == "Editar")
             {
+                Propietario propietario = buscar(cedula);
+                mostrarFrm(new FrmEditarPropietatio(propietario));
                 cargarDGV(propietarioService.Consultar());
             }
-            else
+            else if (DGVPropietario.Columns[e.ColumnIndex].Name == "elimina")
             {
-                cargarDGV(propietarioService.BuscarPorCedula(int.Parse(txtFiltrarPropietario.Text.Trim())));
+                var respuesta = dialogoPregunta("eliminar");
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    eliminar(cedula);
+                    MessageBox.Show("Propietario eliminado correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(propietarioService.Consultar());
+                }
+                else return;
+            }
+        }
+
+        private void txtFiltrarPropietario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFiltrarPropietario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                var texto = txtFiltrarPropietario.Text.Trim();
+                if (texto == "")
+                {
+                    cargarDGV(propietarioService.Consultar());
+                    return;
+                }
+                else if (texto.All(char.IsNumber))
+                {
+                    cargarDGV(propietarioService.BuscarPorCedula(int.Parse(txtFiltrarPropietario.Text.Trim())));
+                    return;
+                }
+                else if (texto.All(char.IsLetter))
+                {
+                    cargarDGV(propietarioService.BuscarPorNombreApellido(txtFiltrarPropietario.Text.Trim()));
+                    return;
+                }
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
     }

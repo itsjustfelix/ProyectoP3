@@ -8,8 +8,7 @@ namespace Logica
         string GenerarDocumento(Consulta entidad);
         string enviarEmail(string email, string rutaDocumento);
         List<Consulta> buscarPorFecha(string fecha);
-        List<Consulta> buscarPorVeterinario(string nombre);
-        List<Consulta> buscarPorMascota(string nombre);
+        List<Consulta> buscarPorVeterinarioMascota(string texto);
         int totalConsultasAsistdas(string fecha);
     }
 }

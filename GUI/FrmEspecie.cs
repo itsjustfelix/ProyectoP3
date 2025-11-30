@@ -3,85 +3,30 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
-using Microsoft.VisualBasic;
 
 
 namespace ProyectoP3
 {
     public partial class FrmEspecie : Form
     {
-        EspecieService logEspecie;
+        EspecieService especieService;
         public FrmEspecie()
         {
             InitializeComponent();
-            logEspecie = new EspecieService();
+            especieService = new EspecieService();
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmEspecieAgregar());
-            cargarDGV(logEspecie.Consultar());
+            cargarDGV(especieService.Consultar());
         }
         private void FrmEspecie_Load(object sender, EventArgs e)
         {
-            cargarDGV(logEspecie.Consultar());
+            cargarDGV(especieService.Consultar());
         }
-        private void bttnActualizar_Click(object sender, EventArgs e)
+        private Especie buscar(int codigo)
         {
-            try
-            {
-                string input = Interaction.InputBox("Digite el ID de la especie a buscar", "Editar Especie", "");
-                if (string.IsNullOrWhiteSpace(input)) return;
-                if (!int.TryParse(input, out int id))
-                {
-                    MessageBox.Show("Debe ingresar un número válido.", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                var especie = logEspecie.BuscarPorId(id);
-                if (especie == null)
-                {
-                    MessageBox.Show("Especie no encontrada", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                mostrarFrm(new FrmEspecieEditar(especie));
-                cargarDGV(logEspecie.Consultar());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnEliminar_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Digite el ID de la especie a eliminar", "Eliminar Especie", "");
-                if (string.IsNullOrWhiteSpace(input)) return;
-                if (!int.TryParse(input, out int id))
-                {
-                    MessageBox.Show("Debe ingresar un número válido.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                var especie = logEspecie.BuscarPorId(id);
-                if (especie == null)
-                {
-                    MessageBox.Show("Especie no encontrada", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                if (dialogoPregunta("eliminar la especie") != DialogResult.Yes) return;
-
-                borrar(id);
-                MessageBox.Show("Especie eliminada correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV(logEspecie.Consultar());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            return especieService.buscar(codigo);
         }
 
         private DialogResult dialogoPregunta(string accion)
@@ -93,11 +38,11 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private bool borrar(int id)
+        private bool eliminar(int id)
         {
             try
             {
-                return logEspecie.Borrar(id);
+                return especieService.Borrar(id);
             }
             catch (Exception e)
             {
@@ -117,16 +62,36 @@ namespace ProyectoP3
                 DGVEspecie.Rows.Add(especie.Codigo, especie.Nombre);
             }
         }
-        private void bttnFiltrarNombre_Click(object sender, EventArgs e)
+        private void DGVEspecie_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (txtFiltrarNombre.Text.Trim() == "")
+            int codigo = int.Parse(DGVEspecie.CurrentRow.Cells["Codigo"].Value.ToString());
+            if (DGVEspecie.Columns[e.ColumnIndex].Name == "Editar")
             {
-                cargarDGV(logEspecie.Consultar());
-                return;
+                Especie especie = buscar(codigo);
+                mostrarFrm(new FrmEspecieEditar(especie));
+                cargarDGV(especieService.Consultar());
             }
-            else
+            else if (DGVEspecie.Columns[e.ColumnIndex].Name == "elimina")
             {
-                cargarDGV(logEspecie.BuscarPorNombre(txtFiltrarNombre.Text.Trim()));
+                var respuesta = dialogoPregunta("eliminar");
+                if (respuesta == DialogResult.Yes)
+                {
+                    eliminar(codigo);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(especieService.Consultar());
+                }
+            }
+        }
+        private void txtFiltrarNombre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var txt = txtFiltrarNombre.Text.Trim().ToLower();
+                if (txt == "") cargarDGV(especieService.Consultar());
+                else cargarDGV(especieService.BuscarPorNombre(txt));
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
             }
         }
     }

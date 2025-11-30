@@ -49,7 +49,7 @@ namespace Logica
         {
             return especializacionRepository.Eliminar(codigo);
         }
-        public Especializacion BuscarPorId(int codigo)
+        public Especializacion buscar(int codigo)
         {
             return especializacionRepository.BuscarPorId(codigo);
         }
@@ -64,7 +64,7 @@ namespace Logica
         public List<Especializacion> BuscarPorNombre(string nombre)
         {
             return especializacionRepository.Consultar()
-                .Where(e => e.Nombre.IndexOf(nombre, StringComparison.OrdinalIgnoreCase) >= 0)
+                .Where(e => e.Nombre.Trim().ToLower().Contains(nombre))
                 .ToList();
         }
     }

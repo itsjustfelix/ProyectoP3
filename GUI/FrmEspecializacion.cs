@@ -3,84 +3,22 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidad;
 using Logica;
-using Microsoft.VisualBasic;
 namespace ProyectoP3
 {
     public partial class FrmEspecializacion : Form
     {
-        EspecializacionService logEspecializacion;
+        EspecializacionService especializacionService;
         public FrmEspecializacion()
         {
             InitializeComponent();
-            logEspecializacion = new EspecializacionService();
+            especializacionService = new EspecializacionService();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             mostrarFrm(new FrmEspecializacionAgregar());
-            cargarDGV(logEspecializacion.Consultar());
+            cargarDGV(especializacionService.Consultar());
         }
-
-        private void btnEliminar_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Digite el código de la especialización a eliminar", "Eliminar Especialización", "");
-                if (string.IsNullOrWhiteSpace(input)) return;
-                if (!int.TryParse(input, out int id))
-                {
-                    MessageBox.Show("Debe ingresar un número válido.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                var especializacion = buscar(id);
-                if (especializacion == null)
-                {
-                    MessageBox.Show("Especialización no encontrada", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                if (dialogoPregunta("eliminar la especialización") != DialogResult.Yes) return;
-
-                eliminar(id);
-                MessageBox.Show("Especialización eliminada correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarDGV(logEspecializacion.Consultar());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-        private void bttnActualizar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string input = Interaction.InputBox("Digite el código de la especialización a buscar", "Buscar Especialización", "");
-                if (string.IsNullOrWhiteSpace(input)) return;
-                if (!int.TryParse(input, out int id))
-                {
-                    MessageBox.Show("Debe ingresar un número válido.", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                var especializacion = buscar(id);
-                if (especializacion == null)
-                {
-                    MessageBox.Show("Especialización no encontrada", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                mostrarFrm(new FrmEspecializacionEditar(especializacion));
-                cargarDGV(logEspecializacion.Consultar());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void cargarDGV(List<Especializacion> lista)
         {
             DGVEspecializacion.Rows.Clear();
@@ -108,16 +46,14 @@ namespace ProyectoP3
 
         private void FrmEspecializacion_Load(object sender, EventArgs e)
         {
-            cargarDGV(logEspecializacion.Consultar());
+            cargarDGV(especializacionService.Consultar());
         }
-
-        
 
         private bool eliminar(int id)
         {
             try
             {
-                return logEspecializacion.Borrar(id);
+                return especializacionService.Borrar(id);
             }
             catch (Exception e)
             {
@@ -129,7 +65,7 @@ namespace ProyectoP3
         {
             try
             {
-                return logEspecializacion.BuscarPorId(id);
+                return especializacionService.buscar(id);
             }
             catch (Exception ex)
             {
@@ -137,17 +73,36 @@ namespace ProyectoP3
                 return null;
             }
         }
-
-        private void bttnFiltrarPorNombre_Click(object sender, EventArgs e)
+        private void DGVEspecializacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (txtFiltrarPorNombre.Text.Trim() == "")
+            int codigo = int.Parse(DGVEspecializacion.CurrentRow.Cells["Codigo"].Value.ToString());
+            if (DGVEspecializacion.Columns[e.ColumnIndex].Name == "Editar")
             {
-                cargarDGV(logEspecializacion.Consultar());
-                return;
+                Especializacion especializacion = buscar(codigo);
+                mostrarFrm(new FrmEspecializacionEditar(especializacion));
+                cargarDGV(especializacionService.Consultar());
             }
-            else
+            else if (DGVEspecializacion.Columns[e.ColumnIndex].Name == "elimina")
             {
-                cargarDGV(logEspecializacion.BuscarPorNombre(txtFiltrarPorNombre.Text.Trim()));
+                var respuesta = dialogoPregunta("eliminar");
+                if (respuesta == DialogResult.Yes)
+                {
+                    eliminar(codigo);
+                    MessageBox.Show("Veterinario eliminado correctamente.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDGV(especializacionService.Consultar());
+                }
+            }
+        }
+
+        private void txtFiltrarPorNombre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var texto = txtFiltrarPorNombre.Text.Trim().ToLower();
+                if (texto == "") cargarDGV(especializacionService.Consultar());
+                else cargarDGV(especializacionService.BuscarPorNombre(texto));
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
     }

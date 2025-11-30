@@ -32,12 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DGVEspecie = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEliminar = new Guna.UI2.WinForms.Guna2Button();
-            this.bttnActualizar = new Guna.UI2.WinForms.Guna2Button();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.elimina = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
-            this.bttnFiltrarNombre = new Guna.UI2.WinForms.Guna2Button();
             this.txtFiltrarNombre = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVEspecie)).BeginInit();
             this.SuspendLayout();
@@ -61,8 +60,10 @@
             this.DGVEspecie.ColumnHeadersHeight = 15;
             this.DGVEspecie.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DGVEspecie.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column3,
-            this.Column4});
+            this.Codigo,
+            this.Column4,
+            this.Editar,
+            this.elimina});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -72,11 +73,11 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DGVEspecie.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGVEspecie.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
-            this.DGVEspecie.Location = new System.Drawing.Point(12, 55);
+            this.DGVEspecie.Location = new System.Drawing.Point(12, 57);
             this.DGVEspecie.Name = "DGVEspecie";
             this.DGVEspecie.ReadOnly = true;
             this.DGVEspecie.RowHeadersVisible = false;
-            this.DGVEspecie.Size = new System.Drawing.Size(1078, 513);
+            this.DGVEspecie.Size = new System.Drawing.Size(1074, 556);
             this.DGVEspecie.TabIndex = 4;
             this.DGVEspecie.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVEspecie.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -100,12 +101,13 @@
             this.DGVEspecie.ThemeStyle.RowsStyle.Height = 22;
             this.DGVEspecie.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
             this.DGVEspecie.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.DGVEspecie.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVEspecie_CellContentClick);
             // 
-            // Column3
+            // Codigo
             // 
-            this.Column3.HeaderText = "Codigo";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
             // 
             // Column4
             // 
@@ -113,45 +115,21 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
-            // btnEliminar
+            // Editar
             // 
-            this.btnEliminar.Animated = true;
-            this.btnEliminar.AutoRoundedCorners = true;
-            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnEliminar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnEliminar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnEliminar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnEliminar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminar.IndicateFocus = true;
-            this.btnEliminar.Location = new System.Drawing.Point(603, 574);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(141, 45);
-            this.btnEliminar.TabIndex = 13;
-            this.btnEliminar.Text = "Eliminar Especie";
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click_1);
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsEdit__4_;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // bttnActualizar
+            // elimina
             // 
-            this.bttnActualizar.Animated = true;
-            this.bttnActualizar.AutoRoundedCorners = true;
-            this.bttnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnActualizar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bttnActualizar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bttnActualizar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bttnActualizar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bttnActualizar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.bttnActualizar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnActualizar.ForeColor = System.Drawing.Color.Black;
-            this.bttnActualizar.IndicateFocus = true;
-            this.bttnActualizar.Location = new System.Drawing.Point(456, 574);
-            this.bttnActualizar.Name = "bttnActualizar";
-            this.bttnActualizar.Size = new System.Drawing.Size(141, 45);
-            this.bttnActualizar.TabIndex = 12;
-            this.bttnActualizar.Text = "Actualizar Especie";
-            this.bttnActualizar.Click += new System.EventHandler(this.bttnActualizar_Click);
+            this.elimina.HeaderText = "Eliminar";
+            this.elimina.Image = global::ProyectoP3.Properties.Resources.LetsIconsDelAltFill__1_;
+            this.elimina.Name = "elimina";
+            this.elimina.ReadOnly = true;
             // 
             // btnGuardar
             // 
@@ -166,36 +144,18 @@
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.IndicateFocus = true;
-            this.btnGuardar.Location = new System.Drawing.Point(309, 574);
+            this.btnGuardar.Location = new System.Drawing.Point(512, 633);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(141, 45);
             this.btnGuardar.TabIndex = 11;
-            this.btnGuardar.Text = "Guardar Especie";
+            this.btnGuardar.Text = "Agregar Especie";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // bttnFiltrarNombre
-            // 
-            this.bttnFiltrarNombre.Animated = true;
-            this.bttnFiltrarNombre.AutoRoundedCorners = true;
-            this.bttnFiltrarNombre.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnFiltrarNombre.DefaultAutoSize = true;
-            this.bttnFiltrarNombre.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarNombre.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bttnFiltrarNombre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bttnFiltrarNombre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bttnFiltrarNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bttnFiltrarNombre.ForeColor = System.Drawing.Color.White;
-            this.bttnFiltrarNombre.Location = new System.Drawing.Point(253, 17);
-            this.bttnFiltrarNombre.Name = "bttnFiltrarNombre";
-            this.bttnFiltrarNombre.Size = new System.Drawing.Size(61, 27);
-            this.bttnFiltrarNombre.TabIndex = 14;
-            this.bttnFiltrarNombre.Text = "Filtrar";
-            this.bttnFiltrarNombre.Click += new System.EventHandler(this.bttnFiltrarNombre_Click);
             // 
             // txtFiltrarNombre
             // 
             this.txtFiltrarNombre.Animated = true;
             this.txtFiltrarNombre.AutoRoundedCorners = true;
+            this.txtFiltrarNombre.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.txtFiltrarNombre.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFiltrarNombre.DefaultText = "";
             this.txtFiltrarNombre.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -205,22 +165,21 @@
             this.txtFiltrarNombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFiltrarNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFiltrarNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFiltrarNombre.Location = new System.Drawing.Point(45, 12);
+            this.txtFiltrarNombre.Location = new System.Drawing.Point(12, 12);
             this.txtFiltrarNombre.Name = "txtFiltrarNombre";
-            this.txtFiltrarNombre.PlaceholderText = "Filtrar por Nombre";
+            this.txtFiltrarNombre.PlaceholderText = "Filtrar";
             this.txtFiltrarNombre.SelectedText = "";
-            this.txtFiltrarNombre.Size = new System.Drawing.Size(189, 37);
+            this.txtFiltrarNombre.Size = new System.Drawing.Size(231, 36);
             this.txtFiltrarNombre.TabIndex = 15;
+            this.txtFiltrarNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFiltrarNombre_KeyDown);
             // 
             // FrmEspecie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1102, 690);
             this.Controls.Add(this.txtFiltrarNombre);
-            this.Controls.Add(this.bttnFiltrarNombre);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.bttnActualizar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.DGVEspecie);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -229,18 +188,16 @@
             this.Load += new System.EventHandler(this.FrmEspecie_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVEspecie)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private Guna.UI2.WinForms.Guna2DataGridView DGVEspecie;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private Guna.UI2.WinForms.Guna2Button btnEliminar;
-        private Guna.UI2.WinForms.Guna2Button bttnActualizar;
         private Guna.UI2.WinForms.Guna2Button btnGuardar;
-        private Guna.UI2.WinForms.Guna2Button bttnFiltrarNombre;
         private Guna.UI2.WinForms.Guna2TextBox txtFiltrarNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn elimina;
     }
 }

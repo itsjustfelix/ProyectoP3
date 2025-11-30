@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMascotaAgregar));
             this.lblNombreProp = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,7 +41,7 @@
             this.cmbEspecie = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtIdProprietario = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.SuspendLayout();
             // 
             // lblNombreProp
@@ -191,6 +192,8 @@
             this.txtIdProprietario.SelectedText = "";
             this.txtIdProprietario.Size = new System.Drawing.Size(225, 31);
             this.txtIdProprietario.TabIndex = 31;
+            this.txtIdProprietario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIdProprietario_KeyDown);
+            this.txtIdProprietario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdProprietario_KeyPress);
             // 
             // txtNombre
             // 
@@ -213,26 +216,14 @@
             this.txtNombre.SelectedText = "";
             this.txtNombre.Size = new System.Drawing.Size(225, 31);
             this.txtNombre.TabIndex = 37;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
-            // guna2Button1
+            // guna2BorderlessForm1
             // 
-            this.guna2Button1.Animated = true;
-            this.guna2Button1.AutoRoundedCorners = true;
-            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button1.DefaultAutoSize = true;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.IndicateFocus = true;
-            this.guna2Button1.Location = new System.Drawing.Point(442, 56);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(65, 27);
-            this.guna2Button1.TabIndex = 38;
-            this.guna2Button1.Text = "Buscar";
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            this.guna2BorderlessForm1.BorderRadius = 20;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // FrmMascotaAgregar
             // 
@@ -240,7 +231,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(614, 469);
-            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
@@ -273,6 +263,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox cmbEspecie;
         private Guna.UI2.WinForms.Guna2TextBox txtIdProprietario;
         private Guna.UI2.WinForms.Guna2TextBox txtNombre;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

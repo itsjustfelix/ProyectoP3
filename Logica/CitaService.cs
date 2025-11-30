@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Dato;
 using Entidad;
 
@@ -53,10 +54,20 @@ namespace Logica
             if (entidad == null) throw new Exception("La cita no puede ser nula.");
             if (entidad.Mascota == null) throw new Exception("La mascota no puede ser nula.");
             if (entidad.Fecha == null) throw new Exception("La fecha no puede ser nula.");
-            if (entidad.Hora == default) throw new Exception("La hora no puede ser nula.");
+            if (entidad.Hora == null) throw new Exception("La hora no puede ser nula.");
+            if (entidad.Veterinario == null) throw new Exception("El veterinario no puede ser nulo");
+            DateTime horaDeseada = DateTime.Parse(entidad.Hora);
+            if (Consultar().Any(c =>
+                c.Veterinario.Cedula.Equals(entidad.Veterinario.Cedula) &&
+                c.Fecha.Equals(entidad.Fecha) &&
+                DateTime.Parse(c.Hora) >= horaDeseada.AddMinutes(-15) &&
+                DateTime.Parse(c.Hora) <= horaDeseada.AddMinutes(15))) throw new Exception("Ya existe una cita con ese veterinario en ese rango de horario (±15 minutos).");
+            if (Consultar().Any(c => c.Mascota.Codigo.Equals(entidad.Mascota.Codigo) &&
+            DateTime.Parse(c.Hora) >= horaDeseada.AddMinutes(-15) &&
+                DateTime.Parse(c.Hora) <= horaDeseada.AddMinutes(15))) throw new Exception("La mascota ya tiene una cita en ese rango de horario (±15 minutos).");
             return true;
         }
-        public Cita BuscarPorId(int id)
+        public Cita buscar(int id)
         {
             return citaRepository.BuscarPorId(id);
         }
@@ -64,9 +75,9 @@ namespace Logica
         {
             return citaRepository.obtenerCitasPorFechas();
         }
-        public List<Cita> buscarPorVeterinario(string nombre)
+        public List<Cita> buscarPorVeterinarioMascota(string texto)
         {
-            return Consultar().FindAll(c => c.Veterinario.Nombres.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+            return Consultar().FindAll(c => c.Veterinario.Nombres.Trim().ToLower().Contains(texto) || c.Mascota.Nombre.Trim().ToLower().Contains(texto));
         }
         public List<Cita> buscarPorFecha(string fecha)
         {
@@ -79,7 +90,6 @@ namespace Logica
         public int totalCitas()
         {
             return Consultar().Count;
-
         }
     }
 }

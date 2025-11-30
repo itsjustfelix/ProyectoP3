@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVeterinarioAgregar));
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,6 +47,7 @@
             this.txtNumeroTelefonicoPrimario = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtApellidoMaterno = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmbEspecilizacion = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.SuspendLayout();
             // 
             // label6
@@ -205,6 +207,7 @@
             this.txtNombre.SelectedText = "";
             this.txtNombre.Size = new System.Drawing.Size(225, 36);
             this.txtNombre.TabIndex = 49;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // txtCedula
             // 
@@ -225,6 +228,7 @@
             this.txtCedula.SelectedText = "";
             this.txtCedula.Size = new System.Drawing.Size(225, 36);
             this.txtCedula.TabIndex = 50;
+            this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedula_KeyPress);
             // 
             // txtApellidoPaterno
             // 
@@ -245,6 +249,7 @@
             this.txtApellidoPaterno.SelectedText = "";
             this.txtApellidoPaterno.Size = new System.Drawing.Size(225, 36);
             this.txtApellidoPaterno.TabIndex = 51;
+            this.txtApellidoPaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoPaterno_KeyPress);
             // 
             // txtNumeroTelefonicoPrimario
             // 
@@ -265,6 +270,7 @@
             this.txtNumeroTelefonicoPrimario.SelectedText = "";
             this.txtNumeroTelefonicoPrimario.Size = new System.Drawing.Size(225, 36);
             this.txtNumeroTelefonicoPrimario.TabIndex = 52;
+            this.txtNumeroTelefonicoPrimario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroTelefonicoPrimario_KeyPress);
             // 
             // txtApellidoMaterno
             // 
@@ -285,6 +291,7 @@
             this.txtApellidoMaterno.SelectedText = "";
             this.txtApellidoMaterno.Size = new System.Drawing.Size(225, 36);
             this.txtApellidoMaterno.TabIndex = 53;
+            this.txtApellidoMaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoMaterno_KeyPress);
             // 
             // cmbEspecilizacion
             // 
@@ -302,6 +309,13 @@
             this.cmbEspecilizacion.Name = "cmbEspecilizacion";
             this.cmbEspecilizacion.Size = new System.Drawing.Size(225, 36);
             this.cmbEspecilizacion.TabIndex = 54;
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 20;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // FrmVeterinarioAgregar
             // 
@@ -353,5 +367,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtNumeroTelefonicoPrimario;
         private Guna.UI2.WinForms.Guna2TextBox txtApellidoMaterno;
         private Guna.UI2.WinForms.Guna2ComboBox cmbEspecilizacion;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }
