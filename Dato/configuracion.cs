@@ -8,6 +8,6 @@ namespace Dato
 {
     public abstract class configuracion
     {
-        public static string connectionString = "User Id=consulta_myvet;Password=1234;Data Source=localhost:1521/xepdb1";
+        public static string connectionString = "User Id=admin_proyecto;Password=1234;Data Source=localhost:1521/xepdb1";
     }
 }
