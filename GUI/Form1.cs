@@ -99,6 +99,8 @@ namespace ProyectoP3
 
         private void bttnSalir_Click(object sender, EventArgs e)
         {
+            FrmLoggin frmLoggin = new FrmLoggin();
+            frmLoggin.Show();
             this.Close();
         }
     }

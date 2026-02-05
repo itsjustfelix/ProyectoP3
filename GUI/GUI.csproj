@@ -73,6 +73,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmLoggin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLoggin.Designer.cs">
+      <DependentUpon>FrmLoggin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCitaAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmIA.resx">
       <DependentUpon>FrmIA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLoggin.resx">
+      <DependentUpon>FrmLoggin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMascotaAgregar.resx">
       <DependentUpon>FrmMascotaAgregar.cs</DependentUpon>
