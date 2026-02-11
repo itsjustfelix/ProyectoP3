@@ -7,9 +7,9 @@ namespace ProyectoP3
 {
     public partial class FrmMascotaAgregar : Form
     {
-        ICrud<Propietario> logPropietario;
-        ICrud<Mascota> logMascota;
-        ICrud<Especie> logEspecie;
+        IPropietarioService logPropietario;
+        IMascotaService logMascota;
+        IEspecieService logEspecie;
         IRazaService logRaza;
         public FrmMascotaAgregar()
         {
@@ -19,8 +19,8 @@ namespace ProyectoP3
             logEspecie = new EspecieService();
             logRaza = new RazaService();
         }
-       
-       
+
+
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -36,7 +36,7 @@ namespace ProyectoP3
             SetControlesEstado(false);
             lblNombreProp.Text = string.Empty;
         }
-       
+
         private bool validar()
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentNullException("El nombre de la mascota es obligatorio.");
@@ -53,15 +53,7 @@ namespace ProyectoP3
                 throw new Exception($"Error al agregar la mascota: {ex.Message}", ex);
             }
         }
-        private Especie buscarEspecie(int id)
-        {
-            return logEspecie.buscar(id);
-        }
-        private Raza buscarRaza(int id)
-        {
-            return logRaza.buscar(id);
-        }
-        private Propietario buscarPropietario(int id)
+        private Propietario buscarPropietario(string id)
         {
             return logPropietario.buscar(id);
         }
@@ -78,7 +70,7 @@ namespace ProyectoP3
             cmbEspecie.ValueMember = "Codigo";
             cmbEspecie.DataSource = logEspecie.Consultar();
         }
-        private void cargarCmbRaza(int idEspecie)
+        private void cargarCmbRaza(string idEspecie)
         {
             cmbRaza.DataSource = null;
             cmbRaza.DataSource = logRaza.BuscarPorEspecie(idEspecie);
@@ -91,20 +83,17 @@ namespace ProyectoP3
         }
         private Mascota Mapeo()
         {
-            Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
-            Especie especie = buscarEspecie(int.Parse(cmbEspecie.SelectedValue.ToString()));
-            Raza raza = buscarRaza(int.Parse(cmbRaza.SelectedValue.ToString()));
             Mascota mascota = new Mascota();
             mascota.Nombre = txtNombre.Text;
-            mascota.Propietario = propietario;
-            mascota.Especie = especie;
-            mascota.Raza = raza;
+            mascota.PropietarioCedula = txtIdProprietario.Text;
+            mascota.EspecieCodigo = cmbEspecie.SelectedValue.ToString();
+            mascota.RazaCodigo = cmbRaza.SelectedValue.ToString();
             return mascota;
         }
 
         private void cmbEspecie_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            cargarCmbRaza(int.Parse(cmbEspecie.SelectedValue.ToString()));
+            cargarCmbRaza(cmbEspecie.SelectedValue.ToString());
         }
 
         private void btnAgregar_Click_1(object sender, EventArgs e)
@@ -147,24 +136,26 @@ namespace ProyectoP3
 
         private void txtIdProprietario_KeyDown(object sender, KeyEventArgs e)
         {
-            try
+            if (e.KeyCode == Keys.Enter)
             {
-                Propietario propietario = buscarPropietario(int.Parse(txtIdProprietario.Text));
-                if (propietario == null)
+                try
                 {
-                    MessageBox.Show("Propietario no encontrado", "Buscar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtIdProprietario.Clear();
-                    SetControlesEstado(false);
-                    return;
+                    Propietario propietario = buscarPropietario(txtIdProprietario.Text);
+                    if (propietario == null)
+                    {
+                        MessageBox.Show("Propietario no encontrado", "Buscar Propietario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtIdProprietario.Clear();
+                        SetControlesEstado(false);
+                        return;
+                    }
+                    lblNombreProp.Text = propietario.NombreCompleto;
+                    SetControlesEstado(true);
                 }
-                lblNombreProp.Text = propietario.Nombres;
-                SetControlesEstado(true);
+                catch (Exception)
+                {
+                    MessageBox.Show("Ingrese un ID de propietario válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Ingrese un ID de propietario válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
         }
 
         private void txtIdProprietario_KeyPress(object sender, KeyPressEventArgs e)

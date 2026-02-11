@@ -8,37 +8,35 @@ namespace ProyectoP3
 {
     public partial class FrmcitaEditar : Form
     {
-        ICrud<Cita> logCita;
-        ICrud<Mascota> logMascota;
+        ICitaService logCita;
         IVeterinarioService logVeterinario;
-        ICrud<Especializacion> logEspecializacion;
-        Cita Cita;
-        public FrmcitaEditar(Cita cita)
+        IEspecializacionService logEspecializacion;
+        string id;
+        public FrmcitaEditar(string id)
         {
             InitializeComponent();
-            this.Cita = cita;
+            this.id = id;
             logVeterinario = new VeterinarioService();
             logCita = new CitaService();
-            logMascota = new MascotaService();
             logEspecializacion = new EspecializacionService();
         }
         private void FrmcitaEditar_Load(object sender, EventArgs e)
         {
             cargarCmbEspecializacion();
-            mostrarCita(Cita);
+            mostrarCita(logCita.ObtenerDatosEdicion(id));
             SetEstadoControles(false);
         }
         
      
         
-        private void mostrarCita(Cita cita)
+        private void mostrarCita(CitaEdicionDTO cita)
         {
-            txtIdMascota.Text = cita.Mascota.Codigo.ToString();
-            lblNombreMascota.Text = cita.Mascota.Nombre;
+            txtIdMascota.Text = cita.CodigoMascota;
+            lblNombreMascota.Text = cita.NombreMascota;
             DTPFecha.Value = DateTime.ParseExact(cita.Fecha, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             DTPHora.Value = DateTime.ParseExact(cita.Hora, "hh:mm tt", CultureInfo.InvariantCulture);
-            cmbEspecializacion.SelectedValue = cita.Veterinario.Especializacion.Codigo;
-            cmbVeterinario.SelectedValue = cita.Veterinario.Cedula;
+            cmbEspecializacion.SelectedValue = cita.CodigoEspecializacion;
+            cmbVeterinario.SelectedValue = cita.CedulaVeterinario;
         }
         private void cargarCmbEspecializacion()
         {
@@ -46,7 +44,7 @@ namespace ProyectoP3
             cmbEspecializacion.DisplayMember = "Nombre";
             cmbEspecializacion.ValueMember = "Codigo";
         }
-        private void cargarCmbVeterinario(int especialializacion)
+        private void cargarCmbVeterinario(string especialializacion)
         {
 
             cmbVeterinario.DataSource = logVeterinario.buscarPorEspecializacion(especialializacion);
@@ -63,14 +61,6 @@ namespace ProyectoP3
             {
                 throw new Exception(ex.Message);
             }
-        }
-        private Mascota buscarMascota(int id)
-        {
-            return logMascota.buscar(id);
-        }
-        private Veterinario buscarVeterinario(int cedula)
-        {
-            return logVeterinario.buscar(cedula);
         }
         private DialogResult dialogoPregunta(string accion)
         {
@@ -101,11 +91,11 @@ namespace ProyectoP3
         private Cita Mapeo()
         {
             Cita cita = new Cita();
-            cita.Codigo = this.Cita.Codigo;
-            cita.Mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+            cita.Codigo = this.id;
+            cita.MascotaCodigo = txtIdMascota.Text;
             cita.Fecha = DTPFecha.Value.ToString("dd/MM/yyyy");
             cita.Hora = DTPHora.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture);
-            cita.Veterinario = buscarVeterinario(int.Parse(cmbVeterinario.SelectedValue.ToString()));
+            cita.VeterinarioCedula = cmbVeterinario.SelectedValue.ToString();
             return cita;
         }
 
@@ -116,7 +106,7 @@ namespace ProyectoP3
 
         private void cmbEspecializacion_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
+            cargarCmbVeterinario(cmbEspecializacion.SelectedValue.ToString());
         }
 
         private void btnEditar_Click_1(object sender, EventArgs e)

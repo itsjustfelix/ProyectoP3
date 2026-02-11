@@ -3,12 +3,14 @@ using Entidad;
 
 namespace Logica
 {
-    internal interface ICitaService : ICrud<Cita>
+    public interface ICitaService : IWriteService<Cita>,IReadService<CitaDTO>, IDataEditService<CitaEdicionDTO>
     {
         List<citasPorFechas> ObtenerCitasPorFechas();
-        List<Cita> buscarPorFecha(string fecha);
-        List<Cita> buscarPorVeterinarioMascota(string texto);
+        List<CitaDTO> buscarPorFecha(string fecha);
+        List<CitaDTO> buscarPorVeterinarioMascota(string texto);
         int totalCitasHoy(string fecha);
         int totalCitas();
+        string ObtenerCodigoMascotaPorCita(string codigoCita);
+        string ObtenerCedulaVeterinarioPorCita(string codigoCita);
     }
 }

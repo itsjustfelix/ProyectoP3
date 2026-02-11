@@ -52,15 +52,17 @@
   <ItemGroup>
     <Compile Include="ICitaService.cs" />
     <Compile Include="IConsultaService.cs" />
-    <Compile Include="ICrud.cs" />
+    <Compile Include="IDataEditService.cs" />
     <Compile Include="IEspecializacionService.cs" />
     <Compile Include="IEspecieService.cs" />
     <Compile Include="IMascotaService.cs" />
     <Compile Include="IPropietarioService.cs" />
     <Compile Include="IRazaService.cs" />
+    <Compile Include="IReadService.cs" />
     <Compile Include="IVeterinarioService.cs" />
     <Compile Include="CitaService.cs" />
     <Compile Include="EspecializacionService.cs" />
+    <Compile Include="IWriteService.cs" />
     <Compile Include="PropietarioService.cs" />
     <Compile Include="VeterinarioService.cs" />
     <Compile Include="MascotaService.cs" />

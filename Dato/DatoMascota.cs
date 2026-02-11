@@ -6,17 +6,9 @@ using Oracle.ManagedDataAccess.Types;
 
 namespace Dato
 {
-    public class DatoMascota : IRepository<Mascota>
+    public class DatoMascota : IWriteReapository<Mascota>, IReadRepository<MascotaDTO>,IDataEditRepository<MascotaEdicionDTO>
     {
-        IRepository<Raza> razaRepository;
-        IRepository<Propietario> propietarioRepository;
-        IRepository<Especie> especieRepository;
-        public DatoMascota()
-        {
-            razaRepository = new DatoRaza();
-            propietarioRepository = new DatoPropietario();
-            especieRepository = new DatoEspecie();
-        }
+
         public bool Actualizar(Mascota mascota)
         {
             try
@@ -26,11 +18,11 @@ namespace Dato
                     using (OracleCommand cmd = new OracleCommand("PKG_MASCOTAS.PRC_actualizar", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add("v_codigo", OracleDbType.Int64).Value = mascota.Codigo;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Varchar2).Value = mascota.Codigo;
                         cmd.Parameters.Add("v_nombre", OracleDbType.Varchar2).Value = mascota.Nombre;
-                        cmd.Parameters.Add("v_codigo_especie", OracleDbType.Int64).Value = mascota.Especie.Codigo;
-                        cmd.Parameters.Add("v_codigo_raza", OracleDbType.Int64).Value = mascota.Raza.Codigo;
-                        cmd.Parameters.Add("v_cedula_propietario", OracleDbType.Int64).Value = mascota.Propietario.Cedula;
+                        cmd.Parameters.Add("v_codigo_especie", OracleDbType.Varchar2).Value = mascota.EspecieCodigo;
+                        cmd.Parameters.Add("v_codigo_raza", OracleDbType.Varchar2).Value = mascota.RazaCodigo;
+                        cmd.Parameters.Add("v_cedula_propietario", OracleDbType.Varchar2).Value = mascota.PropietarioCedula;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -43,7 +35,7 @@ namespace Dato
                 throw new Exception($"Error al actualizar mascota: {ex.Message}", ex);
             }
         }
-        public Mascota BuscarPorId(int id)
+        public MascotaDTO BuscarPorId(string id)
         {
             try
             {
@@ -53,7 +45,7 @@ namespace Dato
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.Add("return_value", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.ReturnValue;
-                        cmd.Parameters.Add("v_codigo", OracleDbType.Int64).Value = id;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Varchar2).Value = id;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -75,9 +67,9 @@ namespace Dato
                 throw new Exception($"Error al buscar mascota: {ex.Message}", ex);
             }
         }
-        public List<Mascota> Consultar()
+        public List<MascotaDTO> Consultar()
         {
-            List<Mascota> lista = new List<Mascota>();
+            List<MascotaDTO> lista = new List<MascotaDTO>();
 
             try
             {
@@ -108,7 +100,7 @@ namespace Dato
                 throw new Exception($"Error al obtener mascotas: {ex.Message}", ex);
             }
         }
-        public bool Eliminar(int id)
+        public bool Eliminar(string id)
         {
             try
             {
@@ -117,11 +109,11 @@ namespace Dato
                     using (OracleCommand cmd = new OracleCommand("PKG_MASCOTAS.PRC_eliminar", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add("v_codigo", OracleDbType.Int64).Value = id;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Varchar2).Value = id;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        return true; 
+                        return true;
                     }
                 }
             }
@@ -140,9 +132,9 @@ namespace Dato
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.Add("v_nombre", OracleDbType.Varchar2).Value = mascota.Nombre;
-                        cmd.Parameters.Add("v_codigo_especie", OracleDbType.Int64).Value = mascota.Especie.Codigo;
-                        cmd.Parameters.Add("v_codigo_raza", OracleDbType.Int64).Value = mascota.Raza.Codigo;
-                        cmd.Parameters.Add("v_cedula_propietario", OracleDbType.Int64).Value = mascota.Propietario.Cedula;
+                        cmd.Parameters.Add("v_codigo_especie", OracleDbType.Varchar2).Value = mascota.EspecieCodigo;
+                        cmd.Parameters.Add("v_codigo_raza", OracleDbType.Varchar2).Value = mascota.RazaCodigo;
+                        cmd.Parameters.Add("v_cedula_propietario", OracleDbType.Varchar2).Value = mascota.PropietarioCedula;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -155,15 +147,59 @@ namespace Dato
                 throw new Exception($"Error al insertar mascota: {ex.Message}", ex);
             }
         }
-        public Mascota MappyingType(OracleDataReader line)
+        public MascotaDTO MappyingType(OracleDataReader line)
         {
-            Mascota mascota = new Mascota();
-            mascota.Codigo = int.Parse(line["CODIGO"].ToString());
-            mascota.Nombre = line["NOMBRE"].ToString();
-            mascota.Especie = especieRepository.BuscarPorId(int.Parse(line["CODIGO_ESPECIE"].ToString()));
-            mascota.Raza = razaRepository.BuscarPorId(int.Parse(line["CODIGO_RAZA"].ToString()));
-            mascota.Propietario = propietarioRepository.BuscarPorId(int.Parse(line["CEDULA_PROPIETARIO"].ToString()));
-            return mascota;
+            MascotaDTO mascotaDTO = new MascotaDTO();
+            mascotaDTO.Codigo = line["CODIGO"].ToString();
+            mascotaDTO.Nombre = line["NOMBRE"].ToString();
+            mascotaDTO.NombreEspecie = line["nombre_especie"].ToString();
+            mascotaDTO.NombreRaza = line["nombre_raza"].ToString();
+            mascotaDTO.NombrePropietario = line["nombre_propietario"].ToString();
+            return mascotaDTO;
+        }
+        public MascotaEdicionDTO ObtenerDatosParaEdicion(string id)
+        {
+            try
+            {
+                using (OracleConnection conn = OracleDBConnection.GetConnection())
+                {
+                    using (OracleCommand cmd = new OracleCommand("PKG_MASCOTAS.FN_Consultar_mascota_edicion", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add("return_value", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.ReturnValue;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Varchar2).Value = id;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        OracleRefCursor refCursor = (OracleRefCursor)cmd.Parameters["return_value"].Value;
+                        using (OracleDataReader reader = refCursor.GetDataReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return MappyingTypeEdicion(reader);
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al buscar mascota: {ex.Message}", ex);
+            }
+        }
+        public MascotaEdicionDTO MappyingTypeEdicion(OracleDataReader reader)
+        {
+            return new MascotaEdicionDTO
+            {
+                Codigo = reader["CODIGO"].ToString(),
+                Nombre = reader["NOMBRE"].ToString(),
+                CodigoEspecie = reader["CODIGO_ESPECIE"].ToString(),
+                NombreEspecie = reader["NOMBRE_ESPECIE"].ToString(),
+                CodigoRaza = reader["CODIGO_RAZA"].ToString(),
+                NombreRaza = reader["NOMBRE_RAZA"].ToString(),
+                CedulaPropietario = reader["CEDULA_PROPIETARIO"].ToString(),
+                NombrePropietario = reader["NOMBRE_PROPIETARIO"].ToString()
+            };
         }
     }
 }

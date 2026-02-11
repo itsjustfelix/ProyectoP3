@@ -34,7 +34,7 @@ namespace ProyectoP3
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
-        private bool eliminar(int id)
+        private bool eliminar(string id)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace ProyectoP3
                 throw new Exception(e.Message);
             }
         }
-        private Propietario buscar(int id)
+        private Propietario buscar(string id)
         {
             try
             {
@@ -73,9 +73,7 @@ namespace ProyectoP3
             {
                 DGVPropietario.Rows.Add(
                     item.Cedula,
-                    item.Nombres,
-                    item.ApellidoPaterno,
-                    item.ApellidoMaterno,
+                    item.NombreCompleto,
                     item.Sexo,
                     item.Telefono,
                     item.Email
@@ -88,7 +86,7 @@ namespace ProyectoP3
             int cedula = int.Parse(DGVPropietario.CurrentRow.Cells["Cedula"].Value.ToString());
             if (DGVPropietario.Columns[e.ColumnIndex].Name == "Editar")
             {
-                Propietario propietario = buscar(cedula);
+                Propietario propietario = buscar(cedula.ToString());
                 mostrarFrm(new FrmEditarPropietatio(propietario));
                 cargarDGV(propietarioService.Consultar());
             }
@@ -98,7 +96,7 @@ namespace ProyectoP3
 
                 if (respuesta == DialogResult.Yes)
                 {
-                    eliminar(cedula);
+                    eliminar(cedula.ToString());
                     MessageBox.Show("Propietario eliminado correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cargarDGV(propietarioService.Consultar());
                 }
@@ -123,7 +121,7 @@ namespace ProyectoP3
                 }
                 else if (texto.All(char.IsNumber))
                 {
-                    cargarDGV(propietarioService.BuscarPorCedula(int.Parse(txtFiltrarPropietario.Text.Trim())));
+                    cargarDGV(propietarioService.BuscarPorCedula(txtFiltrarPropietario.Text.Trim()));
                     return;
                 }
                 else if (texto.All(char.IsLetter))

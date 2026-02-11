@@ -7,14 +7,11 @@ namespace ProyectoP3
 {
     public partial class FrmConsultaEditar : Form
     {
-        Consulta consulta;
-        IVeterinarioService logVeterinario = new VeterinarioService();
-        ICrud<Consulta> logConsulta = new ConsultaService();
-        ICrud<Mascota> logMascota = new MascotaService();
-        int idConsulta;
-        int cedulaVeterinario;
+        ConsultaDTO consulta;
+        IConsultaService logConsulta = new ConsultaService();
+        string idConsulta;
         string fechaConsulta;
-        public FrmConsultaEditar(Consulta consulta)
+        public FrmConsultaEditar(ConsultaDTO consulta)
         {
             InitializeComponent();
             this.consulta = consulta;
@@ -27,34 +24,29 @@ namespace ProyectoP3
             mostrarConsulta(consulta);
         }
 
-        
+
         private Consulta Mapeo()
         {
-            Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
-            Veterinario veterinario = buscarVeterinario(cedulaVeterinario);
             Consulta consulta = new Consulta();
             consulta.Codigo = idConsulta;
             consulta.Descripcion = txtDescripcion.Text;
             consulta.Diagnostico = txtDiagnostico.Text;
             consulta.Tratamiento = txtTratamiento.Text;
             consulta.Fecha = fechaConsulta;
-            consulta.Mascota = mascota;
-            consulta.Veterinario = veterinario;
+            consulta.MascotaCodigo = txtIdMascota.Text;
             return consulta;
         }
         private void salir()
         {
             this.Close();
         }
-        private void mostrarConsulta(Consulta consulta)
+        private void mostrarConsulta(ConsultaDTO consulta)
         {
             idConsulta = consulta.Codigo;
             fechaConsulta = consulta.Fecha;
-            txtIdMascota.Text = consulta.Mascota.Codigo.ToString();
-            lblNombreMascota.Text = consulta.Mascota.Nombre;
-            txtEspecializacion.Text = consulta.Veterinario.Especializacion.Nombre;
-            txtVeterinario.Text = consulta.Veterinario.Nombres;
-            cedulaVeterinario = consulta.Veterinario.Cedula;
+            txtIdMascota.Text = consulta.Codigo;
+            lblNombreMascota.Text = consulta.NombreMascota;
+            txtVeterinario.Text = consulta.NombreVeterinario;
             txtDescripcion.Text = consulta.Descripcion;
             txtDiagnostico.Text = consulta.Diagnostico;
             txtTratamiento.Text = consulta.Tratamiento;
@@ -81,15 +73,6 @@ namespace ProyectoP3
                 throw new Exception($"Error al agregar la consulta: {ex.Message}", ex);
             }
         }
-        private Mascota buscarMascota(int id)
-        {
-            return logMascota.buscar(id);
-        }
-        private Veterinario buscarVeterinario(int id)
-        {
-            return logVeterinario.buscar(id);
-        }
-
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -99,7 +82,6 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
             try
@@ -123,7 +105,7 @@ namespace ProyectoP3
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }       
+        }
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");

@@ -5,7 +5,7 @@ using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
 namespace Dato
 {
-    public class DatoEspecie : IRepository<Especie>
+    public class DatoEspecie : IWriteReapository<Especie>,IReadRepository<Especie>
     {
         public bool Actualizar(Especie especie)
         {
@@ -16,7 +16,7 @@ namespace Dato
                     using (OracleCommand cmd = new OracleCommand("PKG_ESPECIES.PRC_actualizar", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add("v_codigo", OracleDbType.Int64).Value = especie.Codigo;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Varchar2).Value = especie.Codigo;
                         cmd.Parameters.Add("v_nombre", OracleDbType.Varchar2).Value = especie.Nombre;
 
                         conn.Open();
@@ -30,7 +30,7 @@ namespace Dato
                 throw new Exception($"Error al actualizar especie: {ex.Message}", ex);
             }
         }
-        public Especie BuscarPorId(int id)
+        public Especie BuscarPorId(string id)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace Dato
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.Add("return_value", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.ReturnValue;
-                        cmd.Parameters.Add("v_codigo", OracleDbType.Int64).Value = id;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Varchar2).Value = id;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -95,7 +95,7 @@ namespace Dato
                 throw new Exception($"Error al obtener especies: {ex.Message}", ex);
             }
         }
-        public bool Eliminar(int id)
+        public bool Eliminar(string id)
         {
             try
             {
@@ -104,7 +104,7 @@ namespace Dato
                     using (OracleCommand cmd = new OracleCommand("PKG_ESPECIES.PRC_eliminar", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add("v_codigo", OracleDbType.Int64).Value = id;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Varchar2).Value = id;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -144,7 +144,7 @@ namespace Dato
         public Especie MappyingType(OracleDataReader line)
         {
             Especie especie = new Especie();
-            especie.Codigo = int.Parse(line["CODIGO"].ToString());
+            especie.Codigo = line["CODIGO"].ToString();
             especie.Nombre = line["NOMBRE"].ToString();
             return especie;
         }

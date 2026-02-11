@@ -8,17 +8,19 @@ namespace Logica
 {
     public class PropietarioService : IPropietarioService
     {
-        private readonly IRepository<Propietario> propietarioRepository;
+        private readonly IWriteReapository<Propietario> WriteRepository;
+        private readonly IReadRepository<Propietario> ReadRepository;
         public PropietarioService()
         {
-            propietarioRepository = new DatoPropietario();
+            WriteRepository = new DatoPropietario();
+            ReadRepository = new DatoPropietario();
         }
         public bool Guardar(Propietario entidad)
         {
             try
             {
                 if (Validar(entidad) && IdUnico(entidad.Cedula))
-                    return propietarioRepository.Guardar(entidad);
+                    return WriteRepository.Guardar(entidad);
                 else
                     return false;
             }
@@ -30,14 +32,14 @@ namespace Logica
         }
         public List<Propietario> Consultar()
         {
-            return propietarioRepository.Consultar();
+            return ReadRepository.Consultar();
         }
         public bool Actualizar(Propietario NuevaEntidad)
         {
             try
             {
                 if (Validar(NuevaEntidad))
-                    return propietarioRepository.Actualizar(NuevaEntidad);
+                    return WriteRepository.Actualizar(NuevaEntidad);
                 else
                     return false;
             }
@@ -48,11 +50,11 @@ namespace Logica
 
 
         }
-        public bool Borrar(int Id)
+        public bool Borrar(string Id)
         {
             try
             {
-                return propietarioRepository.Eliminar(Id);
+                return WriteRepository.Eliminar(Id);
             }
             catch (Exception ex)
             {
@@ -60,16 +62,14 @@ namespace Logica
             }
 
         }
-        public Propietario buscar(int id)
+        public Propietario buscar(string id)
         {
-            return propietarioRepository.BuscarPorId(id);
+            return ReadRepository.BuscarPorId(id);
         }
         public bool Validar(Propietario entidad)
         {
             if (entidad == null) throw new Exception("Propietario nulo");
-            if (entidad.Nombres.Any(char.IsDigit)) throw new Exception("El nombre no puede contener numeros");
-            if (entidad.ApellidoPaterno.Any(char.IsDigit)) throw new Exception("El apellido paterno no puede contener numeros");
-            if (entidad.ApellidoMaterno.Any(char.IsDigit)) throw new Exception("El apellido materno no puede contener numeros");
+            if (entidad.NombreCompleto.Any(char.IsDigit)) throw new Exception("El nombre no puede contener numeros");
             if (entidad.Cedula.ToString().Length < 8 || entidad.Cedula.ToString().Length > 10) throw new Exception("La cedula debe tener entre 8 y 10 digitos");
             if (entidad.Cedula.ToString().Any(char.IsLetter)) throw new Exception("La cedula no puede contener letras");
             if (entidad.Telefono.Any(char.IsLetter)) throw new Exception("El telefono no puede contener letras");
@@ -78,20 +78,18 @@ namespace Logica
                 throw new Exception("El correo electronico debe contener un solo @ y no puede estar al inicio o al final");
             return true;
         }
-        public bool IdUnico(int id)
+        public bool IdUnico(string id)
         {
             if (buscar(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
             return true;
         }
-        public List<Propietario> BuscarPorCedula(int cedula)
+        public List<Propietario> BuscarPorCedula(string cedula)
         {
-            return propietarioRepository.Consultar().Where(p => p.Cedula == cedula).ToList();
+            return ReadRepository.Consultar().Where(p => p.Cedula == cedula).ToList();
         }
         public List<Propietario> BuscarPorNombreApellido(string texto)
         {
-            return propietarioRepository.Consultar().Where(p => p.Nombres.Trim().ToLower().Contains(texto)||
-            p.ApellidoPaterno.ToLower().Trim().Contains(texto)||
-            p.ApellidoMaterno.Trim().ToLower().Contains(texto)).ToList();
+            return ReadRepository.Consultar().Where(p => p.NombreCompleto.Trim().ToLower().Contains(texto)).ToList();
         }
     }
 }

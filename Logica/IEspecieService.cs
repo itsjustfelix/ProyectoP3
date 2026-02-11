@@ -2,7 +2,7 @@
 using Entidad;
 namespace Logica
 {
-    public interface IEspecieService : ICrud<Especie>
+    public interface IEspecieService : IReadService<Especie>,IWriteService<Especie>
     {
         List<Especie> BuscarPorNombre(string nombre);
     }

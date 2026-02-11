@@ -7,18 +7,20 @@ namespace Logica
 {
     public class EspecializacionService : IEspecializacionService
     {
-        private readonly IRepository<Especializacion> especializacionRepository;
+        private readonly IWriteReapository<Especializacion> WriteService;
+        private readonly IReadRepository<Especializacion> ReadService;
 
         public EspecializacionService()
         {
-            especializacionRepository = new DatoEspecializacion();
+            WriteService = new DatoEspecializacion();
+            ReadService = new DatoEspecializacion();
         }
         public bool Guardar(Especializacion entidad)
         {
             try
             {
                 if (Validar(entidad))
-                    return especializacionRepository.Guardar(entidad);
+                    return WriteService.Guardar(entidad);
                 else
                     return false;
             }
@@ -29,14 +31,14 @@ namespace Logica
         }
         public List<Especializacion> Consultar()
         {
-            return especializacionRepository.Consultar();
+            return ReadService.Consultar();
         }
         public bool Actualizar(Especializacion NuevaEntidad)
         {
             try
             {
                 if (Validar(NuevaEntidad))
-                    return especializacionRepository.Actualizar(NuevaEntidad);
+                    return WriteService.Actualizar(NuevaEntidad);
                 else
                     return false;
             }
@@ -45,13 +47,13 @@ namespace Logica
                 throw new Exception(ex.Message);
             }
         }
-        public bool Borrar(int codigo)
+        public bool Borrar(string codigo)
         {
-            return especializacionRepository.Eliminar(codigo);
+            return WriteService.Eliminar(codigo);
         }
-        public Especializacion buscar(int codigo)
+        public Especializacion buscar(string codigo)
         {
-            return especializacionRepository.BuscarPorId(codigo);
+            return ReadService.BuscarPorId(codigo);
         }
         public bool Validar(Especializacion entidad)
         {
@@ -63,7 +65,7 @@ namespace Logica
         }
         public List<Especializacion> BuscarPorNombre(string nombre)
         {
-            return especializacionRepository.Consultar()
+            return ReadService.Consultar()
                 .Where(e => e.Nombre.Trim().ToLower().Contains(nombre))
                 .ToList();
         }

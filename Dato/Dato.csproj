@@ -83,12 +83,16 @@
     <Compile Include="DatoConsulta.cs" />
     <Compile Include="DatoEspecializacion.cs" />
     <Compile Include="ICitaRepository.cs" />
-    <Compile Include="IRepository.cs" />
+    <Compile Include="IDataEditRepository.cs" />
+    <Compile Include="IDatoConsultaRepository.cs" />
+    <Compile Include="IRazaRepository.cs" />
+    <Compile Include="IReadRepository.cs" />
     <Compile Include="DatoPropietario.cs" />
     <Compile Include="DatoEspecie.cs" />
     <Compile Include="DatoMascota.cs" />
     <Compile Include="DatoRaza.cs" />
     <Compile Include="DatoVeterinario.cs" />
+    <Compile Include="IWriteReapository.cs" />
     <Compile Include="OracleDBConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

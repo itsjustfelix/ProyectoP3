@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using QuestPDF.Fluent;
-using QuestPDF.Helpers;
+﻿using GeneradorDeDocumento.Properties;
 using QuestPDF.Infrastructure;
+using System;
 using System.IO;
 
 namespace GeneradorDeDocumento
@@ -13,18 +8,18 @@ namespace GeneradorDeDocumento
     public abstract class GeneradorDePDF<T> : IDocument
     {
         public string rutaDeGuardado;
-        public byte[] logo;
-        public GeneradorDePDF(string nombreCarpeta, string rutaLogo)
+        public byte[] logoByte;
+        public GeneradorDePDF(string nombreCarpeta, byte[] logo)
         {
             QuestPDF.Settings.License = LicenseType.Community;
             rutaDeGuardado = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, nombreCarpeta);
             if (!Directory.Exists(rutaDeGuardado))
                 Directory.CreateDirectory(rutaDeGuardado);
-            this.logo = File.ReadAllBytes(rutaLogo);
+            logoByte = logo;
         }
         public abstract string GenerarPDF();
         public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
         public abstract void Compose(IDocumentContainer container);
-        public  DocumentSettings GetSettings() => DocumentSettings.Default;
+        public DocumentSettings GetSettings() => DocumentSettings.Default;
     }
 }

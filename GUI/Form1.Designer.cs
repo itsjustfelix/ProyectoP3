@@ -65,9 +65,10 @@
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.button3.IndicateFocus = true;
-            this.button3.Location = new System.Drawing.Point(0, 578);
+            this.button3.Location = new System.Drawing.Point(0, 711);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(182, 45);
+            this.button3.Size = new System.Drawing.Size(243, 55);
             this.button3.TabIndex = 21;
             this.button3.Text = "Especializacion";
             this.button3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -90,9 +91,10 @@
             this.btnEspecie.Image = ((System.Drawing.Image)(resources.GetObject("btnEspecie.Image")));
             this.btnEspecie.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnEspecie.IndicateFocus = true;
-            this.btnEspecie.Location = new System.Drawing.Point(0, 410);
+            this.btnEspecie.Location = new System.Drawing.Point(0, 505);
+            this.btnEspecie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEspecie.Name = "btnEspecie";
-            this.btnEspecie.Size = new System.Drawing.Size(182, 45);
+            this.btnEspecie.Size = new System.Drawing.Size(243, 55);
             this.btnEspecie.TabIndex = 15;
             this.btnEspecie.Text = "Especie";
             this.btnEspecie.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -115,9 +117,10 @@
             this.btnPropietario.Image = global::ProyectoP3.Properties.Resources.SolarUserBold;
             this.btnPropietario.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnPropietario.IndicateFocus = true;
-            this.btnPropietario.Location = new System.Drawing.Point(0, 298);
+            this.btnPropietario.Location = new System.Drawing.Point(0, 367);
+            this.btnPropietario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPropietario.Name = "btnPropietario";
-            this.btnPropietario.Size = new System.Drawing.Size(182, 45);
+            this.btnPropietario.Size = new System.Drawing.Size(243, 55);
             this.btnPropietario.TabIndex = 14;
             this.btnPropietario.Text = "Propietario";
             this.btnPropietario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -141,9 +144,10 @@
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.button2.IndicateFocus = true;
-            this.button2.Location = new System.Drawing.Point(0, 74);
+            this.button2.Location = new System.Drawing.Point(0, 91);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(182, 45);
+            this.button2.Size = new System.Drawing.Size(243, 55);
             this.button2.TabIndex = 20;
             this.button2.Text = "Cita";
             this.button2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -167,9 +171,10 @@
             this.bttnSalir.Image = global::ProyectoP3.Properties.Resources.BxsLogOut;
             this.bttnSalir.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.bttnSalir.IndicateFocus = true;
-            this.bttnSalir.Location = new System.Drawing.Point(0, 634);
+            this.bttnSalir.Location = new System.Drawing.Point(0, 780);
+            this.bttnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bttnSalir.Name = "bttnSalir";
-            this.bttnSalir.Size = new System.Drawing.Size(182, 45);
+            this.bttnSalir.Size = new System.Drawing.Size(243, 55);
             this.bttnSalir.TabIndex = 24;
             this.bttnSalir.Text = "Salir";
             this.bttnSalir.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -193,9 +198,10 @@
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.button4.IndicateFocus = true;
-            this.button4.Location = new System.Drawing.Point(0, 186);
+            this.button4.Location = new System.Drawing.Point(0, 229);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(182, 45);
+            this.button4.Size = new System.Drawing.Size(243, 55);
             this.button4.TabIndex = 22;
             this.button4.Text = "IA";
             this.button4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -207,9 +213,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(61, 45);
+            this.label1.Location = new System.Drawing.Point(81, 55);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 19);
+            this.label1.Size = new System.Drawing.Size(79, 23);
             this.label1.TabIndex = 14;
             this.label1.Text = "My Vet";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -231,9 +238,10 @@
             this.guna2Button1.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsBarChart4Bars__1_;
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button1.IndicateFocus = true;
-            this.guna2Button1.Location = new System.Drawing.Point(0, 242);
+            this.guna2Button1.Location = new System.Drawing.Point(0, 298);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(182, 45);
+            this.guna2Button1.Size = new System.Drawing.Size(243, 55);
             this.guna2Button1.TabIndex = 23;
             this.guna2Button1.Text = "Estadisticas";
             this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -243,9 +251,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(61, 8);
+            this.pictureBox1.Location = new System.Drawing.Point(81, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(61, 48);
+            this.pictureBox1.Size = new System.Drawing.Size(81, 59);
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
@@ -266,9 +275,10 @@
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.button1.IndicateFocus = true;
-            this.button1.Location = new System.Drawing.Point(0, 522);
+            this.button1.Location = new System.Drawing.Point(0, 642);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(182, 45);
+            this.button1.Size = new System.Drawing.Size(243, 55);
             this.button1.TabIndex = 19;
             this.button1.Text = "Veterinario";
             this.button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -292,9 +302,10 @@
             this.btnConsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnConsulta.Image")));
             this.btnConsulta.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnConsulta.IndicateFocus = true;
-            this.btnConsulta.Location = new System.Drawing.Point(0, 130);
+            this.btnConsulta.Location = new System.Drawing.Point(0, 160);
+            this.btnConsulta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnConsulta.Name = "btnConsulta";
-            this.btnConsulta.Size = new System.Drawing.Size(182, 45);
+            this.btnConsulta.Size = new System.Drawing.Size(243, 55);
             this.btnConsulta.TabIndex = 18;
             this.btnConsulta.Text = "Consulta";
             this.btnConsulta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -318,9 +329,10 @@
             this.btnMascota.Image = ((System.Drawing.Image)(resources.GetObject("btnMascota.Image")));
             this.btnMascota.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnMascota.IndicateFocus = true;
-            this.btnMascota.Location = new System.Drawing.Point(0, 354);
+            this.btnMascota.Location = new System.Drawing.Point(0, 436);
+            this.btnMascota.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMascota.Name = "btnMascota";
-            this.btnMascota.Size = new System.Drawing.Size(182, 45);
+            this.btnMascota.Size = new System.Drawing.Size(243, 55);
             this.btnMascota.TabIndex = 17;
             this.btnMascota.Text = "Mascota";
             this.btnMascota.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -343,9 +355,10 @@
             this.btnRaza.Image = ((System.Drawing.Image)(resources.GetObject("btnRaza.Image")));
             this.btnRaza.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnRaza.IndicateFocus = true;
-            this.btnRaza.Location = new System.Drawing.Point(0, 466);
+            this.btnRaza.Location = new System.Drawing.Point(0, 574);
+            this.btnRaza.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRaza.Name = "btnRaza";
-            this.btnRaza.Size = new System.Drawing.Size(182, 45);
+            this.btnRaza.Size = new System.Drawing.Size(243, 55);
             this.btnRaza.TabIndex = 16;
             this.btnRaza.Text = "Raza";
             this.btnRaza.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -356,10 +369,11 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.LightCyan;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(182, 0);
+            this.panel2.Location = new System.Drawing.Point(243, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
             this.panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.panel2.Size = new System.Drawing.Size(1107, 685);
+            this.panel2.Size = new System.Drawing.Size(1476, 843);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -382,19 +396,22 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.ForeColor = System.Drawing.Color.Transparent;
             this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(182, 685);
+            this.panel3.Size = new System.Drawing.Size(243, 843);
             this.panel3.TabIndex = 13;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1289, 685);
+            this.ClientSize = new System.Drawing.Size(1719, 843);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "My vet";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);

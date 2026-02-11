@@ -9,10 +9,10 @@ namespace ProyectoP3
 {
     public partial class FrmEstadistica : Form
     {
-        CitaService citaService;
-        VeterinarioService veterinarioService;
-        MascotaService mascotaService;
-        ConsultaService consultaService;
+        ICitaService citaService;
+        IVeterinarioService veterinarioService;
+        IMascotaService mascotaService;
+        IConsultaService consultaService;
 
         public FrmEstadistica()
         {
@@ -37,7 +37,7 @@ namespace ProyectoP3
             {
                 foreach (var c in citas)
                 {
-                   dgvCitasHoy.Rows.Add(c.Codigo, c.Mascota.Nombre, c.Veterinario.Nombres, c.Fecha, c.Hora);
+                   dgvCitasHoy.Rows.Add(c.Codigo, c.NombreMascota, c.NombreVeterinario, c.Fecha, c.Hora);
                 }
             }
                
@@ -113,13 +113,13 @@ namespace ProyectoP3
 
         private void dgvCitasHoy_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int codigo = int.Parse(dgvCitasHoy.CurrentRow.Cells["Codigo"].Value.ToString());
+            string codigo = dgvCitasHoy.CurrentRow.Cells["Codigo"].Value.ToString();
             if (dgvCitasHoy.Columns[e.ColumnIndex].Name == "AtenderCita")
             {
-                Cita cita = buscar(codigo);
+                CitaDTO cita = buscar(codigo);
                 if (cita.Fecha.Equals(DateTime.Now.ToString("dd/MM/yyyy")))
                 {
-                    var frm = new FrmConsultaAgregar(cita.Mascota, cita.Veterinario);
+                    var frm = new FrmConsultaAgregar(citaService.ObtenerCodigoMascotaPorCita(codigo), citaService.ObtenerCedulaVeterinarioPorCita(codigo));
                     mostrarFrm(frm);
 
                     if (frm.resultado == DialogResult.OK)
@@ -133,7 +133,7 @@ namespace ProyectoP3
             }
         }
 
-        private bool eliminar(int codigo)
+        private bool eliminar(string codigo)
         {
             try
             {
@@ -151,7 +151,7 @@ namespace ProyectoP3
             frm.ShowDialog();
         }
 
-        private Cita buscar(int codigo)
+        private CitaDTO buscar(string codigo)
         {
             return citaService.buscar(codigo);
         }

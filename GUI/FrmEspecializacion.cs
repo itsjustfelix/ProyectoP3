@@ -49,7 +49,7 @@ namespace ProyectoP3
             cargarDGV(especializacionService.Consultar());
         }
 
-        private bool eliminar(int id)
+        private bool eliminar(string id)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace ProyectoP3
             }
         }
 
-        private Especializacion buscar(int id)
+        private Especializacion buscar(string id)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace ProyectoP3
         }
         private void DGVEspecializacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int codigo = int.Parse(DGVEspecializacion.CurrentRow.Cells["Codigo"].Value.ToString());
+            string codigo = DGVEspecializacion.CurrentRow.Cells["Codigo"].Value.ToString();
             if (DGVEspecializacion.Columns[e.ColumnIndex].Name == "Editar")
             {
                 Especializacion especializacion = buscar(codigo);

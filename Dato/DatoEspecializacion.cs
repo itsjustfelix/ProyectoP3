@@ -6,7 +6,7 @@ using Oracle.ManagedDataAccess.Types;
 
 namespace Dato
 {
-    public class DatoEspecializacion : IRepository<Especializacion>
+    public class DatoEspecializacion : IWriteReapository<Especializacion>,IReadRepository<Especializacion>
     {
         public bool Guardar(Especializacion especializacion)
         {
@@ -72,7 +72,7 @@ namespace Dato
                     using (OracleCommand cmd = new OracleCommand("PKG_ESPECIALIZACIONES.PRC_actualizar", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add("v_codigo", OracleDbType.Int64).Value = especializacion.Codigo;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Varchar2).Value = especializacion.Codigo;
                         cmd.Parameters.Add("v_nombre", OracleDbType.Varchar2).Value = especializacion.Nombre;
 
                         conn.Open();
@@ -86,7 +86,7 @@ namespace Dato
                 throw new Exception($"Error al actualizar especialización: {ex.Message}", ex);
             }
         }
-        public bool Eliminar(int id)
+        public bool Eliminar(string id)
         {
             try
             {
@@ -95,7 +95,7 @@ namespace Dato
                     using (OracleCommand cmd = new OracleCommand("PKG_ESPECIALIZACIONES.PRC_eliminar", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add("v_codigo", OracleDbType.Int32).Value = id;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Varchar2).Value = id;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -108,7 +108,7 @@ namespace Dato
                 throw new Exception($"Error al eliminar especialización: {ex.Message}", ex);
             }
         }
-        public Especializacion BuscarPorId(int id)
+        public Especializacion BuscarPorId(string id)
         {
             try
             {
@@ -118,7 +118,7 @@ namespace Dato
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.Add("return_value", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.ReturnValue;
-                        cmd.Parameters.Add("v_codigo", OracleDbType.Int64).Value = id;
+                        cmd.Parameters.Add("v_codigo", OracleDbType.Varchar2).Value = id;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -143,7 +143,7 @@ namespace Dato
         public Especializacion MappyingType(OracleDataReader linea)
         {
             Especializacion especializacion = new Especializacion();
-            especializacion.Codigo = int.Parse(linea["CODIGO"].ToString());
+            especializacion.Codigo = linea["CODIGO"].ToString();
             especializacion.Nombre = linea["NOMBRE"].ToString();
             return especializacion;
         }

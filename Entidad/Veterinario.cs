@@ -8,7 +8,8 @@ namespace Entidad
 {
     public class Veterinario:Persona
     {
-        public Especializacion Especializacion { get; set; }
+        public string EspecializacionCodigo { get; set; }
+        public string Contraseña { get; set; }
         public Veterinario() { }
         public override string ToString()
         {

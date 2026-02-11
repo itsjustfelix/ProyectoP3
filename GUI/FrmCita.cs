@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Entidad;
+using Logica;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Entidad;
-using Logica;
 
 namespace ProyectoP3
 {
     public partial class FrmCita : Form
     {
-        CitaService CitaService;
+        ICitaService CitaService;
         public FrmCita()
         {
             InitializeComponent();
@@ -19,17 +19,17 @@ namespace ProyectoP3
         {
             cargarDGV(CitaService.Consultar());
         }
-        private void cargarDGV(List<Cita> lista)
+        private void cargarDGV(List<CitaDTO> lista)
         {
             DGVCita.Rows.Clear();
-            foreach (Cita item in lista)
+            foreach (CitaDTO item in lista)
             {
                 DGVCita.Rows.Add(
                     item.Codigo,
                     item.Fecha,
                     item.Hora,
-                    item.Mascota.Nombre,
-                    item.Veterinario.Nombres
+                    item.NombreMascota,
+                    item.NombreVeterinario
                     );
             }
         }
@@ -38,11 +38,11 @@ namespace ProyectoP3
             mostrarFrm(new FrmCitaAgregar());
             cargarDGV(CitaService.Consultar());
         }
-        private Cita buscar(int id)
+        private CitaDTO buscar(string id)
         {
             return CitaService.buscar(id);
         }
-        private bool eliminar(int codigoCita)
+        private bool eliminar(string codigoCita)
         {
             try
             {
@@ -69,11 +69,10 @@ namespace ProyectoP3
         }
         private void DGVCita_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int codigo = int.Parse(DGVCita.CurrentRow.Cells["Codigo"].Value.ToString());
+            string codigo = DGVCita.CurrentRow.Cells["Codigo"].Value.ToString();
             if (DGVCita.Columns[e.ColumnIndex].Name == "Editar")
             {
-                Cita cita = buscar(codigo);
-                mostrarFrm(new FrmcitaEditar(cita));
+                mostrarFrm(new FrmcitaEditar(codigo));
                 cargarDGV(CitaService.Consultar());
             }
             else if (DGVCita.Columns[e.ColumnIndex].Name == "elimina")
@@ -88,10 +87,10 @@ namespace ProyectoP3
             }
             else if (DGVCita.Columns[e.ColumnIndex].Name == "AtenderCita")
             {
-                Cita cita = buscar(codigo);
+                var cita = buscar(codigo);
                 if (cita.Fecha.Equals(DateTime.Now.ToString("dd/MM/yyyy")))
                 {
-                    var frm = new FrmConsultaAgregar(cita.Mascota, cita.Veterinario);
+                    var frm = new FrmConsultaAgregar(CitaService.ObtenerCodigoMascotaPorCita(codigo), CitaService.ObtenerCedulaVeterinarioPorCita(codigo));
                     mostrarFrm(frm);
 
                     if (frm.resultado == DialogResult.OK)
@@ -126,7 +125,7 @@ namespace ProyectoP3
                 var textoFiltro = txtFiltrarPorVeterinario.Text.Trim().ToLower();
                 if (textoFiltro == "") cargarDGV(CitaService.Consultar());
                 else if (esFecha(textoFiltro)) cargarDGV(CitaService.buscarPorFecha(textoFiltro));
-                else if (textoFiltro.All(char.IsLetter) )cargarDGV(CitaService.buscarPorVeterinarioMascota(textoFiltro));
+                else if (textoFiltro.All(char.IsLetter)) cargarDGV(CitaService.buscarPorVeterinarioMascota(textoFiltro));
                 e.Handled = true;
                 e.SuppressKeyPress = true;
 

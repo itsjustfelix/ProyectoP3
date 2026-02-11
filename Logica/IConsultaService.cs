@@ -3,12 +3,13 @@ using Entidad;
 
 namespace Logica
 {
-    public interface IConsultaService : ICrud<Consulta>
+    public interface IConsultaService : IWriteService<Consulta>, IReadService<ConsultaDTO>
     {
-        string GenerarDocumento(Consulta entidad);
+        string GenerarDocumento(ConsultaDTO entidad, byte[] logo);
         string enviarEmail(string email, string rutaDocumento);
-        List<Consulta> buscarPorFecha(string fecha);
-        List<Consulta> buscarPorVeterinarioMascota(string texto);
+        List<ConsultaDTO> buscarPorFecha(string fecha);
+        List<ConsultaDTO> buscarPorVeterinarioMascota(string texto);
         int totalConsultasAsistdas(string fecha);
+        string ObtenerEmailPropietaio(string codigo);
     }
 }

@@ -32,17 +32,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DGVeterinario = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
+            this.txtFiltrarEspecializacion = new Guna.UI2.WinForms.Guna2TextBox();
             this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.elimina = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
-            this.txtFiltrarEspecializacion = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVeterinario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,8 +65,6 @@
             this.DGVeterinario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cedula,
             this.Column8,
-            this.Column9,
-            this.Column10,
             this.Column11,
             this.Column12,
             this.Column13,
@@ -83,11 +79,13 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DGVeterinario.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGVeterinario.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
-            this.DGVeterinario.Location = new System.Drawing.Point(12, 57);
+            this.DGVeterinario.Location = new System.Drawing.Point(16, 70);
+            this.DGVeterinario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DGVeterinario.Name = "DGVeterinario";
             this.DGVeterinario.ReadOnly = true;
             this.DGVeterinario.RowHeadersVisible = false;
-            this.DGVeterinario.Size = new System.Drawing.Size(1074, 556);
+            this.DGVeterinario.RowHeadersWidth = 51;
+            this.DGVeterinario.Size = new System.Drawing.Size(1432, 684);
             this.DGVeterinario.TabIndex = 4;
             this.DGVeterinario.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVeterinario.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -113,66 +111,6 @@
             this.DGVeterinario.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.DGVeterinario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVeterinario_CellContentClick);
             // 
-            // Cedula
-            // 
-            this.Cedula.HeaderText = "Cedula";
-            this.Cedula.Name = "Cedula";
-            this.Cedula.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Nombre";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Apellido Paterno";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Apellido Materno";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Sexo";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Numero Telefonico";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Especializacion";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsEdit__4_;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // elimina
-            // 
-            this.elimina.HeaderText = "Eliminar";
-            this.elimina.Image = global::ProyectoP3.Properties.Resources.LetsIconsDelAltFill__1_;
-            this.elimina.Name = "elimina";
-            this.elimina.ReadOnly = true;
-            this.elimina.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.elimina.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // btnGuardar
             // 
             this.btnGuardar.Animated = true;
@@ -186,9 +124,10 @@
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.IndicateFocus = true;
-            this.btnGuardar.Location = new System.Drawing.Point(512, 633);
+            this.btnGuardar.Location = new System.Drawing.Point(683, 779);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(141, 45);
+            this.btnGuardar.Size = new System.Drawing.Size(188, 55);
             this.btnGuardar.TabIndex = 8;
             this.btnGuardar.Text = "Agregar Veterinario";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -207,24 +146,81 @@
             this.txtFiltrarEspecializacion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFiltrarEspecializacion.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFiltrarEspecializacion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFiltrarEspecializacion.Location = new System.Drawing.Point(12, 12);
+            this.txtFiltrarEspecializacion.Location = new System.Drawing.Point(16, 15);
+            this.txtFiltrarEspecializacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFiltrarEspecializacion.Name = "txtFiltrarEspecializacion";
             this.txtFiltrarEspecializacion.PlaceholderText = "Filtrar";
             this.txtFiltrarEspecializacion.SelectedText = "";
-            this.txtFiltrarEspecializacion.Size = new System.Drawing.Size(231, 36);
+            this.txtFiltrarEspecializacion.Size = new System.Drawing.Size(308, 44);
             this.txtFiltrarEspecializacion.TabIndex = 14;
             this.txtFiltrarEspecializacion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFiltrarEspecializacion_KeyDown_1);
             // 
+            // Cedula
+            // 
+            this.Cedula.HeaderText = "Cedula";
+            this.Cedula.MinimumWidth = 6;
+            this.Cedula.Name = "Cedula";
+            this.Cedula.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Nombre";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Sexo";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Numero Telefonico";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Especializacion";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsEdit__4_;
+            this.Editar.MinimumWidth = 6;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // elimina
+            // 
+            this.elimina.HeaderText = "Eliminar";
+            this.elimina.Image = global::ProyectoP3.Properties.Resources.LetsIconsDelAltFill__1_;
+            this.elimina.MinimumWidth = 6;
+            this.elimina.Name = "elimina";
+            this.elimina.ReadOnly = true;
+            this.elimina.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.elimina.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // FrmVeterinario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1102, 690);
+            this.ClientSize = new System.Drawing.Size(1469, 849);
             this.Controls.Add(this.txtFiltrarEspecializacion);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.DGVeterinario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmVeterinario";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.FrmVeterinario_Load);
@@ -239,8 +235,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtFiltrarEspecializacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;

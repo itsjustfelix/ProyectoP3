@@ -9,15 +9,15 @@ namespace GeneradorDeDocumento
 {
     public class GeneradorDePDFConsultas : GeneradorDePDF<Consulta>
     {
-        public Consulta entidad;
+        public ConsultaDTO entidad;
 
-        public GeneradorDePDFConsultas(string nombreCarpeta, string rutaLogo, Consulta entidad) : base(nombreCarpeta, rutaLogo)
+        public GeneradorDePDFConsultas(string nombreCarpeta, ConsultaDTO entidad, byte[] logo) : base(nombreCarpeta, logo)
         {
             QuestPDF.Settings.License = LicenseType.Community;
             this.rutaDeGuardado = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, nombreCarpeta);
             if (!Directory.Exists(rutaDeGuardado)) Directory.CreateDirectory(rutaDeGuardado);
-            this.logo = File.ReadAllBytes(rutaLogo);
             this.entidad = entidad;
+            this.logoByte = logo;
         }
 
         public override void Compose(IDocumentContainer container)
@@ -36,7 +36,7 @@ namespace GeneradorDeDocumento
 
                     });
                     // Si quieres mostrar la imagen, pásale el array de bytes
-                    row.ConstantItem(80).Image(logo);
+                    row.ConstantItem(80).Image(logoByte);
                 });
                 page.Content().Column(col =>
                 {
@@ -52,11 +52,8 @@ namespace GeneradorDeDocumento
 
                         row.RelativeItem().Column(c2 =>
                         {
-                            c2.Item().Text($"Nombre mascota: {entidad.Mascota.Nombre}").AlignLeft();
-                            c2.Item().Text($"Especie: {entidad.Mascota.Especie.Nombre}").AlignLeft();
-                            c2.Item().Text($"Raza: {entidad.Mascota.Raza.Nombre}").AlignLeft();
-                            c2.Item().Text($"Nombre Veterinario: {entidad.Veterinario.Nombres}").AlignLeft();
-                            c2.Item().Text($"Especializacion: {entidad.Veterinario.Especializacion.Nombre}").AlignLeft();
+                            c2.Item().Text($"Nombre mascota: {entidad.NombreMascota}").AlignLeft();
+                            c2.Item().Text($"Nombre Veterinario: {entidad.NombreVeterinario}").AlignLeft();
                         });
                     });
 
@@ -112,7 +109,7 @@ namespace GeneradorDeDocumento
         {
             try
             {
-                var nombreArchivo = $"Consulta_{entidad.Codigo}_{entidad.Mascota.Nombre}.pdf";
+                var nombreArchivo = $"Consulta_{entidad.Codigo}_{entidad.NombreMascota}.pdf";
                 var filePath = Path.Combine(rutaDeGuardado,nombreArchivo);
                 var document = this;
                 document.GeneratePdf(filePath);

@@ -7,36 +7,29 @@ namespace ProyectoP3
 {
     public partial class FrmVeterinarioEditar : Form
     {
-        Veterinario veterinario;
+        string cedula;
         IVeterinarioService VeterinarioService;
-        ICrud<Especializacion> logEspecializacion;
-        public FrmVeterinarioEditar(Veterinario veterinario)
+        IEspecializacionService logEspecializacion;
+        public FrmVeterinarioEditar(string cedula)
         {
             InitializeComponent();
             VeterinarioService = new VeterinarioService();
             logEspecializacion = new EspecializacionService();
-            this.veterinario = veterinario;
+            this.cedula = cedula;
         }
         private void FrmVeterinarioEditar_Load(object sender, EventArgs e)
         {
             cargarCmbEspecializacion();
-            mostrarVeterinario(veterinario);
+            mostrarVeterinario(VeterinarioService.ObtenerDatosEdicion(cedula));
         }
-
-        private Especializacion buscarEspecializacion(int codigo)
-        {
-            return logEspecializacion.buscar(codigo);
-        }
-        private void mostrarVeterinario(Veterinario veterinario)
+        private void mostrarVeterinario(VeterinarioEdicionDTO veterinario)
         {
             txtCedula.Text = veterinario.Cedula.ToString();
-            txtNombre.Text = veterinario.Nombres;
-            txtApellidoPaterno.Text = veterinario.ApellidoPaterno;
-            txtApellidoMaterno.Text = veterinario.ApellidoMaterno;
+            txtNombre.Text = veterinario.NombreCompleto;
             txtNumeroTelefonicoPrimario.Text = veterinario.Telefono;
             if (veterinario.Sexo == "F") RBFemenino.Checked = true;
             else RBMasculino.Checked = true;
-            cmbEspecilizacion.SelectedValue = veterinario.Especializacion.Codigo;
+            cmbEspecilizacion.SelectedValue = veterinario.codigoEspecializacion;
 
         }
         private bool editar(Veterinario veterinario)
@@ -69,21 +62,17 @@ namespace ProyectoP3
         private Veterinario Mapeo()
         {
             Veterinario veterinario = new Veterinario();
-            veterinario.Cedula = int.Parse(txtCedula.Text);
-            veterinario.Nombres = txtNombre.Text;
-            veterinario.ApellidoPaterno = txtApellidoPaterno.Text;
-            veterinario.ApellidoMaterno = txtApellidoMaterno.Text;
+            veterinario.Cedula = txtCedula.Text;
+            veterinario.NombreCompleto = txtNombre.Text;
             veterinario.Sexo = RBFemenino.Checked ? "F" : "M";
             veterinario.Telefono = txtNumeroTelefonicoPrimario.Text;
-            veterinario.Especializacion = buscarEspecializacion(int.Parse(cmbEspecilizacion.SelectedValue.ToString()));
+            veterinario.EspecializacionCodigo = cmbEspecilizacion.SelectedValue.ToString();
             return veterinario;
         }
         private bool validar()
         {
             if (string.IsNullOrEmpty(txtNombre.Text)) throw new ArgumentNullException("El campo Nombre es obligatorio.");
             if (string.IsNullOrEmpty(txtCedula.Text)) throw new ArgumentNullException("El campo Cedula es obligatorio.");
-            if (string.IsNullOrEmpty(txtApellidoPaterno.Text)) throw new ArgumentNullException("El campo Apellido Paterno es obligatorio.");
-            if (string.IsNullOrEmpty(txtApellidoMaterno.Text)) throw new ArgumentNullException("El campo Apellido Materno es obligatorio.");
             if (string.IsNullOrEmpty(txtNumeroTelefonicoPrimario.Text)) throw new ArgumentNullException("El campo Teléfono primarioes obligatorio.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentNullException("El campo Sexo es obligatorio.");
             return true;
@@ -92,7 +81,6 @@ namespace ProyectoP3
         {
             this.Close();
         }
-
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
@@ -101,7 +89,6 @@ namespace ProyectoP3
                 salir();
             }
         }
-
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
             try
@@ -126,7 +113,6 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
@@ -134,23 +120,6 @@ namespace ProyectoP3
                 e.Handled = true;
             }
         }
-
-        private void txtApellidoPaterno_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtApellidoMaterno_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
         private void txtNumeroTelefonicoPrimario_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))

@@ -12,7 +12,7 @@ namespace Entidad
         public Propietario() { }
         public override string ToString()
         {
-            return $"{Cedula};{Nombres};{ApellidoPaterno};{ApellidoMaterno};{Sexo};{Telefono};{Email}";
+            return $"{Cedula};{NombreCompleto};{Sexo};{Telefono};{Email}";
         }
     }
 }

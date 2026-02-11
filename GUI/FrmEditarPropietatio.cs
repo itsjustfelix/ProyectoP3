@@ -7,7 +7,7 @@ namespace ProyectoP3
 {
     public partial class FrmEditarPropietatio : Form
     {
-        ICrud<Propietario> logPropietario;
+        IPropietarioService logPropietario;
         Propietario propietario;
         public FrmEditarPropietatio(Propietario propietario)
         {
@@ -23,9 +23,7 @@ namespace ProyectoP3
         private void mostrarPropietario(Propietario propietario)
         {
             txtCedula.Text = propietario.Cedula.ToString();
-            txtNombre.Text = propietario.Nombres;
-            txtApellidoPaterno.Text = propietario.ApellidoPaterno;
-            txtApellidoMaterno.Text = propietario.ApellidoMaterno;
+            txtNombre.Text = propietario.NombreCompleto;
             txtNumeroTelefonicoPrimario.Text = propietario.Telefono;
             txtEmail.Text = propietario.Email;
             if (propietario.Sexo == "F") RBFemenino.Checked = true;
@@ -55,10 +53,8 @@ namespace ProyectoP3
         private Propietario Mapeo()
         {
             Propietario propietario = new Propietario();
-            propietario.Cedula = int.Parse(txtCedula.Text);
-            propietario.Nombres = txtNombre.Text;
-            propietario.ApellidoPaterno = txtApellidoPaterno.Text;
-            propietario.ApellidoMaterno = txtApellidoMaterno.Text;
+            propietario.Cedula = txtCedula.Text;
+            propietario.NombreCompleto = txtNombre.Text;
             propietario.Sexo = RBFemenino.Checked ? "F" : "M";
             propietario.Telefono = txtNumeroTelefonicoPrimario.Text;
             propietario.Email = txtEmail.Text;
@@ -67,8 +63,6 @@ namespace ProyectoP3
         private bool validar()
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text)) throw new ArgumentException("El nombre no puede estar vacío.");
-            if (string.IsNullOrWhiteSpace(txtApellidoPaterno.Text)) throw new ArgumentException("El apellido paterno no puede estar vacío.");
-            if (string.IsNullOrWhiteSpace(txtApellidoMaterno.Text)) throw new ArgumentException("El apellido materno no puede estar vacío.");
             if (string.IsNullOrWhiteSpace(txtNumeroTelefonicoPrimario.Text)) throw new ArgumentException("El número de teléfono no puede estar vacío.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentException("Debe seleccionar un sexo.");
             if (string.IsNullOrEmpty(txtEmail.Text)) throw new ArgumentException("El email no puede estar vacío.");

@@ -7,27 +7,28 @@ namespace ProyectoP3
 {
     public partial class FrmRazaEditar : Form
     {
-        ICrud<Especie> logEspecie;
+        IEspecieService logEspecie;
         IRazaService logRaza;
-        Raza raza;
-        int idRaza;
-        public FrmRazaEditar(Raza raza)
+        IDataEditService<RazaEdicionDTO> logRazaEdicion;
+        string id;
+        public FrmRazaEditar(string id)
         {
             InitializeComponent();
-            this.raza = raza;
+            this.id = id;
             logEspecie = new EspecieService();
             logRaza = new RazaService();
+            logRazaEdicion = new RazaService();
         }
-        private void mostrarRaza(Raza raza)
+        private void mostrarRaza(RazaEdicionDTO raza)
         {
             txtNombre.Text = raza.Nombre;
-            cbxEspecie.SelectedValue = raza.Especie.Codigo;
-            idRaza = raza.Codigo;
+            cbxEspecie.SelectedValue = raza.CodigoEspecie;
+            id = raza.Codigo;
         }
         private void FrmRazaEditar_Load(object sender, EventArgs e)
         {
             cargarCmb();
-            mostrarRaza(raza);
+            mostrarRaza(logRazaEdicion.ObtenerDatosEdicion(id));
         }
         private void cargarCmb()
         {
@@ -35,7 +36,6 @@ namespace ProyectoP3
             cbxEspecie.DisplayMember = "nombre";
             cbxEspecie.ValueMember = "Codigo";
         }
-        
         private bool validar()
         {
             if (string.IsNullOrEmpty(txtNombre.Text)) throw new ArgumentNullException("El campo Nombre es obligatorio.");
@@ -52,7 +52,6 @@ namespace ProyectoP3
                 throw new Exception(e.Message);
             }
         }
-       
         private DialogResult dialogoPregunta(string accion)
         {
             return MessageBox.Show(
@@ -66,26 +65,19 @@ namespace ProyectoP3
         {
             this.Close();
         }
-        private Especie buscarEspecie(int id)
-        {
-            return logEspecie.buscar(id);
-        }
         private Raza Mapeo()
         {
-            Especie especie = buscarEspecie(int.Parse(cbxEspecie.SelectedValue.ToString()));
             Raza raza = new Raza();
-            raza.Codigo = idRaza;
+            raza.Codigo = id;
             raza.Nombre = txtNombre.Text;
-            raza.Especie = especie;
+            raza.EspecieCodigo = cbxEspecie.SelectedValue.ToString();
             return raza;
         }
-
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             var respuesta = dialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) salir();
         }
-
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
             try
@@ -110,7 +102,6 @@ namespace ProyectoP3
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')

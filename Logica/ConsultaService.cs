@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using Dato;
 using Entidad;
@@ -10,12 +11,12 @@ namespace Logica
 {
     public class ConsultaService : IConsultaService
     {
-        private readonly IRepository<Consulta> ConsultaRepository;
+        private readonly IDatoConsultaRepository datoConsulta;
         private GeneradorDePDF<Consulta> generadorPDF;
         private ServicioEmail servicioEmail;
         public ConsultaService()
         {
-            ConsultaRepository = new DatoConsulta();
+            datoConsulta = new DatoConsulta();
             servicioEmail = new ServicioEmail("vet.vida03@gmail.com", "wyjv vikl acif boti");
             QuestPDF.Settings.License = LicenseType.Community;
         }
@@ -25,7 +26,7 @@ namespace Logica
             try
             {
                 if (Validar(entidad))
-                    return ConsultaRepository.Guardar(entidad);
+                    return datoConsulta.Guardar(entidad);
                 else
                     return false;
             }
@@ -34,50 +35,49 @@ namespace Logica
                 throw new Exception(ex.Message);
             }
         }
-        public List<Consulta> Consultar()
+        public List<ConsultaDTO> Consultar()
         {
-            return ConsultaRepository.Consultar();
+            return datoConsulta.Consultar();
         }
         public bool Actualizar(Consulta NuevaEntidad)
         {
             try
             {
-                if (Validar(NuevaEntidad))
-                    return ConsultaRepository.Actualizar(NuevaEntidad);
-                else
-                    return false;
+                //if (Validar(NuevaEntidad))
+                    return datoConsulta.Actualizar(NuevaEntidad);
+                //else
+                //    return false;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-        public bool Borrar(int codigo)
+        public bool Borrar(string codigo)
         {
-            return ConsultaRepository.Eliminar(codigo);
+            return datoConsulta.Eliminar(codigo);
         }
-        public Consulta buscar(int codigo)
+        public ConsultaDTO buscar(string codigo)
         {
-            return ConsultaRepository.BuscarPorId(codigo);
+            return datoConsulta.BuscarPorId(codigo);
         }
         public bool Validar(Consulta entidad)
         {
             if (entidad == null) throw new Exception("La consulta no puede ser nula.");
-            if (entidad.Mascota == null) throw new Exception("La mascota no puede ser nula.");
-            if (entidad.Veterinario == null) throw new Exception("El veterinario no puede ser nulo.");
+            if (entidad.MascotaCodigo == null) throw new Exception("La mascota no puede ser nula.");
+            if (entidad.VeterinarioCedula == null) throw new Exception("El veterinario no puede ser nulo.");
             if (entidad.Fecha == default) throw new Exception("La fecha no puede ser nula.");
             if (entidad.Descripcion.Length == 0) throw new Exception("La descripcion debe ser rellenada.");
             if (entidad.Diagnostico.Length == 0) throw new Exception("El diagnostico debe ser rellenado.");
             if (entidad.Tratamiento.Length == 0) throw new Exception("El tratamiento debe ser rellenado.");
             return true;
         }
-        public string GenerarDocumento(Consulta entidad)
+        public string GenerarDocumento(ConsultaDTO entidad, byte[] logo)
         {
             try
             {
                 if (entidad == null) throw new ArgumentNullException("La entidad no puede ser nula.");
-                string rutaLogo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", "logoProyecto.png");
-                generadorPDF = new GeneradorDePDFConsultas("PDFGeneradorConsulta", rutaLogo, entidad);
+                generadorPDF = new GeneradorDePDFConsultas("PDFGeneradorConsulta", entidad,logo);
                 var ruta = generadorPDF.GenerarPDF();
                 return ruta;
             }
@@ -100,17 +100,22 @@ namespace Logica
             }
 
         }
-        public List<Consulta> buscarPorFecha(string fecha)
+        public List<ConsultaDTO> buscarPorFecha(string fecha)
         {
             return Consultar().FindAll(c => c.Fecha.Equals(fecha, StringComparison.OrdinalIgnoreCase));
         }
-        public List<Consulta> buscarPorVeterinarioMascota(string texto)
+        public List<ConsultaDTO> buscarPorVeterinarioMascota(string texto)
         {
-            return Consultar().FindAll(c => c.Veterinario.Nombres.Trim().ToLower().Contains(texto) || c.Mascota.Nombre.Trim().ToLower().Contains(texto));
+            return Consultar().FindAll(c => c.NombreVeterinario.Trim().ToLower().Contains(texto) || c.NombreMascota.Trim().ToLower().Contains(texto));
         }
         public int totalConsultasAsistdas(string fecha)
         {
             return buscarPorFecha(fecha).Count;
+        }
+
+        public string ObtenerEmailPropietaio(string codigo)
+        {
+            return datoConsulta.ObtenerEmailPropietaio(codigo);
         }
     }
 }

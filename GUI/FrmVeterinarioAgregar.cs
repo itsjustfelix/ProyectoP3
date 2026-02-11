@@ -8,7 +8,7 @@ namespace ProyectoP3
     public partial class FrmVeterinarioAgregar : Form
     {
         IVeterinarioService logVeterinario;
-        ICrud<Especializacion> logEspecializacion;
+        IEspecializacionService logEspecializacion;
         public FrmVeterinarioAgregar()
         {
             InitializeComponent();
@@ -48,7 +48,7 @@ namespace ProyectoP3
             }
 
         }
-        private Especializacion buscarEspecializacion(int codigo)
+        private Especializacion buscarEspecializacion(string codigo)
         {
             return logEspecializacion.buscar(codigo);
         }
@@ -59,21 +59,17 @@ namespace ProyectoP3
         private Veterinario Mapeo()
         {
             Veterinario veterinario = new Veterinario();
-            veterinario.Cedula = int.Parse(txtCedula.Text);
-            veterinario.Nombres = txtNombre.Text;
-            veterinario.ApellidoPaterno = txtApellidoPaterno.Text;
-            veterinario.ApellidoMaterno = txtApellidoMaterno.Text;
+            veterinario.Cedula = txtCedula.Text;
+            veterinario.NombreCompleto = txtNombre.Text;
             veterinario.Sexo = RBFemenino.Checked ? "F" : "M";
             veterinario.Telefono = txtNumeroTelefonicoPrimario.Text;
-            veterinario.Especializacion = buscarEspecializacion(int.Parse(cmbEspecilizacion.SelectedValue.ToString()));
+            veterinario.EspecializacionCodigo = cmbEspecilizacion.SelectedValue.ToString();
             return veterinario;
         }
         private bool validar()
         {
             if (string.IsNullOrEmpty(txtCedula.Text)) throw new ArgumentNullException("El campo Cédula es obligatorio.");
             if (string.IsNullOrEmpty(txtNombre.Text)) throw new ArgumentNullException("El campo Nombre es obligatorio.");
-            if (string.IsNullOrEmpty(txtApellidoPaterno.Text)) throw new ArgumentNullException("El campo Apellido Paterno es obligatorio.");
-            if (string.IsNullOrEmpty(txtApellidoMaterno.Text)) throw new ArgumentNullException("El campo Apellido Materno es obligatorio.");
             if (string.IsNullOrEmpty(txtNumeroTelefonicoPrimario.Text)) throw new ArgumentNullException("El campo Teléfono primario es obligatorio.");
             if (!RBFemenino.Checked && !RBMasculino.Checked) throw new ArgumentNullException("El campo Sexo es obligatorio.");
             return true;
@@ -148,7 +144,7 @@ namespace ProyectoP3
                 e.Handled = true;
             }
 
-            if (txtNombre.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+            if (txtNumeroTelefonicoPrimario.Text.Length >= 10 && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }

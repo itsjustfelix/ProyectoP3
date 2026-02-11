@@ -34,19 +34,17 @@ namespace ProyectoP3
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DGVPropietario = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
+            this.txtFiltrarPropietario = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.elimina = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
-            this.txtFiltrarPropietario = new Guna.UI2.WinForms.Guna2TextBox();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DGVPropietario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,8 +69,6 @@ namespace ProyectoP3
             this.DGVPropietario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cedula,
             this.Column9,
-            this.Column10,
-            this.Column11,
             this.Column12,
             this.Column13,
             this.Column14,
@@ -87,11 +83,13 @@ namespace ProyectoP3
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DGVPropietario.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGVPropietario.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
-            this.DGVPropietario.Location = new System.Drawing.Point(12, 57);
+            this.DGVPropietario.Location = new System.Drawing.Point(16, 70);
+            this.DGVPropietario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DGVPropietario.Name = "DGVPropietario";
             this.DGVPropietario.ReadOnly = true;
             this.DGVPropietario.RowHeadersVisible = false;
-            this.DGVPropietario.Size = new System.Drawing.Size(1074, 556);
+            this.DGVPropietario.RowHeadersWidth = 51;
+            this.DGVPropietario.Size = new System.Drawing.Size(1432, 684);
             this.DGVPropietario.TabIndex = 4;
             this.DGVPropietario.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVPropietario.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -117,62 +115,6 @@ namespace ProyectoP3
             this.DGVPropietario.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.DGVPropietario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVPropietario_CellContentClick);
             // 
-            // Cedula
-            // 
-            this.Cedula.HeaderText = "Cedula";
-            this.Cedula.Name = "Cedula";
-            this.Cedula.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Nombre";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Apellido Paterno";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Apellido Materno";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Sexo";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Numero Telefonico";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "Email";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsEdit__4_;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            // 
-            // elimina
-            // 
-            this.elimina.HeaderText = "Eliminar";
-            this.elimina.Image = global::ProyectoP3.Properties.Resources.LetsIconsDelAltFill__1_;
-            this.elimina.Name = "elimina";
-            this.elimina.ReadOnly = true;
-            // 
             // btnGuardar
             // 
             this.btnGuardar.Animated = true;
@@ -186,9 +128,10 @@ namespace ProyectoP3
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.IndicateFocus = true;
-            this.btnGuardar.Location = new System.Drawing.Point(512, 633);
+            this.btnGuardar.Location = new System.Drawing.Point(683, 779);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(141, 45);
+            this.btnGuardar.Size = new System.Drawing.Size(188, 55);
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Agregar Propietario";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -207,11 +150,12 @@ namespace ProyectoP3
             this.txtFiltrarPropietario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFiltrarPropietario.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFiltrarPropietario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFiltrarPropietario.Location = new System.Drawing.Point(12, 12);
+            this.txtFiltrarPropietario.Location = new System.Drawing.Point(16, 15);
+            this.txtFiltrarPropietario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFiltrarPropietario.Name = "txtFiltrarPropietario";
             this.txtFiltrarPropietario.PlaceholderText = "Filtrar";
             this.txtFiltrarPropietario.SelectedText = "";
-            this.txtFiltrarPropietario.Size = new System.Drawing.Size(231, 36);
+            this.txtFiltrarPropietario.Size = new System.Drawing.Size(308, 44);
             this.txtFiltrarPropietario.TabIndex = 9;
             this.txtFiltrarPropietario.TextChanged += new System.EventHandler(this.txtFiltrarPropietario_TextChanged);
             this.txtFiltrarPropietario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFiltrarPropietario_KeyDown);
@@ -220,6 +164,7 @@ namespace ProyectoP3
             // 
             this.dataGridViewImageColumn1.HeaderText = "Editar";
             this.dataGridViewImageColumn1.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsEdit;
+            this.dataGridViewImageColumn1.MinimumWidth = 6;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.ReadOnly = true;
             this.dataGridViewImageColumn1.Width = 120;
@@ -228,20 +173,73 @@ namespace ProyectoP3
             // 
             this.dataGridViewImageColumn2.HeaderText = "Eliminar";
             this.dataGridViewImageColumn2.Image = global::ProyectoP3.Properties.Resources.LetsIconsDelAltFill;
+            this.dataGridViewImageColumn2.MinimumWidth = 6;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.ReadOnly = true;
             this.dataGridViewImageColumn2.Width = 119;
             // 
+            // Cedula
+            // 
+            this.Cedula.HeaderText = "Cedula";
+            this.Cedula.MinimumWidth = 6;
+            this.Cedula.Name = "Cedula";
+            this.Cedula.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Nombre";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Sexo";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Numero Telefonico";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Email";
+            this.Column14.MinimumWidth = 6;
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsEdit__4_;
+            this.Editar.MinimumWidth = 6;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            // 
+            // elimina
+            // 
+            this.elimina.HeaderText = "Eliminar";
+            this.elimina.Image = global::ProyectoP3.Properties.Resources.LetsIconsDelAltFill__1_;
+            this.elimina.MinimumWidth = 6;
+            this.elimina.Name = "elimina";
+            this.elimina.ReadOnly = true;
+            // 
             // FrmPropietario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1102, 690);
+            this.ClientSize = new System.Drawing.Size(1469, 849);
             this.Controls.Add(this.txtFiltrarPropietario);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.DGVPropietario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmPropietario";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.FrmPropietario_Load);
@@ -263,8 +261,6 @@ namespace ProyectoP3
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;

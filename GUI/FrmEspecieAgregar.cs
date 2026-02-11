@@ -7,7 +7,7 @@ namespace ProyectoP3
 {
     public partial class FrmEspecieAgregar : Form
     {
-        ICrud<Especie> especieService;
+        IEspecieService especieService;
         public FrmEspecieAgregar()
         {
             InitializeComponent();

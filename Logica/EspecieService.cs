@@ -7,17 +7,19 @@ namespace Logica
 {
     public class EspecieService : IEspecieService
     {
-        private readonly IRepository<Especie> especieRepository;
+        private readonly IWriteReapository<Especie> WriteRepository;
+        private readonly IReadRepository<Especie> ReadRepository;
         public EspecieService()
         {
-            especieRepository = new DatoEspecie();
+            WriteRepository = new DatoEspecie();
+            ReadRepository = new DatoEspecie();
         }
         public bool Guardar(Especie entidad)
         {
             try
             {
                 if (Validar(entidad))
-                    return especieRepository.Guardar(entidad);
+                    return WriteRepository.Guardar(entidad);
                 else
                     return false;
             }
@@ -29,14 +31,14 @@ namespace Logica
         }
         public List<Especie> Consultar()
         {
-            return especieRepository.Consultar();
+            return ReadRepository.Consultar();
         }
         public bool Actualizar(Especie NuevaEntidad)
         {
             try
             {
                 if (Validar(NuevaEntidad))
-                    return especieRepository.Actualizar(NuevaEntidad);
+                    return WriteRepository.Actualizar(NuevaEntidad);
                 else 
                     return false;
             }
@@ -46,13 +48,13 @@ namespace Logica
             }
 
         }
-        public bool Borrar(int codigo)
+        public bool Borrar(string codigo)
         {
-            return especieRepository.Eliminar(codigo);
+            return WriteRepository.Eliminar(codigo);
         }
-        public Especie buscar(int codigo)
+        public Especie buscar(string codigo)
         {
-            return especieRepository.BuscarPorId(codigo);
+            return ReadRepository.BuscarPorId(codigo);
         }
         public bool Validar(Especie entidad)
         {
@@ -64,7 +66,7 @@ namespace Logica
         }
         public List<Especie> BuscarPorNombre(string nombre)
         {
-            return especieRepository.Consultar()
+            return ReadRepository.Consultar()
                 .Where(e => e.Nombre.Trim().ToLower().Contains(nombre))
                 .ToList();
         }

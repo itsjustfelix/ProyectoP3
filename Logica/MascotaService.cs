@@ -8,74 +8,85 @@ namespace Logica
 {
     public class MascotaService : IMascotaService
     {
-        private readonly IRepository<Mascota> mascotaRepository;
+        private readonly IWriteReapository<Mascota> WriteRepository;
+        private readonly IReadRepository<MascotaDTO> ReadRepository;
+        private readonly IDataEditRepository<MascotaEdicionDTO> EditRepository;
         public MascotaService()
         {
-            mascotaRepository = new DatoMascota();
+            WriteRepository = new DatoMascota();
+            ReadRepository = new DatoMascota();
+            EditRepository = new DatoMascota();
+
         }
         public bool Guardar(Mascota entidad)
         {
             try
             {
-                if (Validar(entidad))
-                    return mascotaRepository.Guardar(entidad);
-                else 
-                    return false;
+                if (Validar(entidad))return WriteRepository.Guardar(entidad);
+                else return false;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-        public List<Mascota> Consultar()
+        public List<MascotaDTO> Consultar()
         {
-            return mascotaRepository.Consultar();
+            return ReadRepository.Consultar();
         }
         public bool Actualizar(Mascota NuevaEntidad)
         {
             try
             {
-                if (Validar(NuevaEntidad))
-                    return mascotaRepository.Actualizar(NuevaEntidad);
-                else 
-                    return false;
+                if (Validar(NuevaEntidad))return WriteRepository.Actualizar(NuevaEntidad);
+                else return false;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-        public bool Borrar(int codigo)
+        public bool Borrar(string codigo)
         {
-            return mascotaRepository.Eliminar(codigo);
+            return WriteRepository.Eliminar(codigo);
         }
-        public Mascota buscar(int id)
+        public MascotaDTO buscar(string id)
         {
-            return mascotaRepository.BuscarPorId(id);
+            return ReadRepository.BuscarPorId(id);
         }
         public bool Validar(Mascota entidad)
         {
             if (entidad == null) throw new Exception("Mascota nula");
-            if (entidad.Propietario == null) throw new Exception("Propietario nulo");
-            if (entidad.Especie == null)throw new Exception("Especie nula");
-            if (entidad.Raza == null) throw new Exception("Raza nula");
+            if (entidad.PropietarioCedula == null) throw new Exception("Propietario nulo");
+            if (entidad.EspecieCodigo == null) throw new Exception("Especie nula");
+            if (entidad.RazaCodigo == null) throw new Exception("Raza nula");
             if (entidad.Nombre.Any(char.IsDigit)) throw new Exception("El nombre de la mascota no puede contener numeros");
             return true;
         }
-        public List<Mascota> BuscarPorPropietario(int propietarioId)
+
+        //esta funcion se debe hacer en la base de datos.
+        public List<MascotaDTO> BuscarPorPropietario(string propietarioId)
         {
-            return mascotaRepository.Consultar().Where(m => m.Propietario.Cedula == propietarioId).ToList();
+            //return ReadRepository.Consultar().Where(m => m.Propietario.Cedula == propietarioId).ToList();
+            throw new NotImplementedException();
         }
-        public List<Mascota> buscarPorRazaEspeciePropietario(string texto)
+
+        public List<MascotaDTO> buscarPorRazaEspeciePropietario(string texto)
         {
-            return Consultar().Where(m => m.Raza.Nombre.Trim().ToLower().Contains(texto) ||
-                                                   m.Especie.Nombre.Trim().ToLower().Contains(texto) ||
-                                                   m.Propietario.Nombres.Trim().ToLower().Contains(texto)||
+            return Consultar().Where(m => m.NombreRaza.Trim().ToLower().Contains(texto) ||
+                                                   m.NombreEspecie.Trim().ToLower().Contains(texto) ||
+                                                   m.NombrePropietario.Trim().ToLower().Contains(texto) ||
                                                    m.Nombre.ToLower().Trim().Contains(texto)).ToList();
+            throw new NotImplementedException();
         }
         public int totalMascotas()
         {
             return Consultar().Count;
+        }
+
+        public MascotaEdicionDTO ObtenerDatosEdicion(string id)
+        {
+            return EditRepository.ObtenerDatosParaEdicion(id);
         }
     }
 }

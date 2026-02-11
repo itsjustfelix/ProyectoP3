@@ -6,14 +6,14 @@ namespace ProyectoP3
 {
     public partial class FrmEspecializacionEditar : Form
     {
-        ICrud<Especializacion> logEspecializacion;
+        IEspecializacionService logEspecializacion;
         public FrmEspecializacionEditar(Especializacion especializacion)
         {
             InitializeComponent();
             mostrarEspecializacion(especializacion);
             logEspecializacion = new EspecializacionService();
         }
-        int codigo;
+        string codigo;
         
         private void salir()
         {

@@ -3,10 +3,10 @@ using Entidad;
 
 namespace Logica
 {
-    public interface IRazaService : ICrud<Raza>
+    public interface IRazaService : IWriteService<Raza>,IReadService<RazaDTO>,IDataEditService<RazaEdicionDTO>
     {
-        List<Raza> BuscarPorNombre(string nombre);
-        List<Raza> BuscarPorNombreEspecie(string nombre);
-        List<Raza> BuscarPorEspecie(int codigo);
+        List<RazaDTO> BuscarPorNombre(string nombre);
+        List<RazaDTO> BuscarPorNombreEspecie(string nombre);
+        List<RazaDTO> BuscarPorEspecie(string codigo);
     }
 }

@@ -103,5 +103,10 @@ namespace ProyectoP3
             frmLoggin.Show();
             this.Close();
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

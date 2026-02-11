@@ -1,21 +1,17 @@
-﻿using System;
+﻿using Entidad;
+using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using Entidad;
-using Oracle.ManagedDataAccess.Client;
-using Oracle.ManagedDataAccess.Types;
 
 namespace Dato
 {
-    public class DatoVeterinario : IRepository<Veterinario>
+    public class DatoVeterinario : IWriteReapository<Veterinario>,IReadRepository<VeterinarioDTO>,IDataEditRepository<VeterinarioEdicionDTO>  
     {
-        public IRepository<Especializacion> especializacionRepository;
-        public DatoVeterinario()
-        {
-            especializacionRepository = new DatoEspecializacion();
-        }
         public bool Guardar(Veterinario veterinario)
         {
             try
@@ -25,13 +21,11 @@ namespace Dato
                     using (OracleCommand cmd = new OracleCommand("PKG_VETERINARIOS.PRC_guardar", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add("v_cedula", OracleDbType.Int64).Value = veterinario.Cedula;
-                        cmd.Parameters.Add("v_nombres", OracleDbType.Varchar2).Value = veterinario.Nombres;
-                        cmd.Parameters.Add("v_apellido_paterno", OracleDbType.Varchar2).Value = veterinario.ApellidoPaterno;
-                        cmd.Parameters.Add("v_apellido_materno", OracleDbType.Varchar2).Value = veterinario.ApellidoMaterno;
+                        cmd.Parameters.Add("v_cedula", OracleDbType.Varchar2).Value = veterinario.Cedula;
+                        cmd.Parameters.Add("v_nombre_completo", OracleDbType.Varchar2).Value = veterinario.NombreCompleto;
                         cmd.Parameters.Add("v_sexo", OracleDbType.Varchar2).Value = veterinario.Sexo;
                         cmd.Parameters.Add("v_telefono", OracleDbType.Varchar2).Value = veterinario.Telefono;
-                        cmd.Parameters.Add("v_codigo_especializacion", OracleDbType.Int64).Value = veterinario.Especializacion.Codigo;
+                        cmd.Parameters.Add("v_codigo_especializacion", OracleDbType.Varchar2).Value = veterinario.EspecializacionCodigo;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -44,9 +38,9 @@ namespace Dato
                 throw new Exception($"Error al insertar veterinario: {ex.Message}", ex);
             }
         }
-        public List<Veterinario> Consultar()
+        public List<VeterinarioDTO> Consultar()
         {
-            List<Veterinario> lista = new List<Veterinario>();
+            List<VeterinarioDTO> lista = new List<VeterinarioDTO>();
 
             try
             {
@@ -86,13 +80,11 @@ namespace Dato
                     using (OracleCommand cmd = new OracleCommand("PKG_VETERINARIOS.PRC_actualizar", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add("v_cedula", OracleDbType.Int64).Value = veterinario.Cedula;
-                        cmd.Parameters.Add("v_nombres", OracleDbType.Varchar2).Value = veterinario.Nombres;
-                        cmd.Parameters.Add("v_apellido_paterno", OracleDbType.Varchar2).Value = veterinario.ApellidoPaterno;
-                        cmd.Parameters.Add("v_apellido_materno", OracleDbType.Varchar2).Value = veterinario.ApellidoMaterno;
+                        cmd.Parameters.Add("v_cedula", OracleDbType.Varchar2).Value = veterinario.Cedula;
+                        cmd.Parameters.Add("v_nombre_completo", OracleDbType.Varchar2).Value = veterinario.NombreCompleto;
                         cmd.Parameters.Add("v_sexo", OracleDbType.Varchar2).Value = veterinario.Sexo;
                         cmd.Parameters.Add("v_telefono", OracleDbType.Varchar2).Value = veterinario.Telefono;
-                        cmd.Parameters.Add("v_codigo_especializacion", OracleDbType.Int64).Value = veterinario.Especializacion.Codigo;
+                        cmd.Parameters.Add("v_codigo_especializacion", OracleDbType.Varchar2).Value = veterinario.EspecializacionCodigo;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -105,7 +97,7 @@ namespace Dato
                 throw new Exception($"Error al actualizar veterinario: {ex.Message}", ex);
             }
         }
-        public Veterinario BuscarPorId(int id)
+        public VeterinarioDTO BuscarPorId(string id)
         {
             try
             {
@@ -137,7 +129,7 @@ namespace Dato
                 throw new Exception($"Error al buscar veterinario: {ex.Message}", ex);
             }
         }
-        public bool Eliminar(int id)
+        public bool Eliminar(string id)
         {
             try
             {
@@ -146,7 +138,7 @@ namespace Dato
                     using (OracleCommand cmd = new OracleCommand("PKG_VETERINARIOS.PRC_eliminar", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add("v_cedula", OracleDbType.Int64).Value = id;
+                        cmd.Parameters.Add("v_cedula", OracleDbType.Varchar2).Value = id;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -159,19 +151,60 @@ namespace Dato
                 throw new Exception($"Error al eliminar veterinario: {ex.Message}", ex);
             }
         }
-        public Veterinario MappyingType(OracleDataReader linea)
+        public VeterinarioDTO MappyingType(OracleDataReader linea)
         {
-            Veterinario veterinario = new Veterinario();
-            veterinario.Cedula = int.Parse(linea["CEDULA"].ToString());
-            veterinario.Nombres = linea["NOMBRES"].ToString();
-            veterinario.ApellidoPaterno = linea["APELLIDO_PATERNO"].ToString();
-            veterinario.ApellidoMaterno = linea["APELLIDO_MATERNO"].ToString();
-            veterinario.Sexo = linea["SEXO"].ToString();
-            veterinario.Telefono = linea["TELEFONO"].ToString();
-            veterinario.Especializacion = especializacionRepository.BuscarPorId(int.Parse(linea["CODIGO_ESPECIALIZACION"].ToString()));
-            return veterinario;
+            VeterinarioDTO veterinarioDTO = new VeterinarioDTO();
+            veterinarioDTO.Cedula = linea["CEDULA"].ToString();
+            veterinarioDTO.NombreCompleto = linea["NOMBRE_COMPLETO"].ToString();
+            veterinarioDTO.Sexo = linea["SEXO"].ToString();
+            veterinarioDTO.Telefono = linea["TELEFONO"].ToString();
+            veterinarioDTO.NombreEspecializacion = linea["nombre_especializacion"].ToString();
+            return veterinarioDTO;
+        }
+        public VeterinarioEdicionDTO ObtenerDatosParaEdicion(string id)
+        {
+            try
+            {
+                using (OracleConnection conn = OracleDBConnection.GetConnection())
+                {
+                    using (OracleCommand cmd = new OracleCommand("PKG_VETERINARIOS.FN_consultar_veterinario_edicion", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add("return_value", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.ReturnValue;
+                        cmd.Parameters.Add("v_cedula", OracleDbType.Varchar2).Value = id;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        OracleRefCursor refCursor = (OracleRefCursor)cmd.Parameters["return_value"].Value;
+                        using (OracleDataReader reader = refCursor.GetDataReader())
+                        {
+                            while (reader.Read())
+                            {
+                                return MappyingTypeEdicion(reader);
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al obtener veterinarios: {ex.Message}", ex);
+            }
         }
 
+        public VeterinarioEdicionDTO MappyingTypeEdicion(OracleDataReader linea)
+        {
+            return new VeterinarioEdicionDTO
+            {
+                Cedula = linea["CEDULA"].ToString(),
+                NombreCompleto = linea["NOMBRE_COMPLETO"].ToString(),
+                Sexo = linea["SEXO"].ToString(),
+                Telefono = linea["TELEFONO"].ToString(),
+                codigoEspecializacion = linea["codigo_especializacion"].ToString(),
+            };
+        }
     }
 }
 

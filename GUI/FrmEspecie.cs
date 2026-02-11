@@ -24,7 +24,7 @@ namespace ProyectoP3
         {
             cargarDGV(especieService.Consultar());
         }
-        private Especie buscar(int codigo)
+        private Especie buscar(string codigo)
         {
             return especieService.buscar(codigo);
         }
@@ -38,7 +38,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private bool eliminar(int id)
+        private bool eliminar(string id)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace ProyectoP3
         }
         private void DGVEspecie_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int codigo = int.Parse(DGVEspecie.CurrentRow.Cells["Codigo"].Value.ToString());
+            string codigo = DGVEspecie.CurrentRow.Cells["Codigo"].Value.ToString();
             if (DGVEspecie.Columns[e.ColumnIndex].Name == "Editar")
             {
                 Especie especie = buscar(codigo);

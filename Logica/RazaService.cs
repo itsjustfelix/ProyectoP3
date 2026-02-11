@@ -7,7 +7,7 @@ namespace Logica
 {
     public class RazaService : IRazaService
     {
-        private readonly IRepository<Raza> razaRepository;
+        private readonly IRazaRepository razaRepository;
         public RazaService()
         {
             razaRepository = new DatoRaza();
@@ -26,7 +26,7 @@ namespace Logica
                 throw new Exception(ex.Message);
             }
         }
-        public List<Raza> Consultar()
+        public List<RazaDTO> Consultar()
         {
             return razaRepository.Consultar();
         }
@@ -45,35 +45,41 @@ namespace Logica
             }
 
         }
-        public bool Borrar(int codigo)
+        public bool Borrar(string codigo)
         {
             return razaRepository.Eliminar(codigo);
         }
-        public Raza buscar(int codigo)
+        public RazaDTO buscar(string codigo)
         {
             return razaRepository.BuscarPorId(codigo);
         }
         public bool Validar(Raza entidad)
         {
             if (entidad == null) throw new Exception("Raza nula");
-            if (entidad.Especie == null) throw new Exception("Especie nula");
+            if (entidad.EspecieCodigo == null) throw new Exception("Especie nula");
             if (entidad.Nombre.Any(char.IsDigit)) throw new Exception("El nombre no puede contener numeros");
-            if (Consultar().Any(r => r.Nombre.Equals(entidad.Nombre) && r.Especie.Codigo.Equals(entidad.Especie.Codigo)))
-                throw new ArgumentException("El nombre de la raza ya existe para la especie seleccionada");
+            // esta validacion debe estar en la base de datos
+            //if (Consultar().Any(r => r.Nombre.Equals(entidad.Nombre) && r.Especie.Codigo.Equals(entidad.Especie.Codigo)))
+            //    throw new ArgumentException("El nombre de la raza ya existe para la especie seleccionada");
             return true;
         }
-        public List<Raza> BuscarPorEspecie(int codigo)
+        //esta funcion debe estar en la base de datos.
+        public List<RazaDTO> BuscarPorEspecie(string codigo)
         {
-            return Consultar().Where(r => r.Especie.Codigo.Equals(codigo)).ToList();
+            return razaRepository.consultarRazasPorEspecie(codigo);
         }
-        public List<Raza> BuscarPorNombre(string nombre)
+        public List<RazaDTO> BuscarPorNombre(string nombre)
         {
             return Consultar().Where(r => r.Nombre.ToLower().Trim().Contains(nombre)).ToList();
         }
-        public List<Raza> BuscarPorNombreEspecie(string texto)
+        public List<RazaDTO> BuscarPorNombreEspecie(string texto)
         {
-            return Consultar().Where(r => r.Especie.Nombre.ToLower().Trim().Contains(texto) 
+            return Consultar().Where(r => r.NombreEspecie.ToLower().Trim().Contains(texto) 
             || r.Nombre.Trim().ToLower().Contains(texto)).ToList();
+        }
+        public RazaEdicionDTO ObtenerDatosEdicion(string id)
+        {
+           return razaRepository.ObtenerDatosParaEdicion(id);
         }
     }
 }

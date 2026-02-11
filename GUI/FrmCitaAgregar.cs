@@ -10,10 +10,10 @@ namespace ProyectoP3
     public partial class FrmCitaAgregar : Form
     {
         MascotaService mascotaService;
-        ICrud<Cita> citaService;
+        ICitaService citaService;
         IVeterinarioService veterinarioService;
-        ICrud<Especializacion> especializacionService;
-        ICrud<Propietario> propietarioService;
+        IEspecializacionService especializacionService;
+        IPropietarioService propietarioService;
         public FrmCitaAgregar()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace ProyectoP3
             SetControlesEstado(false);
         }
 
-        private void cargarCmbVeterinario(int especialializacion)
+        private void cargarCmbVeterinario(string especialializacion)
         {
             cmbVeterianrio.DataSource = null;
             cmbVeterianrio.DataSource = veterinarioService.buscarPorEspecializacion(especialializacion);
@@ -58,7 +58,7 @@ namespace ProyectoP3
                 throw new Exception(ex.Message);
             }
         }
-        private Mascota buscarMascota(int id)
+        private MascotaDTO buscarMascota(string id)
         {
             return mascotaService.buscar(id);
         }
@@ -70,7 +70,7 @@ namespace ProyectoP3
             cmbVeterianrio.Enabled = estado;
             cmbMascotas.Enabled = estado;
         }
-        private Veterinario buscarVeterinario(int id)
+        private VeterinarioDTO buscarVeterinario(string id)
         {
             return veterinarioService.buscar(id);
         }
@@ -85,10 +85,10 @@ namespace ProyectoP3
         private Cita Mapeo()
         {
             Cita cita = new Cita();
-            cita.Mascota = buscarMascota(int.Parse(cmbMascotas.SelectedValue.ToString()));
+            cita.MascotaCodigo = cmbMascotas.SelectedValue.ToString();
             cita.Fecha = DTPFecha.Value.ToString("dd/MM/yyyy");
             cita.Hora = DTPHora.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture);
-            cita.Veterinario = buscarVeterinario(int.Parse(cmbVeterianrio.SelectedValue.ToString()));
+            cita.VeterinarioCedula = cmbVeterianrio.SelectedValue.ToString();
             return cita;
         }
         private bool Validar()
@@ -107,7 +107,7 @@ namespace ProyectoP3
         private void cmbEspecializacion_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (cmbEspecializacion.SelectedIndex != -1)
-                cargarCmbVeterinario(int.Parse(cmbEspecializacion.SelectedValue.ToString()));
+                cargarCmbVeterinario(cmbEspecializacion.SelectedValue.ToString());
         }
 
         private void btnAgregar_Click_1(object sender, EventArgs e)
@@ -135,11 +135,11 @@ namespace ProyectoP3
             var respuesta = DialogoPregunta("cancelar");
             if (respuesta == DialogResult.Yes) Salir();
         }
-        private Propietario buscarPropietario(int cedula)
+        private Propietario buscarPropietario(string cedula)
         {
             return propietarioService.buscar(cedula);
         }
-        private void cargarCmbMascotas(List<Mascota> lista)
+        private void cargarCmbMascotas(List<MascotaDTO> lista)
         {
             cmbMascotas.DataSource = lista;
             cmbMascotas.DisplayMember = "Nombre";
@@ -167,14 +167,14 @@ namespace ProyectoP3
                             MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
                     }
-                    var propietario = buscarPropietario(int.Parse(txtCedulaPropietario.Text));
+                    var propietario = buscarPropietario(txtCedulaPropietario.Text);
                     if (propietario == null)
                     {
                         MessageBox.Show("No se encontro ningun propietario con esa cedula", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
                     }
-                    lblNombrePropietario.Text = $"{propietario.Nombres} {propietario.ApellidoPaterno}";
+                    lblNombrePropietario.Text = $"{propietario.NombreCompleto}";
                     cargarCmbMascotas(mascotaService.BuscarPorPropietario(propietario.Cedula));
                     SetControlesEstado(true);
                 }

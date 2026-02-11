@@ -13,8 +13,8 @@ namespace ProyectoP3
 {
     public partial class FrmConsultaMostrar : Form
     {
-        Consulta Consulta;
-        public FrmConsultaMostrar(Consulta consulta)
+        ConsultaDTO Consulta;
+        public FrmConsultaMostrar(ConsultaDTO consulta)
         {
             InitializeComponent();
             this.Consulta = consulta;
@@ -24,14 +24,14 @@ namespace ProyectoP3
         {
             this.Close();
         }
-        private void cargarTxt(Consulta consulta)
+        private void cargarTxt(ConsultaDTO consulta)
         {
             txtDescripcion.Text = consulta.Descripcion;
             txtDiagnostico.Text = consulta.Diagnostico;
             txtTratamiento.Text = consulta.Tratamiento;
             txtFecha.Text = consulta.Fecha;
-            txtNombreMascota.Text = consulta.Mascota.Nombre;
-            txtVeterinario.Text = consulta.Veterinario.Nombres;
+            txtNombreMascota.Text = consulta.NombreMascota;
+            txtVeterinario.Text = consulta.NombreVeterinario;
 
         }
         private void FrmConsultaMostrar_Load(object sender, EventArgs e)

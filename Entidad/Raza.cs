@@ -8,9 +8,9 @@ namespace Entidad
 {
     public class Raza
     {
-        public int Codigo { get; set; }
+        public string Codigo { get; set; }
         public string Nombre { get; set; }
-        public Especie Especie { get; set; } 
+        public string EspecieCodigo { get; set; } 
         public Raza() { }
         public override string ToString()
         {

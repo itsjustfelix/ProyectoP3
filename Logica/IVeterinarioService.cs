@@ -2,11 +2,11 @@
 using Entidad;
 namespace Logica
 {
-    public interface IVeterinarioService : ICrud<Veterinario>
+    public interface IVeterinarioService : IWriteService<Veterinario>,IReadService<VeterinarioDTO>, IDataEditService<VeterinarioEdicionDTO>
     {
-        List<Veterinario> bsucarPorNombreEspecializacion(string nombreEspecializacion);
+        List<VeterinarioDTO> bsucarPorNombreEspecializacion(string nombreEspecializacion);
         int totalVeterinarios();
-        List<Veterinario> buscarPorEspecializacion(int codigo);
-        bool IdUnico(int id);
+        List<VeterinarioDTO> buscarPorEspecializacion(string codigo);
+        bool IdUnico(string id);
     }
 }

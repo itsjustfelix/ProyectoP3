@@ -3,10 +3,10 @@ using Entidad;
 
 namespace Logica
 {
-    public interface IPropietarioService : ICrud<Propietario>
+    public interface IPropietarioService : IWriteService<Propietario>,IReadService<Propietario>
     {
-        List<Propietario> BuscarPorCedula(int cedula);
-        bool IdUnico(int id);
+        List<Propietario> BuscarPorCedula(string cedula);
+        bool IdUnico(string id);
         List<Propietario> BuscarPorNombreApellido(string nombre);
     }
 }

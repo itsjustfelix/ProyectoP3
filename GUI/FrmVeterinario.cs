@@ -18,7 +18,7 @@ namespace ProyectoP3
         {
             cargarDGV(VeterinarioService.Consultar());
         }
-        private Veterinario buscar(int codigo)
+        private VeterinarioDTO buscar(string codigo)
         {
             try
             {
@@ -30,7 +30,7 @@ namespace ProyectoP3
                 return null;
             }
         }
-        private bool eliminar(int codigo)
+        private bool eliminar(string codigo)
         {
             try
             {
@@ -56,19 +56,17 @@ namespace ProyectoP3
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
-        private void cargarDGV(List<Veterinario> lista)
+        private void cargarDGV(List<VeterinarioDTO> lista)
         {
             DGVeterinario.Rows.Clear();
             foreach (var item in lista)
             {
                 DGVeterinario.Rows.Add(
                     item.Cedula,
-                    item.Nombres,
-                    item.ApellidoMaterno,
-                    item.ApellidoMaterno,
+                    item.NombreCompleto,
                     item.Sexo,
                     item.Telefono,
-                    item.Especializacion.Nombre);
+                    item.NombreEspecializacion);
             }
         }
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -79,11 +77,10 @@ namespace ProyectoP3
 
         private void DGVeterinario_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int cedula = int.Parse(DGVeterinario.CurrentRow.Cells["Cedula"].Value.ToString());
+            string cedula = DGVeterinario.CurrentRow.Cells["Cedula"].Value.ToString();
             if (DGVeterinario.Columns[e.ColumnIndex].Name == "Editar")
             {
-                Veterinario veterinario = buscar(cedula);
-                mostrarFrm(new FrmVeterinarioEditar(veterinario));
+                mostrarFrm(new FrmVeterinarioEditar(cedula));
                 cargarDGV(VeterinarioService.Consultar());
             }
             else if (DGVeterinario.Columns[e.ColumnIndex].Name == "elimina")

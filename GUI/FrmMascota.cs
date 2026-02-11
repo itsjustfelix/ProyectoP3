@@ -8,13 +8,13 @@ namespace ProyectoP3
 {
     public partial class FrmMascota : Form
     {
-        MascotaService mascotaService;
+        IMascotaService mascotaService;
         public FrmMascota()
         {
             InitializeComponent();
             mascotaService = new MascotaService();
         }
-        private void cargarDGV(List<Mascota> lista)
+        private void cargarDGV(List<MascotaDTO> lista)
         {
             DGVMascota.Rows.Clear();
             foreach (var item in lista)
@@ -22,18 +22,18 @@ namespace ProyectoP3
                 DGVMascota.Rows.Add(
                     item.Codigo,
                     item.Nombre,
-                    item.Especie.Nombre,
-                    item.Raza.Nombre,
-                    item.Propietario.Nombres
+                    item.NombreEspecie,
+                    item.NombreRaza,
+                    item.NombrePropietario
                     );
             }
         }
 
-        private Mascota buscar(int id)
+        private MascotaDTO buscar(string id)
         {
             return mascotaService.buscar(id);
         }
-        private bool borrar(int id)
+        private bool borrar(string id)
         {
             try
             {
@@ -73,11 +73,10 @@ namespace ProyectoP3
 
         private void DGVMascota_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int codigo = int.Parse(DGVMascota.CurrentRow.Cells["Codigo"].Value.ToString());
+            string codigo = DGVMascota.CurrentRow.Cells["Codigo"].Value.ToString();
             if (DGVMascota.Columns[e.ColumnIndex].Name == "Editar")
             {
-                Mascota mascota = buscar(codigo);
-                mostrarFrm(new FrmMascotaEditar(mascota));
+                mostrarFrm(new FrmMascotaEditar(codigo));
                 cargarDGV(mascotaService.Consultar());
             }
             else if (DGVMascota.Columns[e.ColumnIndex].Name == "elimina")

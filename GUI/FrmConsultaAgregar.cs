@@ -1,17 +1,18 @@
-﻿using System;
-using System.Windows.Forms;
-using Entidad;
+﻿using Entidad;
 using Logica;
+using System;
+using System.Windows.Forms;
 
 namespace ProyectoP3
 {
     public partial class FrmConsultaAgregar : Form
     {
-        ICrud<Consulta> logConsulta;
-        ICrud<Mascota> logMascota;
+        IConsultaService logConsulta;
+        IMascotaService logMascota;
         IVeterinarioService logVeterinario;
         public DialogResult resultado;
-        int cedulaVeterinario;
+        string cedulaVeterinario;
+        string codigoMascota;
         public FrmConsultaAgregar()
         {
             InitializeComponent();
@@ -21,24 +22,27 @@ namespace ProyectoP3
             logVeterinario = new VeterinarioService();
             lblNombreMascota.Text = "";
         }
-        public FrmConsultaAgregar(Mascota mascota,Veterinario veterinario)
+        public FrmConsultaAgregar(string codigoMascota, string cedulaVeterinario)
         {
             InitializeComponent();
             setEstado(false);
             logConsulta = new ConsultaService();
             logMascota = new MascotaService();
             logVeterinario = new VeterinarioService();
-            mostrarInformacion(mascota, veterinario);
+            this.codigoMascota = codigoMascota;
+            this.cedulaVeterinario = cedulaVeterinario;
         }
-        
-       
+
+
         private void FrmConsultaAgregar_Load(object sender, EventArgs e)
         {
-            
+            var mascota = buscarMascota(codigoMascota);
+            var veterinario = buscarVeterinario(cedulaVeterinario);
+            mostrarInformacion(mascota, veterinario);
         }
-        
-        
-        
+
+
+
         private void setEstado(bool estado)
         {
             txtIdMascota.Enabled = estado;
@@ -66,25 +70,23 @@ namespace ProyectoP3
             }
 
         }
-        private Mascota buscarMascota(int id)
+        private MascotaDTO buscarMascota(string id)
         {
             return logMascota.buscar(id);
         }
-        private Veterinario buscarVeterinario(int id)
+        private VeterinarioDTO buscarVeterinario(string id)
         {
             return logVeterinario.buscar(id);
         }
         private Consulta Mapeo()
         {
-            Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
-            Veterinario veterinario = buscarVeterinario(cedulaVeterinario);
             Consulta consulta = new Consulta();
             consulta.Fecha = DateTime.Now.Date.ToString("dd/MM/yyyy");
             consulta.Descripcion = txtDescripcion.Text;
             consulta.Diagnostico = txtDiagnostico.Text;
             consulta.Tratamiento = txtTratamiento.Text;
-            consulta.Mascota = mascota;
-            consulta.Veterinario = veterinario;
+            consulta.MascotaCodigo = txtIdMascota.Text;
+            consulta.VeterinarioCedula = cedulaVeterinario;
             return consulta;
         }
         private DialogResult dialogoPregunta(string accion)
@@ -102,12 +104,12 @@ namespace ProyectoP3
             txtDiagnostico.Enabled = estado;
             txtTratamiento.Enabled = estado;
         }
-        private void mostrarInformacion(Mascota mascota, Veterinario veterinario)
+        private void mostrarInformacion(MascotaDTO mascota, VeterinarioDTO veterinario)
         {
             txtIdMascota.Text = mascota.Codigo.ToString();
             lblNombreMascota.Text = mascota.Nombre;
-            txtVeterinario.Text = veterinario.Nombres;
-            txtEspecializacion.Text = veterinario.Especializacion.Nombre;
+            txtVeterinario.Text = veterinario.NombreCompleto;
+            txtEspecializacion.Text = veterinario.NombreEspecializacion;
             cedulaVeterinario = veterinario.Cedula;
         }
 
@@ -147,7 +149,7 @@ namespace ProyectoP3
         {
             try
             {
-                Mascota mascota = buscarMascota(int.Parse(txtIdMascota.Text));
+                MascotaDTO mascota = buscarMascota(txtIdMascota.Text);
                 if (mascota == null)
                 {
                     MessageBox.Show("Mascota no encontrada", "Buscar Mascota", MessageBoxButtons.OK, MessageBoxIcon.Information);

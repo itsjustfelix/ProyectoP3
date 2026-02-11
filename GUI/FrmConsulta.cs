@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using Entidad;
+﻿using Entidad;
 using Logica;
-using Microsoft.VisualBasic;
+using ProyectoP3.Properties;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace ProyectoP3
@@ -24,7 +28,11 @@ namespace ProyectoP3
         }
         private void abrirDocumento(string ruta)
         {
-            System.Diagnostics.Process.Start(ruta);
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = ruta,
+                UseShellExecute = true
+            });
         }
         private DialogResult dialogoPregunta(string accion)
         {
@@ -35,7 +43,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private bool eliminar(int codigo)
+        private bool eliminar(string codigo)
         {
             try
             {
@@ -51,32 +59,32 @@ namespace ProyectoP3
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
-        private Consulta buscar(int id)
+        private ConsultaDTO buscar(string id)
         {
             return consultaService.buscar(id);
         }
-        private void cargarDGV(List<Consulta> lista)
+        private void cargarDGV(List<ConsultaDTO> lista)
         {
             DGVConsulta.Rows.Clear();
             foreach (var consulta in lista)
             {
                 DGVConsulta.Rows.Add(
                     consulta.Codigo,
-                    consulta.Mascota.Nombre,
+                    consulta.NombreMascota,
                     consulta.Fecha,
-                    consulta.Veterinario.Nombres,
+                    consulta.NombreVeterinario,
                     consulta.Descripcion,
                     consulta.Diagnostico,
                     consulta.Tratamiento
                     );
             }
         }
-        private void DGVConsulta_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void DGVConsulta_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int codigo = int.Parse(DGVConsulta.CurrentRow.Cells["Codigo"].Value.ToString());
+            string codigo = DGVConsulta.CurrentRow.Cells["Codigo"].Value.ToString();
             if (DGVConsulta.Columns[e.ColumnIndex].Name == "Editar")
             {
-                Consulta consulta = buscar(codigo);
+                ConsultaDTO consulta = buscar(codigo);
                 mostrarFrm(new FrmConsultaEditar(consulta));
                 cargarDGV(consultaService.Consultar());
             }
@@ -92,22 +100,45 @@ namespace ProyectoP3
             }
             else if (DGVConsulta.Columns[e.ColumnIndex].Name == "GenerarPDF")
             {
-                Consulta consulta = buscar(codigo);
-                string ruta = consultaService.GenerarDocumento(consulta);
+                ConsultaDTO consulta = buscar(codigo);
+                string ruta = consultaService.GenerarDocumento(consulta, obtenerLogo());
                 abrirDocumento(ruta);
             }
             else if (DGVConsulta.Columns[e.ColumnIndex].Name == "EnviarEmail")
             {
-                Consulta consulta = buscar(codigo);
-                string email = consulta.Mascota.Propietario.Email;
-                string ruta = consultaService.GenerarDocumento(consulta);
-                string mensaje = consultaService.enviarEmail(email, ruta);
-                MessageBox.Show(mensaje, "Enviar Email",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El email se está enviando en segundo plano. Puede continuar usando la aplicación.",
+                               "Enviar Email", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        ConsultaDTO consulta = buscar(codigo);
+                        string email = obtenerEmailPropietario(codigo);
+                        string ruta = consultaService.GenerarDocumento(consulta, obtenerLogo());
+                        consultaService.enviarEmail(email, ruta);
+                    });
+
+                    MessageBox.Show(
+                        "Email enviado correctamente",
+                        "Email Enviado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        $"Error al enviar email: {ex.Message}",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                }
             }
             else if (DGVConsulta.Columns[e.ColumnIndex].Name == "VerConsulta")
             {
-                Consulta consulta = buscar(codigo);
+                ConsultaDTO consulta = buscar(codigo);
                 mostrarFrm(new FrmConsultaMostrar(consulta));
             }
         }
@@ -121,6 +152,19 @@ namespace ProyectoP3
                 System.Globalization.DateTimeStyles.None,
                 out fecha
             );
+        }
+
+        private byte[] obtenerLogo()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Resources.logo_proyecto.Save(ms, ImageFormat.Png);
+                return ms.ToArray();
+            }
+        }
+        private string obtenerEmailPropietario(string codigo)
+        {
+            return consultaService.ObtenerEmailPropietaio(codigo);
         }
         private void txtFiltrarPorFecha_TextChanged(object sender, EventArgs e)
         {

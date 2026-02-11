@@ -7,11 +7,15 @@ namespace Logica
 {
     public class VeterinarioService : IVeterinarioService
     {
-        private readonly IRepository<Veterinario> veterinarioRepository;
+        private readonly IWriteReapository<Veterinario> WriteRepository;
+        private readonly IReadRepository<VeterinarioDTO> ReadRepository;
+        private readonly IDataEditRepository<VeterinarioEdicionDTO> DataEditRepository;
 
         public VeterinarioService()
         {
-            veterinarioRepository = new DatoVeterinario();
+            WriteRepository = new DatoVeterinario();
+            ReadRepository = new DatoVeterinario();
+            DataEditRepository = new DatoVeterinario();
         }
         public bool Guardar(Veterinario entidad)
         {
@@ -19,7 +23,7 @@ namespace Logica
             {
 
                 if (Validar(entidad) && IdUnico(entidad.Cedula)) 
-                   return veterinarioRepository.Guardar(entidad);
+                   return WriteRepository.Guardar(entidad);
                 else
                     return false;
             }
@@ -29,16 +33,16 @@ namespace Logica
             }
 
         }
-        public List<Veterinario> Consultar()
+        public List<VeterinarioDTO> Consultar()
         {
-            return veterinarioRepository.Consultar();
+            return ReadRepository.Consultar();
         }
         public bool Actualizar(Veterinario NuevaEntidad)
         {
             try
             {
                 if (Validar(NuevaEntidad))
-                    return veterinarioRepository.Actualizar(NuevaEntidad);
+                    return WriteRepository.Actualizar(NuevaEntidad);
                 else 
                     return false;
             }
@@ -47,51 +51,42 @@ namespace Logica
                 throw new Exception(ex.Message);
             }
         }
-        public bool Borrar(int id)
+        public bool Borrar(string id)
         {
-            return veterinarioRepository.Eliminar(id);
+            return WriteRepository.Eliminar(id);
         }
-        public Veterinario buscar(int id)
+        public VeterinarioDTO buscar(string id)
         {
-            return veterinarioRepository.BuscarPorId(id);
+            return ReadRepository.BuscarPorId(id);
         }
         public bool Validar(Veterinario entidad)
         {
             if (entidad == null) throw new Exception("Veterinario nulo");
-            
-            if (entidad.Especializacion == null) throw new Exception("La especializacion no puede ser nula.");
-            
-            if (entidad.Nombres.Any(char.IsDigit)) throw new Exception("El nombre no puede contener numeros");
-            
-            if (entidad.ApellidoPaterno.Any(char.IsDigit)) throw new Exception("El apellido paterno no puede contener numeros");
-            
-            if (entidad.ApellidoMaterno.Any(char.IsDigit)) throw new Exception("El apellido materno no puede contener numeros");
-            
+            if (entidad.EspecializacionCodigo == null) throw new Exception("La especializacion no puede ser nula.");
+            if (entidad.NombreCompleto.Any(char.IsDigit)) throw new Exception("El nombre no puede contener numeros");
             if (entidad.Cedula.ToString().Length < 8 || entidad.Cedula.ToString().Length > 10) throw new Exception("La cedula debe tener entre 8 y 10 digitos");
-            
             if (entidad.Cedula.ToString().Any(char.IsLetter)) throw new Exception("La cedula no puede contener letras");
-           
             if (entidad.Telefono.Any(char.IsLetter)) throw new Exception("El telefono no puede contener letras");
-            
             if (entidad.Telefono.Length != 10) throw new Exception("El telefono debe tener 10 digitos");
             return true;
         }
-        public bool IdUnico(int id)
+        public bool IdUnico(string id)
         {
             if (buscar(id) != null) throw new ArgumentException("La Cedula ya esta registrada en la base de datos");
             return true;
         }
-        public List<Veterinario> buscarPorEspecializacion(int cualidad)
+
+        //esta funcion se debe hacer en la base de datos
+        public List<VeterinarioDTO> buscarPorEspecializacion(string cualidad)
         {
-            return Consultar().Where(r => r.Especializacion.Codigo.Equals(cualidad)).ToList();
+            //return Consultar().Where(r => r.Especializacion.Codigo.Equals(cualidad)).ToList();
+            throw new NotImplementedException("Esta funcion se debe hacer en la base de datos");
         }
-        public List<Veterinario> bsucarPorNombreEspecializacion(string texto)
+        public List<VeterinarioDTO> bsucarPorNombreEspecializacion(string texto)
         {
             return Consultar()
-                .Where(v => v.Especializacion.Nombre.Trim().ToLower().Contains(texto)||
-                v.Nombres.Trim().ToLower().Contains(texto)||
-                v.ApellidoMaterno.Trim().ToLower().Contains(texto)||
-                v.ApellidoPaterno.Trim().ToLower().Contains(texto))
+                .Where(v => v.NombreEspecializacion.Trim().ToLower().Contains(texto)||
+                v.NombreCompleto.Trim().ToLower().Contains(texto))
                 .ToList();
         }
         public int totalVeterinarios()
@@ -99,5 +94,9 @@ namespace Logica
             return Consultar().Count;
         }
 
+        public VeterinarioEdicionDTO ObtenerDatosEdicion(string id)
+        {
+            return DataEditRepository.ObtenerDatosParaEdicion(id);
+        }
     }
 }

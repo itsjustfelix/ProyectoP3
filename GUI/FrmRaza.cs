@@ -14,7 +14,7 @@ namespace ProyectoP3
             InitializeComponent();
             razaService = new RazaService();
         }
-        RazaService razaService;
+        IRazaService razaService;
         private void FrmRaza_Load(object sender, EventArgs e)
         {
             cargarDGV(razaService.Consultar());
@@ -33,7 +33,7 @@ namespace ProyectoP3
              MessageBoxIcon.Question
              );
         }
-        private Raza buscar(int id)
+        private RazaDTO buscar(string id)
         {
             return razaService.buscar(id);
         }
@@ -42,7 +42,7 @@ namespace ProyectoP3
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
-        private bool borrar(int id)
+        private bool borrar(string id)
         {
             try
             {
@@ -54,21 +54,24 @@ namespace ProyectoP3
             }
 
         }
-        private void cargarDGV(List<Raza> lista)
+        private void cargarDGV(List<RazaDTO> lista)
         {
             DGVRaza.Rows.Clear();
             foreach (var raza in lista)
             {
-                DGVRaza.Rows.Add(raza.Codigo, raza.Nombre, raza.Especie.Nombre);
+                DGVRaza.Rows.Add(
+                    raza.Codigo,
+                    raza.Nombre,
+                    raza.NombreEspecie
+                    );
             }
         }
         private void DGVRaza_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int codigo = int.Parse(DGVRaza.CurrentRow.Cells["Codigo"].Value.ToString());
+            string codigo = DGVRaza.CurrentRow.Cells["Codigo"].Value.ToString();
             if (DGVRaza.Columns[e.ColumnIndex].Name == "Editar")
             {
-                Raza raza = buscar(codigo);
-                mostrarFrm(new FrmRazaEditar(raza));
+                mostrarFrm(new FrmRazaEditar(codigo));
                 cargarDGV(razaService.Consultar());
             }
             else if (DGVRaza.Columns[e.ColumnIndex].Name == "elimina")

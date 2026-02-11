@@ -8,17 +8,15 @@ namespace Entidad
 {
     public class Persona
     {
-        public int Cedula { get; set; }
-        public string Nombres { get; set; }
-        public string ApellidoPaterno { get; set; }
-        public string ApellidoMaterno { get; set; }
+        public string Cedula { get; set; }
+        public string NombreCompleto { get; set; }
         public string Sexo { get; set; }
         public string Telefono { get; set; }
 
         public Persona() { }
         public override string ToString()
         {
-            return $"{Cedula};{Nombres};{ApellidoPaterno};{ApellidoMaterno};{Sexo};{Telefono}";
+            return $"{Cedula};{NombreCompleto};{Sexo};{Telefono}";
         }
     }
 }

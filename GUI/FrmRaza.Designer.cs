@@ -32,13 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DGVRaza = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
+            this.txtFiltrar = new Guna.UI2.WinForms.Guna2TextBox();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.elimina = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
-            this.txtFiltrar = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVRaza)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,11 +75,13 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DGVRaza.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGVRaza.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
-            this.DGVRaza.Location = new System.Drawing.Point(12, 57);
+            this.DGVRaza.Location = new System.Drawing.Point(16, 70);
+            this.DGVRaza.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DGVRaza.Name = "DGVRaza";
             this.DGVRaza.ReadOnly = true;
             this.DGVRaza.RowHeadersVisible = false;
-            this.DGVRaza.Size = new System.Drawing.Size(1074, 556);
+            this.DGVRaza.RowHeadersWidth = 51;
+            this.DGVRaza.Size = new System.Drawing.Size(1432, 684);
             this.DGVRaza.TabIndex = 4;
             this.DGVRaza.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.DGVRaza.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -105,40 +107,6 @@
             this.DGVRaza.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.DGVRaza.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVRaza_CellContentClick);
             // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Nombre";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Raza";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsEdit__4_;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // elimina
-            // 
-            this.elimina.HeaderText = "Eliminar";
-            this.elimina.Image = global::ProyectoP3.Properties.Resources.LetsIconsDelAltFill__1_;
-            this.elimina.Name = "elimina";
-            this.elimina.ReadOnly = true;
-            // 
             // btnGuardar
             // 
             this.btnGuardar.Animated = true;
@@ -152,9 +120,10 @@
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.IndicateFocus = true;
-            this.btnGuardar.Location = new System.Drawing.Point(512, 633);
+            this.btnGuardar.Location = new System.Drawing.Point(683, 779);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(141, 45);
+            this.btnGuardar.Size = new System.Drawing.Size(188, 55);
             this.btnGuardar.TabIndex = 14;
             this.btnGuardar.Text = "Agregar Raza";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -173,24 +142,65 @@
             this.txtFiltrar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFiltrar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFiltrar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFiltrar.Location = new System.Drawing.Point(12, 12);
+            this.txtFiltrar.Location = new System.Drawing.Point(16, 15);
+            this.txtFiltrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFiltrar.Name = "txtFiltrar";
             this.txtFiltrar.PlaceholderText = "Filtrar";
             this.txtFiltrar.SelectedText = "";
-            this.txtFiltrar.Size = new System.Drawing.Size(231, 36);
+            this.txtFiltrar.Size = new System.Drawing.Size(308, 44);
             this.txtFiltrar.TabIndex = 22;
             this.txtFiltrar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFiltrar_KeyDown);
             // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.MinimumWidth = 6;
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Nombre";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Especie";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::ProyectoP3.Properties.Resources.MaterialSymbolsEdit__4_;
+            this.Editar.MinimumWidth = 6;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // elimina
+            // 
+            this.elimina.HeaderText = "Eliminar";
+            this.elimina.Image = global::ProyectoP3.Properties.Resources.LetsIconsDelAltFill__1_;
+            this.elimina.MinimumWidth = 6;
+            this.elimina.Name = "elimina";
+            this.elimina.ReadOnly = true;
+            // 
             // FrmRaza
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1102, 690);
+            this.ClientSize = new System.Drawing.Size(1469, 849);
             this.Controls.Add(this.txtFiltrar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.DGVRaza);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmRaza";
             this.Text = "Form5";
             this.Load += new System.EventHandler(this.FrmRaza_Load);
@@ -202,11 +212,11 @@
         #endregion
         private Guna.UI2.WinForms.Guna2DataGridView DGVRaza;
         private Guna.UI2.WinForms.Guna2Button btnGuardar;
+        private Guna.UI2.WinForms.Guna2TextBox txtFiltrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn elimina;
-        private Guna.UI2.WinForms.Guna2TextBox txtFiltrar;
     }
 }

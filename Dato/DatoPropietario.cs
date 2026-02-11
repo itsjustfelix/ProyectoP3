@@ -6,7 +6,7 @@ using Oracle.ManagedDataAccess.Types;
 
 namespace Dato
 {
-    public class DatoPropietario : IRepository<Propietario>
+    public class DatoPropietario : IWriteReapository<Propietario>,IReadRepository<Propietario>
     {
         public bool Guardar(Propietario propietario)
         {
@@ -18,10 +18,8 @@ namespace Dato
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("v_cedula", OracleDbType.Int64).Value = propietario.Cedula;
-                        cmd.Parameters.Add("v_nombres", OracleDbType.Varchar2).Value = propietario.Nombres;
-                        cmd.Parameters.Add("v_apellido_paterno", OracleDbType.Varchar2).Value = propietario.ApellidoPaterno;
-                        cmd.Parameters.Add("v_apellido_materno", OracleDbType.Varchar2).Value = propietario.ApellidoMaterno;
+                        cmd.Parameters.Add("v_cedula", OracleDbType.Varchar2).Value = propietario.Cedula;
+                        cmd.Parameters.Add("v_nombres_completos", OracleDbType.Varchar2).Value = propietario.NombreCompleto;
                         cmd.Parameters.Add("v_sexo", OracleDbType.Varchar2).Value = propietario.Sexo;
                         cmd.Parameters.Add("v_telefono", OracleDbType.Varchar2).Value = propietario.Telefono;
                         cmd.Parameters.Add("v_email", OracleDbType.Varchar2).Value = propietario.Email;
@@ -80,10 +78,8 @@ namespace Dato
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("v_cedula", OracleDbType.Int64).Value = propietario.Cedula;
-                        cmd.Parameters.Add("v_nombres", OracleDbType.Varchar2).Value = propietario.Nombres;
-                        cmd.Parameters.Add("v_apellido_paterno", OracleDbType.Varchar2).Value = propietario.ApellidoPaterno;
-                        cmd.Parameters.Add("v_apellido_materno", OracleDbType.Varchar2).Value = propietario.ApellidoMaterno;
+                        cmd.Parameters.Add("v_cedula", OracleDbType.Varchar2).Value = propietario.Cedula;
+                        cmd.Parameters.Add("v_nombres_completos", OracleDbType.Varchar2).Value = propietario.NombreCompleto;
                         cmd.Parameters.Add("v_sexo", OracleDbType.Varchar2).Value = propietario.Sexo;
                         cmd.Parameters.Add("v_telefono", OracleDbType.Varchar2).Value = propietario.Telefono;
                         cmd.Parameters.Add("v_email", OracleDbType.Varchar2).Value = propietario.Email;
@@ -102,16 +98,14 @@ namespace Dato
         public Propietario MappyingType(OracleDataReader linea)
         {
             Propietario propietario = new Propietario();
-            propietario.Cedula = int.Parse(linea["CEDULA"].ToString());
-            propietario.Nombres = linea["NOMBRES"].ToString();
-            propietario.ApellidoPaterno = linea["APELLIDO_PATERNO"].ToString();
-            propietario.ApellidoMaterno = linea["APELLIDO_MATERNO"].ToString();
+            propietario.Cedula = linea["CEDULA"].ToString();
+            propietario.NombreCompleto = linea["NOMBRE_COMPLETO"].ToString();
             propietario.Sexo = linea["SEXO"].ToString();
             propietario.Telefono = linea["TELEFONO"].ToString();
             propietario.Email = linea["EMAIL"].ToString();
             return propietario;
         }
-        public Propietario BuscarPorId(int id)
+        public Propietario BuscarPorId(string id)
         {
             try
             {
@@ -123,7 +117,7 @@ namespace Dato
 
                         // Parámetro de retorno
                         cmd.Parameters.Add("return_value", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.ReturnValue;
-                        cmd.Parameters.Add("v_cedula", OracleDbType.Int64).Value = id;
+                        cmd.Parameters.Add("v_cedula", OracleDbType.Varchar2).Value = id;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -145,7 +139,7 @@ namespace Dato
                 throw new Exception($"Error al buscar propietario: {ex.Message}", ex);
             }
         }
-        public bool Eliminar(int id)
+        public bool Eliminar(string id)
         {
             try
             {
@@ -154,7 +148,7 @@ namespace Dato
                     using (OracleCommand cmd = new OracleCommand("PKG_PROPIETARIOS.PRC_eliminar", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add("v_cedula", OracleDbType.Int64).Value = id;
+                        cmd.Parameters.Add("v_cedula", OracleDbType.Varchar2).Value = id;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();

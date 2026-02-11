@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Entidad;
 namespace Logica
 {
-    public interface IMascotaService :ICrud<Mascota>
+    public interface IMascotaService :IWriteService<Mascota>,IReadService<MascotaDTO>,IDataEditService<MascotaEdicionDTO>
     {
-        List<Mascota> buscarPorRazaEspeciePropietario(string texto);
-        List<Mascota> BuscarPorPropietario(int propietarioId);
+        List<MascotaDTO> buscarPorRazaEspeciePropietario(string texto);
+        List<MascotaDTO> BuscarPorPropietario(string propietarioId);
         int totalMascotas();
     }
 }

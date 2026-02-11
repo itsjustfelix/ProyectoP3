@@ -7,8 +7,8 @@ namespace ProyectoP3
 {
     public partial class FrmEspecieEditar : Form
     {
-        ICrud<Especie> logEspecie;
-        int codigo;
+        IEspecieService logEspecie;
+        string codigo;
         public FrmEspecieEditar(Especie especie)
         {
             logEspecie = new EspecieService();

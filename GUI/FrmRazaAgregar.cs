@@ -13,7 +13,7 @@ namespace ProyectoP3
             logEspecie = new EspecieService();
             logRaza = new RazaService();
         }
-        ICrud<Especie> logEspecie;
+        IEspecieService logEspecie;
         IRazaService logRaza;
         private void FrmRazaAgregar_Load(object sender, EventArgs e)
         {
@@ -42,7 +42,7 @@ namespace ProyectoP3
                 throw new Exception(e.Message);
             }
         }
-        private Especie buscarEspecie(int id)
+        private Especie buscarEspecie(string id)
         {
             return logEspecie.buscar(id);
         }
@@ -62,10 +62,9 @@ namespace ProyectoP3
         }
         private Raza Mapeo()
         {
-            Especie especie = buscarEspecie(int.Parse(cbxEspecie.SelectedValue.ToString()));
             Raza raza = new Raza();
             raza.Nombre = txtNombre.Text;
-            raza.Especie = especie;
+            raza.EspecieCodigo = cbxEspecie.SelectedValue.ToString();
             return raza;
         }
 
